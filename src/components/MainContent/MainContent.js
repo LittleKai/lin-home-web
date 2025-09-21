@@ -1,6 +1,5 @@
 // src/components/MainContent/MainContent.js
 import React from 'react';
-import './MainContent.css';
 
 // Import separated components
 import HeroSection from '../sections/HeroSection/HeroSection';

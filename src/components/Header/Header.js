@@ -1,4 +1,6 @@
+// src/components/Header/Header.js (Updated with Router support)
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
 import { menuData, contactInfo } from '../../data/menuData';
 
@@ -6,6 +8,8 @@ const Header = ({ activeSection, setActiveSection }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     // Handle scroll effect for header background
     useEffect(() => {
@@ -59,6 +63,12 @@ const Header = ({ activeSection, setActiveSection }) => {
         };
     }, [isMobileMenuOpen]);
 
+    // Close mobile menu on route change
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+        setActiveDropdown(null);
+    }, [location.pathname]);
+
     // Handle navigation click
     const handleNavClick = (section, event) => {
         event.preventDefault();
@@ -66,35 +76,56 @@ const Header = ({ activeSection, setActiveSection }) => {
         setIsMobileMenuOpen(false);
         setActiveDropdown(null);
 
-        // Smooth scroll to section if not home
-        if (section !== 'home') {
-            setTimeout(() => {
-                const element = document.getElementById(section);
-                if (element) {
-                    const headerHeight = 80;
-                    const elementPosition = element.offsetTop - headerHeight;
-                    window.scrollTo({
-                        top: elementPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
+        // Navigate based on section
+        if (section === 'home') {
+            navigate('/');
+        } else if (section === 'contact') {
+            navigate('/contact');
         } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // For other sections, scroll to section on home page
+            if (location.pathname !== '/') {
+                navigate('/');
+                setTimeout(() => {
+                    const element = document.getElementById(section);
+                    if (element) {
+                        const headerHeight = 80;
+                        const elementPosition = element.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: elementPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
+            } else {
+                setTimeout(() => {
+                    const element = document.getElementById(section);
+                    if (element) {
+                        const headerHeight = 80;
+                        const elementPosition = element.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: elementPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 100);
+            }
         }
     };
 
-    // Handle dropdown item click
+    // Handle dropdown item click with routing
     const handleDropdownItemClick = (item, event) => {
         event.preventDefault();
         setIsMobileMenuOpen(false);
         setActiveDropdown(null);
 
-        // In a real application, you would handle routing here
-        console.log(`Navigating to: ${item.href} - ${item.title}`);
-
-        // For demo purposes, show alert
-        alert(`Chuyển đến: ${item.title}`);
+        // Navigate to the specific page
+        if (item.href) {
+            navigate(item.href);
+        } else {
+            // Fallback for items without href
+            console.log(`Navigating to: ${item.title}`);
+            alert(`Chuyển đến: ${item.title}`);
+        }
     };
 
     // Toggle mobile menu
@@ -121,34 +152,55 @@ const Header = ({ activeSection, setActiveSection }) => {
         return icons[section] || 'chevron-right';
     };
 
+    // Check if current path matches section
+    const isActiveSection = (section) => {
+        const path = location.pathname;
+        if (section === 'home') {
+            return path === '/';
+        } else if (section === 'contact') {
+            return path === '/contact';
+        } else if (section === 'thiết kế') {
+            return path.startsWith('/thiet-ke');
+        } else if (section === 'thi công') {
+            return path.startsWith('/thi-cong');
+        } else if (section === 'báo giá') {
+            return path.startsWith('/bao-gia');
+        } else if (section === 'tin tức') {
+            return path.startsWith('/tin-tuc');
+        } else if (section === 'ứng dụng') {
+            return path.startsWith('/ung-dung');
+        }
+        return false;
+    };
+
     return (
         <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
             <div className="container">
                 <div className="header-content">
                     {/* Logo */}
-                    <button
+                    <Link
+                        to="/"
                         className="logo"
-                        onClick={(e) => handleNavClick('home', e)}
                         aria-label="LIN HOME - Về trang chủ"
                     >
                         <div className="logo-icon">
                             <i className="fas fa-building" aria-hidden="true"></i>
                         </div>
                         <span className="logo-text">LIN HOME</span>
-                    </button>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="nav-desktop" aria-label="Menu điều hướng chính">
                         <ul className="nav-menu">
                             {/* Home Link */}
                             <li className="nav-item">
-                                <button
-                                    className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-                                    onClick={(e) => handleNavClick('home', e)}
-                                    aria-current={activeSection === 'home' ? 'page' : undefined}
+                                <Link
+                                    to="/"
+                                    className={`nav-link ${isActiveSection('home') ? 'active' : ''}`}
+                                    aria-current={isActiveSection('home') ? 'page' : undefined}
                                 >
                                     Trang chủ
-                                </button>
+                                </Link>
                             </li>
 
                             {/* Dynamic Menu Items with Dropdowns */}
@@ -156,10 +208,11 @@ const Header = ({ activeSection, setActiveSection }) => {
                                 <li
                                     key={section}
                                     className="nav-item nav-item-dropdown"
+                                    onMouseEnter={() => setActiveDropdown(section)}
+                                    onMouseLeave={() => setActiveDropdown(null)}
                                 >
                                     <button
-                                        className={`nav-link ${activeSection === section.toLowerCase().replace(' ', '') ? 'active' : ''}`}
-                                        onClick={(e) => handleNavClick(section.toLowerCase().replace(' ', ''), e)}
+                                        className={`nav-link ${isActiveSection(section.toLowerCase()) ? 'active' : ''}`}
                                         aria-expanded={activeDropdown === section}
                                         aria-haspopup="true"
                                     >
@@ -190,13 +243,13 @@ const Header = ({ activeSection, setActiveSection }) => {
 
                             {/* Contact Link */}
                             <li className="nav-item">
-                                <button
-                                    className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-                                    onClick={(e) => handleNavClick('contact', e)}
-                                    aria-current={activeSection === 'contact' ? 'page' : undefined}
+                                <Link
+                                    to="/contact"
+                                    className={`nav-link ${isActiveSection('contact') ? 'active' : ''}`}
+                                    aria-current={isActiveSection('contact') ? 'page' : undefined}
                                 >
                                     Liên hệ
-                                </button>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
@@ -245,13 +298,14 @@ const Header = ({ activeSection, setActiveSection }) => {
                     <ul className="mobile-nav-menu">
                         {/* Home Item */}
                         <li className="mobile-nav-item">
-                            <button
-                                className={`mobile-nav-link ${activeSection === 'home' ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick('home', e)}
+                            <Link
+                                to="/"
+                                className={`mobile-nav-link ${isActiveSection('home') ? 'active' : ''}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <i className="fas fa-home" aria-hidden="true"></i>
                                 <span>Trang chủ</span>
-                            </button>
+                            </Link>
                         </li>
 
                         {/* Dynamic Menu Items */}
@@ -289,13 +343,14 @@ const Header = ({ activeSection, setActiveSection }) => {
 
                         {/* Contact Item */}
                         <li className="mobile-nav-item">
-                            <button
-                                className={`mobile-nav-link ${activeSection === 'contact' ? 'active' : ''}`}
-                                onClick={(e) => handleNavClick('contact', e)}
+                            <Link
+                                to="/contact"
+                                className={`mobile-nav-link ${isActiveSection('contact') ? 'active' : ''}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <i className="fas fa-envelope" aria-hidden="true"></i>
                                 <span>Liên hệ</span>
-                            </button>
+                            </Link>
                         </li>
                     </ul>
 

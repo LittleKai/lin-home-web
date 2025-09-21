@@ -1,123 +1,124 @@
+// src/data/menuData.js (Updated with correct href)
 // Menu data structure for navigation
 export const menuData = {
     'Thiết kế': [
         {
             title: 'Quy trình thiết kế',
-            href: '/quy-trinh-thiet-ke',
+            href: '/thiet-ke/quy-trinh-thiet-ke',
             description: 'Quy trình thiết kế chuyên nghiệp từ ý tưởng đến hoàn thiện'
         },
         {
             title: 'Thiết kế kiến trúc',
-            href: '/thiet-ke-kien-truc',
+            href: '/thiet-ke/thiet-ke-kien-truc',
             description: 'Thiết kế kiến trúc hiện đại, độc đáo và phù hợp địa hình'
         },
         {
             title: 'Thiết kế nội thất',
-            href: '/thiet-ke-noi-that',
+            href: '/thiet-ke/thiet-ke-noi-that',
             description: 'Thiết kế nội thất sang trọng, tiện nghi và tối ưu không gian'
         }
     ],
     'Thi công': [
         {
             title: 'Quy trình thi công',
-            href: '/quy-trinh-thi-cong',
+            href: '/thi-cong/quy-trinh-thi-cong',
             description: 'Quy trình thi công khoa học, đảm bảo chất lượng và tiến độ'
         },
         {
             title: 'Thi công trọn gói kiến trúc',
-            href: '/thi-cong-tron-goi-kien-truc',
+            href: '/thi-cong/thi-cong-tron-goi-kien-truc',
             description: 'Thi công trọn gói từ móng đến hoàn thiện'
         },
         {
             title: 'Thi công trọn gói nội thất',
-            href: '/thi-cong-tron-goi-noi-that',
+            href: '/thi-cong/thi-cong-tron-goi-noi-that',
             description: 'Thi công nội thất hoàn chỉnh theo thiết kế'
         },
         {
             title: 'Thi công hạng mục',
-            href: '/thi-cong-hang-muc',
+            href: '/thi-cong/thi-cong-hang-muc',
             description: 'Thi công theo từng hạng mục cụ thể'
         },
         {
             title: 'Thi công sửa chữa cải tạo',
-            href: '/thi-cong-sua-chua-cai-tao',
+            href: '/thi-cong/thi-cong-sua-chua-cai-tao',
             description: 'Dịch vụ sửa chữa, cải tạo và nâng cấp công trình hiện có'
         }
     ],
     'Báo giá': [
         {
             title: 'Báo giá thiết kế, thi công nhà',
-            href: '/bao-gia-thiet-ke-thi-cong-nha',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha',
             description: 'Báo giá chi tiết cho dự án thiết kế và thi công nhà ở'
         },
         {
             title: 'Báo giá thiết kế, thi công nội thất',
-            href: '/bao-gia-thiet-ke-thi-cong-noi-that',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong-noi-that',
             description: 'Báo giá thiết kế và thi công nội thất theo phong cách'
         },
         {
             title: 'Báo giá thiết kế, thi công tự động',
-            href: '/bao-gia-thiet-ke-thi-cong-tu-dong',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong-tu-dong',
             description: 'Hệ thống báo giá tự động nhanh chóng và chính xác'
         },
         {
             title: 'Báo giá sửa chữa cải tạo',
-            href: '/bao-gia-sua-chua-cai-tao',
+            href: '/bao-gia/bao-gia-sua-chua-cai-tao',
             description: 'Báo giá dịch vụ sửa chữa và cải tạo công trình'
         },
         {
             title: 'Báo giá thiết kế, thi công sân vườn',
-            href: '/bao-gia-thiet-ke-thi-cong-san-vuon',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong-san-vuon',
             description: 'Báo giá thiết kế cảnh quan và thi công sân vườn'
         },
         {
             title: 'Báo giá cửa composite',
-            href: '/bao-gia-cua-composite',
+            href: '/bao-gia/bao-gia-cua-composite',
             description: 'Báo giá cửa composite chất lượng cao, bền đẹp'
         },
         {
             title: 'Báo giá cửa nhôm kính',
-            href: '/bao-gia-cua-nhom-kinh',
+            href: '/bao-gia/bao-gia-cua-nhom-kinh',
             description: 'Báo giá cửa nhôm kính hiện đại, cách nhiệt tốt'
         },
         {
             title: 'Báo giá điện mặt trời',
-            href: '/bao-gia-dien-mat-troi',
+            href: '/bao-gia/bao-gia-dien-mat-troi',
             description: 'Báo giá hệ thống điện mặt trời tiết kiệm năng lượng'
         },
         {
             title: 'Báo giá điện thông minh',
-            href: '/bao-gia-dien-thong-minh',
+            href: '/bao-gia/bao-gia-dien-thong-minh',
             description: 'Báo giá hệ thống điện thông minh hiện đại'
         },
         {
             title: 'Báo giá đá ốp lát',
-            href: '/bao-gia-da-op-lat',
+            href: '/bao-gia/bao-gia-da-op-lat',
             description: 'Báo giá đá tự nhiên và nhân tạo cho ốp lát'
         },
         {
             title: 'Báo giá sàn gỗ',
-            href: '/bao-gia-san-go',
+            href: '/bao-gia/bao-gia-san-go',
             description: 'Báo giá sàn gỗ tự nhiên và công nghiệp'
         },
         {
             title: 'Báo giá rèm cửa',
-            href: '/bao-gia-rem-cua',
+            href: '/bao-gia/bao-gia-rem-cua',
             description: 'Báo giá rèm cửa đa dạng chất liệu và mẫu mã'
         },
         {
             title: 'Báo giá trần, vách thạch cao',
-            href: '/bao-gia-tran-vach-thach-cao',
+            href: '/bao-gia/bao-gia-tran-vach-thach-cao',
             description: 'Báo giá trần và vách thạch cao trang trí'
         },
         {
             title: 'Báo giá phào chỉ PU',
-            href: '/bao-gia-phao-chi-pu',
+            href: '/bao-gia/bao-gia-phao-chi-pu',
             description: 'Báo giá phào chỉ PU trang trí nội thất'
         },
         {
             title: 'Báo giá chống thấm',
-            href: '/bao-gia-chong-tham',
+            href: '/bao-gia/bao-gia-chong-tham',
             description: 'Báo giá dịch vụ chống thấm chuyên nghiệp'
         }
     ],
@@ -229,6 +230,7 @@ export const menuData = {
     ]
 };
 
+// Rest of the file remains the same...
 // Contact information
 export const contactInfo = {
     phone: '0941 090 333',
@@ -286,7 +288,7 @@ export const servicesData = [
         icon: 'fa-drafting-compass',
         title: 'Thiết kế kiến trúc',
         description: 'Thiết kế các công trình từ nhà ở đến các dự án lớn với phong cách hiện đại và tiện nghi.',
-        link: '/dich-vu/thiet-ke-kien-truc',
+        link: '/thiet-ke/thiet-ke-kien-truc',
         features: ['Thiết kế 3D chuyên nghiệp', 'Bản vẽ kỹ thuật chi tiết', 'Tư vấn phong thủy', 'Thiết kế theo yêu cầu'],
         price: 'Từ 50,000đ/m²',
         duration: '15-30 ngày',
@@ -297,7 +299,7 @@ export const servicesData = [
         icon: 'fa-hard-hat',
         title: 'Thi công xây dựng',
         description: 'Thi công trọn gói từ móng đến hoàn thiện với đội ngũ thợ lành nghề và giám sát chặt chẽ.',
-        link: '/dich-vu/thi-cong-xay-dung',
+        link: '/thi-cong/thi-cong-xay-dung',
         features: ['Thi công trọn gói', 'Giám sát chất lượng 24/7', 'Bảo hành dài hạn 10 năm', 'Cam kết tiến độ'],
         price: 'Từ 4,500,000đ/m²',
         duration: '3-12 tháng',
@@ -308,7 +310,7 @@ export const servicesData = [
         icon: 'fa-home',
         title: 'Thiết kế nội thất',
         description: 'Tạo không gian sống hoàn hảo với các phong cách nội thất đa dạng và hiện đại.',
-        link: '/dich-vu/thiet-ke-noi-that',
+        link: '/thiet-ke/thiet-ke-noi-that',
         features: ['Thiết kế theo phong cách cá nhân', 'Thi công nội thất hoàn chỉnh', 'Bảo trì định kỳ', 'Tư vấn màu sắc'],
         price: 'Từ 300,000đ/m²',
         duration: '20-45 ngày',
@@ -319,7 +321,7 @@ export const servicesData = [
         icon: 'fa-seedling',
         title: 'Thiết kế sân vườn',
         description: 'Thiết kế cảnh quan sân vườn xanh mát, hài hòa với thiên nhiên và kiến trúc tổng thể.',
-        link: '/dich-vu/thiet-ke-san-vuon',
+        link: '/thiet-ke/thiet-ke-san-vuon',
         features: ['Cảnh quan sân vườn chuyên nghiệp', 'Hệ thống tưới tự động', 'Bảo dưỡng cây xanh', 'Thiết kế hồ cá Koi'],
         price: 'Từ 500,000đ/m²',
         duration: '10-30 ngày',
@@ -330,7 +332,7 @@ export const servicesData = [
         icon: 'fa-calculator',
         title: 'Tư vấn báo giá',
         description: 'Báo giá minh bạch, chi tiết cho từng hạng mục công việc và vật tư xây dựng.',
-        link: '/dich-vu/tu-van-bao-gia',
+        link: '/bao-gia/tu-van-bao-gia',
         features: ['Báo giá minh bạch chi tiết', 'Tư vấn chuyên nghiệp 24/7', 'Hỗ trợ tài chính', 'Theo dõi dự án online'],
         price: 'Miễn phí tư vấn',
         duration: '1-3 ngày',
@@ -341,7 +343,7 @@ export const servicesData = [
         icon: 'fa-tools',
         title: 'Sửa chữa cải tạo',
         description: 'Dịch vụ sửa chữa, cải tạo, nâng cấp các công trình hiện có một cách chuyên nghiệp.',
-        link: '/dich-vu/sua-chua-cai-tao',
+        link: '/thi-cong/sua-chua-cai-tao',
         features: ['Sửa chữa nhanh chóng trong ngày', 'Cải tạo hiện đại hóa', 'Giá cả hợp lý', 'Bảo hành sau sửa chữa'],
         price: 'Từ 200,000đ/m²',
         duration: '1-15 ngày',
