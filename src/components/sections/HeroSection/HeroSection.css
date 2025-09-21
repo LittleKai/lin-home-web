@@ -1,0 +1,158 @@
+/* src/components/sections/HeroSection/HeroSection.css */
+
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 700px;
+}
+
+.hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    padding: 8px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+    padding: 16px 32px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    position: absolute;
+    right: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 400px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><defs><linearGradient id="building" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f7fafc;stop-opacity:0.9"/><stop offset="100%" style="stop-color:%23e2e8f0;stop-opacity:0.9"/></linearGradient></defs><rect width="600" height="400" fill="rgba(255,255,255,0.1)" rx="20"/><rect x="50" y="100" width="120" height="200" fill="url(%23building)" rx="8"/><rect x="180" y="80" width="100" height="220" fill="url(%23building)" rx="8"/><rect x="290" y="120" width="80" height="180" fill="url(%23building)" rx="8"/><rect x="380" y="90" width="110" height="210" fill="url(%23building)" rx="8"/><circle cx="500" cy="60" r="30" fill="%23ffd700" opacity="0.8"/><text x="300" y="350" text-anchor="middle" font-family="Arial" font-size="16" fill="rgba(255,255,255,0.8)">Kiến trúc hiện đại</text></svg>') no-repeat center;
+    background-size: contain;
+    opacity: 0.8;
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .hero-image {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        justify-content: center;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateY(-50%) translateY(-20px);
+    }
+}
