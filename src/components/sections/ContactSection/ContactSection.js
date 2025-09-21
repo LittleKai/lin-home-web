@@ -195,28 +195,20 @@ const ContactSection = () => {
                                 >
                                     <span className="zalo-icon" aria-hidden="true"></span>
                                 </a>
-                                <a
-                                    href="#"
+                                <button
                                     className="social-link youtube"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        alert('Chuyển đến YouTube');
-                                    }}
+                                    onClick={() => alert('Chuyển đến YouTube')}
                                     aria-label="YouTube"
                                 >
                                     <i className="fab fa-youtube" aria-hidden="true"></i>
-                                </a>
-                                <a
-                                    href="#"
+                                </button>
+                                <button
                                     className="social-link instagram"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        alert('Chuyển đến Instagram');
-                                    }}
+                                    onClick={() => alert('Chuyển đến Instagram')}
                                     aria-label="Instagram"
                                 >
                                     <i className="fab fa-instagram" aria-hidden="true"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>

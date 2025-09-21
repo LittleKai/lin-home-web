@@ -1,4 +1,4 @@
-// src/App.js (Updated with redirect routes)
+// src/App.js (Updated with new construction routes)
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
@@ -8,10 +8,15 @@ import Header from './components/Header/Header';
 import MainContent from './components/MainContent/MainContent';
 import FloatButtons from './components/FloatButtons/FloatButtons';
 
-// Import new design pages
+// Import design pages
 import QuyTrinhThietKePage from './pages/thiet-ke/quy-trinh-thiet-ke';
 import ThietKeKienTrucPage from './pages/thiet-ke/thiet-ke-kien-truc';
 import ThietKeNoiThatPage from './pages/thiet-ke/thiet-ke-noi-that';
+
+// Import new construction pages
+import QuyTrinhThiCongPage from './pages/thi-cong/quy-trinh-thi-cong';
+import ThiCongTronGoiKienTrucPage from './pages/thi-cong/thi-cong-tron-goi-kien-truc';
+import ThiCongTronGoiNoiThatPage from './pages/thi-cong/thi-cong-tron-goi-noi-that';
 
 function App() {
     const [activeSection, setActiveSection] = useState('home');
@@ -63,12 +68,79 @@ function App() {
                     <Route path="/thiet-ke/thiet-ke-kien-truc" element={<ThietKeKienTrucPage />} />
                     <Route path="/thiet-ke/thiet-ke-noi-that" element={<ThietKeNoiThatPage />} />
 
+                    {/* Construction Pages */}
+                    <Route path="/thi-cong/quy-trinh-thi-cong" element={<QuyTrinhThiCongPage />} />
+                    <Route path="/thi-cong/thi-cong-tron-goi-kien-truc" element={<ThiCongTronGoiKienTrucPage />} />
+                    <Route path="/thi-cong/thi-cong-tron-goi-noi-that" element={<ThiCongTronGoiNoiThatPage />} />
+
                     {/* Redirect short URLs to full URLs */}
                     <Route path="/quy-trinh-thiet-ke" element={<Navigate to="/thiet-ke/quy-trinh-thiet-ke" replace />} />
                     <Route path="/thiet-ke-kien-truc" element={<Navigate to="/thiet-ke/thiet-ke-kien-truc" replace />} />
                     <Route path="/thiet-ke-noi-that" element={<Navigate to="/thiet-ke/thiet-ke-noi-that" replace />} />
+                    <Route path="/quy-trinh-thi-cong" element={<Navigate to="/thi-cong/quy-trinh-thi-cong" replace />} />
+                    <Route path="/thi-cong-tron-goi-kien-truc" element={<Navigate to="/thi-cong/thi-cong-tron-goi-kien-truc" replace />} />
+                    <Route path="/thi-cong-tron-goi-noi-that" element={<Navigate to="/thi-cong/thi-cong-tron-goi-noi-that" replace />} />
 
-                    {/* Construction Pages - Placeholder routes */}
+                    {/* Other Construction Pages - Placeholder routes */}
+                    <Route path="/thi-cong/thi-cong-hang-muc" element={
+                        <div style={{
+                            minHeight: '100vh',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            textAlign: 'center',
+                            padding: '2rem'
+                        }}>
+                            <h1>🔧 Thi công hạng mục</h1>
+                            <p>Trang này đang được phát triển...</p>
+                            <button
+                                onClick={() => window.location.href = '/'}
+                                style={{
+                                    background: '#667eea',
+                                    color: 'white',
+                                    padding: '12px 24px',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    cursor: 'pointer',
+                                    marginTop: '1rem'
+                                }}
+                            >
+                                Về trang chủ
+                            </button>
+                        </div>
+                    } />
+
+                    <Route path="/thi-cong/thi-cong-sua-chua-cai-tao" element={
+                        <div style={{
+                            minHeight: '100vh',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            textAlign: 'center',
+                            padding: '2rem'
+                        }}>
+                            <h1>🔨 Sửa chữa cải tạo</h1>
+                            <p>Trang này đang được phát triển...</p>
+                            <button
+                                onClick={() => window.location.href = '/'}
+                                style={{
+                                    background: '#667eea',
+                                    color: 'white',
+                                    padding: '12px 24px',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    cursor: 'pointer',
+                                    marginTop: '1rem'
+                                }}
+                            >
+                                Về trang chủ
+                            </button>
+                        </div>
+                    } />
+
+                    {/* Fallback for other construction routes */}
                     <Route path="/thi-cong/*" element={
                         <div style={{
                             minHeight: '100vh',

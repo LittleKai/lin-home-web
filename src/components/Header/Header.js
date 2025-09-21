@@ -1,4 +1,4 @@
-// src/components/Header/Header.js (Updated with Router support)
+// src/components/Header/Header.js (Fixed version)
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -69,49 +69,6 @@ const Header = ({ activeSection, setActiveSection }) => {
         setActiveDropdown(null);
     }, [location.pathname]);
 
-    // Handle navigation click
-    const handleNavClick = (section, event) => {
-        event.preventDefault();
-        setActiveSection(section);
-        setIsMobileMenuOpen(false);
-        setActiveDropdown(null);
-
-        // Navigate based on section
-        if (section === 'home') {
-            navigate('/');
-        } else if (section === 'contact') {
-            navigate('/contact');
-        } else {
-            // For other sections, scroll to section on home page
-            if (location.pathname !== '/') {
-                navigate('/');
-                setTimeout(() => {
-                    const element = document.getElementById(section);
-                    if (element) {
-                        const headerHeight = 80;
-                        const elementPosition = element.offsetTop - headerHeight;
-                        window.scrollTo({
-                            top: elementPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 100);
-            } else {
-                setTimeout(() => {
-                    const element = document.getElementById(section);
-                    if (element) {
-                        const headerHeight = 80;
-                        const elementPosition = element.offsetTop - headerHeight;
-                        window.scrollTo({
-                            top: elementPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 100);
-            }
-        }
-    };
-
     // Handle dropdown item click with routing
     const handleDropdownItemClick = (item, event) => {
         event.preventDefault();
@@ -138,6 +95,17 @@ const Header = ({ activeSection, setActiveSection }) => {
     const handleMobileDropdownToggle = (section, event) => {
         event.stopPropagation();
         setActiveDropdown(activeDropdown === section ? null : section);
+    };
+
+    // Handle social link clicks
+    const handleSocialClick = (platform, url, event) => {
+        event.preventDefault();
+        if (url && url !== '#') {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        } else {
+            alert(`Chuyển đến ${platform}`);
+        }
+        setIsMobileMenuOpen(false);
     };
 
     // Get icon for each section
@@ -409,42 +377,34 @@ const Header = ({ activeSection, setActiveSection }) => {
                         <div className="mobile-social-links">
                             <h4>Theo dõi chúng tôi</h4>
                             <div className="social-links-grid">
-                                <a
-                                    href={contactInfo.facebook}
+                                <button
                                     className="social-link facebook"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={(e) => handleSocialClick('Facebook', contactInfo.facebook, e)}
                                     aria-label="Facebook"
                                 >
                                     <i className="fab fa-facebook-f" aria-hidden="true"></i>
-                                </a>
-                                <a
-                                    href={contactInfo.zalo}
+                                </button>
+                                <button
                                     className="social-link zalo"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={(e) => handleSocialClick('Zalo', contactInfo.zalo, e)}
                                     aria-label="Zalo"
                                 >
                                     <span className="zalo-icon"></span>
-                                </a>
-                                <a
-                                    href="#"
+                                </button>
+                                <button
                                     className="social-link youtube"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={(e) => handleSocialClick('YouTube', null, e)}
                                     aria-label="YouTube"
                                 >
                                     <i className="fab fa-youtube" aria-hidden="true"></i>
-                                </a>
-                                <a
-                                    href="#"
+                                </button>
+                                <button
                                     className="social-link instagram"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    onClick={(e) => handleSocialClick('Instagram', null, e)}
                                     aria-label="Instagram"
                                 >
                                     <i className="fab fa-instagram" aria-hidden="true"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>

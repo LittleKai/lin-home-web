@@ -1,5 +1,5 @@
 // src/components/sections/PortfolioSection/PortfolioSection.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './PortfolioSection.css';
 
 const PortfolioSection = () => {
@@ -9,8 +9,8 @@ const PortfolioSection = () => {
 
     const filters = ['Tất cả', 'Biệt thự', 'Nhà phố', 'Nội thất', 'Sân vườn'];
 
-    // Static projects data
-    const staticProjects = [
+    // Static projects data - moved to useMemo to fix ESLint warning
+    const staticProjects = useMemo(() => [
         {
             _id: '1',
             title: 'Biệt thự hiện đại Vinhomes',
@@ -83,7 +83,7 @@ const PortfolioSection = () => {
                 alt: 'Nhà hàng hiện đại'
             }]
         }
-    ];
+    ], []);
 
     useEffect(() => {
         const loadProjects = () => {
@@ -94,7 +94,7 @@ const PortfolioSection = () => {
         };
 
         loadProjects();
-    }, []);
+    }, [staticProjects]);
 
     const handleProjectClick = (project) => {
         // Handle project click - could navigate to detail page
@@ -134,7 +134,7 @@ const PortfolioSection = () => {
     }
 
     return (
-        <section className="portfolio">
+        <section className="portfolio" id="portfolio">
             <div className="container">
                 <div className="section-header">
                     <div className="section-badge">Dự án tiêu biểu</div>

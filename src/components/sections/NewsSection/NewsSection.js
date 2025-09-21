@@ -1,13 +1,13 @@
 // src/components/sections/NewsSection/NewsSection.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './NewsSection.css';
 
 const NewsSection = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Static news data
-    const staticNews = [
+    // Static news data - moved to useMemo to fix ESLint warning
+    const staticNews = useMemo(() => [
         {
             _id: '1',
             title: 'Xu hướng kiến trúc xanh trong xây dựng hiện đại 2025',
@@ -80,7 +80,7 @@ const NewsSection = () => {
             },
             views: 1890
         }
-    ];
+    ], []);
 
     useEffect(() => {
         const loadNews = () => {
@@ -92,7 +92,7 @@ const NewsSection = () => {
         };
 
         loadNews();
-    }, []);
+    }, [staticNews]);
 
     const handleNewsClick = (article) => {
         alert(`Đọc thêm: ${article.title}`);
@@ -140,7 +140,7 @@ const NewsSection = () => {
     }
 
     return (
-        <section className="news">
+        <section className="news" id="news">
             <div className="container">
                 <div className="section-header">
                     <div className="section-badge">Tin tức & Kiến thức</div>
@@ -165,17 +165,17 @@ const NewsSection = () => {
                                 <div className="news-meta">
                                     <span className="news-category">{article.category}</span>
                                     <span className="news-date">
-                    <i className="far fa-calendar" aria-hidden="true"></i>
+                                        <i className="far fa-calendar" aria-hidden="true"></i>
                                         {formatDate(article.publishedAt || article.date)}
-                  </span>
+                                    </span>
                                 </div>
                                 <h3>{article.title}</h3>
                                 <p>{article.excerpt || article.content}</p>
                                 <div className="news-footer">
-                  <span className="news-views">
-                    <i className="far fa-eye" aria-hidden="true"></i>
-                      {formatViews(article.views)}
-                  </span>
+                                    <span className="news-views">
+                                        <i className="far fa-eye" aria-hidden="true"></i>
+                                        {formatViews(article.views)}
+                                    </span>
                                     <button
                                         className="feature-link"
                                         onClick={() => handleNewsClick(article)}

@@ -441,7 +441,7 @@ export const faqData = [
 ];
 
 // Export default for easier importing
-export default {
+const defaultExport = {
     menuData,
     contactInfo,
     socialLinks,
@@ -451,3 +451,5 @@ export default {
     teamMembers,
     faqData
 };
+
+export default defaultExport;
