@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "name": "lin-home-website",
   "builds": [
     {
       "src": "package.json",
@@ -37,8 +38,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "github": {
-    "silent": true
-  }
+  ]
 }
