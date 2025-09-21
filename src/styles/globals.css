@@ -1,7 +1,3 @@
-
-/* Import fonts from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 /* Import Font Awesome */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
@@ -39,26 +35,32 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: var(--font-size-6xl);
+    font-weight: var(--font-weight-extrabold);
 }
 
 h2 {
     font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-extrabold);
 }
 
 h3 {
     font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
 }
 
 h4 {
     font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
 }
 
 h5 {
     font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
 }
 
 h6 {
     font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
 }
 
 p {
