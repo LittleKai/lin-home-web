@@ -20,7 +20,8 @@
     "eject": "react-scripts eject",
     "analyze": "npm run build && npx serve -s build",
     "lint": "eslint src/**/*.{js,jsx}",
-    "lint:fix": "eslint src/**/*.{js,jsx} --fix"
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "vercel-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
