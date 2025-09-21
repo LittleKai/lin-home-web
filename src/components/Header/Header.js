@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { menuData, contactInfo } from '../../data/menuData';
@@ -69,24 +68,20 @@ const Header = ({ activeSection, setActiveSection }) => {
 
         // Smooth scroll to section if not home
         if (section !== 'home') {
-            const element = document.getElementById(section);
-            if (element) {
-                const headerHeight = 80;
-                const elementPosition = element.offsetTop - headerHeight;
-                window.scrollTo({
-                    top: elementPosition,
-                    behavior: 'smooth'
-                });
-            }
+            setTimeout(() => {
+                const element = document.getElementById(section);
+                if (element) {
+                    const headerHeight = 80;
+                    const elementPosition = element.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
         } else {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    };
-
-    // Handle dropdown toggle
-    const handleDropdownToggle = (section, event) => {
-        event.stopPropagation();
-        setActiveDropdown(activeDropdown === section ? null : section);
     };
 
     // Handle dropdown item click
@@ -106,6 +101,12 @@ const Header = ({ activeSection, setActiveSection }) => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
         setActiveDropdown(null);
+    };
+
+    // Handle mobile dropdown toggle
+    const handleMobileDropdownToggle = (section, event) => {
+        event.stopPropagation();
+        setActiveDropdown(activeDropdown === section ? null : section);
     };
 
     // Get icon for each section
@@ -155,8 +156,6 @@ const Header = ({ activeSection, setActiveSection }) => {
                                 <li
                                     key={section}
                                     className="nav-item nav-item-dropdown"
-                                    onMouseEnter={() => setActiveDropdown(section)}
-                                    onMouseLeave={() => setActiveDropdown(null)}
                                 >
                                     <button
                                         className={`nav-link ${activeSection === section.toLowerCase().replace(' ', '') ? 'active' : ''}`}
@@ -170,25 +169,21 @@ const Header = ({ activeSection, setActiveSection }) => {
 
                                     {/* Dropdown Menu */}
                                     <div className={`dropdown ${activeDropdown === section ? 'active' : ''}`}>
-                                        <div className="dropdown-content">
-                                            {items.map((item, index) => (
-                                                <button
-                                                    key={index}
-                                                    className="dropdown-item"
-                                                    onClick={(e) => handleDropdownItemClick(item, e)}
-                                                    title={item.description}
-                                                >
-                                                    <div className="dropdown-item-content">
-                                                        <span className="dropdown-item-title">{item.title}</span>
-                                                        {item.description && (
-                                                            <span className="dropdown-item-description">
-                                {item.description}
-                              </span>
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            ))}
-                                        </div>
+                                        {items.map((item, index) => (
+                                            <button
+                                                key={index}
+                                                className="dropdown-item"
+                                                onClick={(e) => handleDropdownItemClick(item, e)}
+                                                title={item.description}
+                                            >
+                                                <span className="dropdown-item-title">{item.title}</span>
+                                                {item.description && (
+                                                    <span className="dropdown-item-description">
+                                                        {item.description}
+                                                    </span>
+                                                )}
+                                            </button>
+                                        ))}
                                     </div>
                                 </li>
                             ))}
@@ -205,33 +200,6 @@ const Header = ({ activeSection, setActiveSection }) => {
                             </li>
                         </ul>
                     </nav>
-
-                    {/* Header Contact Information */}
-                    <div className="header-contacts">
-                        <a
-                            href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                            className="contact-item-header"
-                            aria-label={`Gọi điện thoại: ${contactInfo.phone}`}
-                        >
-                            <i className="fas fa-phone" aria-hidden="true"></i>
-                            <div className="contact-info">
-                                <span className="contact-label">Hotline</span>
-                                <span className="contact-value">{contactInfo.phone}</span>
-                            </div>
-                        </a>
-
-                        <a
-                            href={`mailto:${contactInfo.email}`}
-                            className="contact-item-header"
-                            aria-label={`Gửi email đến: ${contactInfo.email}`}
-                        >
-                            <i className="fas fa-envelope" aria-hidden="true"></i>
-                            <div className="contact-info">
-                                <span className="contact-label">Email</span>
-                                <span className="contact-value">{contactInfo.email}</span>
-                            </div>
-                        </a>
-                    </div>
 
                     {/* Mobile Menu Toggle Button */}
                     <button
@@ -291,7 +259,7 @@ const Header = ({ activeSection, setActiveSection }) => {
                             <li key={section} className="mobile-nav-item">
                                 <button
                                     className={`mobile-nav-link ${activeDropdown === section ? 'active' : ''}`}
-                                    onClick={(e) => handleDropdownToggle(section, e)}
+                                    onClick={(e) => handleMobileDropdownToggle(section, e)}
                                     aria-expanded={activeDropdown === section}
                                 >
                                     <i className={`fas fa-${getSectionIcon(section)}`} aria-hidden="true"></i>
@@ -310,8 +278,8 @@ const Header = ({ activeSection, setActiveSection }) => {
                                             <span className="mobile-dropdown-title">{item.title}</span>
                                             {item.description && (
                                                 <span className="mobile-dropdown-description">
-                          {item.description}
-                        </span>
+                                                    {item.description}
+                                                </span>
                                             )}
                                         </button>
                                     ))}

@@ -1,4 +1,4 @@
-/* Float Buttons */
+/* Float Buttons - Updated to match HTML template */
 .float-buttons {
     position: fixed;
     right: 20px;
@@ -24,6 +24,7 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .float-btn:hover {
@@ -81,6 +82,7 @@
     visibility: hidden;
     transition: all 0.3s ease;
     pointer-events: none;
+    z-index: 1001;
 }
 
 .float-btn:hover::after {
@@ -100,6 +102,7 @@
     display: inline-block;
 }
 
+/* Phone pulse animation */
 @keyframes pulse-phone {
     0%, 100% {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(16, 185, 129, 0.7);
@@ -126,6 +129,16 @@
         width: 20px;
         height: 20px;
     }
+
+    .float-btn::after {
+        right: 60px;
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+
+    .float-btn:hover::after {
+        right: 55px;
+    }
 }
 
 /* Accessibility improvements */
@@ -146,5 +159,23 @@
 
     .float-btn::before {
         transition: none;
+    }
+
+    @keyframes pulse-phone {
+        0%, 100% {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .float-btn {
+        border: 2px solid white;
+    }
+
+    .float-btn::after {
+        background: black;
+        border: 1px solid white;
     }
 }
