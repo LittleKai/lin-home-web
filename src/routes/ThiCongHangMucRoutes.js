@@ -6,19 +6,19 @@ import { Routes, Route } from 'react-router-dom';
 import ThiCongHangMucPage from '../pages/thi-cong/thi-cong-hang-muc';
 
 // Import all sub-pages
-import TranVachThachCaoPage from '../pages/thi-cong/categories/tran-vach-thach-cao';
-import SanGoPage from '../pages/thi-cong/categories/san-go';
-import DaOpLatPage from '../pages/thi-cong/categories/da-op-lat';
+import TranVachThachCaoPage from '../pages/thi-cong/hang-muc-thi-cong/tran-vach-thach-cao';
+import SanGoPage from '../pages/thi-cong/hang-muc-thi-cong/san-go';
+import DaOpLatPage from '../pages/thi-cong/hang-muc-thi-cong/da-op-lat';
 
 // Import remaining pages (placeholders for now - to be created)
-const NhomKinhPage = React.lazy(() => import('../pages/thi-cong/categories/nhom-kinh'));
-const CuaCompositePage = React.lazy(() => import('../pages/thi-cong/categories/cua-composite'));
-const DienMatTroiPage = React.lazy(() => import('../pages/thi-cong/categories/dien-mat-troi'));
-const DienThongMinhPage = React.lazy(() => import('../pages/thi-cong/categories/dien-thong-minh'));
-const HoKoiSanVuonPage = React.lazy(() => import('../pages/thi-cong/categories/ho-koi-san-vuon'));
-const RemCuaPage = React.lazy(() => import('../pages/thi-cong/categories/rem-cua'));
-const ChongThamPage = React.lazy(() => import('../pages/thi-cong/categories/chong-tham'));
-const PhaoChiPage = React.lazy(() => import('../pages/thi-cong/categories/phao-chi'));
+const NhomKinhPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/nhom-kinh'));
+const CuaCompositePage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/cua-composite'));
+const DienMatTroiPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/dien-mat-troi'));
+const DienThongMinhPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/dien-thong-minh'));
+const HoKoiSanVuonPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/ho-koi-san-vuon'));
+const RemCuaPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/rem-cua'));
+const ChongThamPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/chong-tham'));
+const PhaoChiPage = React.lazy(() => import('../pages/thi-cong/hang-muc-thi-cong/phao-chi'));
 
 const ThiCongHangMucRoutes = () => {
     return (

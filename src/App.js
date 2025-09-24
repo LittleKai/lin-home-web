@@ -32,17 +32,17 @@ import CaiTaoMatTienNgoaiThatPage from './pages/thi-cong/hang-muc-cai-tao/cai-ta
 import ToiUuChiPhiCaiTaoPage from './pages/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao';
 
 // Import 11 construction category pages
-import TranVachThachCaoPage from './pages/thi-cong/categories/tran-vach-thach-cao';
-import SanGoPage from './pages/thi-cong/categories/san-go';
-import DaOpLatPage from './pages/thi-cong/categories/da-op-lat';
-import CuaCompositePage from './pages/thi-cong/categories/cua-composite';
-import RemCuaPage from './pages/thi-cong/categories/rem-cua';
-import ChongThamPage from './pages/thi-cong/categories/chong-tham';
-import HoKoiSanVuonPage from './pages/thi-cong/categories/ho-koi-san-vuon';
-import NhomKinhPage from './pages/thi-cong/categories/nhom-kinh';
-import DienThongMinhPage from './pages/thi-cong/categories/dien-thong-minh';
-import PhaoChiPage from './pages/thi-cong/categories/phao-chi';
-import DienMatTroiPage from './pages/thi-cong/categories/dien-mat-troi';
+import TranVachThachCaoPage from './pages/thi-cong/hang-muc-thi-cong/tran-vach-thach-cao';
+import SanGoPage from './pages/thi-cong/hang-muc-thi-cong/san-go';
+import DaOpLatPage from './pages/thi-cong/hang-muc-thi-cong/da-op-lat';
+import CuaCompositePage from './pages/thi-cong/hang-muc-thi-cong/cua-composite';
+import RemCuaPage from './pages/thi-cong/hang-muc-thi-cong/rem-cua';
+import ChongThamPage from './pages/thi-cong/hang-muc-thi-cong/chong-tham';
+import HoKoiSanVuonPage from './pages/thi-cong/hang-muc-thi-cong/ho-koi-san-vuon';
+import NhomKinhPage from './pages/thi-cong/hang-muc-thi-cong/nhom-kinh';
+import DienThongMinhPage from './pages/thi-cong/hang-muc-thi-cong/dien-thong-minh';
+import PhaoChiPage from './pages/thi-cong/hang-muc-thi-cong/phao-chi';
+import DienMatTroiPage from './pages/thi-cong/hang-muc-thi-cong/dien-mat-troi';
 
 function App() {
     const [activeSection, setActiveSection] = useState('home');
