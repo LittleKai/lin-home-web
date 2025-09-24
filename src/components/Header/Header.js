@@ -1,4 +1,4 @@
-// src/components/Header/Header.js (Fixed version)
+// src/components/Header/Header.js
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -8,6 +8,8 @@ const Header = ({ activeSection, setActiveSection }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [activeSubmenu, setActiveSubmenu] = useState(null);
+    const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,6 +41,7 @@ const Header = ({ activeSection, setActiveSection }) => {
         const handleClickOutside = (event) => {
             if (!event.target.closest('.nav-item-dropdown')) {
                 setActiveDropdown(null);
+                setActiveSubmenu(null);
             }
 
             if (isMobileMenuOpen && !event.target.closest('.header')) {
@@ -67,6 +70,8 @@ const Header = ({ activeSection, setActiveSection }) => {
     useEffect(() => {
         setIsMobileMenuOpen(false);
         setActiveDropdown(null);
+        setActiveSubmenu(null);
+        setMobileActiveSubmenu(null);
     }, [location.pathname]);
 
     // Handle dropdown item click with routing
@@ -74,27 +79,65 @@ const Header = ({ activeSection, setActiveSection }) => {
         event.preventDefault();
         setIsMobileMenuOpen(false);
         setActiveDropdown(null);
+        setActiveSubmenu(null);
+        setMobileActiveSubmenu(null);
 
         // Navigate to the specific page
         if (item.href) {
             navigate(item.href);
         } else {
-            // Fallback for items without href
             console.log(`Navigating to: ${item.title}`);
             alert(`Chuyển đến: ${item.title}`);
         }
+    };
+
+    // Handle submenu hover for desktop
+    const handleSubmenuEnter = (item) => {
+        if (item.hasSubmenu) {
+            setActiveSubmenu(item.title);
+        }
+    };
+
+    const handleSubmenuLeave = () => {
+        setActiveSubmenu(null);
+    };
+
+    // Handle dropdown mouse events for desktop
+    const handleDropdownEnter = (section) => {
+        setActiveDropdown(section);
+    };
+
+    const handleDropdownLeave = () => {
+        setActiveDropdown(null);
+        setActiveSubmenu(null);
     };
 
     // Toggle mobile menu
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
         setActiveDropdown(null);
+        setActiveSubmenu(null);
+        setMobileActiveSubmenu(null);
     };
 
     // Handle mobile dropdown toggle
     const handleMobileDropdownToggle = (section, event) => {
         event.stopPropagation();
         setActiveDropdown(activeDropdown === section ? null : section);
+        setMobileActiveSubmenu(null);
+    };
+
+    // Handle mobile submenu toggle
+    const handleMobileSubmenuToggle = (item, event) => {
+        event.stopPropagation();
+        if (item.hasSubmenu) {
+            setMobileActiveSubmenu(
+                mobileActiveSubmenu === item.title ? null : item.title
+            );
+        } else {
+            // Navigate to regular item
+            handleDropdownItemClick(item, event);
+        }
     };
 
     // Handle social link clicks
@@ -115,7 +158,8 @@ const Header = ({ activeSection, setActiveSection }) => {
             'Thi công': 'hard-hat',
             'Báo giá': 'calculator',
             'Tin tức': 'newspaper',
-            'Ứng dụng': 'mobile-alt'
+            'Ứng dụng': 'mobile-alt',
+            'Dự án': 'building'
         };
         return icons[section] || 'chevron-right';
     };
@@ -137,6 +181,8 @@ const Header = ({ activeSection, setActiveSection }) => {
             return path.startsWith('/tin-tuc');
         } else if (section === 'ứng dụng') {
             return path.startsWith('/ung-dung');
+        } else if (section === 'dự án') {
+            return path.startsWith('/du-an');
         }
         return false;
     };
@@ -176,8 +222,8 @@ const Header = ({ activeSection, setActiveSection }) => {
                                 <li
                                     key={section}
                                     className="nav-item nav-item-dropdown"
-                                    onMouseEnter={() => setActiveDropdown(section)}
-                                    onMouseLeave={() => setActiveDropdown(null)}
+                                    onMouseEnter={() => handleDropdownEnter(section)}
+                                    onMouseLeave={handleDropdownLeave}
                                 >
                                     <button
                                         className={`nav-link ${isActiveSection(section.toLowerCase()) ? 'active' : ''}`}
@@ -188,22 +234,57 @@ const Header = ({ activeSection, setActiveSection }) => {
                                         <i className="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
                                     </button>
 
-                                    {/* Dropdown Menu */}
-                                    <div className={`dropdown ${activeDropdown === section ? 'active' : ''}`}>
+                                    {/* First Level Dropdown Menu */}
+                                    <div className={`dropdown ${activeDropdown === section ? 'show' : ''}`}>
                                         {items.map((item, index) => (
-                                            <button
+                                            <div
                                                 key={index}
-                                                className="dropdown-item"
-                                                onClick={(e) => handleDropdownItemClick(item, e)}
-                                                title={item.description}
+                                                className={`dropdown-item ${item.hasSubmenu ? 'has-submenu' : ''}`}
+                                                onMouseEnter={() => handleSubmenuEnter(item)}
+                                                onMouseLeave={handleSubmenuLeave}
                                             >
-                                                <span className="dropdown-item-title">{item.title}</span>
-                                                {item.description && (
-                                                    <span className="dropdown-item-description">
-                                                        {item.description}
-                                                    </span>
+                                                <a
+                                                    href={item.href || '#'}
+                                                    className="dropdown-link"
+                                                    onClick={(e) => handleDropdownItemClick(item, e)}
+                                                >
+                                                    <div className="dropdown-content">
+                                                        <div className="dropdown-title">{item.title}</div>
+                                                        {item.description && (
+                                                            <div className="dropdown-description">
+                                                                {item.description}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </a>
+
+                                                {/* Second Level Submenu */}
+                                                {item.hasSubmenu && item.submenu && (
+                                                    <div className={`submenu ${activeSubmenu === item.title ? 'show' : ''}`}>
+                                                        <div className="submenu-header">
+                                                            <i className="fas fa-tools"></i>
+                                                            11 Hạng mục thi công
+                                                        </div>
+                                                        {item.submenu.map((subItem, subIndex) => (
+                                                            <a
+                                                                key={subIndex}
+                                                                href={subItem.href || '#'}
+                                                                className="submenu-item"
+                                                                onClick={(e) => handleDropdownItemClick(subItem, e)}
+                                                            >
+                                                                <div className="submenu-item-title">
+                                                                    {subItem.title}
+                                                                </div>
+                                                                {subItem.description && (
+                                                                    <div className="submenu-item-description">
+                                                                        {subItem.description}
+                                                                    </div>
+                                                                )}
+                                                            </a>
+                                                        ))}
+                                                    </div>
                                                 )}
-                                            </button>
+                                            </div>
                                         ))}
                                     </div>
                                 </li>
@@ -276,7 +357,7 @@ const Header = ({ activeSection, setActiveSection }) => {
                             </Link>
                         </li>
 
-                        {/* Dynamic Menu Items */}
+                        {/* Dynamic Menu Items for Mobile */}
                         {Object.entries(menuData).map(([section, items]) => (
                             <li key={section} className="mobile-nav-item">
                                 <button
@@ -289,21 +370,59 @@ const Header = ({ activeSection, setActiveSection }) => {
                                     <i className={`fas fa-chevron-${activeDropdown === section ? 'up' : 'down'} mobile-dropdown-icon`} aria-hidden="true"></i>
                                 </button>
 
-                                {/* Mobile Dropdown */}
+                                {/* Mobile First Level Dropdown */}
                                 <div className={`mobile-dropdown ${activeDropdown === section ? 'active' : ''}`}>
                                     {items.map((item, index) => (
-                                        <button
-                                            key={index}
-                                            className="mobile-dropdown-item"
-                                            onClick={(e) => handleDropdownItemClick(item, e)}
-                                        >
-                                            <span className="mobile-dropdown-title">{item.title}</span>
-                                            {item.description && (
-                                                <span className="mobile-dropdown-description">
-                                                    {item.description}
-                                                </span>
+                                        <div key={index}>
+                                            <button
+                                                className="mobile-dropdown-item"
+                                                onClick={(e) => handleMobileSubmenuToggle(item, e)}
+                                            >
+                                                <div className="mobile-dropdown-content">
+                                                    <div className="mobile-dropdown-title">
+                                                        {item.title}
+                                                        {item.hasSubmenu && (
+                                                            <i
+                                                                className={`fas fa-chevron-${mobileActiveSubmenu === item.title ? 'up' : 'down'}`}
+                                                                style={{float: 'right', fontSize: '12px'}}
+                                                            ></i>
+                                                        )}
+                                                    </div>
+                                                    {item.description && (
+                                                        <div className="mobile-dropdown-description">
+                                                            {item.description}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </button>
+
+                                            {/* Mobile Second Level Submenu */}
+                                            {item.hasSubmenu && item.submenu && (
+                                                <div className={`mobile-submenu ${mobileActiveSubmenu === item.title ? 'active' : ''}`}>
+                                                    <div className="mobile-submenu-header">
+                                                        <i className="fas fa-tools"></i>
+                                                        11 Hạng mục thi công
+                                                    </div>
+                                                    {item.submenu.map((subItem, subIndex) => (
+                                                        <a
+                                                            key={subIndex}
+                                                            href={subItem.href || '#'}
+                                                            className="mobile-submenu-item"
+                                                            onClick={(e) => handleDropdownItemClick(subItem, e)}
+                                                        >
+                                                            <span className="mobile-submenu-title">
+                                                                {subItem.title}
+                                                            </span>
+                                                            {subItem.description && (
+                                                                <span className="mobile-submenu-description">
+                                                                    {subItem.description}
+                                                                </span>
+                                                            )}
+                                                        </a>
+                                                    ))}
+                                                </div>
                                             )}
-                                        </button>
+                                        </div>
                                     ))}
                                 </div>
                             </li>
@@ -316,109 +435,52 @@ const Header = ({ activeSection, setActiveSection }) => {
                                 className={`mobile-nav-link ${isActiveSection('contact') ? 'active' : ''}`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                <i className="fas fa-envelope" aria-hidden="true"></i>
+                                <i className="fas fa-phone" aria-hidden="true"></i>
                                 <span>Liên hệ</span>
                             </Link>
                         </li>
                     </ul>
 
-                    {/* Mobile Contact Information */}
-                    <div className="mobile-contact-info">
-                        <h3>Liên hệ nhanh</h3>
-                        <div className="mobile-contact-items">
-                            <a
-                                href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                                className="mobile-contact-item"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                <i className="fas fa-phone" aria-hidden="true"></i>
-                                <div className="mobile-contact-content">
-                                    <span className="mobile-contact-label">Điện thoại</span>
-                                    <span className="mobile-contact-value">{contactInfo.phone}</span>
-                                </div>
-                            </a>
-
-                            <a
-                                href={`mailto:${contactInfo.email}`}
-                                className="mobile-contact-item"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                <i className="fas fa-envelope" aria-hidden="true"></i>
-                                <div className="mobile-contact-content">
-                                    <span className="mobile-contact-label">Email</span>
-                                    <span className="mobile-contact-value">{contactInfo.email}</span>
-                                </div>
-                            </a>
-
-                            <a
-                                href={contactInfo.maps}
-                                className="mobile-contact-item"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                <i className="fas fa-map-marker-alt" aria-hidden="true"></i>
-                                <div className="mobile-contact-content">
-                                    <span className="mobile-contact-label">Địa chỉ</span>
-                                    <span className="mobile-contact-value">{contactInfo.address}</span>
-                                </div>
-                            </a>
-
+                    {/* Mobile Contact Info */}
+                    <div className="mobile-nav-footer">
+                        <div className="mobile-contact-info">
                             <div className="mobile-contact-item">
-                                <i className="fas fa-clock" aria-hidden="true"></i>
-                                <div className="mobile-contact-content">
-                                    <span className="mobile-contact-label">Giờ làm việc</span>
-                                    <span className="mobile-contact-value">{contactInfo.workingHours}</span>
-                                </div>
+                                <i className="fas fa-phone" aria-hidden="true"></i>
+                                <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
+                            </div>
+                            <div className="mobile-contact-item">
+                                <i className="fas fa-envelope" aria-hidden="true"></i>
+                                <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
                             </div>
                         </div>
 
-                        {/* Social Links */}
+                        {/* Mobile Social Links */}
                         <div className="mobile-social-links">
-                            <h4>Theo dõi chúng tôi</h4>
-                            <div className="social-links-grid">
-                                <button
-                                    className="social-link facebook"
-                                    onClick={(e) => handleSocialClick('Facebook', contactInfo.facebook, e)}
-                                    aria-label="Facebook"
-                                >
-                                    <i className="fab fa-facebook-f" aria-hidden="true"></i>
-                                </button>
-                                <button
-                                    className="social-link zalo"
-                                    onClick={(e) => handleSocialClick('Zalo', contactInfo.zalo, e)}
-                                    aria-label="Zalo"
-                                >
-                                    <span className="zalo-icon"></span>
-                                </button>
-                                <button
-                                    className="social-link youtube"
-                                    onClick={(e) => handleSocialClick('YouTube', null, e)}
-                                    aria-label="YouTube"
-                                >
-                                    <i className="fab fa-youtube" aria-hidden="true"></i>
-                                </button>
-                                <button
-                                    className="social-link instagram"
-                                    onClick={(e) => handleSocialClick('Instagram', null, e)}
-                                    aria-label="Instagram"
-                                >
-                                    <i className="fab fa-instagram" aria-hidden="true"></i>
-                                </button>
-                            </div>
+                            <button
+                                className="social-link facebook"
+                                onClick={(e) => handleSocialClick('Facebook', '#', e)}
+                                aria-label="Facebook"
+                            >
+                                <i className="fab fa-facebook-f" aria-hidden="true"></i>
+                            </button>
+                            <button
+                                className="social-link zalo"
+                                onClick={(e) => handleSocialClick('Zalo', '#', e)}
+                                aria-label="Zalo"
+                            >
+                                <i className="fas fa-comment-dots" aria-hidden="true"></i>
+                            </button>
+                            <button
+                                className="social-link youtube"
+                                onClick={(e) => handleSocialClick('YouTube', '#', e)}
+                                aria-label="YouTube"
+                            >
+                                <i className="fab fa-youtube" aria-hidden="true"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </nav>
-
-            {/* Mobile Menu Overlay */}
-            {isMobileMenuOpen && (
-                <div
-                    className="mobile-menu-overlay"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    aria-hidden="true"
-                />
-            )}
         </header>
     );
 };

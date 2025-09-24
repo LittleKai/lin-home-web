@@ -1,4 +1,4 @@
-// src/App.js - Updated with construction routes and category articles
+// src/App.js - Complete with all correct routes including 7 renovation pages
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
@@ -18,6 +18,18 @@ import QuyTrinhThiCongPage from './pages/thi-cong/quy-trinh-thi-cong';
 import ThiCongTronGoiKienTrucPage from './pages/thi-cong/thi-cong-tron-goi-kien-truc';
 import ThiCongTronGoiNoiThatPage from './pages/thi-cong/thi-cong-tron-goi-noi-that';
 import ThiCongHangMucPage from './pages/thi-cong/thi-cong-hang-muc';
+
+// Import thi công sửa chữa cải tạo - main page
+import SuaChuaCaiTaoPage from './pages/thi-cong/sua-chua-cai-tao';
+
+// Import 7 trang submenu cải tạo từ hang-muc-cai-tao với tên file chính xác
+import ThiCongSuaChuaCaiTaoNhaOPage from './pages/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o';
+import CaiTaoNangTangMoRongPage from './pages/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong';
+import ThiCongCaiTaoNhaPhoPage from './pages/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho';
+import CaiTaoBepNhaVeSinhPage from './pages/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh';
+import CaiTaoPhongNguPhongKhachPage from './pages/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach';
+import CaiTaoMatTienNgoaiThatPage from './pages/thi-cong/hang-muc-cai-tao/cai-tao-mat-tien-ngoai-that';
+import ToiUuChiPhiCaiTaoPage from './pages/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao';
 
 // Import 11 construction category pages
 import TranVachThachCaoPage from './pages/thi-cong/categories/tran-vach-thach-cao';
@@ -90,6 +102,18 @@ function App() {
                     <Route path="/thi-cong/thi-cong-tron-goi-noi-that" element={<ThiCongTronGoiNoiThatPage />} />
                     <Route path="/thi-cong/thi-cong-hang-muc" element={<ThiCongHangMucPage />} />
 
+                    {/* Thi công sửa chữa cải tạo - Main page */}
+                    <Route path="/thi-cong/sua-chua-cai-tao" element={<SuaChuaCaiTaoPage />} />
+
+                    {/* 7 submenu routes cho cải tạo trong hang-muc-cai-tao */}
+                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o" element={<ThiCongSuaChuaCaiTaoNhaOPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong" element={<CaiTaoNangTangMoRongPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho" element={<ThiCongCaiTaoNhaPhoPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh" element={<CaiTaoBepNhaVeSinhPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach" element={<CaiTaoPhongNguPhongKhachPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-mat-tien-ngoai-that" element={<CaiTaoMatTienNgoaiThatPage />} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao" element={<ToiUuChiPhiCaiTaoPage />} />
+
                     {/* Construction Category Routes - 11 articles */}
                     <Route path="/thi-cong/tran-vach-thach-cao" element={<TranVachThachCaoPage />} />
                     <Route path="/thi-cong/san-go" element={<SanGoPage />} />
@@ -112,14 +136,74 @@ function App() {
                                     activeSection={activeSection}
                                     setActiveSection={setActiveSection}
                                 />
-                                <div className="contact-page">
-                                    <h1>Liên hệ</h1>
-                                    <p>Trang liên hệ sẽ được phát triển sau.</p>
+                                <div className="contact-page" style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                    <div className="container">
+                                        <h1>Liên hệ</h1>
+                                        <p>Trang liên hệ sẽ được phát triển sau.</p>
+                                        <div style={{ marginTop: '30px' }}>
+                                            <p><strong>Hotline:</strong> 0941 090 333</p>
+                                            <p><strong>Email:</strong> info@linhome.vn</p>
+                                            <p><strong>Website:</strong> www.linhome.vn</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <FloatButtons />
                             </>
                         }
                     />
+
+                    {/* Placeholder routes cho báo giá, dự án, tin tức nếu cần */}
+                    <Route path="/bao-gia/*" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                <div className="container">
+                                    <h1>Báo giá</h1>
+                                    <p>Trang báo giá đang được phát triển...</p>
+                                </div>
+                            </div>
+                            <FloatButtons />
+                        </>
+                    } />
+
+                    <Route path="/du-an/*" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                <div className="container">
+                                    <h1>Dự án</h1>
+                                    <p>Trang dự án đang được phát triển...</p>
+                                </div>
+                            </div>
+                            <FloatButtons />
+                        </>
+                    } />
+
+                    <Route path="/tin-tuc/*" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                <div className="container">
+                                    <h1>Tin tức</h1>
+                                    <p>Trang tin tức đang được phát triển...</p>
+                                </div>
+                            </div>
+                            <FloatButtons />
+                        </>
+                    } />
+
+                    <Route path="/ung-dung/*" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                <div className="container">
+                                    <h1>Ứng dụng</h1>
+                                    <p>Trang ứng dụng đang được phát triển...</p>
+                                </div>
+                            </div>
+                            <FloatButtons />
+                        </>
+                    } />
 
                     {/* Fallback for undefined routes */}
                     <Route path="*" element={<Navigate to="/" replace />} />

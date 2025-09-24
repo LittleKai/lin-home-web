@@ -1,5 +1,4 @@
-// src/data/menuData.js
-// Menu data structure for navigation
+// src/data/menuData.js - Cập nhật với đúng routes đã có
 export const menuData = {
     'Thiết kế': [
         {
@@ -37,7 +36,7 @@ export const menuData = {
         {
             title: 'Thi công hạng mục',
             href: '/thi-cong/thi-cong-hang-muc',
-            description: 'Thi công theo từng hạng mục cụ thể - 11 dịch vụ chuyên nghiệp',
+            description: 'Thi công theo từng hạng mục cụ thể',
             hasSubmenu: true,
             submenu: [
                 {
@@ -46,61 +45,94 @@ export const menuData = {
                     description: 'Thi công trần thạch cao cách âm, chống nóng'
                 },
                 {
-                    title: 'Sàn gỗ',
+                    title: 'Sàn gỗ công nghiệp',
                     href: '/thi-cong/san-go',
-                    description: 'Lắp đặt sàn gỗ công nghiệp & tự nhiên'
+                    description: 'Lắp đặt sàn gỗ công nghiệp cao cấp'
                 },
                 {
                     title: 'Đá ốp lát',
                     href: '/thi-cong/da-op-lat',
-                    description: 'Granite, marble, đá nhân tạo'
-                },
-                {
-                    title: 'Nhôm kính',
-                    href: '/thi-cong/nhom-kinh',
-                    description: 'Cửa, vách, mặt dựng nhôm kính'
+                    description: 'Ốp lát đá granite, marble chất lượng'
                 },
                 {
                     title: 'Cửa composite',
                     href: '/thi-cong/cua-composite',
-                    description: 'Cửa chống ẩm, chống mối mọt'
+                    description: 'Cửa composite chống ẩm, bền đẹp'
                 },
                 {
-                    title: 'Điện mặt trời',
-                    href: '/thi-cong/dien-mat-troi',
-                    description: 'Hệ thống Solar PV tiết kiệm điện'
-                },
-                {
-                    title: 'Điện thông minh',
-                    href: '/thi-cong/dien-thong-minh',
-                    description: 'Smarthome - nhà thông minh'
-                },
-                {
-                    title: 'Hồ koi sân vườn',
-                    href: '/thi-cong/ho-koi-san-vuon',
-                    description: 'Thiết kế & thi công hồ cá koi'
-                },
-                {
-                    title: 'Rèm cửa',
+                    title: 'Rèm cửa cao cấp',
                     href: '/thi-cong/rem-cua',
-                    description: 'Rèm vải, cuốn, tự động chống nắng'
+                    description: 'Rèm vải, rèm cuốn, rèm tự động'
                 },
                 {
                     title: 'Chống thấm',
                     href: '/thi-cong/chong-tham',
-                    description: 'Xử lý thấm tường, sàn, mái'
+                    description: 'Chống thấm mái, tường, sàn hiệu quả'
                 },
                 {
-                    title: 'Phào chỉ',
+                    title: 'Hồ koi sân vườn',
+                    href: '/thi-cong/ho-koi-san-vuon',
+                    description: 'Thiết kế hồ koi phong thủy đẹp'
+                },
+                {
+                    title: 'Nhôm kính',
+                    href: '/thi-cong/nhom-kinh',
+                    description: 'Cửa nhôm kính, vách kính hiện đại'
+                },
+                {
+                    title: 'Điện mặt trời',
+                    href: '/thi-cong/dien-mat-troi',
+                    description: 'Hệ thống năng lượng mặt trời'
+                },
+                {
+                    title: 'Điện thông minh',
+                    href: '/thi-cong/dien-thong-minh',
+                    description: 'Smart home, nhà thông minh'
+                },
+                {
+                    title: 'Phào chỉ trang trí',
                     href: '/thi-cong/phao-chi',
-                    description: 'PU, PS, thạch cao trang trí'
+                    description: 'Phào chỉ gỗ, thạch cao trang trí'
                 }
             ]
         },
         {
             title: 'Thi công sửa chữa cải tạo',
-            href: '/thi-cong/thi-cong-sua-chua-cai-tao',
-            description: 'Dịch vụ sửa chữa, cải tạo và nâng cấp công trình hiện có'
+            href: '/thi-cong/sua-chua-cai-tao',
+            description: 'Sửa chữa, cải tạo, nâng cấp công trình',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Quy trình sửa chữa cải tạo nhà chi tiết',
+                    href: '/thi-cong/hang-muc-cai-tao/quy-trinh-sua-chua-cai-tao',
+                    description: 'Quy trình chuẩn từ khảo sát đến bàn giao'
+                },
+                {
+                    title: 'Cải tạo nâng tầng và mở rộng nhà',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong',
+                    description: 'Giải pháp tối ưu không gian sống'
+                },
+                {
+                    title: 'Cải tạo nhà bếp và phòng tắm',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-bep-phong-tam',
+                    description: 'Nâng cấp không gian tiện nghi & vệ sinh'
+                },
+                {
+                    title: 'Cải tạo phòng khách & không gian sinh hoạt chung',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-phong-khach',
+                    description: 'Tối ưu không gian sinh hoạt gia đình'
+                },
+                {
+                    title: 'Làm sao để tối ưu chi phí khi sửa chữa cải tạo nhà',
+                    href: '/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao',
+                    description: 'Giải pháp tiết kiệm, hiệu quả cao'
+                },
+                {
+                    title: 'Những sai lầm thường gặp khi cải tạo nhà & cách tránh',
+                    href: '/thi-cong/hang-muc-cai-tao/sai-lam-khi-cai-tao',
+                    description: 'Kinh nghiệm để tránh rủi ro & lãng phí'
+                }
+            ]
         }
     ],
     'Báo giá': [
