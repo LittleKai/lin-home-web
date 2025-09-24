@@ -263,7 +263,6 @@ const Header = ({ activeSection, setActiveSection }) => {
                                                     <div className={`submenu ${activeSubmenu === item.title ? 'show' : ''}`}>
                                                         <div className="submenu-header">
                                                             <i className="fas fa-tools"></i>
-                                                            11 Hạng mục thi công
                                                         </div>
                                                         {item.submenu.map((subItem, subIndex) => (
                                                             <a
@@ -401,7 +400,6 @@ const Header = ({ activeSection, setActiveSection }) => {
                                                 <div className={`mobile-submenu ${mobileActiveSubmenu === item.title ? 'active' : ''}`}>
                                                     <div className="mobile-submenu-header">
                                                         <i className="fas fa-tools"></i>
-                                                        11 Hạng mục thi công
                                                     </div>
                                                     {item.submenu.map((subItem, subIndex) => (
                                                         <a

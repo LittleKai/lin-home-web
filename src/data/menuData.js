@@ -103,9 +103,9 @@ export const menuData = {
             hasSubmenu: true,
             submenu: [
                 {
-                    title: 'Quy trình sửa chữa cải tạo nhà chi tiết',
-                    href: '/thi-cong/hang-muc-cai-tao/quy-trinh-sua-chua-cai-tao',
-                    description: 'Quy trình chuẩn từ khảo sát đến bàn giao'
+                    title: 'Thi Công Sửa Chữa Cải Tạo Nhà Ở',
+                    href: '/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o',
+                    description: 'Quy Trình, Lỗi Thường Gặp & Giải Pháp An Toàn'
                 },
                 {
                     title: 'Cải tạo nâng tầng và mở rộng nhà',
@@ -113,24 +113,29 @@ export const menuData = {
                     description: 'Giải pháp tối ưu không gian sống'
                 },
                 {
-                    title: 'Cải tạo nhà bếp và phòng tắm',
-                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-bep-phong-tam',
-                    description: 'Nâng cấp không gian tiện nghi & vệ sinh'
+                    title: 'Thi công cải tạo nhà phố',
+                    href: '/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho',
+                    description: 'Giải pháp tối ưu không gian sống hiện đại'
                 },
                 {
-                    title: 'Cải tạo phòng khách & không gian sinh hoạt chung',
-                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-phong-khach',
-                    description: 'Tối ưu không gian sinh hoạt gia đình'
+                    title: 'Cải tạo bếp và nhà vệ sinh',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh',
+                    description: 'Giải pháp nâng cấp không gian sinh hoạt tiện nghi & an toàn'
                 },
                 {
-                    title: 'Làm sao để tối ưu chi phí khi sửa chữa cải tạo nhà',
+                    title: 'Cải tạo phòng ngủ & phòng khách',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach',
+                    description: 'Tối ưu không gian sống, nâng tầm tiện nghi & thẩm mỹ'
+                },
+                {
+                    title: 'Cải tạo mặt tiền & ngoại thất',
+                    href: '/thi-cong/hang-muc-cai-tao/cai-tao-mat-tien-ngoai-that',
+                    description: 'Giải pháp nâng tầm thẩm mỹ và giá trị ngôi nhà'
+                },
+                {
+                    title: 'Làm sao để tối ưu chi phí khi sửa chữa cải tạo nhà?',
                     href: '/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao',
                     description: 'Giải pháp tiết kiệm, hiệu quả cao'
-                },
-                {
-                    title: 'Những sai lầm thường gặp khi cải tạo nhà & cách tránh',
-                    href: '/thi-cong/hang-muc-cai-tao/sai-lam-khi-cai-tao',
-                    description: 'Kinh nghiệm để tránh rủi ro & lãng phí'
                 }
             ]
         }
