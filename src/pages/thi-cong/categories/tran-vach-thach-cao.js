@@ -1,10 +1,10 @@
 // src/pages/thi-cong/tran-vach-thach-cao.js
 import React, { useState } from 'react';
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
-import FloatButtons from '../../components/FloatButtons/FloatButtons';
-import '../thiet-ke/ThietKePage.css';
-import './ThiCongHangMuc.css';
+import Header from '../../../components/Header/Header';
+import Footer from '../../../components/Footer/Footer';
+import FloatButtons from '../../../components/FloatButtons/FloatButtons';
+import '../../thiet-ke/ThietKePage.css';
+import '../ThiCongHangMuc.css';
 
 const TranVachThachCaoPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
