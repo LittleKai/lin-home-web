@@ -1,0 +1,113 @@
+/* components/CTAContent/CTAContent.css */
+.cta-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 3rem 1rem;
+    text-align: center;
+    color: white;
+    margin: 2rem 0;
+}
+
+.cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-text {
+    margin-bottom: 2rem;
+}
+
+.cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.cta-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-btn {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 140px;
+}
+
+.cta-btn-primary {
+    background-color: #ffffff;
+    color: #667eea;
+}
+
+.cta-btn-primary:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cta-btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.cta-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cta-content {
+        padding: 2rem 1rem;
+        margin: 1rem 0;
+    }
+
+    .cta-title {
+        font-size: 1.8rem;
+    }
+
+    .cta-subtitle {
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-title {
+        font-size: 1.5rem;
+    }
+
+    .cta-subtitle {
+        font-size: 0.95rem;
+    }
+}

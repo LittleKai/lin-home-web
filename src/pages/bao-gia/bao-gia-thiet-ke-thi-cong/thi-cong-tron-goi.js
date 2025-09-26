@@ -1,296 +1,219 @@
+// src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi.js
 import React, { useState } from 'react';
+import CTAContent from '../../../components/CTAContent/CTAContent';
+import '../../thiet-ke/ThietKePage.css';
+import '../../thi-cong/ThiCongHangMuc.css';
 import '../BaoGiaThietKeThiCongNha.css';
 
-const BaoGiaThiCongTronGoiPage = () => {
+const ThiCongTronGoiPricingPage = () => {
+    const [activePackage, setActivePackage] = useState('nha-pho');
     const [activeFaq, setActiveFaq] = useState(null);
-    const [activePackage, setActivePackage] = useState('basic');
 
-    // Turnkey construction pricing data
-    const turnkeyPricing = [
+    // Full package pricing data
+    const fullPackages = [
         {
-            title: "Nhà phố - nhà ống",
-            price: "5,500,000 - 7,000,000 VNĐ/m²",
-            description: "Trọn gói phần thô + hoàn thiện cơ bản",
+            id: 'nha-pho',
+            title: 'Nhà Phố Trọn Gói',
+            price: '4,800,000 - 6,500,000 VNĐ/m²',
+            originalPrice: '5,800,000 - 7,500,000 VNĐ/m²',
+            description: 'Từ thiết kế đến hoàn thiện nhà phố 3-4 tầng',
+            breakdown: {
+                design: '120,000 - 180,000 VNĐ/m²',
+                construction: '2,800,000 - 3,500,000 VNĐ/m²',
+                finishing: '2,200,000 - 3,200,000 VNĐ/m²',
+                management: '180,000 - 250,000 VNĐ/m²'
+            },
             includes: [
-                "Thiết kế kiến trúc 2D + 3D",
-                "Xin phép xây dựng",
-                "Thi công phần thô hoàn chỉnh",
-                "Hoàn thiện cơ bản (sơn, gạch, cửa)",
-                "Hệ thống điện nước đầy đủ"
+                'Thiết kế kiến trúc hoàn chỉnh',
+                'Thi công phần thô đến hoàn thiện',
+                '3D rendering chất lượng cao (5 góc)',
+                'Giám sát kỹ thuật toàn diện',
+                'Bảo hành trọn gói 2 năm',
+                'Hỗ trợ thủ tục xin phép',
+                'Vệ sinh công trình'
             ],
-            advantages: [
-                "Tiết kiệm 15-20% chi phí",
-                "Thời gian rút ngắn 30%",
-                "Không lo phát sinh",
-                "Bảo hành toàn diện"
+            features: [
+                'Diện tích: 80-150m² sàn',
+                'Thời gian: 90-120 ngày',
+                'Phong cách hiện đại',
+                'Vật liệu cao cấp'
             ],
-            icon: "fa-home",
-            duration: "90-120 ngày",
-            warranty: "5 năm"
+            suitable: ['Gia đình trẻ', 'Ngân sách từ 600 triệu', 'Nhà phố đô thị'],
+            duration: '3-4 tháng',
+            warranty: '24 tháng',
+            bgColor: '#10b981'
         },
         {
-            title: "Nhà cấp 4 hiện đại",
-            price: "4,500,000 - 6,000,000 VNĐ/m²",
-            description: "Bao gồm mái ngói/mái tôn + hoàn thiện cơ bản",
+            id: 'biet-thu',
+            title: 'Biệt Thự Trọn Gói',
+            price: '6,500,000 - 8,500,000 VNĐ/m²',
+            originalPrice: '7,800,000 - 10,200,000 VNĐ/m²',
+            description: 'Thi công trọn gói biệt thử cao cấp',
+            breakdown: {
+                design: '200,000 - 300,000 VNĐ/m²',
+                construction: '3,500,000 - 4,800,000 VNĐ/m²',
+                finishing: '3,200,000 - 4,500,000 VNĐ/m²',
+                management: '280,000 - 350,000 VNĐ/m²'
+            },
             includes: [
-                "Thiết kế phù hợp nông thôn",
-                "Móng băng + tường + mái",
-                "Hoàn thiện đơn giản, bền đẹp",
-                "Sân bê tông, hàng rào",
-                "Giếng khoan (nếu cần)"
+                'Thiết kế kiến trúc + nội thất',
+                'Thiết kế sân vườn cảnh quan cơ bản',
+                'Thi công hoàn chỉnh từ A-Z',
+                '3D rendering + video walkthrough',
+                'Hệ thống smarthome cơ bản',
+                'Bảo hành trọn gói 3 năm',
+                'Giám sát và nghiệm thu chuyên nghiệp'
             ],
-            advantages: [
-                "Chi phí hợp lý nhất",
-                "Vật liệu bền, phù hợp khí hậu",
-                "Thi công nhanh",
-                "Bảo trì dễ dàng"
+            features: [
+                'Diện tích: 200-500m² sàn',
+                'Thời gian: 120-180 ngày',
+                'Đa phong cách thiết kế',
+                'Vật liệu premium'
             ],
-            icon: "fa-house-user",
-            duration: "60-80 ngày",
-            warranty: "3 năm"
+            suitable: ['Gia đình thành đạt', 'Ngân sách từ 1.5 tỷ', 'Biệt thự vườn'],
+            duration: '4-6 tháng',
+            warranty: '36 tháng',
+            bgColor: '#667eea'
         },
         {
-            title: "Biệt thự - Villa",
-            price: "6,500,000 - 9,000,000 VNĐ/m²",
-            description: "Hoàn thiện cao cấp, nhiều chi tiết & sân vườn",
+            id: 'lau-dai',
+            title: 'Lâu Đài Trọn Gói',
+            price: '9,500,000 - 15,000,000 VNĐ/m²',
+            originalPrice: '11,500,000 - 18,000,000 VNĐ/m²',
+            description: 'Dự án lâu đài, dinh thự đẳng cấp luxury',
+            breakdown: {
+                design: '400,000 - 600,000 VNĐ/m²',
+                construction: '4,800,000 - 6,500,000 VNĐ/m²',
+                finishing: '4,500,000 - 6,500,000 VNĐ/m²',
+                management: '450,000 - 650,000 VNĐ/m²'
+            },
             includes: [
-                "Thiết kế kiến trúc cao cấp",
-                "Kết cấu phức tạp, an toàn",
-                "Hoàn thiện cao cấp (đá, gỗ)",
-                "Cảnh quan sân vườn cơ bản",
-                "Hệ thống smarthome cơ bản"
+                'Thiết kế kiến trúc độc quyền',
+                'Thiết kế nội thất luxury hoàn chỉnh',
+                'Thiết kế cảnh quan + hồ bơi',
+                'Hệ thống smarthome cao cấp',
+                '3D rendering + video 4K',
+                'Bảo hành trọn gói 5 năm',
+                'Dịch vụ after-sales VIP'
             ],
-            advantages: [
-                "Thiết kế độc quyền",
-                "Vật liệu cao cấp",
-                "Thi công chuyên nghiệp",
-                "Bảo hành lâu dài"
+            features: [
+                'Diện tích: 500m² sàn trở lên',
+                'Thời gian: 180-300 ngày',
+                'Kiến trúc cổ điển hoặc hiện đại',
+                'Vật liệu luxury nhập khẩu'
             ],
-            icon: "fa-building",
-            duration: "120-180 ngày",
-            warranty: "7 năm"
-        },
-        {
-            title: "Lâu đài - Dinh thự",
-            price: "9,000,000 - 12,000,000 VNĐ/m²",
-            description: "Kiến trúc phức tạp, nhiều chi tiết cổ điển",
-            includes: [
-                "Thiết kế kiến trúc nghệ thuật",
-                "Kết cấu đặc biệt (vòm, cột)",
-                "Hoàn thiện luxury (marble, gỗ quý)",
-                "Cảnh quan châu Âu",
-                "Hệ thống smarthome cao cấp"
-            ],
-            advantages: [
-                "Thiết kế độc đáo",
-                "Thi công tinh xảo",
-                "Vật liệu nhập khẩu",
-                "Dịch vụ VIP"
-            ],
-            icon: "fa-chess-rook",
-            duration: "180-240 ngày",
-            warranty: "10 năm"
-        },
-        {
-            title: "Khách sạn - Nhà hàng",
-            price: "6,000,000 - 8,500,000 VNĐ/m²",
-            description: "Đảm bảo tiêu chuẩn an toàn, công năng kinh doanh",
-            includes: [
-                "Thiết kế theo tiêu chuẩn PCCC",
-                "Kết cấu chịu tải trọng lớn",
-                "Hệ thống M&E chuyên nghiệp",
-                "Hoàn thiện chuẩn kinh doanh",
-                "Hỗ trợ thủ tục mở cửa"
-            ],
-            advantages: [
-                "Tuân thủ quy chuẩn",
-                "Tối ưu vận hành",
-                "Giảm chi phí bảo trì",
-                "Hỗ trợ pháp lý"
-            ],
-            icon: "fa-hotel",
-            duration: "150-200 ngày",
-            warranty: "5 năm"
-        },
-        {
-            title: "Nhà xưởng - Công nghiệp",
-            price: "3,500,000 - 5,000,000 VNĐ/m²",
-            description: "Kết cấu thép + hoàn thiện công nghiệp",
-            includes: [
-                "Thiết kế kết cấu tối ưu",
-                "Khung thép tiền chế",
-                "Hệ thống thông gió công nghiệp",
-                "Sàn epoxy chống bụi",
-                "Hệ thống PCCC cơ bản"
-            ],
-            advantages: [
-                "Thi công nhanh nhất",
-                "Chi phí cạnh tranh",
-                "Bền vững theo thời gian",
-                "Mở rộng dễ dàng"
-            ],
-            icon: "fa-industry",
-            duration: "80-120 ngày",
-            warranty: "3 năm"
+            suitable: ['Doanh nhân thành công', 'Ngân sách từ 5 tỷ', 'Dinh thự đẳng cấp'],
+            duration: '6-10 tháng',
+            warranty: '60 tháng',
+            bgColor: '#f59e0b'
         }
     ];
 
-    // Package comparison
-    const packageComparison = {
-        basic: {
-            title: "Gói Cơ Bản",
-            description: "Phù hợp gia đình có ngân sách hạn chế",
-            features: [
-                "Thiết kế đơn giản, hiện đại",
-                "Vật liệu cơ bản, chất lượng tốt",
-                "Hoàn thiện theo tiêu chuẩn",
-                "Bảo hành 3 năm"
-            ],
-            priceRange: "3.5 - 6 triệu VNĐ/m²"
-        },
-        standard: {
-            title: "Gói Tiêu Chuẩn",
-            description: "Lựa chọn phổ biến nhất, cân bằng giá - chất lượng",
-            features: [
-                "Thiết kế đa dạng phong cách",
-                "Vật liệu tốt, thương hiệu uy tín",
-                "Hoàn thiện cao cấp",
-                "Bảo hành 5 năm"
-            ],
-            priceRange: "5.5 - 8 triệu VNĐ/m²"
-        },
-        premium: {
-            title: "Gói Cao Cấp",
-            description: "Dành cho khách hàng yêu cầu chất lượng tối ưu",
-            features: [
-                "Thiết kế độc quyền, sang trọng",
-                "Vật liệu cao cấp, nhập khẩu",
-                "Hoàn thiện luxury",
-                "Bảo hành 7-10 năm"
-            ],
-            priceRange: "8 - 12 triệu VNĐ/m²"
-        }
-    };
-
-    // Turnkey process
-    const turnkeyProcess = [
+    // Construction timeline phases
+    const constructionTimeline = [
         {
-            step: 1,
-            title: "Khảo sát & tư vấn giải pháp tổng thể",
-            description: "Đánh giá toàn diện nhu cầu và đề xuất giải pháp tối ưu",
-            details: [
-                "Khảo sát mặt bằng, địa chất",
-                "Tư vấn phong cách kiến trúc phù hợp",
-                "Lập dự toán chi tiết theo ngân sách",
-                "Tư vấn pháp lý, thủ tục"
+            phase: 1,
+            title: 'Thiết kế & Chuẩn bị',
+            description: 'Tư vấn, thiết kế và chuẩn bị pháp lý',
+            duration: '15-30 ngày',
+            activities: [
+                'Khảo sát thực địa chi tiết',
+                'Tư vấn phong cách và concept',
+                'Thiết kế kiến trúc và nội thất',
+                'Hoàn thiện hồ sơ pháp lý',
+                'Chuẩn bị mặt bằng thi công'
             ],
-            icon: "fa-search",
-            duration: "3-5 ngày"
+            percentage: '10-15%',
+            icon: 'fas fa-compass',
+            color: '#667eea'
         },
         {
-            step: 2,
-            title: "Lập phương án thiết kế & báo giá chi tiết",
-            description: "Thiết kế và báo giá trọn gói minh bạch",
-            details: [
-                "Thiết kế sơ bộ 2-3 phương án",
-                "Báo giá trọn gói từ A-Z",
-                "Thời gian hoàn thành dự kiến",
-                "Điều khoản hợp đồng rõ ràng"
+            phase: 2,
+            title: 'Thi công Phần Thô',
+            description: 'Móng, kết cấu, tường, mái',
+            duration: '45-90 ngày',
+            activities: [
+                'Thi công móng và kết cấu chính',
+                'Xây dựng tường các tầng',
+                'Lợp mái và chống thấm',
+                'Hệ thống kỹ thuật thô (điện, nước)',
+                'Kiểm tra nghiệm thu từng giai đoạn'
             ],
-            icon: "fa-drafting-compass",
-            duration: "7-10 ngày"
+            percentage: '45-55%',
+            icon: 'fas fa-hard-hat',
+            color: '#10b981'
         },
         {
-            step: 3,
-            title: "Xin phép xây dựng",
-            description: "Hỗ trợ hoàn tất thủ tục pháp lý",
-            details: [
-                "Chuẩn bị hồ sơ xin phép xây dựng",
-                "Nộp hồ sơ tại UBND địa phương",
-                "Theo dõi tiến độ duyệt phép",
-                "Nhận giấy phép xây dựng"
+            phase: 3,
+            title: 'Hoàn thiện',
+            description: 'Ốp lát, sơn, trần, điện nước',
+            duration: '30-60 ngày',
+            activities: [
+                'Ốp lát gạch và đá theo thiết kế',
+                'Sơn nước nội ngoại thất',
+                'Làm trần thạch cao tạo hình',
+                'Hoàn thiện hệ thống điện nước',
+                'Lắp đặt thiết bị vệ sinh'
             ],
-            icon: "fa-file-contract",
-            duration: "15-30 ngày"
+            percentage: '30-35%',
+            icon: 'fas fa-paint-brush',
+            color: '#f59e0b'
         },
         {
-            step: 4,
-            title: "Thi công phần móng & phần thô",
-            description: "Thi công kết cấu chịu lực chính",
-            details: [
-                "Đào móng, đổ bê tông móng",
-                "Thi công cột, dầm, sàn các tầng",
-                "Xây tường, thi công cầu thang",
-                "Hoàn thiện mái thô"
+            phase: 4,
+            title: 'Nội thất & Bàn giao',
+            description: 'Nội thất, kiểm tra và nghiệm thu',
+            duration: '15-30 ngày',
+            activities: [
+                'Lắp đặt nội thất theo thiết kế',
+                'Kiểm tra tổng thể chất lượng',
+                'Vệ sinh toàn bộ công trình',
+                'Nghiệm thu và bàn giao',
+                'Hướng dẫn sử dụng và bảo trì'
             ],
-            icon: "fa-hard-hat",
-            duration: "60-120 ngày"
-        },
-        {
-            step: 5,
-            title: "Hoàn thiện kiến trúc, lắp đặt điện nước",
-            description: "Hoàn thiện tổng thể công trình",
-            details: [
-                "Trát tường, sơn, ốp lát",
-                "Lắp cửa, trần, lan can",
-                "Hệ thống điện nước hoàn chỉnh",
-                "Lắp thiết bị, vệ sinh"
-            ],
-            icon: "fa-paint-brush",
-            duration: "45-90 ngày"
-        },
-        {
-            step: 6,
-            title: "Bàn giao công trình & bảo hành dài hạn",
-            description: "Nghiệm thu và hỗ trợ lâu dài",
-            details: [
-                "Kiểm tra chất lượng tổng thể",
-                "Bàn giao hồ sơ hoàn công",
-                "Hướng dẫn sử dụng & bảo trì",
-                "Cam kết bảo hành dài hạn"
-            ],
-            icon: "fa-clipboard-check",
-            duration: "2-3 ngày"
+            percentage: '10-15%',
+            icon: 'fas fa-home',
+            color: '#8b5cf6'
         }
     ];
 
-    // Advantages of turnkey construction
-    const turnkeyAdvantages = [
+    // Benefits of full package
+    const packageBenefits = [
         {
-            title: "Tiết kiệm thời gian",
-            description: "Một đơn vị quản lý xuyên suốt, rút ngắn 30% thời gian",
-            icon: "fa-clock",
-            color: "#667eea"
+            icon: 'fas fa-handshake',
+            title: 'Một đối tác duy nhất',
+            description: 'Không cần tìm nhiều nhà thầu khác nhau. Chúng tôi đảm nhiệm toàn bộ từ thiết kế đến hoàn thiện.',
+            color: '#10b981'
         },
         {
-            title: "Kiểm soát chi phí",
-            description: "Báo giá trọn gói, không phát sinh ngoài hợp đồng",
-            icon: "fa-calculator",
-            color: "#10b981"
+            icon: 'fas fa-piggy-bank',
+            title: 'Tiết kiệm chi phí',
+            description: 'Giá trọn gói rẻ hơn 15-20% so với thuê từng giai đoạn. Không phát sinh ngoài dự tính.',
+            color: '#667eea'
         },
         {
-            title: "Đảm bảo đồng bộ",
-            description: "Thiết kế & thi công ăn khớp, đúng tiến độ",
-            icon: "fa-sync-alt",
-            color: "#f59e0b"
+            icon: 'far fa-clock',
+            title: 'Tiết kiệm thời gian',
+            description: 'Tiến độ được tối ưu hóa. Các giai đoạn chồng lấp hợp lý, rút ngắn thời gian tổng thể.',
+            color: '#f59e0b'
         },
         {
-            title: "Pháp lý rõ ràng",
-            description: "Hỗ trợ xin cấp phép xây dựng, giấy tờ liên quan",
-            icon: "fa-file-contract",
-            color: "#8b5cf6"
+            icon: 'fas fa-shield-alt',
+            title: 'Bảo hành toàn diện',
+            description: 'Bảo hành thống nhất cho toàn bộ công trình. Dễ dàng bảo trì và sửa chữa sau này.',
+            color: '#8b5cf6'
         },
         {
-            title: "Bảo hành - bảo trì",
-            description: "Yên tâm sử dụng công trình lâu dài",
-            icon: "fa-wrench",
-            color: "#ef4444"
+            icon: 'far fa-eye',
+            title: 'Giám sát chặt chẽ',
+            description: 'Giám sát kỹ thuật 24/7. Báo cáo tiến độ hàng tuần với hình ảnh thực tế.',
+            color: '#ef4444'
         },
         {
-            title: "Chất lượng đồng nhất",
-            description: "Kiểm soát chất lượng chặt chẽ từ đầu đến cuối",
-            icon: "fa-award",
-            color: "#06b6d4"
+            icon: 'fas fa-trophy',
+            title: 'Chất lượng nhất quán',
+            description: 'Thiết kế và thi công bởi cùng một đội ngũ đảm bảo tính thống nhất và chất lượng.',
+            color: '#06b6d4'
         }
     ];
 
@@ -298,28 +221,33 @@ const BaoGiaThiCongTronGoiPage = () => {
     const faqData = [
         {
             id: 1,
-            question: "Thi công trọn gói có đắt hơn thuê từng hạng mục không?",
-            answer: "Thực tế, thi công trọn gói giúp tối ưu chi phí và hạn chế phát sinh, nên tổng chi phí thường tiết kiệm hơn 15-20% so với thuê riêng lẻ từng hạng mục."
+            question: 'Gói trọn gói bao gồm những gì cụ thể?',
+            answer: 'Bao gồm: thiết kế kiến trúc, thi công phần thô (móng, kết cấu, tường, mái), hoàn thiện (ốp lát, sơn, trần, điện nước), nội thất cơ bản, giám sát kỹ thuật, bảo hành và hỗ trợ pháp lý.'
         },
         {
             id: 2,
-            question: "Thời gian hoàn thiện một công trình mất bao lâu?",
-            answer: "Nhà phố 3-4 tầng: 90-120 ngày; Biệt thự: 120-180 ngày; Lâu đài: 180-240 ngày. Thời gian có thể rút ngắn 30% so với thi công riêng lẻ."
+            question: 'Thời gian thi công trọn gói mất bao lâu?',
+            answer: 'Nhà phố: 3-4 tháng, Biệt thự: 4-6 tháng, Lâu đài: 6-10 tháng. Thời gian có thể ngắn hơn nhờ tối ưu hóa quy trình và chồng lấp các giai đoạn thi công.'
         },
         {
             id: 3,
-            question: "Có thể thay đổi vật liệu trong quá trình thi công không?",
-            answer: "Có, nhưng sẽ điều chỉnh lại dự toán trước khi triển khai. Thay đổi nhiều có thể ảnh hưởng đến tiến độ và chi phí đã cam kết."
+            question: 'Có được thay đổi thiết kế trong quá trình thi công không?',
+            answer: 'Có thể thay đổi trong giai đoạn thiết kế hoặc đầu giai đoạn thi công phần thô. Thay đổi muộn sẽ phát sinh chi phí 10-25% và ảnh hưởng tiến độ 15-30 ngày.'
         },
         {
             id: 4,
-            question: "LIN HOME có cam kết gì về chất lượng?",
-            answer: "Chúng tôi cam kết 'Không phát sinh chi phí ngoài hợp đồng', bảo hành kết cấu 5-10 năm, hoàn thiện 2-3 năm và cung cấp dịch vụ bảo trì định kỳ."
+            question: 'Chi phí có phát sinh thêm không?',
+            answer: 'Cam kết không phát sinh nếu không thay đổi thiết kế. Mọi chi phí phát sinh (nếu có) sẽ được báo giá chi tiết và thống nhất trước khi thực hiện.'
         },
         {
             id: 5,
-            question: "Có hỗ trợ vay vốn ngân hàng không?",
-            answer: "Có, chúng tôi hỗ trợ làm hồ sơ vay vốn tại các ngân hàng liên kết với lãi suất ưu đãi và thủ tục đơn giản."
+            question: 'Thanh toán như thế nào cho gói trọn gói?',
+            answer: 'Thanh toán theo 5 đợt: 15% ký hợp đồng, 25% hoàn thành móng, 30% hoàn thành phần thô, 25% hoàn thiện, 5% bàn giao và bảo hành.'
+        },
+        {
+            id: 6,
+            question: 'Có hỗ trợ vay vốn ngân hàng không?',
+            answer: 'Có hỗ trợ làm hồ sơ vay vốn tại Vietcombank, Techcombank, VPBank. Lãi suất ưu đãi từ 6.5-8.5%/năm cho dự án trọn gói.'
         }
     ];
 
@@ -327,250 +255,299 @@ const BaoGiaThiCongTronGoiPage = () => {
         setActiveFaq(activeFaq === id ? null : id);
     };
 
+    const currentPackage = fullPackages.find(pkg => pkg.id === activePackage);
+
     return (
         <div className="thiet-ke-page">
-            {/* Header */}
-            <header className="page-header">
+            {/* Package Selection */}
+            <section className="pricing-section">
                 <div className="container">
-                    <div className="header-content">
-                        <nav className="breadcrumb">
-                            <a href="/">Trang chủ</a>
-                            <span>/</span>
-                            <a href="/bao-gia">Báo giá</a>
-                            <span>/</span>
-                            <a href="/bao-gia/bao-gia-thiet-ke-thi-cong-nha">Báo giá thiết kế, thi công nhà</a>
-                            <span>/</span>
-                            <span>Báo giá thi công trọn gói</span>
-                        </nav>
-                        <h1 className="page-title">
-                            🏡 Báo giá thi công trọn gói 2025
-                        </h1>
-                        <p className="page-subtitle">
-                            Báo giá thi công kiến trúc trọn gói 2025 tại Hà Nội & Nha Trang.
-                            Đơn giá minh bạch, trọn gói từ thiết kế đến hoàn thiện.
-                            Cam kết chất lượng - không phát sinh.
-                        </p>
+                    <div className="section-header">
+                        <h2>📦 Gói Thi Công Trọn Gói 2025</h2>
+                        <p>Giải pháp toàn diện từ thiết kế đến hoàn thiện - Tiết kiệm 15-20% chi phí</p>
                     </div>
+
+                    <div className="pricing-tabs">
+                        {fullPackages.map(pkg => (
+                            <button
+                                key={pkg.id}
+                                className={`pricing-tab ${activePackage === pkg.id ? 'active' : ''}`}
+                                onClick={() => setActivePackage(pkg.id)}
+                            >
+                                <i className="fas fa-home"></i>
+                                {pkg.title}
+                            </button>
+                        ))}
+                    </div>
+
+                    {currentPackage && (
+                        <div className="pricing-detail">
+                            <div className="pricing-card" style={{ borderColor: currentPackage.bgColor }}>
+                                <div className="pricing-header" style={{ background: currentPackage.bgColor }}>
+                                    <h3>
+                                        <i className="fas fa-box"></i>
+                                        {currentPackage.title}
+                                    </h3>
+                                    <div className="pricing-amount">
+                                        {currentPackage.price}
+                                        <div className="original-price">
+                                            <del>{currentPackage.originalPrice}</del>
+                                            <span className="discount">Tiết kiệm 15-20%</span>
+                                        </div>
+                                    </div>
+                                    <p>{currentPackage.description}</p>
+                                </div>
+
+                                <div className="pricing-body">
+                                    <div className="pricing-breakdown">
+                                        <h4>💰 Chi phí chi tiết:</h4>
+                                        <div className="breakdown-items">
+                                            <div className="breakdown-item">
+                                                <span>Thiết kế:</span>
+                                                <strong>{currentPackage.breakdown.design}</strong>
+                                            </div>
+                                            <div className="breakdown-item">
+                                                <span>Thi công thô:</span>
+                                                <strong>{currentPackage.breakdown.construction}</strong>
+                                            </div>
+                                            <div className="breakdown-item">
+                                                <span>Hoàn thiện:</span>
+                                                <strong>{currentPackage.breakdown.finishing}</strong>
+                                            </div>
+                                            <div className="breakdown-item">
+                                                <span>Quản lý dự án:</span>
+                                                <strong>{currentPackage.breakdown.management}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="pricing-grid">
+                                        <div className="pricing-column">
+                                            <h4>✨ Bao gồm dịch vụ:</h4>
+                                            <ul>
+                                                {currentPackage.includes.map((item, index) => (
+                                                    <li key={index}>{item}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="pricing-column">
+                                            <h4>🏠 Đặc điểm:</h4>
+                                            <ul>
+                                                {currentPackage.features.map((feature, index) => (
+                                                    <li key={index}>{feature}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div className="pricing-suitable">
+                                        <h4>👥 Phù hợp cho:</h4>
+                                        <div className="suitable-tags">
+                                            {currentPackage.suitable.map((item, index) => (
+                                                <span key={index} className="suitable-tag">
+                                                    {item}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="pricing-meta">
+                                        <div className="meta-item">
+                                            <i className="far fa-clock"></i>
+                                            <span>Thời gian: {currentPackage.duration}</span>
+                                        </div>
+                                        <div className="meta-item">
+                                            <i className="fas fa-shield-alt"></i>
+                                            <span>Bảo hành: {currentPackage.warranty}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            </header>
+            </section>
 
-            {/* Main Content */}
-            <main className="page-main">
+            {/* Construction Timeline */}
+            <section className="process-section">
                 <div className="container">
-                    {/* Introduction */}
-                    <section className="intro-section">
-                        <div className="intro-content">
-                            <h2>Thi công trọn gói - Giải pháp toàn diện cho ngôi nhà</h2>
-                            <p>
-                                Thi công kiến trúc <strong>trọn gói</strong> là giải pháp được nhiều gia chủ lựa chọn
-                                năm 2025. Với hình thức này, nhà thầu sẽ đảm nhận toàn bộ quy trình:
-                                <strong>từ thiết kế, xin phép xây dựng, thi công phần thô, hoàn thiện đến bàn giao
-                                    chìa khóa trao tay</strong>.
-                            </p>
-                            <div className="construction-details">
-                                <h3>Ưu điểm lớn nhất của gói thi công trọn gói:</h3>
-                                <ul>
-                                    <li><strong>Tiết kiệm thời gian:</strong> một đơn vị quản lý xuyên suốt</li>
-                                    <li><strong>Kiểm soát chi phí:</strong> báo giá trọn gói, không phát sinh</li>
-                                    <li><strong>Đảm bảo đồng bộ:</strong> thiết kế & thi công ăn khớp, đúng tiến độ</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Package Selection */}
-                    <div className="package-selector">
-                        <h2>Lựa chọn gói phù hợp</h2>
-                        <div className="package-tabs">
-                            <button
-                                className={`package-tab ${activePackage === 'basic' ? 'active' : ''}`}
-                                onClick={() => setActivePackage('basic')}
-                            >
-                                Gói Cơ Bản
-                            </button>
-                            <button
-                                className={`package-tab ${activePackage === 'standard' ? 'active' : ''}`}
-                                onClick={() => setActivePackage('standard')}
-                            >
-                                Gói Tiêu Chuẩn
-                            </button>
-                            <button
-                                className={`package-tab ${activePackage === 'premium' ? 'active' : ''}`}
-                                onClick={() => setActivePackage('premium')}
-                            >
-                                Gói Cao Cấp
-                            </button>
-                        </div>
-                        <div className="package-info">
-                            <h3>{packageComparison[activePackage].title}</h3>
-                            <p>{packageComparison[activePackage].description}</p>
-                            <div className="package-price">
-                                {packageComparison[activePackage].priceRange}
-                            </div>
-                            <ul className="package-features">
-                                {packageComparison[activePackage].features.map((feature, index) => (
-                                    <li key={index}>
-                                        <i className="fas fa-check-circle"></i>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    <div className="section-header">
+                        <h2>📅 Tiến Độ Thi Công Trọn Gói</h2>
+                        <p>4 giai đoạn thi công liền mạch với quản lý chuyên nghiệp</p>
                     </div>
 
-                    {/* Pricing Section */}
-                    <section className="pricing-section">
-                        <h2>Bảng báo giá thi công trọn gói 2025</h2>
-                        <div className="phases-grid">
-                            {turnkeyPricing.map((item, index) => (
-                                <div key={index} className="phase-card">
-                                    <div className="phase-header">
-                                        <div className="phase-icon">
-                                            <i className={`fas ${item.icon}`}></i>
-                                        </div>
-                                        <h3>{item.title}</h3>
-                                        <div className="duration">
-                                            Thời gian: {item.duration} | Bảo hành: {item.warranty}
-                                        </div>
-                                    </div>
-                                    <div className="phase-body">
-                                        <div className="price-highlight">
-                                            {item.price}
-                                        </div>
-                                        <p className="description">{item.description}</p>
-                                        <div className="includes-section">
-                                            <h4>Bao gồm:</h4>
-                                            <ul className="phase-includes">
-                                                {item.includes.map((feature, idx) => (
-                                                    <li key={idx}>
-                                                        <i className="fas fa-check-circle"></i>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="advantages-section">
-                                            <h4>Ưu điểm:</h4>
-                                            <ul className="advantages-list">
-                                                {item.advantages.map((advantage, idx) => (
-                                                    <li key={idx}>
-                                                        <i className="fas fa-star"></i>
-                                                        {advantage}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
+                    <div className="process-timeline">
+                        {constructionTimeline.map((phase, index) => (
+                            <div key={index} className="process-step">
+                                <div className="step-number">{phase.phase}</div>
+                                <div className="step-icon" style={{ background: phase.color }}>
+                                    <i className={phase.icon}></i>
                                 </div>
-                            ))}
-                        </div>
-                        <div className="pricing-note">
-                            <p><strong>📌 Báo giá bao gồm:</strong></p>
-                            <ul>
-                                <li>Thiết kế kiến trúc, xin phép xây dựng, thi công phần thô, hoàn thiện cơ bản</li>
-                                <li><strong>Chưa bao gồm:</strong> nội thất rời & hạng mục cao cấp (đèn chùm, đá tự nhiên, gỗ quý)</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    {/* Advantages Section */}
-                    <section className="advantages-section">
-                        <h2>Tại sao chọn thi công trọn gói?</h2>
-                        <div className="advantages-grid">
-                            {turnkeyAdvantages.map((advantage, index) => (
-                                <div key={index} className="advantage-card">
-                                    <div className="advantage-icon" style={{ background: advantage.color }}>
-                                        <i className={`fas ${advantage.icon}`}></i>
-                                    </div>
-                                    <h3>{advantage.title}</h3>
-                                    <p>{advantage.description}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Process Section */}
-                    <section className="process-section">
-                        <h2>Quy trình thi công trọn gói</h2>
-                        <div className="process-timeline">
-                            {turnkeyProcess.map((step, index) => (
-                                <div key={index} className="process-step">
-                                    <div className="step-number">{step.step}</div>
-                                    <div className="step-icon">
-                                        <i className={`fas ${step.icon}`}></i>
-                                    </div>
-                                    <div className="step-content">
-                                        <h3>{step.title}</h3>
-                                        <p><strong>Thời gian:</strong> {step.duration}</p>
-                                        <p>{step.description}</p>
+                                <div className="step-content">
+                                    <h3>{phase.title}</h3>
+                                    <p>{phase.description}</p>
+                                    <div className="step-details">
                                         <ul>
-                                            {step.details.map((detail, idx) => (
-                                                <li key={idx}>{detail}</li>
+                                            {phase.activities.map((activity, activityIndex) => (
+                                                <li key={activityIndex}>{activity}</li>
                                             ))}
                                         </ul>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* FAQ Section */}
-                    <section className="faq-section">
-                        <h2>Câu hỏi thường gặp</h2>
-                        <div className="faq-container">
-                            {faqData.map((faq) => (
-                                <div key={faq.id} className="faq-item">
-                                    <div
-                                        className="faq-question"
-                                        onClick={() => toggleFaq(faq.id)}
-                                    >
-                                        <h3>{faq.question}</h3>
-                                        <i className={`fas fa-chevron-${activeFaq === faq.id ? 'up' : 'down'}`}></i>
+                                    <div className="step-meta">
+                                        <span className="step-duration">
+                                            <i className="far fa-clock"></i> {phase.duration}
+                                        </span>
+                                        <span className="step-percentage">
+                                            <i className="fas fa-percentage"></i> {phase.percentage}
+                                        </span>
                                     </div>
-                                    {activeFaq === faq.id && (
-                                        <div className="faq-answer">
-                                            <p>{faq.answer}</p>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* CTA Section */}
-                    <section className="cta-section">
-                        <div className="cta-content">
-                            <h2>Nhận báo giá trọn gói miễn phí!</h2>
-                            <p>
-                                Liên hệ ngay để nhận <strong>tư vấn miễn phí & báo giá trọn gói chi tiết</strong>
-                                cho dự án của bạn. Cam kết không phát sinh chi phí ngoài hợp đồng!
-                            </p>
-                            <div className="contact-info">
-                                <div className="contact-item">
-                                    <i className="fas fa-phone"></i>
-                                    <span><strong>Hotline:</strong> 0941 090 333</span>
-                                </div>
-                                <div className="contact-item">
-                                    <i className="fas fa-globe"></i>
-                                    <span><strong>Website:</strong> www.linhome.vn</span>
                                 </div>
                             </div>
-                            <div className="cta-buttons">
-                                <a href="tel:0941090333" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Gọi tư vấn ngay
-                                </a>
-                                <a href="/contact" className="btn btn-secondary">
-                                    <i className="fas fa-envelope"></i>
-                                    Gửi yêu cầu báo giá
-                                </a>
-                            </div>
-                        </div>
-                    </section>
+                        ))}
+                    </div>
                 </div>
-            </main>
+            </section>
+
+            {/* Benefits Section */}
+            <section className="advantages-section">
+                <div className="container">
+                    <div className="section-header">
+                        <h2>⭐ Lợi Ích Vượt Trội Của Gói Trọn Gói</h2>
+                        <p>6 lý do khiến 95% khách hàng lựa chọn gói thi công trọn gói</p>
+                    </div>
+
+                    <div className="services-grid">
+                        {packageBenefits.map((benefit, index) => (
+                            <div key={index} className="service-card">
+                                <div className="service-header">
+                                    <div
+                                        className="service-icon"
+                                        style={{ background: `linear-gradient(135deg, ${benefit.color}, ${benefit.color}dd)` }}
+                                    >
+                                        <i className={benefit.icon}></i>
+                                    </div>
+                                </div>
+
+                                <h3>{benefit.title}</h3>
+                                <p>{benefit.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Comparison with Separate Contracts */}
+            <section className="comparison-section">
+                <div className="container">
+                    <div className="section-header">
+                        <h2>⚖️ So Sánh: Trọn Gói vs Tách Riêng</h2>
+                        <p>Tại sao gói trọn gói luôn là lựa chọn tốt nhất?</p>
+                    </div>
+
+                    <div className="comparison-table">
+                        <div className="comparison-header">
+                            <div className="comparison-feature">Tiêu chí</div>
+                            <div className="comparison-package">Gói Trọn Gói</div>
+                            <div className="comparison-package">Thuê Tách Riêng</div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Chi phí tổng</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Tiết kiệm 15-20%
+                            </div>
+                            <div className="comparison-package" style={{ color: '#ef4444' }}>
+                                ✗ Đắt hơn 15-20%
+                            </div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Thời gian</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Nhanh hơn 20-30%
+                            </div>
+                            <div className="comparison-package" style={{ color: '#ef4444' }}>
+                                ✗ Chậm do chờ điều phối
+                            </div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Trách nhiệm</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Một đối tác duy nhất
+                            </div>
+                            <div className="comparison-package" style={{ color: '#ef4444' }}>
+                                ✗ Nhiều nhà thầu khác nhau
+                            </div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Bảo hành</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Bảo hành toàn diện
+                            </div>
+                            <div className="comparison-package" style={{ color: '#ef4444' }}>
+                                ✗ Bảo hành từng phần
+                            </div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Chất lượng</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Nhất quán, thống nhất
+                            </div>
+                            <div className="comparison-package" style={{ color: '#f59e0b' }}>
+                                ⚠ Có thể không đồng nhất
+                            </div>
+                        </div>
+
+                        <div className="comparison-row">
+                            <div className="comparison-feature">Giám sát</div>
+                            <div className="comparison-package" style={{ color: '#10b981', fontWeight: '600' }}>
+                                ✓ Chuyên nghiệp 24/7
+                            </div>
+                            <div className="comparison-package" style={{ color: '#ef4444' }}>
+                                ✗ Tự giám sát hoặc thuê riêng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="faq-section">
+                <div className="container">
+                    <div className="section-header">
+                        <h2>❓ Câu Hỏi Thường Gặp</h2>
+                        <p>Giải đáp chi tiết về gói thi công trọn gói</p>
+                    </div>
+
+                    <div className="faq-container">
+                        {faqData.map(faq => (
+                            <div key={faq.id} className="faq-item">
+                                <div
+                                    className={`faq-question ${activeFaq === faq.id ? 'active' : ''}`}
+                                    onClick={() => toggleFaq(faq.id)}
+                                >
+                                    <span>{faq.question}</span>
+                                    <i className={`fas fa-chevron-${activeFaq === faq.id ? 'up' : 'down'}`}></i>
+                                </div>
+                                {activeFaq === faq.id && (
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <CTAContent />
         </div>
     );
 };
 
-export default BaoGiaThiCongTronGoiPage;
+export default ThiCongTronGoiPricingPage;
