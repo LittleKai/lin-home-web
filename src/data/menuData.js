@@ -180,6 +180,28 @@ export const menuData = {
             description: 'Tư vấn miễn phí và báo giá chi tiết cho dự án'
         }
     ],
+    'Ứng dụng': [
+        {
+            title: 'Ứng dụng Tính chi phí xây dựng',
+            href: '/ung-dung/tinh-chi-phi-xay-dung'
+        },
+        {
+            title: 'Ứng dụng xem Tuổi làm nhà',
+            href: '/ung-dung/xem-tuoi-lam-nha'
+        },
+        {
+            title: 'Ứng dụng xem Thước lỗ ban trực tuyến',
+            href: '/ung-dung/thuoc-lo-ban'
+        },
+        {
+            title: 'Ứng dụng xem Hướng nhà hợp tuổi',
+            href: '/ung-dung/huong-nha-hop-tuoi'
+        },
+        {
+            title: 'Ứng dụng xem Màu hợp tuổi',
+            href: '/ung-dung/mau-hop-tuoi'
+        }
+    ],
     'Dự án': [
         {
             title: 'Dự án biệt thự',

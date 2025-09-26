@@ -53,6 +53,14 @@ import ThiCongPhanThoPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong
 import ThiCongHoanThienPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien';
 import ThiCongTronGoiPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi';
 
+// Import Application Pages
+import UngDungPage from './pages/ung-dung/UngDungPage';
+import TinhChiPhiXayDungPage from './pages/ung-dung/TinhChiPhiXayDungPage';
+import XemTuoiLamNhaPage from './pages/ung-dung/XemTuoiLamNhaPage';
+import ThuocLoBanPage from './pages/ung-dung/ThuocLoBanPage';
+import HuongNhaHopTuoiPage from './pages/ung-dung/HuongNhaHopTuoiPage';
+import MauHopTuoiPage from './pages/ung-dung/MauHopTuoiPage';
+
 // Import other pricing pages (tạm thời placeholder nếu chưa có)
 const BaoGiaThiCongHangMucPage = () => (
     <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
@@ -155,6 +163,14 @@ function App() {
                     <Route path="/thi-cong/phao-chi" element={<PhaoChiPage />} />
                     <Route path="/thi-cong/dien-mat-troi" element={<DienMatTroiPage />} />
 
+                    {/* Application Routes */}
+                    <Route path="/ung-dung" element={<UngDungPage />} />
+                    <Route path="/ung-dung/tinh-chi-phi-xay-dung" element={<TinhChiPhiXayDungPage />} />
+                    <Route path="/ung-dung/xem-tuoi-lam-nha" element={<XemTuoiLamNhaPage />} />
+                    <Route path="/ung-dung/thuoc-lo-ban" element={<ThuocLoBanPage />} />
+                    <Route path="/ung-dung/huong-nha-hop-tuoi" element={<HuongNhaHopTuoiPage />} />
+                    <Route path="/ung-dung/mau-hop-tuoi" element={<MauHopTuoiPage />} />
+
                     {/* Pricing Routes - Main Pages */}
                     <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong-nha" element={
                         <>
@@ -254,19 +270,6 @@ function App() {
                                 <div className="container">
                                     <h1>Tin tức</h1>
                                     <p>Trang tin tức đang được phát triển...</p>
-                                </div>
-                            </div>
-                            <FloatButtons />
-                        </>
-                    } />
-
-                    <Route path="/ung-dung/*" element={
-                        <>
-                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
-                                <div className="container">
-                                    <h1>Ứng dụng</h1>
-                                    <p>Trang ứng dụng đang được phát triển...</p>
                                 </div>
                             </div>
                             <FloatButtons />

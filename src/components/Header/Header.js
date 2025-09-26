@@ -1,4 +1,4 @@
-// src/components/Header/Header.js
+// src/components/Header/Header.js - Updated with Applications section
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -12,6 +12,37 @@ const Header = ({ activeSection, setActiveSection }) => {
     const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Section icon mapping
+    const getSectionIcon = (section) => {
+        const iconMap = {
+            'Thiết kế': 'pencil-ruler',
+            'Thi công': 'hard-hat',
+            'Ứng dụng': 'mobile-alt', // New icon for Applications
+            'Báo giá': 'calculator'
+        };
+        return iconMap[section] || 'circle';
+    };
+
+    // Check if a section is active
+    const isActiveSection = (section) => {
+        if (!activeSection && !location.pathname) return false;
+
+        const currentPath = location.pathname.toLowerCase();
+        const sectionLower = section.toLowerCase();
+
+        // Check for home page
+        if (section === 'home' || sectionLower === 'home') {
+            return currentPath === '/' || currentPath === '';
+        }
+
+        // Check for contact page
+        if (section === 'contact' || sectionLower === 'contact') {
+            return currentPath === '/contact' || currentPath.includes('contact');
+        }
+
+        return currentPath.includes(sectionLower) || activeSection === sectionLower;
+    };
 
     // Handle scroll effect for header background
     useEffect(() => {
@@ -87,7 +118,6 @@ const Header = ({ activeSection, setActiveSection }) => {
             navigate(item.href);
         } else {
             console.log(`Navigating to: ${item.title}`);
-            alert(`Chuyển đến: ${item.title}`);
         }
     };
 
@@ -135,56 +165,28 @@ const Header = ({ activeSection, setActiveSection }) => {
                 mobileActiveSubmenu === item.title ? null : item.title
             );
         } else {
-            // Navigate to regular item
             handleDropdownItemClick(item, event);
         }
     };
 
-    // Handle social link clicks
-    const handleSocialClick = (platform, url, event) => {
-        event.preventDefault();
-        if (url && url !== '#') {
-            window.open(url, '_blank', 'noopener,noreferrer');
+    // Handle contact navigation - scroll to ContactSection
+    const handleContactClick = (e) => {
+        e.preventDefault();
+
+        // Check if we're on the home page
+        if (location.pathname === '/') {
+            // Scroll to contact section on home page
+            const contactSection = document.querySelector('.contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                setActiveSection('contact');
+            }
         } else {
-            alert(`Chuyển đến ${platform}`);
+            // Navigate to home page with contact hash
+            navigate('/#contact');
         }
+
         setIsMobileMenuOpen(false);
-    };
-
-    // Get icon for each section
-    const getSectionIcon = (section) => {
-        const icons = {
-            'Thiết kế': 'drafting-compass',
-            'Thi công': 'hard-hat',
-            'Báo giá': 'calculator',
-            'Tin tức': 'newspaper',
-            'Ứng dụng': 'mobile-alt',
-            'Dự án': 'building'
-        };
-        return icons[section] || 'chevron-right';
-    };
-
-    // Check if current path matches section
-    const isActiveSection = (section) => {
-        const path = location.pathname;
-        if (section === 'home') {
-            return path === '/';
-        } else if (section === 'contact') {
-            return path === '/contact';
-        } else if (section === 'thiết kế') {
-            return path.startsWith('/thiet-ke');
-        } else if (section === 'thi công') {
-            return path.startsWith('/thi-cong');
-        } else if (section === 'báo giá') {
-            return path.startsWith('/bao-gia');
-        } else if (section === 'tin tức') {
-            return path.startsWith('/tin-tuc');
-        } else if (section === 'ứng dụng') {
-            return path.startsWith('/ung-dung');
-        } else if (section === 'dự án') {
-            return path.startsWith('/du-an');
-        }
-        return false;
     };
 
     return (
@@ -251,14 +253,12 @@ const Header = ({ activeSection, setActiveSection }) => {
                                                     <div className="dropdown-content">
                                                         <div className="dropdown-title">{item.title}</div>
                                                         {item.description && (
-                                                            <div className="dropdown-description">
-                                                                {item.description}
-                                                            </div>
+                                                            <div className="dropdown-description">{item.description}</div>
                                                         )}
                                                     </div>
                                                 </a>
 
-                                                {/* Second Level Submenu */}
+                                                {/* Second Level Submenu (if exists) */}
                                                 {item.hasSubmenu && item.submenu && (
                                                     <div className={`submenu ${activeSubmenu === item.title ? 'show' : ''}`}>
                                                         <div className="submenu-header">
@@ -291,13 +291,14 @@ const Header = ({ activeSection, setActiveSection }) => {
 
                             {/* Contact Link */}
                             <li className="nav-item">
-                                <Link
-                                    to="/contact"
+                                <a
+                                    href="#contact"
                                     className={`nav-link ${isActiveSection('contact') ? 'active' : ''}`}
+                                    onClick={handleContactClick}
                                     aria-current={isActiveSection('contact') ? 'page' : undefined}
                                 >
                                     Liên hệ
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </nav>
@@ -382,8 +383,8 @@ const Header = ({ activeSection, setActiveSection }) => {
                                                         {item.title}
                                                         {item.hasSubmenu && (
                                                             <i
-                                                                className={`fas fa-chevron-${mobileActiveSubmenu === item.title ? 'up' : 'down'}`}
-                                                                style={{float: 'right', fontSize: '12px'}}
+                                                                className={`fas fa-chevron-${mobileActiveSubmenu === item.title ? 'up' : 'down'} mobile-submenu-icon`}
+                                                                aria-hidden="true"
                                                             ></i>
                                                         )}
                                                     </div>
@@ -428,55 +429,19 @@ const Header = ({ activeSection, setActiveSection }) => {
 
                         {/* Contact Item */}
                         <li className="mobile-nav-item">
-                            <Link
-                                to="/contact"
+                            <a
+                                href="#contact"
                                 className={`mobile-nav-link ${isActiveSection('contact') ? 'active' : ''}`}
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onClick={(e) => {
+                                    handleContactClick(e);
+                                    setIsMobileMenuOpen(false);
+                                }}
                             >
-                                <i className="fas fa-phone" aria-hidden="true"></i>
+                                <i className="fas fa-envelope" aria-hidden="true"></i>
                                 <span>Liên hệ</span>
-                            </Link>
+                            </a>
                         </li>
                     </ul>
-
-                    {/* Mobile Contact Info */}
-                    <div className="mobile-nav-footer">
-                        <div className="mobile-contact-info">
-                            <div className="mobile-contact-item">
-                                <i className="fas fa-phone" aria-hidden="true"></i>
-                                <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
-                            </div>
-                            <div className="mobile-contact-item">
-                                <i className="fas fa-envelope" aria-hidden="true"></i>
-                                <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
-                            </div>
-                        </div>
-
-                        {/* Mobile Social Links */}
-                        <div className="mobile-social-links">
-                            <button
-                                className="social-link facebook"
-                                onClick={(e) => handleSocialClick('Facebook', '#', e)}
-                                aria-label="Facebook"
-                            >
-                                <i className="fab fa-facebook-f" aria-hidden="true"></i>
-                            </button>
-                            <button
-                                className="social-link zalo"
-                                onClick={(e) => handleSocialClick('Zalo', '#', e)}
-                                aria-label="Zalo"
-                            >
-                                <i className="fas fa-comment-dots" aria-hidden="true"></i>
-                            </button>
-                            <button
-                                className="social-link youtube"
-                                onClick={(e) => handleSocialClick('YouTube', '#', e)}
-                                aria-label="YouTube"
-                            >
-                                <i className="fab fa-youtube" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </nav>
         </header>
