@@ -1,6 +1,6 @@
-// src/App.js - Complete with all correct routes including 7 renovation pages
+// src/App.js - Complete with all routes including pricing pages
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
 // Import existing components
@@ -22,7 +22,7 @@ import ThiCongHangMucPage from './pages/thi-cong/thi-cong-hang-muc';
 // Import thi công sửa chữa cải tạo - main page
 import SuaChuaCaiTaoPage from './pages/thi-cong/sua-chua-cai-tao';
 
-// Import 7 trang submenu cải tạo từ hang-muc-cai-tao với tên file chính xác
+// Import 7 trang submenu cải tạo từ hang-muc-cai-tao
 import ThiCongSuaChuaCaiTaoNhaOPage from './pages/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o';
 import CaiTaoNangTangMoRongPage from './pages/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong';
 import ThiCongCaiTaoNhaPhoPage from './pages/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho';
@@ -43,6 +43,34 @@ import NhomKinhPage from './pages/thi-cong/hang-muc-thi-cong/nhom-kinh';
 import DienThongMinhPage from './pages/thi-cong/hang-muc-thi-cong/dien-thong-minh';
 import PhaoChiPage from './pages/thi-cong/hang-muc-thi-cong/phao-chi';
 import DienMatTroiPage from './pages/thi-cong/hang-muc-thi-cong/dien-mat-troi';
+
+// Import pricing pages - main page
+import BaoGiaThietKeThiCongNhaPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong-nha';
+
+// Import pricing detail pages
+import ThietKeKienTrucPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc';
+import ThiCongPhanThoPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho';
+import ThiCongHoanThienPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien';
+import ThiCongTronGoiPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi';
+
+// Import other pricing pages (tạm thời placeholder nếu chưa có)
+const BaoGiaThiCongHangMucPage = () => (
+    <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+        <div className="container">
+            <h1>Báo giá thi công hạng mục</h1>
+            <p>Trang đang được phát triển...</p>
+        </div>
+    </div>
+);
+
+const TuVanBaoGiaPage = () => (
+    <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+        <div className="container">
+            <h1>Tư vấn báo giá</h1>
+            <p>Trang đang được phát triển...</p>
+        </div>
+    </div>
+);
 
 function App() {
     const [activeSection, setActiveSection] = useState('home');
@@ -127,6 +155,59 @@ function App() {
                     <Route path="/thi-cong/phao-chi" element={<PhaoChiPage />} />
                     <Route path="/thi-cong/dien-mat-troi" element={<DienMatTroiPage />} />
 
+                    {/* Pricing Routes - Main Pages */}
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong-nha" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <BaoGiaThietKeThiCongNhaPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <BaoGiaThiCongHangMucPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/bao-gia/tu-van-bao-gia" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <TuVanBaoGiaPage />
+                            <FloatButtons />
+                        </>
+                    } />
+
+                    {/* Pricing Detail Routes - Submenu của "Báo giá thiết kế, thi công nhà" */}
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThietKeKienTrucPricingPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThiCongPhanThoPricingPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThiCongHoanThienPricingPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThiCongTronGoiPricingPage />
+                            <FloatButtons />
+                        </>
+                    } />
+
                     {/* Contact Route */}
                     <Route
                         path="/contact"
@@ -152,20 +233,7 @@ function App() {
                         }
                     />
 
-                    {/* Placeholder routes cho báo giá, dự án, tin tức nếu cần */}
-                    <Route path="/bao-gia/*" element={
-                        <>
-                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
-                                <div className="container">
-                                    <h1>Báo giá</h1>
-                                    <p>Trang báo giá đang được phát triển...</p>
-                                </div>
-                            </div>
-                            <FloatButtons />
-                        </>
-                    } />
-
+                    {/* Placeholder routes for other sections */}
                     <Route path="/du-an/*" element={
                         <>
                             <Header activeSection={activeSection} setActiveSection={setActiveSection} />
@@ -205,8 +273,22 @@ function App() {
                         </>
                     } />
 
-                    {/* Fallback for undefined routes */}
-                    <Route path="*" element={<Navigate to="/" replace />} />
+                    {/* 404 Route - Default fallback */}
+                    <Route path="*" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
+                                <div className="container">
+                                    <h1>404 - Không tìm thấy trang</h1>
+                                    <p>Trang bạn đang tìm kiếm không tồn tại.</p>
+                                    <a href="/" style={{ color: '#667eea', textDecoration: 'underline' }}>
+                                        Về trang chủ
+                                    </a>
+                                </div>
+                            </div>
+                            <FloatButtons />
+                        </>
+                    } />
                 </Routes>
             </div>
         </Router>

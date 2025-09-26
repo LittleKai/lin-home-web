@@ -1,4 +1,4 @@
-// src/data/menuData.js - Cập nhật với đúng routes đã có
+// src/data/menuData.js - Cập nhật với đúng routes báo giá
 export const menuData = {
     'Thiết kế': [
         {
@@ -47,52 +47,52 @@ export const menuData = {
                 {
                     title: 'Sàn gỗ công nghiệp',
                     href: '/thi-cong/san-go',
-                    description: 'Lắp đặt sàn gỗ công nghiệp cao cấp'
+                    description: 'Lắp đặt sàn gỗ chất lượng cao'
                 },
                 {
                     title: 'Đá ốp lát',
                     href: '/thi-cong/da-op-lat',
-                    description: 'Ốp lát đá granite, marble chất lượng'
+                    description: 'Ốp lát đá tự nhiên và nhân tạo'
                 },
                 {
                     title: 'Cửa composite',
                     href: '/thi-cong/cua-composite',
-                    description: 'Cửa composite chống ẩm, bền đẹp'
+                    description: 'Lắp đặt cửa composite chống nước'
                 },
                 {
-                    title: 'Rèm cửa cao cấp',
+                    title: 'Rèm cửa',
                     href: '/thi-cong/rem-cua',
-                    description: 'Rèm vải, rèm cuốn, rèm tự động'
+                    description: 'Rèm cửa cao cấp, hiện đại'
                 },
                 {
                     title: 'Chống thấm',
                     href: '/thi-cong/chong-tham',
-                    description: 'Chống thấm mái, tường, sàn hiệu quả'
+                    description: 'Xử lý chống thấm chuyên nghiệp'
                 },
                 {
                     title: 'Hồ koi sân vườn',
                     href: '/thi-cong/ho-koi-san-vuon',
-                    description: 'Thiết kế hồ koi phong thủy đẹp'
+                    description: 'Thi công hồ koi và sân vườn'
                 },
                 {
                     title: 'Nhôm kính',
                     href: '/thi-cong/nhom-kinh',
-                    description: 'Cửa nhôm kính, vách kính hiện đại'
-                },
-                {
-                    title: 'Điện mặt trời',
-                    href: '/thi-cong/dien-mat-troi',
-                    description: 'Hệ thống năng lượng mặt trời'
+                    description: 'Lắp đặt nhôm kính cao cấp'
                 },
                 {
                     title: 'Điện thông minh',
                     href: '/thi-cong/dien-thong-minh',
-                    description: 'Smart home, nhà thông minh'
+                    description: 'Hệ thống điện thông minh'
                 },
                 {
-                    title: 'Phào chỉ trang trí',
+                    title: 'Phào chỉ',
                     href: '/thi-cong/phao-chi',
-                    description: 'Phào chỉ gỗ, thạch cao trang trí'
+                    description: 'Lắp đặt phào chỉ trang trí'
+                },
+                {
+                    title: 'Điện mặt trời',
+                    href: '/thi-cong/dien-mat-troi',
+                    description: 'Hệ thống điện năng lượng mặt trời'
                 }
             ]
         },
@@ -144,7 +144,30 @@ export const menuData = {
         {
             title: 'Báo giá thiết kế, thi công nhà',
             href: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha',
-            description: 'Báo giá chi tiết cho dự án thiết kế và thi công nhà ở'
+            description: 'Báo giá chi tiết cho dự án thiết kế và thi công nhà ở',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Báo giá thiết kế kiến trúc',
+                    href: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc',
+                    description: 'Chi phí thiết kế kiến trúc từ bản vẽ 2D đến 3D'
+                },
+                {
+                    title: 'Báo giá thi công phần thô',
+                    href: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho',
+                    description: 'Chi phí thi công móng, cột, dầm, tường, mái'
+                },
+                {
+                    title: 'Báo giá thi công hoàn thiện',
+                    href: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien',
+                    description: 'Chi phí ốp lát, sơn, trần, cửa, nội thất'
+                },
+                {
+                    title: 'Báo giá thi công trọn gói',
+                    href: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi',
+                    description: 'Chi phí trọn gói từ thiết kế đến hoàn thiện'
+                }
+            ]
         },
         {
             title: 'Báo giá thi công hạng mục',
