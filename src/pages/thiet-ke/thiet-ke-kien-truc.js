@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import './ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const ThietKeKienTrucPage = () => {
     const [activeStyle, setActiveStyle] = useState('hien-dai');
@@ -474,33 +475,8 @@ const ThietKeKienTrucPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Bắt Đầu Dự Án Thiết Kế Kiến Trúc Của Bạn</h2>
-                            <p>
-                                Thiết kế kiến trúc là bước nền tảng để tạo nên một công trình đẹp, bền vững và phù hợp
-                                với phong cách sống của gia chủ. Việc lựa chọn đơn vị thiết kế uy tín sẽ giúp bạn tiết
-                                kiệm chi phí, đảm bảo tiến độ và sở hữu một không gian sống lý tưởng.
-                            </p>
-                            <p>
-                                Nếu bạn đang tìm kiếm giải pháp <strong>thiết kế - thi công kiến trúc trọn gói</strong>,
-                                hãy liên hệ ngay với đội ngũ kiến trúc sư chuyên nghiệp để được tư vấn chi tiết và
-                                nhận báo giá phù hợp nhất.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary" onClick={handleContactClick}>
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí
-                                </button>
-                                <button className="btn-secondary" onClick={handlePortfolioClick}>
-                                    <i className="fas fa-drafting-compass"></i>
-                                    Xem portfolio
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
+
             </main>
 
             <Footer />

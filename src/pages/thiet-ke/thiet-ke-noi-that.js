@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import './ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const ThietKeNoiThatPage = () => {
     const [activeStyle, setActiveStyle] = useState('hien-dai');
@@ -358,28 +359,7 @@ const ThietKeNoiThatPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Tạo Nên Không Gian Nội Thất Hoàn Hảo</h2>
-                            <p>
-                                Một không gian sống hoàn hảo không chỉ dừng lại ở kiến trúc bên ngoài mà còn được khẳng định
-                                qua <strong>thiết kế nội thất</strong> bên trong. Với sự đồng hành của kiến trúc sư nội thất
-                                giàu kinh nghiệm, bạn sẽ sở hữu một căn nhà vừa tiện nghi, vừa mang đậm dấu ấn cá nhân.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-home"></i>
-                                    Xem mẫu thiết kế
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

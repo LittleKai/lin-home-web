@@ -1,4 +1,4 @@
-// components/CTAContent/CTAContent.js
+// src/components/CTAContent/CTAContent.js
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './CTAContent.css';
@@ -6,175 +6,224 @@ import './CTAContent.css';
 const CTAContent = () => {
     const location = useLocation();
 
-    // Define CTA content for different routes
+    // Define CTA content for different routes with specific mapping
     const ctaData = {
-        // Trang chủ
-        '/': {
-            title: 'Bắt đầu dự án xây dựng của bạn ngay hôm nay',
-            subtitle: 'Từ thiết kế đến hoàn thiện - Chúng tôi đồng hành cùng bạn tạo nên ngôi nhà mơ ước',
+        // TRANG BAO GIA - Dẫn đến bài viết
+        '/bao-gia/bao-gia-thiet-ke-thi-cong-nha': {
+            title: 'Tìm hiểu chi tiết về dịch vụ của chúng tôi',
+            subtitle: 'Xem các bài viết chuyên sâu về thiết kế và thi công để có cái nhìn tổng quan',
             primaryButton: {
-                text: 'Nhận báo giá miễn phí',
-                link: '/bao-gia/tu-van-bao-gia'
+                text: 'Xem dịch vụ thiết kế',
+                link: '/thiet-ke/thiet-ke-kien-truc'
             },
             secondaryButton: {
-                text: 'Xem dự án đã thực hiện',
-                link: '/du-an'
+                text: 'Xem dịch vụ thi công',
+                link: '/thi-cong/thi-cong-tron-goi-kien-truc'
             }
         },
 
-        // THIẾT KẾ routes
-        '/thiet-ke': {
-            title: 'Sẵn sàng hiện thực ý tưởng thiết kế của bạn?',
-            subtitle: 'Đội ngũ kiến trúc sư giàu kinh nghiệm sẽ biến ý tưởng thành bản vẽ hoàn chỉnh',
-            primaryButton: {
-                text: 'Tư vấn thiết kế',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc'
-            },
-            secondaryButton: {
-                text: 'Xem báo giá thiết kế',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
-            }
-        },
-
-        // THI CÔNG routes
-        '/thi-cong': {
-            title: 'Cần thi công chuyên nghiệp cho công trình?',
-            subtitle: 'Đội ngũ thợ lành nghề với kinh nghiệm 10+ năm cam kết chất lượng và tiến độ',
-            primaryButton: {
-                text: 'Nhận báo giá thi công',
-                link: '/bao-gia/bao-gia-thi-cong-hang-muc'
-            },
-            secondaryButton: {
-                text: 'Xem hạng mục thi công',
-                link: '/thi-cong/hang-muc-thi-cong'
-            }
-        },
-
-        // Hạng mục cải tạo
-        '/thi-cong/hang-muc-cai-tao': {
-            title: 'Cải tạo ngôi nhà theo phong cách riêng',
-            subtitle: 'Chuyên gia cải tạo với giải pháp tối ưu chi phí và thời gian thi công',
-            primaryButton: {
-                text: 'Tư vấn cải tạo',
-                link: '/bao-gia/tu-van-bao-gia'
-            },
-            secondaryButton: {
-                text: 'Xem chi phí cải tạo',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
-            }
-        },
-
-        // Hạng mục thi công
-        '/thi-cong/hang-muc-thi-cong': {
-            title: 'Thi công hạng mục chuyên nghiệp',
-            subtitle: 'Từ thạch cao, sàn gỗ đến điện thông minh - Chúng tôi có đội thợ chuyên môn cao',
-            primaryButton: {
-                text: 'Nhận báo giá chi tiết',
-                link: '/bao-gia/bao-gia-thi-cong-hang-muc'
-            },
-            secondaryButton: {
-                text: 'Liên hệ tư vấn',
-                link: '/lien-he'
-            }
-        },
-
-        // BÁO GIÁ routes
-        '/bao-gia': {
-            title: 'Nhận báo giá chi tiết và minh bạch',
-            subtitle: 'Báo giá đầy đủ từ thiết kế, thi công đến hoàn thiện với cam kết không phát sinh',
-            primaryButton: {
-                text: 'Tư vấn báo giá miễn phí',
-                link: '/bao-gia/tu-van-bao-gia'
-            },
-            secondaryButton: {
-                text: 'Xem bảng giá chi tiết',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
-            }
-        },
-
-        // Báo giá thiết kế thi công
-        '/bao-gia/bao-gia-thiet-ke-thi-cong': {
-            title: 'Bắt đầu dự án với báo giá chính xác',
-            subtitle: 'Nhận báo giá chi tiết và lên kế hoạch thi công phù hợp với ngân sách của bạn',
-            primaryButton: {
-                text: 'Liên hệ tư vấn ngay',
-                link: '/lien-he'
-            },
-            secondaryButton: {
-                text: 'Đăng ký khảo sát',
-                link: '/bao-gia/tu-van-bao-gia'
-            }
-        },
-
-        // Specific pricing pages
         '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc': {
-            title: 'Sẵn sàng bắt đầu thiết kế kiến trúc?',
-            subtitle: 'Liên hệ ngay để được tư vấn thiết kế và nhận báo giá ưu đãi',
+            title: 'Khám phá quy trình thiết kế chuyên nghiệp',
+            subtitle: 'Tìm hiểu chi tiết về quy trình và phương pháp thiết kế của chúng tôi',
             primaryButton: {
-                text: 'Đặt lịch tư vấn',
-                link: '/lien-he'
+                text: 'Xem quy trình thiết kế',
+                link: '/thiet-ke/quy-trinh-thiet-ke'
             },
             secondaryButton: {
-                text: 'Xem các gói thi công',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
-            }
-        },
-
-        '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho': {
-            title: 'Cần thi công phần thô chất lượng?',
-            subtitle: 'Đặt lịch khảo sát để nhận báo giá thi công phần thô chi tiết và chính xác nhất',
-            primaryButton: {
-                text: 'Đặt lịch khảo sát',
-                link: '/bao-gia/tu-van-bao-gia'
-            },
-            secondaryButton: {
-                text: 'Xem báo giá hoàn thiện',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien'
-            }
-        },
-
-        '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien': {
-            title: 'Hoàn thiện ngôi nhà hoàn hảo của bạn',
-            subtitle: 'Từ ốp lát, sơn tường đến nội thất - Chúng tôi mang đến không gian sống lý tưởng',
-            primaryButton: {
-                text: 'Tư vấn hoàn thiện',
-                link: '/lien-he'
-            },
-            secondaryButton: {
-                text: 'Xem gói trọn gói',
-                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+                text: 'Xem thiết kế nội thất',
+                link: '/thiet-ke/thiet-ke-noi-that'
             }
         },
 
         '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi': {
-            title: 'Gói trọn gói - Tiết kiệm thời gian & chi phí',
-            subtitle: 'Từ thiết kế đến bàn giao - Một đơn vị thực hiện, đảm bảo chất lượng thống nhất',
+            title: 'Tìm hiểu về dịch vụ thi công của chúng tôi',
+            subtitle: 'Khám phá quy trình và các hạng mục thi công chuyên nghiệp',
             primaryButton: {
-                text: 'Nhận tư vấn trọn gói',
-                link: '/bao-gia/tu-van-bao-gia'
+                text: 'Xem quy trình thi công',
+                link: '/thi-cong/quy-trinh-thi-cong'
             },
             secondaryButton: {
-                text: 'Hotline: 0941 090 333',
-                link: 'tel:0941090333'
+                text: 'Xem thi công hạng mục',
+                link: '/thi-cong/thi-cong-hang-muc'
             }
         },
 
-        // Default fallback for other routes
-        'default': {
-            title: 'Cần tư vấn về dự án xây dựng?',
-            subtitle: 'Đội ngũ chuyên gia với hơn 10 năm kinh nghiệm sẵn sàng hỗ trợ bạn',
+        '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho': {
+            title: 'Tìm hiểu về thi công phần thô',
+            subtitle: 'Xem chi tiết quy trình và kỹ thuật thi công phần thô chuyên nghiệp',
             primaryButton: {
-                text: 'Liên hệ tư vấn',
-                link: '/lien-he'
+                text: 'Xem quy trình thi công',
+                link: '/thi-cong/quy-trinh-thi-cong'
             },
             secondaryButton: {
-                text: 'Xem báo giá',
-                link: '/bao-gia'
+                text: 'Xem hạng mục thi công',
+                link: '/thi-cong/thi-cong-hang-muc'
+            }
+        },
+
+        '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien': {
+            title: 'Khám phá dịch vụ hoàn thiện',
+            subtitle: 'Tìm hiểu về các hạng mục hoàn thiện cao cấp và quy trình thi công',
+            primaryButton: {
+                text: 'Xem hạng mục hoàn thiện',
+                link: '/thi-cong/thi-cong-hang-muc'
+            },
+            secondaryButton: {
+                text: 'Xem thi công trọn gói',
+                link: '/thi-cong/thi-cong-tron-goi-kien-truc'
+            }
+        },
+
+        // TRANG BAI VIET - Dẫn đến báo giá
+        '/thiet-ke/thiet-ke-kien-truc': {
+            title: 'Sẵn sàng nhận báo giá thiết kế?',
+            subtitle: 'Liên hệ ngay để nhận báo giá chi tiết và tư vấn thiết kế miễn phí',
+            primaryButton: {
+                text: 'Xem báo giá thiết kế',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc'
+            },
+            secondaryButton: {
+                text: 'Xem báo giá tổng thể',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            }
+        },
+
+        '/thiet-ke/thiet-ke-noi-that': {
+            title: 'Cần báo giá thiết kế nội thất?',
+            subtitle: 'Nhận tư vấn và báo giá thiết kế nội thất từ đội ngũ chuyên gia',
+            primaryButton: {
+                text: 'Xem báo giá thiết kế',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc'
+            },
+            secondaryButton: {
+                text: 'Xem thi công nội thất',
+                link: '/thi-cong/thi-cong-tron-goi-noi-that'
+            }
+        },
+
+        '/thiet-ke/quy-trinh-thiet-ke': {
+            title: 'Bắt đầu dự án thiết kế ngay',
+            subtitle: 'Áp dụng quy trình thiết kế chuyên nghiệp cho dự án của bạn',
+            primaryButton: {
+                text: 'Nhận báo giá thiết kế',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc'
+            },
+            secondaryButton: {
+                text: 'Liên hệ tư vấn',
+                link: '/lien-he'
+            }
+        },
+
+        // THI CONG PAGES
+        '/thi-cong/thi-cong-tron-goi-kien-truc': {
+            title: 'Nhận báo giá thi công ngay',
+            subtitle: 'Liên hệ để nhận báo giá chi tiết cho dự án thi công trọn gói',
+            primaryButton: {
+                text: 'Xem báo giá thi công',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+            },
+            secondaryButton: {
+                text: 'Xem báo giá tổng thể',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            }
+        },
+
+        '/thi-cong/thi-cong-tron-goi-noi-that': {
+            title: 'Báo giá thi công nội thất',
+            subtitle: 'Nhận báo giá chi tiết cho dự án thi công nội thất của bạn',
+            primaryButton: {
+                text: 'Xem báo giá thi công',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+            },
+            secondaryButton: {
+                text: 'Xem hạng mục thi công',
+                link: '/thi-cong/thi-cong-hang-muc'
+            }
+        },
+
+        '/thi-cong/quy-trinh-thi-cong': {
+            title: 'Áp dụng quy trình cho dự án',
+            subtitle: 'Sử dụng quy trình thi công chuẩn cho dự án xây dựng của bạn',
+            primaryButton: {
+                text: 'Nhận báo giá thi công',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+            },
+            secondaryButton: {
+                text: 'Tư vấn miễn phí',
+                link: '/lien-he'
+            }
+        },
+
+        '/thi-cong/thi-cong-hang-muc': {
+            title: 'Báo giá theo hạng mục',
+            subtitle: 'Nhận báo giá chi tiết cho từng hạng mục thi công',
+            primaryButton: {
+                text: 'Xem báo giá chi tiết',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            },
+            secondaryButton: {
+                text: 'Xem thi công trọn gói',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+            }
+        },
+
+        '/thi-cong/sua-chua-cai-tao': {
+            title: 'Báo giá sửa chữa cải tạo',
+            subtitle: 'Nhận tư vấn và báo giá cho dự án sửa chữa cải tạo',
+            primaryButton: {
+                text: 'Xem báo giá cải tạo',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            },
+            secondaryButton: {
+                text: 'Tư vấn khảo sát',
+                link: '/lien-he'
+            }
+        },
+
+        // HANG MUC CAI TAO
+        '/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh': {
+            title: 'Báo giá cải tạo bếp - WC',
+            subtitle: 'Nhận báo giá chi tiết cho dự án cải tạo bếp và nhà vệ sinh',
+            primaryButton: {
+                text: 'Xem báo giá cải tạo',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            },
+            secondaryButton: {
+                text: 'Khảo sát miễn phí',
+                link: '/lien-he'
+            }
+        },
+
+        // HANG MUC THI CONG
+        '/thi-cong/hang-muc-thi-cong/chong-tham': {
+            title: 'Báo giá chống thấm',
+            subtitle: 'Nhận báo giá dịch vụ chống thấm chuyên nghiệp',
+            primaryButton: {
+                text: 'Xem báo giá chi tiết',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            },
+            secondaryButton: {
+                text: 'Tư vấn kỹ thuật',
+                link: '/lien-he'
+            }
+        },
+
+        // DEFAULT FALLBACK
+        'default': {
+            title: 'Bắt đầu dự án của bạn ngay hôm nay',
+            subtitle: 'Từ thiết kế đến hoàn thiện - Chúng tôi đồng hành cùng bạn tạo nên ngôi nhà mơ ước',
+            primaryButton: {
+                text: 'Nhận báo giá miễn phí',
+                link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+            },
+            secondaryButton: {
+                text: 'Tư vấn trực tiếp',
+                link: '/lien-he'
             }
         }
     };
 
-    // Get current route content with fallback logic
+    // Get current route content with intelligent fallback logic
     const getCurrentCTA = () => {
         const currentPath = location.pathname;
 
@@ -183,24 +232,77 @@ const CTAContent = () => {
             return ctaData[currentPath];
         }
 
-        // Check parent routes for nested pages
-        const pathSegments = currentPath.split('/').filter(segment => segment);
+        // Smart fallback based on path patterns
+        if (currentPath.includes('/hang-muc-cai-tao/')) {
+            return {
+                title: 'Báo giá cải tạo chuyên nghiệp',
+                subtitle: 'Nhận tư vấn và báo giá cho dự án cải tạo của bạn',
+                primaryButton: {
+                    text: 'Xem báo giá cải tạo',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+                },
+                secondaryButton: {
+                    text: 'Khảo sát miễn phí',
+                    link: '/lien-he'
+                }
+            };
+        }
 
-        // Build possible parent paths
-        for (let i = pathSegments.length; i > 0; i--) {
-            const parentPath = '/' + pathSegments.slice(0, i).join('/');
-            if (ctaData[parentPath]) {
-                return ctaData[parentPath];
-            }
+        if (currentPath.includes('/hang-muc-thi-cong/')) {
+            return {
+                title: 'Báo giá hạng mục thi công',
+                subtitle: 'Nhận báo giá chi tiết cho hạng mục thi công chuyên biệt',
+                primaryButton: {
+                    text: 'Xem báo giá chi tiết',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+                },
+                secondaryButton: {
+                    text: 'Tư vấn kỹ thuật',
+                    link: '/lien-he'
+                }
+            };
         }
 
         // Category-based fallback
-        if (currentPath.includes('/thiet-ke')) {
-            return ctaData['/thiet-ke'];
-        } else if (currentPath.includes('/thi-cong')) {
-            return ctaData['/thi-cong'];
-        } else if (currentPath.includes('/bao-gia')) {
-            return ctaData['/bao-gia'];
+        if (currentPath.startsWith('/bao-gia/')) {
+            return {
+                title: 'Tìm hiểu chi tiết về dịch vụ',
+                subtitle: 'Xem thông tin chi tiết về các dịch vụ thiết kế và thi công',
+                primaryButton: {
+                    text: 'Xem dịch vụ thiết kế',
+                    link: '/thiet-ke/thiet-ke-kien-truc'
+                },
+                secondaryButton: {
+                    text: 'Xem dịch vụ thi công',
+                    link: '/thi-cong/thi-cong-tron-goi-kien-truc'
+                }
+            };
+        } else if (currentPath.startsWith('/thiet-ke/')) {
+            return {
+                title: 'Nhận báo giá thiết kế ngay',
+                subtitle: 'Liên hệ để nhận báo giá chi tiết và tư vấn thiết kế miễn phí',
+                primaryButton: {
+                    text: 'Xem báo giá thiết kế',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc'
+                },
+                secondaryButton: {
+                    text: 'Xem báo giá tổng thể',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+                }
+            };
+        } else if (currentPath.startsWith('/thi-cong/')) {
+            return {
+                title: 'Nhận báo giá thi công ngay',
+                subtitle: 'Liên hệ để nhận báo giá chi tiết cho dự án thi công',
+                primaryButton: {
+                    text: 'Xem báo giá thi công',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi'
+                },
+                secondaryButton: {
+                    text: 'Xem báo giá tổng thể',
+                    link: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha'
+                }
+            };
         }
 
         // Final fallback
@@ -209,11 +311,12 @@ const CTAContent = () => {
 
     const currentCTA = getCurrentCTA();
 
+    // Handle button clicks with navigation
     const handleButtonClick = (link) => {
-        // Check if external link
-        if (link.startsWith('http') || link.startsWith('tel:')) {
+        if (link.startsWith('http') || link.startsWith('tel:') || link.startsWith('mailto:')) {
             window.open(link, '_blank');
         } else {
+            // Use React Router navigation or window.location
             window.location.href = link;
         }
     };
@@ -230,6 +333,7 @@ const CTAContent = () => {
                     <button
                         className="cta-btn cta-btn-primary"
                         onClick={() => handleButtonClick(currentCTA.primaryButton.link)}
+                        aria-label={currentCTA.primaryButton.text}
                     >
                         {currentCTA.primaryButton.text}
                     </button>
@@ -237,6 +341,7 @@ const CTAContent = () => {
                     <button
                         className="cta-btn cta-btn-secondary"
                         onClick={() => handleButtonClick(currentCTA.secondaryButton.link)}
+                        aria-label={currentCTA.secondaryButton.text}
                     >
                         {currentCTA.secondaryButton.text}
                     </button>

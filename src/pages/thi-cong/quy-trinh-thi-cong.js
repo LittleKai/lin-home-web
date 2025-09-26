@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import '../thiet-ke/ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const QuyTrinhThiCongPage = () => {
     const [activeStep, setActiveStep] = useState(1);
@@ -327,32 +328,7 @@ const QuyTrinhThiCongPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Bắt Đầu Dự Án Thi Công Của Bạn</h2>
-                            <p>
-                                Một <strong>quy trình thi công trọn gói</strong> chuyên nghiệp với 9 bước rõ ràng
-                                sẽ giúp khách hàng yên tâm từ khâu chuẩn bị đến khi nhận nhà. Đây là giải pháp
-                                tối ưu cho những ai muốn có một công trình bền vững, thẩm mỹ và tiết kiệm chi phí.
-                            </p>
-                            <p>
-                                Nếu bạn đang tìm kiếm đơn vị <strong>thi công xây dựng và nội thất trọn gói uy tín</strong>,
-                                hãy liên hệ với chúng tôi để được tư vấn miễn phí và nhận báo giá chi tiết ngay hôm nay.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá chi tiết
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

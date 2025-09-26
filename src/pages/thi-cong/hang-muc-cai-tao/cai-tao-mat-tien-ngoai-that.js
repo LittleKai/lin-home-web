@@ -4,6 +4,7 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const CaiTaoMatTienNgoaiThatPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -661,32 +662,7 @@ const CaiTaoMatTienNgoaiThatPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Nâng Tầm Diện Mạo Ngôi Nhà</h2>
-                            <p>
-                                <strong>Cải tạo mặt tiền & ngoại thất</strong> không chỉ giúp ngôi nhà
-                                <strong> bền đẹp hơn trước tác động của thời tiết</strong>, mà còn nâng cao
-                                giá trị và tạo phong cách riêng cho gia chủ.
-                            </p>
-                            <p>
-                                Với quy trình chuẩn kỹ thuật, vật liệu chất lượng và đội ngũ thi công chuyên nghiệp,
-                                chúng tôi mang đến giải pháp <strong>an toàn - thẩm mỹ - tiết kiệm chi phí</strong>.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn thiết kế: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-paint-brush"></i>
-                                    Xem mẫu mặt tiền
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

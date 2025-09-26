@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import '../thiet-ke/ThietKePage.css';
 import './ThiCongHangMuc.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const ThiCongHangMucPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -460,29 +461,7 @@ const ThiCongHangMucPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Liên hệ ngay</h2>
-                            <p>
-                                👉 Nếu bạn đang cần <strong>thi công trọn gói hạng mục</strong> như thạch cao, đá ốp lát,
-                                cửa composite, rèm cửa, sàn gỗ, chống thấm, hồ koi sân vườn, nhôm kính, điện thông minh,
-                                phào chỉ, điện mặt trời..., hãy liên hệ ngay LinHome để được
-                                <strong>tư vấn miễn phí - báo giá chi tiết - thi công nhanh chóng, chất lượng, bảo hành lâu dài</strong>.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá chi tiết
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

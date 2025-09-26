@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const DienMatTroiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -503,27 +504,7 @@ const DienMatTroiPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Khảo sát hệ thống điện mặt trời miễn phí</h2>
-                            <p>
-                                Liên hệ LinHome để được <strong>khảo sát miễn phí</strong> và nhận
-                                <strong>phương án lắp điện mặt trời tối ưu</strong> cho ngôi nhà của bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Tính toán công suất
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

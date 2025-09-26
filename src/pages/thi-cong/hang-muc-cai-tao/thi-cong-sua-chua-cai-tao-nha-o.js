@@ -4,6 +4,7 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const ThiCongSuaChuaCaiTaoNhaOPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -652,32 +653,7 @@ const ThiCongSuaChuaCaiTaoNhaOPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Áp Dụng Quy Trình Chuẩn Cho Dự Án Của Bạn</h2>
-                            <p>
-                                Với <strong>quy trình sửa chữa cải tạo 9 bước chi tiết</strong>, chúng tôi cam kết
-                                mang đến cho bạn một công trình <strong>an toàn - chất lượng - đúng tiến độ -
-                                trong tầm kiểm soát ngân sách</strong>.
-                            </p>
-                            <p>
-                                Đội ngũ kỹ sư và thợ lành nghề với nhiều năm kinh nghiệm sẽ đồng hành cùng bạn
-                                từ khâu khảo sát ban đầu đến khi bàn giao và bảo hành.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-file-download"></i>
-                                    Tải checklist nghiệm thu
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

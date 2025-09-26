@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import '../thiet-ke/ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const SuaChuaCaiTaoPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -492,29 +493,7 @@ const SuaChuaCaiTaoPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Bắt Đầu Dự Án Cải Tạo Của Bạn</h2>
-                            <p>
-                                <strong>Sửa chữa cải tạo nhà ở</strong> cần có quy trình chuyên nghiệp và đội ngũ
-                                có kinh nghiệm để đảm bảo an toàn, chất lượng và tiến độ. Với nhiều năm kinh nghiệm
-                                trong lĩnh vực thi công, chúng tôi cam kết mang đến cho bạn <strong>giải pháp cải tạo
-                                tối ưu - an toàn - bền vững</strong>.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá chi tiết
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

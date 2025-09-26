@@ -4,6 +4,7 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const CaiTaoPhongNguPhongKhachPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -655,29 +656,7 @@ const CaiTaoPhongNguPhongKhachPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Hoàn Thiện Không Gian Sống Lý Tưởng</h2>
-                            <p>
-                                <strong>Cải tạo phòng ngủ và phòng khách</strong> không chỉ nâng cao chất lượng cuộc sống
-                                mà còn thể hiện phong cách và cá tính riêng của gia chủ. Với quy trình chuyên nghiệp
-                                và đội ngũ thiết kế giàu kinh nghiệm, chúng tôi cam kết mang đến cho bạn
-                                <strong> không gian sống hoàn hảo - tiện nghi - thẩm mỹ</strong>.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn thiết kế: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-home"></i>
-                                    Xem mẫu thiết kế
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

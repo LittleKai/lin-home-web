@@ -411,16 +411,6 @@
     margin-top: 40px;
 }
 
-.process-timeline::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, #667eea, #764ba2);
-}
-
 .process-step {
     position: relative;
     display: flex;
@@ -660,6 +650,7 @@
 }
 
 .faq-container {
+    padding-top: 10px;
     max-width: 800px;
     margin: 40px auto 0;
 }

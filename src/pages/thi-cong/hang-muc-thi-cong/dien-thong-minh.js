@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const DienThongMinhPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -485,27 +486,7 @@ const DienThongMinhPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Tư vấn giải pháp Smarthome</h2>
-                            <p>
-                                Liên hệ LinHome để được <strong>tư vấn miễn phí giải pháp Smarthome</strong>
-                                phù hợp ngân sách và thói quen sinh hoạt của gia đình bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-home"></i>
-                                    Demo smarthome
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

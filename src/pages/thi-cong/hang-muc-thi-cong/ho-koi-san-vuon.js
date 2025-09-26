@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const HoKoiSanVuonPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -558,27 +559,7 @@ const HoKoiSanVuonPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Tư vấn thiết kế hồ koi miễn phí</h2>
-                            <p>
-                                Liên hệ LinHome để được <strong>khảo sát và tư vấn thiết kế hồ koi</strong>
-                                phù hợp với không gian sân vườn và ngân sách của bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-fish"></i>
-                                    Xem mẫu hồ koi
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import '../thiet-ke/ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const ThiCongTronGoiKienTrucPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -398,31 +399,7 @@ const ThiCongTronGoiKienTrucPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Liên Hệ Ngay Để Bắt Đầu Dự Án</h2>
-                            <p>
-                                Nếu bạn cần <strong>thi công trọn gói kiến trúc chuyên nghiệp, uy tín</strong>,
-                                hãy liên hệ ngay với LIN HOME để được <strong>tư vấn miễn phí & báo giá chi tiết</strong>.
-                            </p>
-                            <p>
-                                Với hơn 5 năm kinh nghiệm và đội ngũ chuyên gia giàu chuyên môn, chúng tôi cam kết
-                                mang đến cho bạn một công trình chất lượng, đúng tiến độ và trong tầm ngân sách.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá chi tiết
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

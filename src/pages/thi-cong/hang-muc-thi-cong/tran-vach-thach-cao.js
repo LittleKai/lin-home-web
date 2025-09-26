@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const TranVachThachCaoPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -369,27 +370,7 @@ const TranVachThachCaoPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Liên hệ LinHome để khảo sát miễn phí</h2>
-                            <p>
-                                Nhận báo giá thi công trần/vách thạch cao chi tiết và tư vấn chuyên nghiệp từ đội ngũ
-                                kỹ thuật giàu kinh nghiệm của chúng tôi.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Gọi ngay: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá miễn phí
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

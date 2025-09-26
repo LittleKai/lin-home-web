@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const DaOpLatPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -497,27 +498,7 @@ const DaOpLatPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Nhận tư vấn chất liệu đá và báo giá</h2>
-                            <p>
-                                Liên hệ ngay LinHome để được tư vấn chọn loại đá phù hợp và
-                                nhận <strong>báo giá thi công chuyên nghiệp, minh bạch</strong>.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Gọi tư vấn: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-gem"></i>
-                                    Xem catalog đá
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

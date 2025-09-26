@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const PhaoChiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -505,27 +506,7 @@ const PhaoChiPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Nhận báo giá phào chỉ trang trí</h2>
-                            <p>
-                                Liên hệ LinHome để được <strong>tư vấn mẫu phào chỉ và báo giá</strong>
-                                phù hợp với phong cách và ngân sách của căn nhà bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-images"></i>
-                                    Xem mẫu phào chỉ
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

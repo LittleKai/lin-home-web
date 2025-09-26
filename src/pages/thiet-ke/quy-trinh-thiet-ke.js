@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import './ThietKePage.css';
+import CTAContent from '../../components/CTAContent/CTAContent';
 
 const QuyTrinhThietKePage = () => {
     // Process steps data
@@ -250,27 +251,7 @@ const QuyTrinhThietKePage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Bắt Đầu Dự Án Thiết Kế Của Bạn</h2>
-                            <p>
-                                Một quy trình thiết kế nội thất trọn gói chuyên nghiệp với 8 bước rõ ràng
-                                sẽ giúp khách hàng yên tâm từ khâu ý tưởng đến hồ sơ hoàn thiện.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn miễn phí
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá chi tiết
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

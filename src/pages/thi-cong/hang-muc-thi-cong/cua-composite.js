@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const CuaCompositePage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -480,27 +481,7 @@ const CuaCompositePage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Nhận tư vấn mẫu cửa composite</h2>
-                            <p>
-                                Liên hệ LinHome để được tư vấn <strong>mẫu cửa composite phù hợp</strong> với
-                                công năng sử dụng và ngân sách của bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-door-open"></i>
-                                    Xem catalog cửa
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

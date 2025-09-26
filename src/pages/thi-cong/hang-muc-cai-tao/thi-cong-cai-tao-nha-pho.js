@@ -4,6 +4,7 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const ThiCongCaiTaoNhaPhoPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -567,33 +568,7 @@ const ThiCongCaiTaoNhaPhoPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Cải Tạo Nhà Phố Chuyên Nghiệp</h2>
-                            <p>
-                                <strong>Cải tạo nhà phố</strong> là giải pháp lý tưởng để tối ưu không gian sống,
-                                nâng cao chất lượng cuộc sống và tăng giá trị bất động sản. Tuy nhiên, đây là
-                                hạng mục có tính kỹ thuật cao, cần <strong>đội ngũ chuyên môn và kinh nghiệm thực tế</strong>.
-                            </p>
-                            <p>
-                                Với đội ngũ kỹ sư kết cấu, kiến trúc sư và thợ lành nghề, chúng tôi cam kết
-                                mang đến cho bạn <strong>giải pháp cải tạo nhà phố an toàn - đẹp - tiết kiệm</strong>,
-                                cùng chính sách bảo hành rõ ràng.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Tư vấn cải tạo: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-home"></i>
-                                    Xem dự án mẫu
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />

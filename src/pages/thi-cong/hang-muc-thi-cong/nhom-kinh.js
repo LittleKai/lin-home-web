@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const NhomKinhPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -512,27 +513,7 @@ const NhomKinhPage = () => {
                 </section>
 
                 {/* CTA Section */}
-                <section className="cta-section">
-                    <div className="container">
-                        <div className="cta-content">
-                            <h2>Gọi LinHome để nhận phương án nhôm kính tối ưu</h2>
-                            <p>
-                                Chúng tôi tư vấn giải pháp nhôm kính <strong>tối ưu về thẩm mỹ & kỹ thuật</strong>,
-                                phù hợp với công năng sử dụng và ngân sách của bạn.
-                            </p>
-                            <div className="cta-buttons">
-                                <button className="btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Hotline: 0941 090 333
-                                </button>
-                                <button className="btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Báo giá nhôm kính
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <CTAContent />
             </main>
 
             <Footer />
