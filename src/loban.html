@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thước Lỗ Ban Trực Tuyến</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 30px;
+    }
+
+    .instruction {
+      background: #f8f9fa;
+      border-left: 4px solid #ff6b6b;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 0 10px 10px 0;
+    }
+
+    .instruction h3 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .instruction ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .instruction li {
+      margin: 8px 0;
+      padding: 5px 0;
+      font-size: 1.1rem;
+    }
+
+    .good { color: #e74c3c; font-weight: bold; }
+    .bad { color: #2c3e50; font-weight: bold; }
+
+    .input-section {
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #2c3e50;
+      font-size: 1.1rem;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      border-color: #ff6b6b;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    }
+
+    .ruler-type {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .ruler-option {
+      position: relative;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ruler-option:hover {
+      border-color: #ff6b6b;
+      transform: translateY(-2px);
+    }
+
+    .ruler-option.active {
+      border-color: #ff6b6b;
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+    }
+
+    .ruler-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .ruler-option h4 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .ruler-option p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .result-section {
+      background: #f8f9fa;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 20px;
+      border: 2px solid #e9ecef;
+    }
+
+    .result-section.good-result {
+      background: linear-gradient(135deg, #00b894, #00a085);
+      color: white;
+      border-color: #00b894;
+    }
+
+    .result-section.bad-result {
+      background: linear-gradient(135deg, #636e72, #2d3436);
+      color: white;
+      border-color: #636e72;
+    }
+
+    .result-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .measurement-display {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .ruler-visual {
+      margin: 20px 0;
+      height: 60px;
+      background: linear-gradient(to right, #ddd, #ccc);
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ruler-segments {
+      display: flex;
+      height: 100%;
+    }
+
+    .segment {
+      flex: 1;
+      border-right: 1px solid #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .segment.good {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+    }
+
+    .segment.bad {
+      background: linear-gradient(135deg, #34495e, #2c3e50);
+    }
+
+    .segment:last-child {
+      border-right: none;
+    }
+
+    .marker {
+      position: absolute;
+      top: -10px;
+      width: 3px;
+      height: 80px;
+      background: #f39c12;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .marker::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -4px;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid #f39c12;
+    }
+
+    .explanation {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+    }
+
+    .btn-calculate {
+      background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .ruler-type {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🏠 Thước Lỗ Ban</h1>
+    <p>Ứng dụng xem thước phong thủy trực tuyến</p>
+  </div>
+
+  <div class="content">
+    <div class="instruction">
+      <h3>📋 Hướng dẫn sử dụng</h3>
+      <ul>
+        <li><span class="good">Màu đỏ là tốt</span> - <span class="bad">Màu đen là không tốt</span></li>
+        <li><strong>Thước 52.2cm (Thông Thủy):</strong> Dùng cho cửa ra vào, cửa sổ</li>
+        <li><strong>Thước 42.9cm (Dương Trạch):</strong> Dùng cho khối xây dựng (bếp, bệ, bậc thang)</li>
+        <li><strong>Thước 38.8cm (Âm Phần):</strong> Dùng cho đồ nội thất (bàn thờ, tủ, giường)</li>
+      </ul>
+    </div>
+
+    <div class="input-section">
+      <div class="input-group">
+        <label for="measurement">Nhập kích thước cần đo (cm):</label>
+        <input type="number" id="measurement" placeholder="Ví dụ: 120" step="0.1" min="0">
+      </div>
+
+      <div class="input-group">
+        <label>Chọn loại thước Lỗ Ban:</label>
+        <div class="ruler-type">
+          <div class="ruler-option active" onclick="selectRuler(this, 52.2)">
+            <input type="radio" name="ruler" value="52.2" checked>
+            <h4>🚪 Thông Thủy</h4>
+            <p>52.2cm - Cửa ra vào, cửa sổ</p>
+          </div>
+          <div class="ruler-option" onclick="selectRuler(this, 42.9)">
+            <input type="radio" name="ruler" value="42.9">
+            <h4>🏗️ Dương Trạch</h4>
+            <p>42.9cm - Khối xây dựng</p>
+          </div>
+          <div class="ruler-option" onclick="selectRuler(this, 38.8)">
+            <input type="radio" name="ruler" value="38.8">
+            <h4>🪑 Âm Phần</h4>
+            <p>38.8cm - Đồ nội thất</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-calculate" onclick="calculate()">🔍 Xem Kết Quả</button>
+    </div>
+
+    <div id="result" class="result-section" style="display: none;">
+      <h3 id="result-title">Kết quả</h3>
+      <div class="measurement-display" id="measurement-display"></div>
+      <div class="ruler-visual" id="ruler-visual"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let selectedRulerLength = 52.2;
+
+  // Định nghĩa các đoạn thước Lỗ Ban theo truyền thống
+  const rulerSegments = {
+    52.2: [
+      { name: "Tài", type: "good", percentage: 12.5 },
+      { name: "Bệnh", type: "bad", percentage: 12.5 },
+      { name: "Ly", type: "bad", percentage: 12.5 },
+      { name: "Nghĩa", type: "good", percentage: 12.5 },
+      { name: "Quan", type: "good", percentage: 12.5 },
+      { name: "Kiếp", type: "bad", percentage: 12.5 },
+      { name: "Hại", type: "bad", percentage: 12.5 },
+      { name: "Bản", type: "good", percentage: 12.5 }
+    ],
+    42.9: [
+      { name: "Đế", type: "good", percentage: 12.5 },
+      { name: "Tử", type: "bad", percentage: 12.5 },
+      { name: "Thiên", type: "good", percentage: 12.5 },
+      { name: "Phúc", type: "good", percentage: 12.5 },
+      { name: "Đức", type: "good", percentage: 12.5 },
+      { name: "Văn", type: "bad", percentage: 12.5 },
+      { name: "Võ", type: "bad", percentage: 12.5 },
+      { name: "Phá", type: "bad", percentage: 12.5 }
+    ],
+    38.8: [
+      { name: "Đinh", type: "good", percentage: 12.5 },
+      { name: "Hại", type: "bad", percentage: 12.5 },
+      { name: "Vượng", type: "good", percentage: 12.5 },
+      { name: "Khổ", type: "bad", percentage: 12.5 },
+      { name: "Nghĩa", type: "good", percentage: 12.5 },
+      { name: "Quan", type: "good", percentage: 12.5 },
+      { name: "Kiếp", type: "bad", percentage: 12.5 },
+      { name: "Tài", type: "good", percentage: 12.5 }
+    ]
+  };
+
+  const meanings = {
+    // Thước 52.2cm
+    "Tài": "Tiền tài, phú quý, thịnh vượng",
+    "Bệnh": "Bệnh tật, yếu đuối",
+    "Ly": "Chia ly, tan vỡ",
+    "Nghĩa": "Nhân nghĩa, đạo đức",
+    "Quan": "Quan lộc, thăng tiến",
+    "Kiếp": "Kiếp nạn, tai họa",
+    "Hại": "Tổn hại, bất lợi",
+    "Bản": "Gốc gác, căn bản tốt",
+
+    // Thước 42.9cm
+    "Đế": "Đế vương, quyền lực",
+    "Tử": "Tử vong, hung hiểm",
+    "Thiên": "Thiên đường, may mắn",
+    "Phúc": "Phúc lộc, hạnh phúc",
+    "Đức": "Đức hạnh, tốt lành",
+    "Văn": "Văn chương nhưng không tốt",
+    "Võ": "Võ công nhưng không tốt",
+    "Phá": "Phá hoại, đổ vỡ",
+
+    // Thước 38.8cm
+    "Đinh": "Đinh thịnh, phát đạt",
+    "Vượng": "Hưng vượng, phồn vinh"
+  };
+
+  function selectRuler(element, length) {
+    // Remove active class from all options
+    document.querySelectorAll('.ruler-option').forEach(option => {
+      option.classList.remove('active');
+    });
+
+    // Add active class to selected option
+    element.classList.add('active');
+    element.querySelector('input[type="radio"]').checked = true;
+    selectedRulerLength = length;
+  }
+
+  function calculate() {
+    const measurement = parseFloat(document.getElementById('measurement').value);
+
+    if (!measurement || measurement <= 0) {
+      alert('Vui lòng nhập kích thước hợp lệ!');
+      return;
+    }
+
+    // Tính toán vị trí trên thước
+    const position = measurement % selectedRulerLength;
+    const cycles = Math.floor(measurement / selectedRulerLength);
+
+    // Xác định đoạn thước
+    const segments = rulerSegments[selectedRulerLength];
+    let cumulativeLength = 0;
+    let currentSegment = null;
+
+    for (let segment of segments) {
+      const segmentLength = (selectedRulerLength * segment.percentage) / 100;
+      if (position <= cumulativeLength + segmentLength) {
+        currentSegment = segment;
+        break;
+      }
+      cumulativeLength += segmentLength;
+    }
+
+    // Hiển thị kết quả
+    displayResult(measurement, position, cycles, currentSegment);
+  }
+
+  function displayResult(measurement, position, cycles, segment) {
+    const resultDiv = document.getElementById('result');
+    const titleDiv = document.getElementById('result-title');
+    const displayDiv = document.getElementById('measurement-display');
+    const visualDiv = document.getElementById('ruler-visual');
+    const explanationDiv = document.getElementById('explanation');
+
+    resultDiv.style.display = 'block';
+
+    // Thiết lập tiêu đề và màu sắc
+    if (segment.type === 'good') {
+      resultDiv.className = 'result-section good-result';
+      titleDiv.textContent = '✅ Kết Quả Tốt';
+    } else {
+      resultDiv.className = 'result-section bad-result';
+      titleDiv.textContent = '❌ Kết Quả Không Tốt';
+    }
+
+    displayDiv.textContent = `${measurement} cm`;
+
+    // Tạo thước visual
+    createRulerVisual(visualDiv, position, segment);
+
+    // Tạo giải thích
+    const meaning = meanings[segment.name] || "Không có thông tin";
+    explanationDiv.innerHTML = `
+                <h4>🔍 Chi tiết:</h4>
+                <p><strong>Vị trí:</strong> ${segment.name} (${segment.type === 'good' ? 'Tốt' : 'Không tốt'})</p>
+                <p><strong>Ý nghĩa:</strong> ${meaning}</p>
+                <p><strong>Thước sử dụng:</strong> ${selectedRulerLength}cm</p>
+                <p><strong>Số chu kỳ:</strong> ${Math.floor(measurement / selectedRulerLength)} chu kỳ + ${position.toFixed(1)}cm</p>
+            `;
+
+    // Cuộn đến kết quả
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function createRulerVisual(container, position, currentSegment) {
+    const segments = rulerSegments[selectedRulerLength];
+    let html = '<div class="ruler-segments">';
+
+    let cumulativeLength = 0;
+    for (let segment of segments) {
+      const segmentLength = (selectedRulerLength * segment.percentage) / 100;
+      const isCurrentSegment = segment.name === currentSegment.name;
+
+      html += `<div class="segment ${segment.type} ${isCurrentSegment ? 'current' : ''}"
+                              title="${segment.name}: ${meanings[segment.name] || ''}"
+                              style="opacity: ${isCurrentSegment ? '1' : '0.7'}">
+                              ${segment.name}
+                         </div>`;
+
+      cumulativeLength += segmentLength;
+    }
+
+    html += '</div>';
+
+    // Thêm marker vị trí
+    const markerPosition = (position / selectedRulerLength) * 100;
+    html += `<div class="marker" style="left: ${markerPosition}%"></div>`;
+
+    container.innerHTML = html;
+  }
+
+  // Tự động tính toán khi nhập
+  document.getElementById('measurement').addEventListener('input', function() {
+    const value = this.value;
+    if (value && parseFloat(value) > 0) {
+      calculate();
+    } else {
+      document.getElementById('result').style.display = 'none';
+    }
+  });
+
+  // Tính toán ban đầu với giá trị mẫu
+  document.getElementById('measurement').value = 120;
+  calculate();
+</script>
+</body>
+</html>
