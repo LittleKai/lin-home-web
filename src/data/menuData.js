@@ -182,16 +182,13 @@ export const menuData = {
     ],
     'Ứng dụng': [
         {
-            title: 'Ứng dụng Tính chi phí xây dựng',
-            href: '/ung-dung/tinh-chi-phi-xay-dung'
+            title: 'Ứng dụng xem Thước lỗ ban trực tuyến',
+            href: '/ung-dung/thuoc-lo-ban'
         },
+
         {
             title: 'Ứng dụng xem Tuổi làm nhà',
             href: '/ung-dung/xem-tuoi-lam-nha'
-        },
-        {
-            title: 'Ứng dụng xem Thước lỗ ban trực tuyến',
-            href: '/ung-dung/thuoc-lo-ban'
         },
         {
             title: 'Ứng dụng xem Hướng nhà hợp tuổi',
@@ -200,7 +197,11 @@ export const menuData = {
         {
             title: 'Ứng dụng xem Màu hợp tuổi',
             href: '/ung-dung/mau-hop-tuoi'
-        }
+        },
+        {
+            title: 'Ứng dụng Tính chi phí xây dựng',
+            href: '/ung-dung/tinh-chi-phi-xay-dung'
+        },
     ],
     'Dự án': [
         {

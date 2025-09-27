@@ -19,7 +19,6 @@ const XemTuoiLamNhaPage = () => {
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState('');
     const [activeFaq, setActiveFaq] = useState(null);
-    const resultRef = useRef(null);
 
     const months = Array.from({ length: 12 }, (_, i) => ({
         value: String(i + 1),
@@ -32,12 +31,12 @@ const XemTuoiLamNhaPage = () => {
     }));
 
     const constructionTypes = [
-        { value: 'nha_o', label: 'Nhà ở' },
-        { value: 'biet_thu', label: 'Biệt thự' },
-        { value: 'van_phong', label: 'Văn phòng' },
-        { value: 'cua_hang', label: 'Cửa hàng' },
-        { value: 'nha_xuong', label: 'Nhà xưởng' },
-        { value: 'nha_tho', label: 'Nhà thờ họ' }
+        { value: 'nha_o', label: '🏠 Nhà ở', icon: '🏠' },
+        { value: 'biet_thu', label: '🏛️ Biệt thự', icon: '🏛️' },
+        { value: 'van_phong', label: '🏢 Văn phòng', icon: '🏢' },
+        { value: 'cua_hang', label: '🏪 Cửa hàng', icon: '🏪' },
+        { value: 'nha_xuong', label: '🏭 Nhà xưởng', icon: '🏭' },
+        { value: 'nha_tho', label: '⛩️ Nhà thờ họ', icon: '⛩️' }
     ];
 
     const faqData = [
@@ -99,7 +98,7 @@ const XemTuoiLamNhaPage = () => {
             if (response.success) {
                 setResult(response.data);
                 setTimeout(() => {
-                    resultRef.current?.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelector('#result-section')?.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
             } else {
                 setResult(response.error || 'Đã xảy ra lỗi khi tư vấn. Vui lòng thử lại sau.');
@@ -117,116 +116,214 @@ const XemTuoiLamNhaPage = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
+        <>
             <Header />
-
-            {/* Main content with original styling */}
-            <div style={{ marginTop: '80px', padding: '40px 0' }}>
-                <div className="container">
-                    {/* Hero Section */}
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h1 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '700',
-                            background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            marginBottom: '1rem'
-                        }}>
-                            Xem Tuổi Làm Nhà Phong Thủy
-                        </h1>
-                        <p style={{
-                            fontSize: '1.2rem',
-                            color: '#64748b',
-                            maxWidth: '600px',
-                            margin: '0 auto',
-                            lineHeight: '1.6'
-                        }}>
-                            Tư vấn chuyên sâu về thời điểm tốt nhất để khởi công xây dựng,
-                            phân tích Tam Tai, Kim Lâu, Hoang Ốc và đưa ra lời khuyên phong thủy chính xác
-                        </p>
-                    </div>
-
-                    {/* Form Section */}
-                    <div style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        background: 'white',
-                        borderRadius: '20px',
-                        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-                        padding: '2.5rem',
-                        marginBottom: '3rem'
-                    }}>
-                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                            <h2 style={{
-                                fontSize: '1.8rem',
-                                fontWeight: '600',
-                                color: '#2d3748',
+            <main style={{ marginTop: '80px', minHeight: 'calc(100vh - 80px)' }}>
+                {/* Hero Section */}
+                <section className="section section-gradient">
+                    <div className="container">
+                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                            <div style={{
+                                fontSize: '3rem',
                                 marginBottom: '0.5rem'
+                            }}>🏠✨</div>
+                            <h1 style={{
+                                color: '#2d3748',
+                                fontSize: '2rem',
+                                fontWeight: '700',
+                                margin: '0 0 0.5rem 0',
+                                lineHeight: '1.2'
                             }}>
-                                Thông Tin Tư Vấn
-                            </h2>
-                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
-                                Vui lòng cung cấp thông tin chính xác để nhận được kết quả tư vấn tốt nhất
+                                <i className="fas fa-calendar-alt" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                Xem Tuổi Làm Nhà
+                            </h1>
+                            <p style={{
+                                color: '#4a5568',
+                                fontSize: '1rem',
+                                margin: '0',
+                                lineHeight: '1.4'
+                            }}>
+                                Tra cứu tuổi phong thủy để chọn thời điểm tốt nhất xây dựng, cải tạo nhà ở
                             </p>
                         </div>
 
-                        <form onSubmit={handleSubmit}>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-                                {/* Năm sinh */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
+                        {/* Enhanced Form */}
+                        <div style={{
+                            maxWidth: '800px',
+                            margin: '0 auto',
+                            background: 'white',
+                            padding: '2.5rem',
+                            borderRadius: '20px',
+                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+                            border: '2px solid #f0f9ff'
+                        }}>
+                            <div style={{
+                                textAlign: 'center',
+                                marginBottom: '1.5rem',
+                                padding: '0.8rem',
+                                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                                borderRadius: '12px',
+                                color: 'white'
+                            }}>
+                                <i className="fas fa-user-clock" style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}></i>
+                                <h3 style={{ margin: '0', fontSize: '1.1rem', color: 'white' }}>Nhập thông tin của bạn</h3>
+                            </div>
+
+                            <form onSubmit={handleSubmit}>
+                                {/* Birth Date Section - Same Row */}
+                                <div style={{
+                                    marginBottom: '1.5rem',
+                                    padding: '1.2rem',
+                                    background: 'linear-gradient(135deg, #f0fdf4, #dcfce7)',
+                                    borderRadius: '12px',
+                                    border: '2px solid #22c55e'
+                                }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        marginBottom: '0.8rem',
+                                        color: '#15803d'
                                     }}>
-                                        Năm sinh *
-                                    </label>
-                                    <input
-                                        type="number"
-                                        name="namSinh"
-                                        value={formData.namSinh}
-                                        onChange={handleInputChange}
-                                        placeholder="VD: 1990"
-                                        required
-                                        min="1900"
-                                        max="2024"
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            transition: 'border-color 0.3s ease'
-                                        }}
-                                        onFocus={(e) => e.target.style.borderColor = '#667eea'}
-                                        onBlur={(e) => e.target.style.borderColor = '#e2e8f0'}
-                                    />
+                                        <i className="fas fa-birthday-cake" style={{ fontSize: '1rem', marginRight: '0.5rem' }}></i>
+                                        <span style={{ fontWeight: '600', fontSize: '1rem' }}>Thông tin ngày sinh</span>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: '1fr 1fr 1fr',
+                                        gap: '1rem'
+                                    }}>
+                                        <div>
+                                            <label style={{
+                                                display: 'block',
+                                                marginBottom: '0.5rem',
+                                                fontWeight: '600',
+                                                color: '#2d3748'
+                                            }}>
+                                                <i className="fas fa-calendar-day" style={{ marginRight: '0.25rem', color: '#667eea' }}></i>
+                                                Ngày
+                                            </label>
+                                            <select
+                                                name="ngaySinh"
+                                                value={formData.ngaySinh}
+                                                onChange={handleInputChange}
+                                                style={{
+                                                    width: '100%',
+                                                    padding: '0.75rem',
+                                                    border: '2px solid #e2e8f0',
+                                                    borderRadius: '8px',
+                                                    fontSize: '1rem',
+                                                    outline: 'none',
+                                                    background: 'white',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                {days.map(day => (
+                                                    <option key={day.value} value={day.value}>
+                                                        {day.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label style={{
+                                                display: 'block',
+                                                marginBottom: '0.5rem',
+                                                fontWeight: '600',
+                                                color: '#2d3748'
+                                            }}>
+                                                <i className="fas fa-calendar" style={{ marginRight: '0.25rem', color: '#667eea' }}></i>
+                                                Tháng
+                                            </label>
+                                            <select
+                                                name="thangSinh"
+                                                value={formData.thangSinh}
+                                                onChange={handleInputChange}
+                                                style={{
+                                                    width: '100%',
+                                                    padding: '0.75rem',
+                                                    border: '2px solid #e2e8f0',
+                                                    borderRadius: '8px',
+                                                    fontSize: '1rem',
+                                                    outline: 'none',
+                                                    background: 'white',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                {months.map(month => (
+                                                    <option key={month.value} value={month.value}>
+                                                        {month.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label style={{
+                                                display: 'block',
+                                                marginBottom: '0.5rem',
+                                                fontWeight: '600',
+                                                color: '#2d3748'
+                                            }}>
+                                                <i className="fas fa-calendar-alt" style={{ marginRight: '0.25rem', color: '#667eea' }}></i>
+                                                Năm <span style={{ color: '#dc2626' }}>*</span>
+                                            </label>
+                                            <input
+                                                type="number"
+                                                name="namSinh"
+                                                value={formData.namSinh}
+                                                onChange={handleInputChange}
+                                                placeholder="Ví dụ: 1990"
+                                                min="1900"
+                                                max="2025"
+                                                required
+                                                style={{
+                                                    width: '100%',
+                                                    padding: '0.75rem',
+                                                    border: '2px solid #e2e8f0',
+                                                    borderRadius: '8px',
+                                                    fontSize: '1rem',
+                                                    outline: 'none',
+                                                    background: 'white'
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
 
-                                {/* Giới tính */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
+                                {/* Gender Section - Second Row */}
+                                <div style={{
+                                    marginBottom: '1.5rem',
+                                    padding: '1.2rem',
+                                    background: 'linear-gradient(135deg, #f0f9ff, #e0f2fe)',
+                                    borderRadius: '12px',
+                                    border: '2px solid #0ea5e9'
+                                }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        marginBottom: '0.8rem',
+                                        color: '#0284c7'
                                     }}>
-                                        Giới tính
-                                    </label>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                        <i className="fas fa-venus-mars" style={{ fontSize: '1rem', marginRight: '0.5rem' }}></i>
+                                        <span style={{ fontWeight: '600', fontSize: '1rem' }}>Giới tính</span>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: '1fr 1fr',
+                                        gap: '1rem'
+                                    }}>
                                         <label style={{
                                             display: 'flex',
                                             alignItems: 'center',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
+                                            padding: '1rem',
+                                            border: `2px solid ${formData.gioiTinh === 'nam' ? '#3b82f6' : '#e2e8f0'}`,
                                             borderRadius: '8px',
                                             cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            background: formData.gioiTinh === 'nam' ? '#667eea' : 'white',
-                                            color: formData.gioiTinh === 'nam' ? 'white' : '#4a5568'
+                                            background: formData.gioiTinh === 'nam' ? '#eff6ff' : 'white',
+                                            transition: 'all 0.3s ease'
                                         }}>
                                             <input
                                                 type="radio"
@@ -234,22 +331,21 @@ const XemTuoiLamNhaPage = () => {
                                                 value="nam"
                                                 checked={formData.gioiTinh === 'nam'}
                                                 onChange={handleInputChange}
-                                                style={{ display: 'none' }}
+                                                style={{ marginRight: '0.5rem' }}
                                             />
-                                            <i className="fas fa-mars" style={{ marginRight: '0.5rem' }}></i>
+                                            <i className="fas fa-mars" style={{ marginRight: '0.5rem', color: '#3b82f6' }}></i>
                                             Nam
                                         </label>
 
                                         <label style={{
                                             display: 'flex',
                                             alignItems: 'center',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
+                                            padding: '1rem',
+                                            border: `2px solid ${formData.gioiTinh === 'nu' ? '#ec4899' : '#e2e8f0'}`,
                                             borderRadius: '8px',
                                             cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            background: formData.gioiTinh === 'nu' ? '#667eea' : 'white',
-                                            color: formData.gioiTinh === 'nu' ? 'white' : '#4a5568'
+                                            background: formData.gioiTinh === 'nu' ? '#fdf2f8' : 'white',
+                                            transition: 'all 0.3s ease'
                                         }}>
                                             <input
                                                 type="radio"
@@ -257,99 +353,35 @@ const XemTuoiLamNhaPage = () => {
                                                 value="nu"
                                                 checked={formData.gioiTinh === 'nu'}
                                                 onChange={handleInputChange}
-                                                style={{ display: 'none' }}
+                                                style={{ marginRight: '0.5rem' }}
                                             />
-                                            <i className="fas fa-venus" style={{ marginRight: '0.5rem' }}></i>
+                                            <i className="fas fa-venus" style={{ marginRight: '0.5rem', color: '#ec4899' }}></i>
                                             Nữ
                                         </label>
                                     </div>
                                 </div>
 
-                                {/* Tháng sinh */}
+                                {/* Construction Year */}
                                 <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
                                         marginBottom: '0.5rem',
                                         fontWeight: '600',
-                                        color: '#2d3748'
+                                        color: '#2d3748',
+                                        fontSize: '0.9rem'
                                     }}>
-                                        Tháng sinh
-                                    </label>
-                                    <select
-                                        name="thangSinh"
-                                        value={formData.thangSinh}
-                                        onChange={handleInputChange}
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            background: 'white',
-                                            cursor: 'pointer'
-                                        }}
-                                    >
-                                        {months.map(month => (
-                                            <option key={month.value} value={month.value}>
-                                                {month.label}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                {/* Ngày sinh */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
-                                    }}>
-                                        Ngày sinh
-                                    </label>
-                                    <select
-                                        name="ngaySinh"
-                                        value={formData.ngaySinh}
-                                        onChange={handleInputChange}
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            background: 'white',
-                                            cursor: 'pointer'
-                                        }}
-                                    >
-                                        {days.map(day => (
-                                            <option key={day.value} value={day.value}>
-                                                {day.label}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                {/* Năm làm nhà */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
-                                    }}>
-                                        Năm dự định làm nhà *
+                                        <i className="fas fa-hammer" style={{ marginRight: '0.5rem', color: '#f59e0b' }}></i>
+                                        Năm dự định làm nhà <span style={{ color: '#dc2626' }}>*</span>
                                     </label>
                                     <input
                                         type="number"
                                         name="namLamNha"
                                         value={formData.namLamNha}
                                         onChange={handleInputChange}
-                                        placeholder="VD: 2025"
+                                        placeholder="Ví dụ: 2024"
+                                        min="2024"
+                                        max="2030"
                                         required
-                                        min={new Date().getFullYear()}
-                                        max={new Date().getFullYear() + 10}
                                         style={{
                                             width: '100%',
                                             padding: '0.75rem',
@@ -357,21 +389,21 @@ const XemTuoiLamNhaPage = () => {
                                             borderRadius: '8px',
                                             fontSize: '1rem',
                                             outline: 'none',
-                                            transition: 'border-color 0.3s ease'
+                                            background: 'white'
                                         }}
-                                        onFocus={(e) => e.target.style.borderColor = '#667eea'}
-                                        onBlur={(e) => e.target.style.borderColor = '#e2e8f0'}
                                     />
                                 </div>
 
-                                {/* Loại công trình */}
-                                <div style={{ marginBottom: '2rem' }}>
+                                {/* Construction Type */}
+                                <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
                                         marginBottom: '0.5rem',
                                         fontWeight: '600',
-                                        color: '#2d3748'
+                                        color: '#2d3748',
+                                        fontSize: '0.9rem'
                                     }}>
+                                        <i className="fas fa-building" style={{ marginRight: '0.5rem', color: '#10b981' }}></i>
                                         Loại công trình
                                     </label>
                                     <select
@@ -396,186 +428,123 @@ const XemTuoiLamNhaPage = () => {
                                         ))}
                                     </select>
                                 </div>
-                            </div>
 
-                            {/* Submit Button */}
-                            <div style={{ textAlign: 'center' }}>
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    style={{
-                                        background: loading ? '#94a3b8' : 'linear-gradient(135deg, #667eea, #764ba2)',
-                                        color: 'white',
-                                        padding: '1rem 2rem',
-                                        border: 'none',
-                                        borderRadius: '12px',
-                                        fontSize: '1.1rem',
-                                        fontWeight: '600',
-                                        cursor: loading ? 'not-allowed' : 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        gap: '0.5rem',
-                                        margin: '0 auto',
-                                        minWidth: '200px'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        if (!loading) {
-                                            e.target.style.transform = 'translateY(-2px)';
-                                            e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
-                                        }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!loading) {
-                                            e.target.style.transform = 'translateY(0)';
-                                            e.target.style.boxShadow = 'none';
-                                        }
-                                    }}
-                                >
-                                    {loading ? (
-                                        <>
-                                            <i className="fas fa-spinner fa-spin"></i>
-                                            Đang phân tích...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <i className="fas fa-search"></i>
-                                            Xem Tuổi Làm Nhà
-                                        </>
-                                    )}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                    {/* Result Section */}
-                    {result && (
-                        <div ref={resultRef} style={{
-                            maxWidth: '900px',
-                            margin: '0 auto 3rem auto',
-                            background: 'white',
-                            borderRadius: '20px',
-                            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-                            overflow: 'hidden'
-                        }}>
-                            <div style={{
-                                background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                                color: 'white',
-                                padding: '1.5rem 2rem',
-                                textAlign: 'center'
-                            }}>
-                                <h3 style={{
-                                    margin: 0,
-                                    fontSize: '1.5rem',
-                                    fontWeight: '600'
-                                }}>
-                                    🔮 Kết Quả Tư Vấn Phong Thủy
-                                </h3>
-                                <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
-                                    Phân tích chi tiết dựa trên thông tin bạn cung cấp
-                                </p>
-                            </div>
-                            <div style={{
-                                padding: '2rem',
-                                lineHeight: '1.8',
-                                color: '#2d3748'
-                            }}>
-                                <div
-                                    style={{
-                                        whiteSpace: 'pre-line',
-                                        fontSize: '1rem'
-                                    }}
-                                    dangerouslySetInnerHTML={{
-                                        __html: result.replace(/\n/g, '<br>')
-                                    }}
-                                />
-                            </div>
+                                {/* Submit Button */}
+                                <div style={{ textAlign: 'center' }}>
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        style={{
+                                            background: loading ? '#94a3b8' : 'linear-gradient(135deg, #667eea, #764ba2)',
+                                            color: 'white',
+                                            padding: '1rem 2rem',
+                                            border: 'none',
+                                            borderRadius: '12px',
+                                            fontSize: '1.1rem',
+                                            fontWeight: '600',
+                                            cursor: loading ? 'not-allowed' : 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            margin: '0 auto'
+                                        }}
+                                    >
+                                        {loading ? (
+                                            <>
+                                                <i className="fas fa-spinner fa-spin"></i>
+                                                Đang xem tuổi...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <i className="fas fa-search"></i>
+                                                Xem tuổi làm nhà
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    )}
 
-                    {/* FAQ Section */}
-                    <div style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        marginBottom: '3rem'
-                    }}>
-                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                            <h2 style={{
-                                fontSize: '2rem',
-                                fontWeight: '600',
-                                color: '#2d3748',
-                                marginBottom: '1rem'
+                        {/* Result Section */}
+                        {result && (
+                            <div id="result-section" style={{
+                                maxWidth: '800px',
+                                margin: '3rem auto 0',
+                                background: 'white',
+                                padding: '2rem',
+                                borderRadius: '16px',
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                                border: '2px solid #10b981'
                             }}>
-                                Câu Hỏi Thường Gặp
+                                <div style={{
+                                    textAlign: 'center',
+                                    marginBottom: '1.5rem',
+                                    padding: '1rem',
+                                    background: 'linear-gradient(135deg, #10b981, #059669)',
+                                    borderRadius: '12px',
+                                    color: 'white'
+                                }}>
+                                    <i className="fas fa-scroll" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}></i>
+                                    <h3 style={{ margin: '0', fontSize: '1.3rem' }}>Kết quả xem tuổi</h3>
+                                </div>
+
+                                <div style={{
+                                    color: '#2d3748',
+                                    lineHeight: '1.6',
+                                    whiteSpace: 'pre-wrap'
+                                }} dangerouslySetInnerHTML={{ __html: result }}>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className="section section-alt">
+                    <div className="container">
+                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                            <h2 style={{
+                                color: '#2d3748',
+                                fontSize: '1.8rem',
+                                fontWeight: '700',
+                                margin: '0 0 0.5rem 0',
+                                lineHeight: '1.2'
+                            }}>
+                                <i className="fas fa-question-circle" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                Câu hỏi thường gặp
                             </h2>
-                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
+                            <p style={{
+                                color: '#4a5568',
+                                fontSize: '1rem',
+                                margin: '0',
+                                lineHeight: '1.4'
+                            }}>
                                 Những thắc mắc phổ biến về việc xem tuổi làm nhà
                             </p>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                             {faqData.map((faq, index) => (
-                                <div
-                                    key={index}
-                                    style={{
-                                        background: 'white',
-                                        borderRadius: '12px',
-                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                                        overflow: 'hidden',
-                                        border: activeFaq === index ? '2px solid #667eea' : '2px solid transparent'
-                                    }}
-                                >
-                                    <button
-                                        onClick={() => toggleFaq(index)}
-                                        style={{
-                                            width: '100%',
-                                            padding: '1.5rem',
-                                            background: activeFaq === index ? '#667eea' : 'white',
-                                            color: activeFaq === index ? 'white' : '#2d3748',
-                                            border: 'none',
-                                            textAlign: 'left',
-                                            cursor: 'pointer',
-                                            fontSize: '1rem',
-                                            fontWeight: '600',
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                    >
-                                        <span>{faq.question}</span>
-                                        <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
-                                    </button>
-
-                                    {activeFaq === index && (
-                                        <div style={{
-                                            padding: '1.5rem',
-                                            background: '#f8f9fa',
-                                            borderTop: '1px solid #e2e8f0'
-                                        }}>
-                                            <p style={{
-                                                margin: 0,
-                                                color: '#4a5568',
-                                                lineHeight: '1.6'
-                                            }}>
-                                                {faq.answer}
-                                            </p>
-                                        </div>
-                                    )}
+                                <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                                    <div className="faq-question" onClick={() => toggleFaq(index)}>
+                                        <h4>{faq.question}</h4>
+                                        <i className={`fas ${activeFaq === index ? 'fa-chevron-up' : 'fa-chevron-down'} faq-icon`}></i>
+                                    </div>
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
+                </section>
 
-                    {/* CTA Section */}
-                    <CTAContent />
-                </div>
-            </div>
-
+                <CTAContent />
+            </main>
             <Footer />
             <FloatButtons />
-        </div>
+        </>
     );
 };
 

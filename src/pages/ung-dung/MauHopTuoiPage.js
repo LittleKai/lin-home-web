@@ -19,22 +19,22 @@ const MauHopTuoiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
 
     const menhOptions = [
-        { value: 'auto', label: 'Tự động xác định theo năm sinh' },
-        { value: 'Kim', label: 'Kim (Vàng, Trắng, Bạc)', color: '#FFD700' },
-        { value: 'Mộc', label: 'Mộc (Xanh lá, Xanh lục)', color: '#228B22' },
-        { value: 'Thủy', label: 'Thủy (Xanh dương, Đen)', color: '#4169E1' },
-        { value: 'Hỏa', label: 'Hỏa (Đỏ, Cam, Hồng)', color: '#FF4500' },
-        { value: 'Thổ', label: 'Thổ (Vàng, Nâu, Be)', color: '#D2691E' }
+        { value: 'auto', label: '🔮 Tự động xác định theo năm sinh', color: '#667eea', icon: '🔮' },
+        { value: 'Kim', label: 'Kim (Vàng, Trắng, Bạc)', color: '#FFD700', icon: '⚡' },
+        { value: 'Mộc', label: 'Mộc (Xanh lá, Xanh lục)', color: '#228B22', icon: '🌿' },
+        { value: 'Thủy', label: 'Thủy (Xanh dương, Đen)', color: '#4169E1', icon: '💧' },
+        { value: 'Hỏa', label: 'Hỏa (Đỏ, Cam, Hồng)', color: '#FF4500', icon: '🔥' },
+        { value: 'Thổ', label: 'Thổ (Vàng, Nâu, Be)', color: '#D2691E', icon: '🏔️' }
     ];
 
     const purposeOptions = [
-        { value: 'nha_o', label: 'Nhà ở' },
-        { value: 'van_phong', label: 'Văn phòng' },
-        { value: 'kinh_doanh', label: 'Kinh doanh' },
-        { value: 'phong_ngu', label: 'Phòng ngủ' },
-        { value: 'phong_khach', label: 'Phòng khách' },
-        { value: 'nha_bep', label: 'Nhà bếp' },
-        { value: 'phong_tho', label: 'Phòng thờ' }
+        { value: 'nha_o', label: '🏠 Nhà ở', icon: '🏠', color: '#10b981' },
+        { value: 'van_phong', label: '🏢 Văn phòng', icon: '🏢', color: '#3b82f6' },
+        { value: 'kinh_doanh', label: '🏪 Kinh doanh', icon: '🏪', color: '#f59e0b' },
+        { value: 'phong_ngu', label: '🛏️ Phòng ngủ', icon: '🛏️', color: '#8b5cf6' },
+        { value: 'phong_khach', label: '🛋️ Phòng khách', icon: '🛋️', color: '#06b6d4' },
+        { value: 'nha_bep', label: '👨‍🍳 Nhà bếp', icon: '👨‍🍳', color: '#ef4444' },
+        { value: 'phong_tho', label: '🕯️ Phòng thờ', icon: '🕯️', color: '#eab308' }
     ];
 
     const faqData = [
@@ -56,7 +56,7 @@ const MauHopTuoiPage = () => {
         },
         {
             question: "Có thể thay đổi màu sắc theo mùa không?",
-            answer: "Có thể. Thay đổi màu sắc phụ kiện theo mùa giúp cân bằng năng lượng. Ví dụ: mùa xuân dùng xanh lá, mùa hè dùng đỏ, mùa thu dùng vàng, mùa đông dùng xanh dương."
+            answer: "Có thể. Thay đổi màu sắc phụ kiện theo mùa giúp cân bằng năng lượng. Mùa xuân dùng xanh lá, mùa hè dùng đỏ cam, mùa thu dùng vàng nâu, mùa đông dùng xanh đen."
         }
     ];
 
@@ -109,399 +109,401 @@ const MauHopTuoiPage = () => {
     };
 
     return (
-        <div style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
+        <>
             <Header />
-
-            {/* Main content with original styling */}
-            <div style={{ marginTop: '80px', padding: '40px 0' }}>
-                <div className="container">
-                    {/* Hero Section */}
-                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                        <h1 style={{
-                            fontSize: '2.5rem',
-                            fontWeight: '700',
-                            background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            marginBottom: '1rem'
-                        }}>
-                            Màu Sắc Hợp Tuổi Phong Thủy
-                        </h1>
-                        <p style={{
-                            fontSize: '1.2rem',
-                            color: '#64748b',
-                            maxWidth: '600px',
-                            margin: '0 auto',
-                            lineHeight: '1.6'
-                        }}>
-                            Tư vấn màu sắc phù hợp với mệnh và tuổi tác,
-                            giúp tăng cường vận khí và mang lại may mắn cho cuộc sống
-                        </p>
-                    </div>
-
-                    {/* Form Section */}
-                    <div style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        background: 'white',
-                        borderRadius: '20px',
-                        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-                        padding: '2.5rem',
-                        marginBottom: '3rem'
-                    }}>
-                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                            <h2 style={{
-                                fontSize: '1.8rem',
-                                fontWeight: '600',
-                                color: '#2d3748',
+            <main style={{ marginTop: '80px', minHeight: 'calc(100vh - 80px)' }}>
+                {/* Hero Section */}
+                <section className="section section-gradient">
+                    <div className="container">
+                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                            <div style={{
+                                fontSize: '3rem',
                                 marginBottom: '0.5rem'
+                            }}>🎨✨</div>
+                            <h1 style={{
+                                color: '#2d3748',
+                                fontSize: '2rem',
+                                fontWeight: '700',
+                                margin: '0 0 0.5rem 0',
+                                lineHeight: '1.2'
                             }}>
-                                Thông Tin Tư Vấn
-                            </h2>
-                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
-                                Cung cấp thông tin để nhận được gợi ý màu sắc phù hợp nhất
+                                <i className="fas fa-palette" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                Màu Hợp Tuổi
+                            </h1>
+                            <p style={{
+                                color: '#4a5568',
+                                fontSize: '1rem',
+                                margin: '0',
+                                lineHeight: '1.4'
+                            }}>
+                                Tư vấn màu sắc phong thủy phù hợp với tuổi và mệnh để tăng cường vận khí
                             </p>
                         </div>
 
-                        <form onSubmit={handleSubmit}>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-                                {/* Năm sinh */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
-                                    }}>
-                                        Năm sinh *
-                                    </label>
-                                    <input
-                                        type="number"
-                                        name="namSinh"
-                                        value={formData.namSinh}
-                                        onChange={handleInputChange}
-                                        placeholder="VD: 1990"
-                                        required
-                                        min="1900"
-                                        max="2024"
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            transition: 'border-color 0.3s ease'
-                                        }}
-                                        onFocus={(e) => e.target.style.borderColor = '#667eea'}
-                                        onBlur={(e) => e.target.style.borderColor = '#e2e8f0'}
-                                    />
-                                </div>
+                        {/* Enhanced Form */}
+                        <div style={{
+                            maxWidth: '800px',
+                            margin: '0 auto',
+                            background: 'white',
+                            padding: '2rem',
+                            borderRadius: '20px',
+                            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+                            border: '2px solid #f0f9ff'
+                        }}>
+                            <div style={{
+                                textAlign: 'center',
+                                marginBottom: '1.5rem',
+                                padding: '0.8rem',
+                                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                                borderRadius: '12px',
+                                color: 'white'
+                            }}>
+                                <i className="fas fa-paint-brush" style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}></i>
+                                <h3 style={{ margin: '0', fontSize: '1.1rem', color: 'white' }}>Nhập thông tin của bạn</h3>
+                            </div>
 
-                                {/* Giới tính */}
-                                <div style={{ marginBottom: '1.5rem' }}>
-                                    <label style={{
-                                        display: 'block',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600',
-                                        color: '#2d3748'
-                                    }}>
-                                        Giới tính
-                                    </label>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                            <form onSubmit={handleSubmit}>
+                                {/* Birth Year and Gender */}
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: '1fr 1fr',
+                                    gap: '1.5rem',
+                                    marginBottom: '1.5rem'
+                                }}>
+                                    <div>
                                         <label style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            background: formData.gioiTinh === 'nam' ? '#667eea' : 'white',
-                                            color: formData.gioiTinh === 'nam' ? 'white' : '#4a5568'
+                                            display: 'block',
+                                            marginBottom: '0.5rem',
+                                            fontWeight: '600',
+                                            color: '#2d3748',
+                                            fontSize: '0.9rem'
                                         }}>
-                                            <input
-                                                type="radio"
-                                                name="gioiTinh"
-                                                value="nam"
-                                                checked={formData.gioiTinh === 'nam'}
-                                                onChange={handleInputChange}
-                                                style={{ display: 'none' }}
-                                            />
-                                            <i className="fas fa-mars" style={{ marginRight: '0.5rem' }}></i>
-                                            Nam
+                                            <i className="fas fa-calendar-alt" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                            Năm sinh <span style={{ color: '#dc2626' }}>*</span>
                                         </label>
+                                        <input
+                                            type="number"
+                                            name="namSinh"
+                                            value={formData.namSinh}
+                                            onChange={handleInputChange}
+                                            placeholder="Ví dụ: 1990"
+                                            min="1920"
+                                            max="2025"
+                                            required
+                                            style={{
+                                                width: '100%',
+                                                padding: '0.75rem',
+                                                border: '2px solid #e2e8f0',
+                                                borderRadius: '8px',
+                                                fontSize: '1rem',
+                                                outline: 'none',
+                                                background: 'white'
+                                            }}
+                                        />
+                                    </div>
 
+                                    <div>
                                         <label style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            background: formData.gioiTinh === 'nu' ? '#667eea' : 'white',
-                                            color: formData.gioiTinh === 'nu' ? 'white' : '#4a5568'
+                                            display: 'block',
+                                            marginBottom: '0.5rem',
+                                            fontWeight: '600',
+                                            color: '#2d3748',
+                                            fontSize: '0.9rem'
                                         }}>
-                                            <input
-                                                type="radio"
-                                                name="gioiTinh"
-                                                value="nu"
-                                                checked={formData.gioiTinh === 'nu'}
-                                                onChange={handleInputChange}
-                                                style={{ display: 'none' }}
-                                            />
-                                            <i className="fas fa-venus" style={{ marginRight: '0.5rem' }}></i>
-                                            Nữ
+                                            <i className="fas fa-venus-mars" style={{ marginRight: '0.5rem', color: '#ec4899' }}></i>
+                                            Giới tính
                                         </label>
+                                        <div style={{
+                                            display: 'grid',
+                                            gridTemplateColumns: '1fr 1fr',
+                                            gap: '0.5rem'
+                                        }}>
+                                            <label style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                padding: '0.75rem',
+                                                border: `2px solid ${formData.gioiTinh === 'nam' ? '#3b82f6' : '#e2e8f0'}`,
+                                                borderRadius: '8px',
+                                                cursor: 'pointer',
+                                                background: formData.gioiTinh === 'nam' ? '#eff6ff' : 'white',
+                                                transition: 'all 0.3s ease'
+                                            }}>
+                                                <input
+                                                    type="radio"
+                                                    name="gioiTinh"
+                                                    value="nam"
+                                                    checked={formData.gioiTinh === 'nam'}
+                                                    onChange={handleInputChange}
+                                                    style={{ marginRight: '0.5rem' }}
+                                                />
+                                                <i className="fas fa-mars" style={{ marginRight: '0.25rem', color: '#3b82f6' }}></i>
+                                                Nam
+                                            </label>
+
+                                            <label style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                padding: '0.75rem',
+                                                border: `2px solid ${formData.gioiTinh === 'nu' ? '#ec4899' : '#e2e8f0'}`,
+                                                borderRadius: '8px',
+                                                cursor: 'pointer',
+                                                background: formData.gioiTinh === 'nu' ? '#fdf2f8' : 'white',
+                                                transition: 'all 0.3s ease'
+                                            }}>
+                                                <input
+                                                    type="radio"
+                                                    name="gioiTinh"
+                                                    value="nu"
+                                                    checked={formData.gioiTinh === 'nu'}
+                                                    onChange={handleInputChange}
+                                                    style={{ marginRight: '0.5rem' }}
+                                                />
+                                                <i className="fas fa-venus" style={{ marginRight: '0.25rem', color: '#ec4899' }}></i>
+                                                Nữ
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Mệnh */}
+                                {/* Menh Selection */}
                                 <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
-                                        marginBottom: '0.5rem',
+                                        marginBottom: '0.8rem',
                                         fontWeight: '600',
-                                        color: '#2d3748'
+                                        color: '#2d3748',
+                                        fontSize: '0.9rem'
                                     }}>
-                                        Mệnh của bạn
+                                        <i className="fas fa-yin-yang" style={{ marginRight: '0.5rem', color: '#8b5cf6' }}></i>
+                                        Mệnh của bạn (Ngũ hành)
                                     </label>
-                                    <select
-                                        name="menhData"
-                                        value={formData.menhData}
-                                        onChange={handleInputChange}
-                                        style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            background: 'white',
-                                            cursor: 'pointer'
-                                        }}
-                                    >
+
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+                                        gap: '1rem'
+                                    }}>
                                         {menhOptions.map(menh => (
-                                            <option key={menh.value} value={menh.value}>
-                                                {menh.label}
-                                            </option>
+                                            <label
+                                                key={menh.value}
+                                                style={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    padding: '1rem 0.5rem',
+                                                    border: `2px solid ${formData.menhData === menh.value ? menh.color : '#e2e8f0'}`,
+                                                    borderRadius: '12px',
+                                                    cursor: 'pointer',
+                                                    background: formData.menhData === menh.value ? `${menh.color}15` : 'white',
+                                                    transition: 'all 0.3s ease',
+                                                    textAlign: 'center'
+                                                }}
+                                            >
+                                                <input
+                                                    type="radio"
+                                                    name="menhData"
+                                                    value={menh.value}
+                                                    checked={formData.menhData === menh.value}
+                                                    onChange={handleInputChange}
+                                                    style={{ display: 'none' }}
+                                                />
+                                                <div style={{
+                                                    fontSize: '1.5rem',
+                                                    marginBottom: '0.5rem',
+                                                    color: menh.color
+                                                }}>
+                                                    {menh.icon}
+                                                </div>
+                                                <div style={{
+                                                    fontWeight: '600',
+                                                    color: formData.menhData === menh.value ? menh.color : '#2d3748',
+                                                    fontSize: '0.85rem',
+                                                    lineHeight: '1.3'
+                                                }}>
+                                                    {menh.label}
+                                                </div>
+                                            </label>
                                         ))}
-                                    </select>
+                                    </div>
                                 </div>
 
-                                {/* Mục đích */}
-                                <div style={{ marginBottom: '2rem' }}>
+                                {/* Purpose Selection */}
+                                <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
-                                        marginBottom: '0.5rem',
+                                        marginBottom: '0.8rem',
                                         fontWeight: '600',
-                                        color: '#2d3748'
+                                        color: '#2d3748',
+                                        fontSize: '0.9rem'
                                     }}>
-                                        Mục đích sử dụng
+                                        <i className="fas fa-home" style={{ marginRight: '0.5rem', color: '#10b981' }}></i>
+                                        Mục đích sử dụng màu sắc
                                     </label>
-                                    <select
-                                        name="mucDich"
-                                        value={formData.mucDich}
-                                        onChange={handleInputChange}
+
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                                        gap: '1rem'
+                                    }}>
+                                        {purposeOptions.map(purpose => (
+                                            <label
+                                                key={purpose.value}
+                                                style={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    padding: '1rem 0.5rem',
+                                                    border: `2px solid ${formData.mucDich === purpose.value ? purpose.color : '#e2e8f0'}`,
+                                                    borderRadius: '12px',
+                                                    cursor: 'pointer',
+                                                    background: formData.mucDich === purpose.value ? `${purpose.color}15` : 'white',
+                                                    transition: 'all 0.3s ease',
+                                                    textAlign: 'center'
+                                                }}
+                                            >
+                                                <input
+                                                    type="radio"
+                                                    name="mucDich"
+                                                    value={purpose.value}
+                                                    checked={formData.mucDich === purpose.value}
+                                                    onChange={handleInputChange}
+                                                    style={{ display: 'none' }}
+                                                />
+                                                <div style={{
+                                                    fontSize: '1.5rem',
+                                                    marginBottom: '0.5rem'
+                                                }}>
+                                                    {purpose.icon}
+                                                </div>
+                                                <div style={{
+                                                    fontWeight: '600',
+                                                    color: formData.mucDich === purpose.value ? purpose.color : '#2d3748',
+                                                    fontSize: '0.85rem',
+                                                    lineHeight: '1.3'
+                                                }}>
+                                                    {purpose.label.replace(/^[🏠🏢🏪🛏️🛋️👨‍🍳🕯️]\s/, '')}
+                                                </div>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Submit Button */}
+                                <div style={{ textAlign: 'center' }}>
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
                                         style={{
-                                            width: '100%',
-                                            padding: '0.75rem',
-                                            border: '2px solid #e2e8f0',
-                                            borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            background: 'white',
-                                            cursor: 'pointer'
+                                            background: loading ? '#94a3b8' : 'linear-gradient(135deg, #667eea, #764ba2)',
+                                            color: 'white',
+                                            padding: '1rem 2rem',
+                                            border: 'none',
+                                            borderRadius: '12px',
+                                            fontSize: '1.1rem',
+                                            fontWeight: '600',
+                                            cursor: loading ? 'not-allowed' : 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem',
+                                            margin: '0 auto'
                                         }}
                                     >
-                                        {purposeOptions.map(purpose => (
-                                            <option key={purpose.value} value={purpose.value}>
-                                                {purpose.label}
-                                            </option>
-                                        ))}
-                                    </select>
+                                        {loading ? (
+                                            <>
+                                                <i className="fas fa-spinner fa-spin"></i>
+                                                Đang tư vấn...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <i className="fas fa-search"></i>
+                                                Xem màu hợp tuổi
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {/* Result Section */}
+                        {result && (
+                            <div id="result-section" style={{
+                                maxWidth: '800px',
+                                margin: '2rem auto 0',
+                                background: 'white',
+                                padding: '2rem',
+                                borderRadius: '16px',
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                                border: '2px solid #10b981'
+                            }}>
+                                <div style={{
+                                    textAlign: 'center',
+                                    marginBottom: '1.5rem',
+                                    padding: '1rem',
+                                    background: 'linear-gradient(135deg, #10b981, #059669)',
+                                    borderRadius: '12px',
+                                    color: 'white'
+                                }}>
+                                    <i className="fas fa-palette" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}></i>
+                                    <h3 style={{ margin: '0', fontSize: '1.2rem' }}>Tư vấn màu sắc phong thủy</h3>
+                                </div>
+
+                                <div style={{
+                                    color: '#2d3748',
+                                    lineHeight: '1.6',
+                                    whiteSpace: 'pre-wrap'
+                                }} dangerouslySetInnerHTML={{ __html: result }}>
                                 </div>
                             </div>
-
-                            {/* Submit Button */}
-                            <div style={{ textAlign: 'center' }}>
-                                <button
-                                    type="submit"
-                                    disabled={loading}
-                                    style={{
-                                        background: loading ? '#94a3b8' : 'linear-gradient(135deg, #667eea, #764ba2)',
-                                        color: 'white',
-                                        padding: '1rem 2rem',
-                                        border: 'none',
-                                        borderRadius: '12px',
-                                        fontSize: '1.1rem',
-                                        fontWeight: '600',
-                                        cursor: loading ? 'not-allowed' : 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        gap: '0.5rem',
-                                        margin: '0 auto',
-                                        minWidth: '200px'
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        if (!loading) {
-                                            e.target.style.transform = 'translateY(-2px)';
-                                            e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
-                                        }
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        if (!loading) {
-                                            e.target.style.transform = 'translateY(0)';
-                                            e.target.style.boxShadow = 'none';
-                                        }
-                                    }}
-                                >
-                                    {loading ? (
-                                        <>
-                                            <i className="fas fa-spinner fa-spin"></i>
-                                            Đang phân tích...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <i className="fas fa-palette"></i>
-                                            Xem Màu Sắc Hợp Tuổi
-                                        </>
-                                    )}
-                                </button>
-                            </div>
-                        </form>
+                        )}
                     </div>
+                </section>
 
-                    {/* Result Section */}
-                    {result && (
-                        <div id="result-section" style={{
-                            maxWidth: '900px',
-                            margin: '0 auto 3rem auto',
-                            background: 'white',
-                            borderRadius: '20px',
-                            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
-                            overflow: 'hidden'
-                        }}>
-                            <div style={{
-                                background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                                color: 'white',
-                                padding: '1.5rem 2rem',
-                                textAlign: 'center'
-                            }}>
-                                <h3 style={{
-                                    margin: 0,
-                                    fontSize: '1.5rem',
-                                    fontWeight: '600'
-                                }}>
-                                    🎨 Kết Quả Tư Vấn Màu Sắc
-                                </h3>
-                                <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
-                                    Gợi ý màu sắc phù hợp dựa trên mệnh và mục đích sử dụng của bạn
-                                </p>
-                            </div>
-                            <div style={{
-                                padding: '2rem',
-                                lineHeight: '1.8',
-                                color: '#2d3748'
-                            }}>
-                                <div
-                                    style={{
-                                        whiteSpace: 'pre-line',
-                                        fontSize: '1rem'
-                                    }}
-                                    dangerouslySetInnerHTML={{
-                                        __html: result.replace(/\n/g, '<br>')
-                                    }}
-                                />
-                            </div>
-                        </div>
-                    )}
-
-                    {/* FAQ Section */}
-                    <div style={{
-                        maxWidth: '800px',
-                        margin: '0 auto',
-                        marginBottom: '3rem'
-                    }}>
-                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                {/* FAQ Section */}
+                <section className="section">
+                    <div className="container">
+                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
                             <h2 style={{
-                                fontSize: '2rem',
-                                fontWeight: '600',
                                 color: '#2d3748',
-                                marginBottom: '1rem'
+                                fontSize: '1.8rem',
+                                fontWeight: '700',
+                                margin: '0 0 0.5rem 0',
+                                lineHeight: '1.2'
                             }}>
-                                Câu Hỏi Thường Gặp
+                                <i className="fas fa-question-circle" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                Câu hỏi thường gặp
                             </h2>
-                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
+                            <p style={{
+                                color: '#4a5568',
+                                fontSize: '1rem',
+                                margin: '0',
+                                lineHeight: '1.4'
+                            }}>
                                 Những thắc mắc phổ biến về màu sắc và phong thủy
                             </p>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                             {faqData.map((faq, index) => (
-                                <div
-                                    key={index}
-                                    style={{
-                                        background: 'white',
-                                        borderRadius: '12px',
-                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
-                                        overflow: 'hidden',
-                                        border: activeFaq === index ? '2px solid #667eea' : '2px solid transparent'
-                                    }}
-                                >
-                                    <button
-                                        onClick={() => toggleFaq(index)}
-                                        style={{
-                                            width: '100%',
-                                            padding: '1.5rem',
-                                            background: activeFaq === index ? '#667eea' : 'white',
-                                            color: activeFaq === index ? 'white' : '#2d3748',
-                                            border: 'none',
-                                            textAlign: 'left',
-                                            cursor: 'pointer',
-                                            fontSize: '1rem',
-                                            fontWeight: '600',
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                    >
-                                        <span>{faq.question}</span>
-                                        <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
-                                    </button>
-
-                                    {activeFaq === index && (
-                                        <div style={{
-                                            padding: '1.5rem',
-                                            background: '#f8f9fa',
-                                            borderTop: '1px solid #e2e8f0'
-                                        }}>
-                                            <p style={{
-                                                margin: 0,
-                                                color: '#4a5568',
-                                                lineHeight: '1.6'
-                                            }}>
-                                                {faq.answer}
-                                            </p>
-                                        </div>
-                                    )}
+                                <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
+                                    <div className="faq-question" onClick={() => toggleFaq(index)}>
+                                        <h4>{faq.question}</h4>
+                                        <i className={`fas ${activeFaq === index ? 'fa-chevron-up' : 'fa-chevron-down'} faq-icon`}></i>
+                                    </div>
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
                     </div>
+                </section>
 
-                    {/* CTA Section */}
-                    <CTAContent />
-                </div>
-            </div>
-
+                <CTAContent />
+            </main>
             <Footer />
             <FloatButtons />
-        </div>
+        </>
     );
 };
 

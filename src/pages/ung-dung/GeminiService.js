@@ -8,11 +8,12 @@ class GeminiService {
         this.isLoading = false;
 
         // Google Sheets URL - MUST be updated with correct public URL
-        this.sheetsUrl = 'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv&gid=0';
+        // this.sheetsUrl = 'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv&gid=0';
+        this.sheetsUrl = 'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv';
 
         // Alternative methods to try
         this.alternativeUrls = [
-            'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv',
+            // 'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv',
             'https://docs.google.com/spreadsheets/d/1kqjlY92HDWIvYNg9phsatzuMd9WTSaVt/export?format=csv&gid=0&single=true&output=csv'
         ];
     }
@@ -168,7 +169,7 @@ class GeminiService {
     }
 
     // Send request to Gemini API with retry logic
-    async sendToGemini(prompt, maxRetries = 3) {
+    async sendToGemini(prompt, maxRetries = 7) {
         let lastError = null;
 
         for (let attempt = 0; attempt < maxRetries; attempt++) {
