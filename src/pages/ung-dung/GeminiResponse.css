@@ -1,0 +1,308 @@
+/* src/pages/ung-dung/GeminiResponse.css */
+/* Styles cho phản hồi Gemini được định dạng */
+
+.gemini-response {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+/* Section headers */
+.gemini-response .section-header {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #2563eb;
+    margin: 1.5rem 0 0.75rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #e0f2fe;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+    padding-left: 1rem;
+    border-radius: 5px;
+}
+
+/* Sub headers */
+.gemini-response .sub-header {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #1e40af;
+    margin: 1rem 0 0.5rem 0;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 3px solid #3b82f6;
+    background-color: #f8fafc;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Numbered sections */
+.gemini-response .numbered-section {
+    margin: 0.75rem 0;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+    border-left: 3px solid #8b5cf6;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 1px 3px rgba(139, 92, 246, 0.1);
+}
+
+.gemini-response .numbered-section .number {
+    font-weight: 700;
+    color: #7c3aed;
+    margin-right: 0.5rem;
+}
+
+/* Arrow points */
+.gemini-response .arrow-point {
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-left: 3px solid #22c55e;
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.gemini-response .arrow-point .arrow {
+    color: #16a34a;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* Bullet lists */
+.gemini-response .bullet-list {
+    margin: 0.75rem 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.gemini-response .bullet-point {
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    background: #f8fafc;
+    border-left: 2px solid #64748b;
+    border-radius: 0 4px 4px 0;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.gemini-response .bullet-point::before {
+    content: "•";
+    color: #059669;
+    font-weight: bold;
+    position: absolute;
+    left: 0.75rem;
+    top: 0.5rem;
+}
+
+/* Emphasis text */
+.gemini-response .emphasis {
+    color: #dc2626;
+    font-weight: 600;
+    font-style: normal;
+    background: rgba(220, 38, 38, 0.1);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+
+/* Paragraph breaks */
+.gemini-response .paragraph-break {
+    height: 1rem;
+}
+
+/* Error message */
+.gemini-response .error-message {
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* General improvements */
+.gemini-response p {
+    margin: 0.75rem 0;
+    line-height: 1.7;
+}
+
+.gemini-response br {
+    line-height: 1.5;
+}
+
+/* Grid layouts for form options */
+.construction-grid, .directions-grid, .menh-grid, .purpose-grid {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.construction-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.directions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.menh-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.purpose-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Option cards */
+.construction-option, .direction-option, .menh-option, .purpose-option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+.construction-option:hover, .direction-option:hover, .menh-option:hover, .purpose-option:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+.construction-option.active, .direction-option.active, .menh-option.active, .purpose-option.active {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    color: #1e40af;
+}
+
+.construction-option .icon, .menh-option .icon {
+    font-size: 1.5em;
+    margin-right: 0.5rem;
+}
+
+.direction-option, .purpose-option {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.direction-icon, .purpose-icon {
+    font-size: 1.5em;
+    margin-bottom: 0.5rem;
+}
+
+.direction-info, .purpose-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.direction-label, .purpose-label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.direction-desc, .purpose-desc {
+    font-size: 0.875em;
+    color: #6b7280;
+}
+
+/* Color elements section */
+.color-elements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.element-card {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    transition: transform 0.3s ease;
+}
+
+.element-card:hover {
+    transform: translateY(-2px);
+}
+
+.element-card.kim { border-color: #e5e7eb; }
+.element-card.moc { border-color: #22c55e; }
+.element-card.thuy { border-color: #3b82f6; }
+.element-card.hoa { border-color: #ef4444; }
+.element-card.tho { border-color: #a3a3a3; }
+
+.element-icon {
+    font-size: 2em;
+    margin-bottom: 0.5rem;
+}
+
+.element-card h3 {
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+
+.colors {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.75rem 0;
+}
+
+.color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.color-dot.white { background-color: #ffffff; border-color: #e5e7eb; }
+.color-dot.silver { background-color: #c0c0c0; }
+.color-dot.gold { background-color: #ffd700; }
+.color-dot.green { background-color: #22c55e; }
+.color-dot.cyan { background-color: #06b6d4; }
+.color-dot.blue { background-color: #3b82f6; }
+.color-dot.black { background-color: #000000; }
+.color-dot.red { background-color: #ef4444; }
+.color-dot.orange { background-color: #f97316; }
+.color-dot.pink { background-color: #ec4899; }
+.color-dot.brown { background-color: #92400e; }
+.color-dot.yellow { background-color: #eab308; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gemini-response .section-header {
+        font-size: 1.1em;
+        padding-left: 0.75rem;
+    }
+
+    .gemini-response .numbered-section,
+    .gemini-response .arrow-point,
+    .gemini-response .bullet-point {
+        padding: 0.5rem;
+    }
+
+    .gemini-response .bullet-point {
+        padding-left: 1.5rem;
+    }
+
+    .gemini-response .bullet-point::before {
+        left: 0.5rem;
+    }
+
+    .construction-grid, .directions-grid, .menh-grid, .purpose-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .color-elements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .construction-option, .direction-option, .menh-option, .purpose-option {
+        padding: 0.5rem;
+    }
+}

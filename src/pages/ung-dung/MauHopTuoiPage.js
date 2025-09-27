@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
 import CTAContent from '../../components/CTAContent/CTAContent';
+import GeminiService from './GeminiService';
 import '../../styles/CommonStyles.css';
 
 const MauHopTuoiPage = () => {
@@ -17,29 +18,8 @@ const MauHopTuoiPage = () => {
     const [result, setResult] = useState('');
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Available Gemini API keys
-    const geminiKeys = [
-        'AIzaSyAxfaDXqfJESn-UiV_PrILhihyvFU6QkGw',
-        'AIzaSyDEsifzFyaPY5zca8mp2sHnj41k_PVuiTQ',
-        'AIzaSyColbzIN-yDFj4uKtF6DWSU9IU8B84AvsM',
-        'AIzaSyC_jOHN_XYMIzneO9dMk_pGiP4rea3QPNQ',
-        'AIzaSyC3SCrar3EW92GIwQGjUd13Ebcn22swQoM',
-        'AIzaSyBo-fIsTKQs3j3ElXRhRjv79mfRplWHNYc',
-        'AIzaSyDimh_A65SYjmtZoR_Sl0-bZKXmKvPDXrA',
-        'AIzaSyAKWtKWb_ozSCAI97WWhcgm_EB8pgvWzK4',
-        'AIzaSyDLvxbXVN1ycTF87urbQEjN3L-XhchvhKE',
-        'AIzaSyCyJG-f3tRgY1SlrUaMQxjILms7hzo3mWI',
-        'AIzaSyAq2UIxBBFrrGlb_pA7z1GHKVTqy4Qeiig',
-        'AIzaSyAc2BUU5jxtWMVYTO28JsFu9n7w2-ud-qA',
-        'AIzaSyBCHK8-SGyHHG24t7yy5HzpKhveJFdk1qs',
-        'AIzaSyDM63DmLwNb5LKHbZFj-mwYT0aBcBDbZLg',
-        'AIzaSyA6OeXY3-bLknr6Nh97dGWAbnFqQ4BNytg',
-        'AIzaSyDSc3eaBTApLN4rV0agw8xgqgQTPwr3q4c',
-        'AIzaSyBEZOICOKkDnvDR03n-yvpqeNN1svsFneg',
-        'AIzaSyCx4fnrgUKY0QJFoaTXybuH46tLMGnEa8k'
-    ];
-
     const menhOptions = [
+        { value: 'auto', label: 'Tự động xác định theo năm sinh' },
         { value: 'Kim', label: 'Kim (Vàng, Trắng, Bạc)', color: '#FFD700' },
         { value: 'Mộc', label: 'Mộc (Xanh lá, Xanh lục)', color: '#228B22' },
         { value: 'Thủy', label: 'Thủy (Xanh dương, Đen)', color: '#4169E1' },
@@ -60,65 +40,25 @@ const MauHopTuoiPage = () => {
     const faqData = [
         {
             question: "Làm thế nào để biết mệnh của mình?",
-            answer: "Mệnh được tính theo năm sinh âm lịch. Bạn có thể tra cứu online hoặc dựa vào năm sinh dương lịch để xác định mệnh Kim, Mộc, Thủy, Hỏa, Thổ."
+            answer: "Mệnh được tính theo năm sinh âm lịch dựa trên hệ thống Nạp Âm Ngũ Hành. Bạn có thể để hệ thống tự động xác định hoặc tra cứu online theo năm sinh để biết mệnh Kim, Mộc, Thủy, Hỏa, Thổ."
         },
         {
             question: "Tại sao màu sắc quan trọng trong phong thủy?",
-            answer: "Màu sắc đại diện cho ngũ hành và có thể hỗ trợ hoặc cản trở vận khí của con người. Màu hợp mệnh sẽ mang lại may mắn và thịnh vượng."
+            answer: "Màu sắc đại diện cho ngũ hành và có thể hỗ trợ hoặc cản trở vận khí. Màu hợp mệnh sẽ tăng cường năng lượng tích cực, mang lại may mắn, thịnh vượng và sức khỏe tốt."
         },
         {
-            question: "Có nên sơn toàn bộ nhà một màu không?",
-            answer: "Không nên. Mỗi không gian có chức năng khác nhau nên chọn màu phù hợp. Nên kết hợp nhiều màu hài hòa để tạo cân bằng năng lượng."
+            question: "Có nên sử dụng toàn bộ nhà cùng một màu không?",
+            answer: "Không nên. Mỗi không gian có chức năng khác nhau nên sử dụng màu sắc phù hợp. Ví dụ: phòng ngủ dùng màu nhẹ nhàng, phòng khách dùng màu tươi sáng, phòng làm việc dùng màu tập trung."
         },
         {
-            question: "Màu nào tuyệt đối không nên dùng?",
-            answer: "Không có màu tuyệt đối cấm kỵ, chỉ có màu phù hợp hay không phù hợp với mệnh. Tuy nhiên, nên tránh màu quá chói lóa hoặc quá tối trong không gian sống."
+            question: "Màu sắc xung khắc có ảnh hưởng nghiêm trọng không?",
+            answer: "Màu xung khắc có thể gây căng thẳng, mệt mỏi và ảnh hưởng đến tâm trạng. Tuy nhiên, có thể hóa giải bằng cách sử dụng màu trung gian hoặc điều chỉnh tỷ lệ màu sắc."
+        },
+        {
+            question: "Có thể thay đổi màu sắc theo mùa không?",
+            answer: "Có thể. Thay đổi màu sắc phụ kiện theo mùa giúp cân bằng năng lượng. Ví dụ: mùa xuân dùng xanh lá, mùa hè dùng đỏ, mùa thu dùng vàng, mùa đông dùng xanh dương."
         }
     ];
-
-    const getRandomGeminiKey = () => {
-        return geminiKeys[Math.floor(Math.random() * geminiKeys.length)];
-    };
-
-    const formatAIResponse = (text) => {
-        if (!text) return text;
-
-        // Clean up excessive line breaks first
-        let formatted = text.replace(/\n{3,}/g, '\n\n'); // Replace 3+ line breaks with 2
-
-        // Format headings with ** to bold
-        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #2d3748; font-size: 1.15em; display: block; margin: 1.5rem 0 0.75rem 0;">$1</strong>');
-
-        // Format numbered lists (1. 2. 3. etc.)
-        formatted = formatted.replace(/^(\d+\.\s.*$)/gm, '<div style="margin: 1.5rem 0; padding: 1.2rem; background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%); border-left: 4px solid #667eea; border-radius: 0 12px 12px 0; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);"><strong style="color: #667eea; font-size: 1.1em;">$1</strong></div>');
-
-        // Clean up multiple asterisks and convert to proper bullet points
-        // First, replace multiple asterisks at start of line with single dash
-        formatted = formatted.replace(/^\*{2,}\s*(.*$)/gm, '- $1');
-
-        // Convert remaining single asterisks to dashes for consistency
-        formatted = formatted.replace(/^\*\s*(.*$)/gm, '- $1');
-
-        // Format bullet points with - to styled bullets
-        formatted = formatted.replace(/^-\s*(.*$)/gm, '<div style="margin: 0.75rem 0; padding: 0.75rem; background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%); border-left: 3px solid #10b981; border-radius: 0 10px 10px 0; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);"><strong style="color: #10b981; margin-right: 0.5rem;">→</strong> <span style="color: #1e40af; font-weight: 500;">$1</span></div>');
-
-        // Handle nested bullets (indented with spaces or tabs)
-        formatted = formatted.replace(/^[\s\t]+-\s*(.*$)/gm, '<div style="margin: 0.5rem 0 0.5rem 2rem; color: #4f46e5; padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;"><strong style="color: #059669; margin-right: 0.5rem;">•</strong> <span style="font-weight: 500;">$1</span></div>');
-
-        // Clean up excessive spacing in formatted content
-        formatted = formatted.replace(/(<\/div>\s*){2,}/g, '</div>');
-
-        // Convert double line breaks to single line breaks with margin
-        formatted = formatted.replace(/\n\n/g, '<div style="margin: 1rem 0;"></div>');
-
-        // Convert single line breaks to br tags
-        formatted = formatted.replace(/\n/g, '<br>');
-
-        // Clean up any remaining excessive spacing
-        formatted = formatted.replace(/(<br>\s*){3,}/g, '<br><br>');
-
-        return formatted;
-    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -128,9 +68,17 @@ const MauHopTuoiPage = () => {
         }));
     };
 
-    const consultGemini = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         if (!formData.namSinh) {
-            alert('Vui lòng nhập năm sinh!');
+            alert('Vui lòng nhập năm sinh');
+            return;
+        }
+
+        const currentYear = new Date().getFullYear();
+        if (formData.namSinh < 1920 || formData.namSinh > currentYear) {
+            alert('Năm sinh không hợp lệ');
             return;
         }
 
@@ -138,56 +86,19 @@ const MauHopTuoiPage = () => {
         setResult('');
 
         try {
-            const apiKey = getRandomGeminiKey();
-            const purposeLabel = purposeOptions.find(p => p.value === formData.mucDich)?.label || formData.mucDich;
+            const response = await GeminiService.getConsultation('mau-hop-tuoi', formData);
 
-            const prompt = `Bạn là chuyên gia phong thủy về màu sắc. Hãy tư vấn màu sắc hợp tuổi cho:
-            - Năm sinh: ${formData.namSinh}
-            - Giới tính: ${formData.gioiTinh}
-            - Mệnh: ${formData.menhData === 'auto' ? 'Hãy tự tính dựa trên năm sinh' : formData.menhData}
-            - Mục đích sử dụng: ${purposeLabel}
-            
-            Hãy đưa ra:
-            1. **Phân tích mệnh và màu sắc hợp với năm sinh này**
-            ${formData.menhData === 'auto' ? '- Tính toán mệnh chính xác theo năm sinh dương lịch' : ''}
-            
-            2. **Top 5 màu sắc tốt nhất cho mục đích sử dụng**
-            
-            3. **Màu sắc nên tránh và lý do**
-            
-            4. **Cách phối hợp màu sắc hài hòa**
-            
-            5. **Tác động tích cực của màu sắc đến vận khí**
-            
-            6. **Gợi ý cụ thể về cách ứng dụng màu sắc** (sơn tường, nội thất, phụ kiện)
-            
-            Trả lời bằng tiếng Việt, chi tiết và thực tế. Sử dụng ** để in đậm tiêu đề, *** cho điểm quan trọng.`;
-
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: prompt
-                        }]
-                    }]
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Không thể kết nối đến dịch vụ AI');
+            if (response.success) {
+                setResult(response.data);
+                setTimeout(() => {
+                    document.querySelector('#result-section')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                setResult(response.error || 'Đã xảy ra lỗi khi tư vấn. Vui lòng thử lại sau.');
             }
-
-            const data = await response.json();
-            const aiResponse = data.candidates[0].content.parts[0].text;
-            setResult(formatAIResponse(aiResponse));
-
         } catch (error) {
             console.error('Error:', error);
-            setResult('Xin lỗi, có lỗi xảy ra khi phân tích. Vui lòng thử lại sau.');
+            setResult('Đã xảy ra lỗi kết nối. Vui lòng kiểm tra kết nối internet và thử lại.');
         } finally {
             setLoading(false);
         }
@@ -198,47 +109,63 @@ const MauHopTuoiPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
+        <div style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
             <Header />
 
-            <main className="main-content">
-                {/* Hero Section */}
-                <section className="section section-gradient">
-                    <div className="container">
-                        <div className="section-title">Màu Hợp Tuổi</div>
-                        <div className="section-subtitle">
-                            Tìm hiểu màu sắc phù hợp với mệnh và tuổi của bạn theo phong thủy
-                        </div>
-
-                        <div className="alert-info" style={{
-                            background: '#e3f2fd',
-                            border: '1px solid #2196f3',
-                            borderRadius: '8px',
-                            padding: '1rem',
-                            margin: '2rem auto',
-                            maxWidth: '600px',
-                            textAlign: 'center',
-                            color: '#1976d2'
+            {/* Main content with original styling */}
+            <div style={{ marginTop: '80px', padding: '40px 0' }}>
+                <div className="container">
+                    {/* Hero Section */}
+                    <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                        <h1 style={{
+                            fontSize: '2.5rem',
+                            fontWeight: '700',
+                            background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            marginBottom: '1rem'
                         }}>
-                            <i className="fas fa-robot" style={{ marginRight: '0.5rem' }}></i>
-                            <strong>Sử dụng chatbot AI</strong> để đưa ra kết quả màu sắc phù hợp nhất
-                        </div>
+                            Màu Sắc Hợp Tuổi Phong Thủy
+                        </h1>
+                        <p style={{
+                            fontSize: '1.2rem',
+                            color: '#64748b',
+                            maxWidth: '600px',
+                            margin: '0 auto',
+                            lineHeight: '1.6'
+                        }}>
+                            Tư vấn màu sắc phù hợp với mệnh và tuổi tác,
+                            giúp tăng cường vận khí và mang lại may mắn cho cuộc sống
+                        </p>
                     </div>
-                </section>
 
-                {/* Input Form Section */}
-                <section className="section">
-                    <div className="container">
-                        <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
-                            <div className="card-header">
-                                <h3>
-                                    <i className="fas fa-palette"></i>
-                                    Thông Tin Cần Thiết
-                                </h3>
-                                <p>Nhập thông tin để được tư vấn màu sắc hợp mệnh</p>
-                            </div>
+                    {/* Form Section */}
+                    <div style={{
+                        maxWidth: '800px',
+                        margin: '0 auto',
+                        background: 'white',
+                        borderRadius: '20px',
+                        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+                        padding: '2.5rem',
+                        marginBottom: '3rem'
+                    }}>
+                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                            <h2 style={{
+                                fontSize: '1.8rem',
+                                fontWeight: '600',
+                                color: '#2d3748',
+                                marginBottom: '0.5rem'
+                            }}>
+                                Thông Tin Tư Vấn
+                            </h2>
+                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
+                                Cung cấp thông tin để nhận được gợi ý màu sắc phù hợp nhất
+                            </p>
+                        </div>
 
-                            <div className="card-body">
+                        <form onSubmit={handleSubmit}>
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+                                {/* Năm sinh */}
                                 <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
@@ -246,14 +173,15 @@ const MauHopTuoiPage = () => {
                                         fontWeight: '600',
                                         color: '#2d3748'
                                     }}>
-                                        Năm sinh <span style={{ color: '#e53e3e' }}>*</span>
+                                        Năm sinh *
                                     </label>
                                     <input
                                         type="number"
                                         name="namSinh"
                                         value={formData.namSinh}
                                         onChange={handleInputChange}
-                                        placeholder="Ví dụ: 1990"
+                                        placeholder="VD: 1990"
+                                        required
                                         min="1900"
                                         max="2024"
                                         style={{
@@ -270,6 +198,7 @@ const MauHopTuoiPage = () => {
                                     />
                                 </div>
 
+                                {/* Giới tính */}
                                 <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
@@ -279,25 +208,56 @@ const MauHopTuoiPage = () => {
                                     }}>
                                         Giới tính
                                     </label>
-                                    <select
-                                        name="gioiTinh"
-                                        value={formData.gioiTinh}
-                                        onChange={handleInputChange}
-                                        style={{
-                                            width: '100%',
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                        <label style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
                                             padding: '0.75rem',
                                             border: '2px solid #e2e8f0',
                                             borderRadius: '8px',
-                                            fontSize: '1rem',
-                                            outline: 'none',
-                                            background: 'white'
-                                        }}
-                                    >
-                                        <option value="nam">Nam</option>
-                                        <option value="nữ">Nữ</option>
-                                    </select>
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            background: formData.gioiTinh === 'nam' ? '#667eea' : 'white',
+                                            color: formData.gioiTinh === 'nam' ? 'white' : '#4a5568'
+                                        }}>
+                                            <input
+                                                type="radio"
+                                                name="gioiTinh"
+                                                value="nam"
+                                                checked={formData.gioiTinh === 'nam'}
+                                                onChange={handleInputChange}
+                                                style={{ display: 'none' }}
+                                            />
+                                            <i className="fas fa-mars" style={{ marginRight: '0.5rem' }}></i>
+                                            Nam
+                                        </label>
+
+                                        <label style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            padding: '0.75rem',
+                                            border: '2px solid #e2e8f0',
+                                            borderRadius: '8px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.3s ease',
+                                            background: formData.gioiTinh === 'nu' ? '#667eea' : 'white',
+                                            color: formData.gioiTinh === 'nu' ? 'white' : '#4a5568'
+                                        }}>
+                                            <input
+                                                type="radio"
+                                                name="gioiTinh"
+                                                value="nu"
+                                                checked={formData.gioiTinh === 'nu'}
+                                                onChange={handleInputChange}
+                                                style={{ display: 'none' }}
+                                            />
+                                            <i className="fas fa-venus" style={{ marginRight: '0.5rem' }}></i>
+                                            Nữ
+                                        </label>
+                                    </div>
                                 </div>
 
+                                {/* Mệnh */}
                                 <div style={{ marginBottom: '1.5rem' }}>
                                     <label style={{
                                         display: 'block',
@@ -305,7 +265,7 @@ const MauHopTuoiPage = () => {
                                         fontWeight: '600',
                                         color: '#2d3748'
                                     }}>
-                                        Mệnh (nếu biết)
+                                        Mệnh của bạn
                                     </label>
                                     <select
                                         name="menhData"
@@ -318,21 +278,19 @@ const MauHopTuoiPage = () => {
                                             borderRadius: '8px',
                                             fontSize: '1rem',
                                             outline: 'none',
-                                            background: 'white'
+                                            background: 'white',
+                                            cursor: 'pointer'
                                         }}
                                     >
-                                        <option value="auto">Để AI tự tính dựa trên năm sinh</option>
                                         {menhOptions.map(menh => (
                                             <option key={menh.value} value={menh.value}>
                                                 {menh.label}
                                             </option>
                                         ))}
                                     </select>
-                                    <small style={{ color: '#64748b', fontSize: '0.9rem', marginTop: '0.5rem', display: 'block' }}>
-                                        Hoặc để tự tính dựa trên năm sinh dương lịch
-                                    </small>
                                 </div>
 
+                                {/* Mục đích */}
                                 <div style={{ marginBottom: '2rem' }}>
                                     <label style={{
                                         display: 'block',
@@ -353,7 +311,8 @@ const MauHopTuoiPage = () => {
                                             borderRadius: '8px',
                                             fontSize: '1rem',
                                             outline: 'none',
-                                            background: 'white'
+                                            background: 'white',
+                                            cursor: 'pointer'
                                         }}
                                     >
                                         {purposeOptions.map(purpose => (
@@ -363,17 +322,19 @@ const MauHopTuoiPage = () => {
                                         ))}
                                     </select>
                                 </div>
+                            </div>
 
+                            {/* Submit Button */}
+                            <div style={{ textAlign: 'center' }}>
                                 <button
-                                    onClick={consultGemini}
+                                    type="submit"
                                     disabled={loading}
                                     style={{
-                                        width: '100%',
-                                        padding: '1rem',
-                                        background: loading ? '#cbd5e0' : 'linear-gradient(135deg, #667eea, #764ba2)',
+                                        background: loading ? '#94a3b8' : 'linear-gradient(135deg, #667eea, #764ba2)',
                                         color: 'white',
+                                        padding: '1rem 2rem',
                                         border: 'none',
-                                        borderRadius: '8px',
+                                        borderRadius: '12px',
                                         fontSize: '1.1rem',
                                         fontWeight: '600',
                                         cursor: loading ? 'not-allowed' : 'pointer',
@@ -381,124 +342,162 @@ const MauHopTuoiPage = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        gap: '0.5rem'
+                                        gap: '0.5rem',
+                                        margin: '0 auto',
+                                        minWidth: '200px'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        if (!loading) {
+                                            e.target.style.transform = 'translateY(-2px)';
+                                            e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
+                                        }
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        if (!loading) {
+                                            e.target.style.transform = 'translateY(0)';
+                                            e.target.style.boxShadow = 'none';
+                                        }
                                     }}
                                 >
                                     {loading ? (
                                         <>
                                             <i className="fas fa-spinner fa-spin"></i>
-                                            Đang phân tích màu sắc...
+                                            Đang phân tích...
                                         </>
                                     ) : (
                                         <>
-                                            <i className="fas fa-magic"></i>
-                                            Tư Vấn Màu Sắc
+                                            <i className="fas fa-palette"></i>
+                                            Xem Màu Sắc Hợp Tuổi
                                         </>
                                     )}
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </section>
 
-                {/* Color Guide Section */}
-                <section className="section section-alt">
-                    <div className="container">
-                        <div className="section-title">Ngũ Hành và Màu Sắc</div>
-                        <div className="section-subtitle">
-                            Tham khảo mối quan hệ giữa ngũ hành và màu sắc trong phong thủy
-                        </div>
-
-                        <div className="grid-5" style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                            gap: '1.5rem',
-                            marginTop: '2rem'
+                    {/* Result Section */}
+                    {result && (
+                        <div id="result-section" style={{
+                            maxWidth: '900px',
+                            margin: '0 auto 3rem auto',
+                            background: 'white',
+                            borderRadius: '20px',
+                            boxShadow: '0 8px 30px rgba(0, 0, 0, 0.1)',
+                            overflow: 'hidden'
                         }}>
-                            {menhOptions.map((menh, index) => (
-                                <div key={index} className="card" style={{ textAlign: 'center' }}>
-                                    <div style={{
-                                        width: '80px',
-                                        height: '80px',
-                                        borderRadius: '50%',
-                                        background: menh.color,
-                                        margin: '0 auto 1rem',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        color: 'white',
-                                        fontSize: '1.5rem',
-                                        fontWeight: 'bold',
-                                        boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-                                    }}>
-                                        {menh.value}
-                                    </div>
-                                    <h4 style={{ color: '#2d3748', marginBottom: '0.5rem' }}>
-                                        Mệnh {menh.value}
-                                    </h4>
-                                    <p style={{ color: '#64748b', fontSize: '0.9rem', margin: 0 }}>
-                                        {menh.label.split('(')[1]?.replace(')', '') || menh.label}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Result Section */}
-                {result && (
-                    <section className="section">
-                        <div className="container">
-                            <div className="card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className="fas fa-lightbulb"></i>
-                                        Kết Quả Phân Tích Màu Sắc
-                                    </h3>
-                                    <p>Tư vấn từ chuyên gia phong thủy AI</p>
-                                </div>
-                                <div className="card-body">
-                                    <div style={{
-                                        background: '#f8fafc',
-                                        padding: '1.5rem',
-                                        borderRadius: '8px',
-                                        border: '1px solid #e2e8f0',
-                                        lineHeight: '1.8',
-                                        fontFamily: 'inherit'
-                                    }} dangerouslySetInnerHTML={{ __html: result }}>
-                                    </div>
-                                </div>
+                            <div style={{
+                                background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                                color: 'white',
+                                padding: '1.5rem 2rem',
+                                textAlign: 'center'
+                            }}>
+                                <h3 style={{
+                                    margin: 0,
+                                    fontSize: '1.5rem',
+                                    fontWeight: '600'
+                                }}>
+                                    🎨 Kết Quả Tư Vấn Màu Sắc
+                                </h3>
+                                <p style={{ margin: '0.5rem 0 0 0', opacity: 0.9 }}>
+                                    Gợi ý màu sắc phù hợp dựa trên mệnh và mục đích sử dụng của bạn
+                                </p>
+                            </div>
+                            <div style={{
+                                padding: '2rem',
+                                lineHeight: '1.8',
+                                color: '#2d3748'
+                            }}>
+                                <div
+                                    style={{
+                                        whiteSpace: 'pre-line',
+                                        fontSize: '1rem'
+                                    }}
+                                    dangerouslySetInnerHTML={{
+                                        __html: result.replace(/\n/g, '<br>')
+                                    }}
+                                />
                             </div>
                         </div>
-                    </section>
-                )}
+                    )}
 
-                {/* FAQ Section */}
-                <section className="section">
-                    <div className="container">
-                        <div className="section-title">Câu Hỏi Thường Gặp</div>
-                        <div className="section-subtitle">
-                            Những thắc mắc phổ biến về màu sắc trong phong thủy
+                    {/* FAQ Section */}
+                    <div style={{
+                        maxWidth: '800px',
+                        margin: '0 auto',
+                        marginBottom: '3rem'
+                    }}>
+                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                            <h2 style={{
+                                fontSize: '2rem',
+                                fontWeight: '600',
+                                color: '#2d3748',
+                                marginBottom: '1rem'
+                            }}>
+                                Câu Hỏi Thường Gặp
+                            </h2>
+                            <p style={{ color: '#64748b', fontSize: '1rem' }}>
+                                Những thắc mắc phổ biến về màu sắc và phong thủy
+                            </p>
                         </div>
 
-                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {faqData.map((faq, index) => (
-                                <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
-                                    <div className="faq-question" onClick={() => toggleFaq(index)}>
-                                        <h4>{faq.question}</h4>
-                                        <i className={`fas ${activeFaq === index ? 'fa-chevron-up' : 'fa-chevron-down'} faq-icon`}></i>
-                                    </div>
-                                    <div className="faq-answer">
-                                        <p>{faq.answer}</p>
-                                    </div>
+                                <div
+                                    key={index}
+                                    style={{
+                                        background: 'white',
+                                        borderRadius: '12px',
+                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+                                        overflow: 'hidden',
+                                        border: activeFaq === index ? '2px solid #667eea' : '2px solid transparent'
+                                    }}
+                                >
+                                    <button
+                                        onClick={() => toggleFaq(index)}
+                                        style={{
+                                            width: '100%',
+                                            padding: '1.5rem',
+                                            background: activeFaq === index ? '#667eea' : 'white',
+                                            color: activeFaq === index ? 'white' : '#2d3748',
+                                            border: 'none',
+                                            textAlign: 'left',
+                                            cursor: 'pointer',
+                                            fontSize: '1rem',
+                                            fontWeight: '600',
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                    >
+                                        <span>{faq.question}</span>
+                                        <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    </button>
+
+                                    {activeFaq === index && (
+                                        <div style={{
+                                            padding: '1.5rem',
+                                            background: '#f8f9fa',
+                                            borderTop: '1px solid #e2e8f0'
+                                        }}>
+                                            <p style={{
+                                                margin: 0,
+                                                color: '#4a5568',
+                                                lineHeight: '1.6'
+                                            }}>
+                                                {faq.answer}
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
                     </div>
-                </section>
 
-                <CTAContent />
-            </main>
+                    {/* CTA Section */}
+                    <CTAContent />
+                </div>
+            </div>
 
             <Footer />
             <FloatButtons />
