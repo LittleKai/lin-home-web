@@ -17,7 +17,7 @@ const MauHopTuoiPage = () => {
     const [result, setResult] = useState('');
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Available Gemini API keys from the spreadsheet
+    // Available Gemini API keys
     const geminiKeys = [
         'AIzaSyAxfaDXqfJESn-UiV_PrILhihyvFU6QkGw',
         'AIzaSyDEsifzFyaPY5zca8mp2sHnj41k_PVuiTQ',
@@ -29,6 +29,13 @@ const MauHopTuoiPage = () => {
         'AIzaSyAKWtKWb_ozSCAI97WWhcgm_EB8pgvWzK4',
         'AIzaSyDLvxbXVN1ycTF87urbQEjN3L-XhchvhKE',
         'AIzaSyCyJG-f3tRgY1SlrUaMQxjILms7hzo3mWI',
+        'AIzaSyAq2UIxBBFrrGlb_pA7z1GHKVTqy4Qeiig',
+        'AIzaSyAc2BUU5jxtWMVYTO28JsFu9n7w2-ud-qA',
+        'AIzaSyBCHK8-SGyHHG24t7yy5HzpKhveJFdk1qs',
+        'AIzaSyDM63DmLwNb5LKHbZFj-mwYT0aBcBDbZLg',
+        'AIzaSyA6OeXY3-bLknr6Nh97dGWAbnFqQ4BNytg',
+        'AIzaSyDSc3eaBTApLN4rV0agw8xgqgQTPwr3q4c',
+        'AIzaSyBEZOICOKkDnvDR03n-yvpqeNN1svsFneg',
         'AIzaSyCx4fnrgUKY0QJFoaTXybuH46tLMGnEa8k'
     ];
 

@@ -19,7 +19,7 @@ const HuongNhaHopTuoiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
     const resultRef = useRef(null);
 
-    // Available Gemini API keys from the spreadsheet
+    // Available Gemini API keys
     const geminiKeys = [
         'AIzaSyAxfaDXqfJESn-UiV_PrILhihyvFU6QkGw',
         'AIzaSyDEsifzFyaPY5zca8mp2sHnj41k_PVuiTQ',
@@ -31,6 +31,13 @@ const HuongNhaHopTuoiPage = () => {
         'AIzaSyAKWtKWb_ozSCAI97WWhcgm_EB8pgvWzK4',
         'AIzaSyDLvxbXVN1ycTF87urbQEjN3L-XhchvhKE',
         'AIzaSyCyJG-f3tRgY1SlrUaMQxjILms7hzo3mWI',
+        'AIzaSyAq2UIxBBFrrGlb_pA7z1GHKVTqy4Qeiig',
+        'AIzaSyAc2BUU5jxtWMVYTO28JsFu9n7w2-ud-qA',
+        'AIzaSyBCHK8-SGyHHG24t7yy5HzpKhveJFdk1qs',
+        'AIzaSyDM63DmLwNb5LKHbZFj-mwYT0aBcBDbZLg',
+        'AIzaSyA6OeXY3-bLknr6Nh97dGWAbnFqQ4BNytg',
+        'AIzaSyDSc3eaBTApLN4rV0agw8xgqgQTPwr3q4c',
+        'AIzaSyBEZOICOKkDnvDR03n-yvpqeNN1svsFneg',
         'AIzaSyCx4fnrgUKY0QJFoaTXybuH46tLMGnEa8k'
     ];
 
@@ -534,62 +541,6 @@ Hãy trả lời bằng tiếng Việt, chi tiết, thực tế và dễ hiểu.
                                     )}
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Directions Guide */}
-                <section className="section section-alt">
-                    <div className="container">
-                        <div className="section-title">8 Hướng Chính Theo Phong Thủy</div>
-                        <div className="section-subtitle">
-                            Tham khảo ý nghĩa và đặc điểm của từng hướng
-                        </div>
-
-                        <div className="grid-4" style={{ marginTop: '2rem' }}>
-                            {directions.map((direction, index) => (
-                                <div
-                                    key={index}
-                                    className="card"
-                                    style={{
-                                        textAlign: 'center',
-                                        padding: '1.5rem',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        border: formData.huongNha === direction.value ? '2px solid #667eea' : '2px solid #e2e8f0',
-                                        transform: formData.huongNha === direction.value ? 'translateY(-4px)' : 'translateY(0)',
-                                        boxShadow: formData.huongNha === direction.value ? '0 8px 25px rgba(102, 126, 234, 0.15)' : '0 4px 16px rgba(0, 0, 0, 0.1)'
-                                    }}
-                                    onClick={() => setFormData(prev => ({ ...prev, huongNha: direction.value }))}
-                                >
-                                    <div style={{
-                                        fontSize: '2.5rem',
-                                        marginBottom: '1rem',
-                                        height: '60px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center'
-                                    }}>
-                                        {direction.icon}
-                                    </div>
-                                    <h4 style={{
-                                        color: formData.huongNha === direction.value ? '#667eea' : '#2d3748',
-                                        fontSize: '1.1rem',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600'
-                                    }}>
-                                        {direction.label}
-                                    </h4>
-                                    <p style={{
-                                        color: '#64748b',
-                                        fontSize: '0.9rem',
-                                        margin: 0,
-                                        lineHeight: '1.4'
-                                    }}>
-                                        {direction.description}
-                                    </p>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </section>

@@ -20,7 +20,7 @@ const XemTuoiLamNhaPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
     const resultRef = useRef(null);
 
-    // Available Gemini API keys from the spreadsheet
+    // Available Gemini API keys
     const geminiKeys = [
         'AIzaSyAxfaDXqfJESn-UiV_PrILhihyvFU6QkGw',
         'AIzaSyDEsifzFyaPY5zca8mp2sHnj41k_PVuiTQ',
@@ -32,6 +32,13 @@ const XemTuoiLamNhaPage = () => {
         'AIzaSyAKWtKWb_ozSCAI97WWhcgm_EB8pgvWzK4',
         'AIzaSyDLvxbXVN1ycTF87urbQEjN3L-XhchvhKE',
         'AIzaSyCyJG-f3tRgY1SlrUaMQxjILms7hzo3mWI',
+        'AIzaSyAq2UIxBBFrrGlb_pA7z1GHKVTqy4Qeiig',
+        'AIzaSyAc2BUU5jxtWMVYTO28JsFu9n7w2-ud-qA',
+        'AIzaSyBCHK8-SGyHHG24t7yy5HzpKhveJFdk1qs',
+        'AIzaSyDM63DmLwNb5LKHbZFj-mwYT0aBcBDbZLg',
+        'AIzaSyA6OeXY3-bLknr6Nh97dGWAbnFqQ4BNytg',
+        'AIzaSyDSc3eaBTApLN4rV0agw8xgqgQTPwr3q4c',
+        'AIzaSyBEZOICOKkDnvDR03n-yvpqeNN1svsFneg',
         'AIzaSyCx4fnrgUKY0QJFoaTXybuH46tLMGnEa8k'
     ];
 
@@ -592,59 +599,6 @@ Hãy trả lời bằng tiếng Việt, chi tiết, thiết thực và dễ hi�
                                     )}
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Construction Types Guide */}
-                <section className="section section-alt">
-                    <div className="container">
-                        <div className="section-title">Các Loại Công Trình</div>
-                        <div className="section-subtitle">
-                            Chúng tôi tư vấn xem tuổi cho mọi loại công trình xây dựng
-                        </div>
-
-                        <div className="grid-4" style={{ marginTop: '2rem' }}>
-                            {constructionTypes.map((type, index) => (
-                                <div
-                                    key={index}
-                                    className="card"
-                                    style={{
-                                        textAlign: 'center',
-                                        padding: '1.5rem',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.3s ease',
-                                        border: formData.loaiCongTrinh === type.value ? '2px solid #667eea' : '2px solid #e2e8f0'
-                                    }}
-                                    onClick={() => setFormData(prev => ({ ...prev, loaiCongTrinh: type.value }))}
-                                >
-                                    <div className="icon-circle" style={{
-                                        margin: '0 auto 1rem',
-                                        background: formData.loaiCongTrinh === type.value
-                                            ? 'linear-gradient(135deg, #667eea, #764ba2)'
-                                            : 'linear-gradient(135deg, #64748b, #475569)',
-                                        color: 'white'
-                                    }}>
-                                        <i className={`fas ${type.icon}`}></i>
-                                    </div>
-                                    <h4 style={{
-                                        color: '#2d3748',
-                                        fontSize: '1rem',
-                                        marginBottom: '0.5rem',
-                                        fontWeight: '600'
-                                    }}>
-                                        {type.label}
-                                    </h4>
-                                    <p style={{
-                                        color: '#64748b',
-                                        fontSize: '0.85rem',
-                                        margin: 0,
-                                        lineHeight: '1.4'
-                                    }}>
-                                        {type.description}
-                                    </p>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </section>
