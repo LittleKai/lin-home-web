@@ -1,5 +1,5 @@
 // src/pages/ung-dung/MauHopTuoiPage.js
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import FloatButtons from '../../components/FloatButtons/FloatButtons';
@@ -19,22 +19,22 @@ const MauHopTuoiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
 
     const menhOptions = [
-        { value: 'auto', label: '🔮 Tự động xác định theo năm sinh', color: '#667eea', icon: '🔮' },
-        { value: 'Kim', label: 'Kim (Vàng, Trắng, Bạc)', color: '#FFD700', icon: '⚡' },
-        { value: 'Mộc', label: 'Mộc (Xanh lá, Xanh lục)', color: '#228B22', icon: '🌿' },
-        { value: 'Thủy', label: 'Thủy (Xanh dương, Đen)', color: '#4169E1', icon: '💧' },
-        { value: 'Hỏa', label: 'Hỏa (Đỏ, Cam, Hồng)', color: '#FF4500', icon: '🔥' },
-        { value: 'Thổ', label: 'Thổ (Vàng, Nâu, Be)', color: '#D2691E', icon: '🏔️' }
+        {value: 'auto', label: 'Tự động xác định theo năm sinh', color: '#667eea', icon: '🔮'},
+        {value: 'Kim', label: 'Kim (Vàng, Trắng, Bạc)', color: '#FFD700', icon: '⚡'},
+        {value: 'Mộc', label: 'Mộc (Xanh lá, Xanh lục)', color: '#228B22', icon: '🌿'},
+        {value: 'Thủy', label: 'Thủy (Xanh dương, Đen)', color: '#4169E1', icon: '💧'},
+        {value: 'Hỏa', label: 'Hỏa (Đỏ, Cam, Hồng)', color: '#FF4500', icon: '🔥'},
+        {value: 'Thổ', label: 'Thổ (Vàng, Nâu, Be)', color: '#D2691E', icon: '🏔️'}
     ];
 
     const purposeOptions = [
-        { value: 'nha_o', label: '🏠 Nhà ở', icon: '🏠', color: '#10b981' },
-        { value: 'van_phong', label: '🏢 Văn phòng', icon: '🏢', color: '#3b82f6' },
-        { value: 'kinh_doanh', label: '🏪 Kinh doanh', icon: '🏪', color: '#f59e0b' },
-        { value: 'phong_ngu', label: '🛏️ Phòng ngủ', icon: '🛏️', color: '#8b5cf6' },
-        { value: 'phong_khach', label: '🛋️ Phòng khách', icon: '🛋️', color: '#06b6d4' },
-        { value: 'nha_bep', label: '👨‍🍳 Nhà bếp', icon: '👨‍🍳', color: '#ef4444' },
-        { value: 'phong_tho', label: '🕯️ Phòng thờ', icon: '🕯️', color: '#eab308' }
+        {value: 'nha_o', label: '🏠 Nhà ở', icon: '🏠', color: '#10b981'},
+        {value: 'van_phong', label: '🏢 Văn phòng', icon: '🏢', color: '#3b82f6'},
+        {value: 'kinh_doanh', label: '🏪 Kinh doanh', icon: '🏪', color: '#f59e0b'},
+        {value: 'phong_ngu', label: '🛏️ Phòng ngủ', icon: '🛏️', color: '#8b5cf6'},
+        {value: 'phong_khach', label: '🛋️ Phòng khách', icon: '🛋️', color: '#06b6d4'},
+        {value: 'nha_bep', label: '👨‍🍳 Nhà bếp', icon: '👨‍🍳', color: '#ef4444'},
+        {value: 'phong_tho', label: '🕯️ Phòng thờ', icon: '🕯️', color: '#eab308'}
     ];
 
     const faqData = [
@@ -61,7 +61,7 @@ const MauHopTuoiPage = () => {
     ];
 
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -91,7 +91,7 @@ const MauHopTuoiPage = () => {
             if (response.success) {
                 setResult(response.data);
                 setTimeout(() => {
-                    document.querySelector('#result-section')?.scrollIntoView({ behavior: 'smooth' });
+                    document.querySelector('#result-section')?.scrollIntoView({behavior: 'smooth'});
                 }, 100);
             } else {
                 setResult(response.error || 'Đã xảy ra lỗi khi tư vấn. Vui lòng thử lại sau.');
@@ -110,16 +110,17 @@ const MauHopTuoiPage = () => {
 
     return (
         <>
-            <Header />
-            <main style={{ marginTop: '80px', minHeight: 'calc(100vh - 80px)' }}>
+            <Header/>
+            <main style={{marginTop: '80px', minHeight: 'calc(100vh - 80px)'}}>
                 {/* Hero Section */}
                 <section className="section section-gradient">
                     <div className="container">
-                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                        <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
                             <div style={{
                                 fontSize: '3rem',
                                 marginBottom: '0.5rem'
-                            }}>🎨✨</div>
+                            }}>🎨✨
+                            </div>
                             <h1 style={{
                                 color: '#2d3748',
                                 fontSize: '2rem',
@@ -127,7 +128,7 @@ const MauHopTuoiPage = () => {
                                 margin: '0 0 0.5rem 0',
                                 lineHeight: '1.2'
                             }}>
-                                <i className="fas fa-palette" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                <i className="fas fa-palette" style={{marginRight: '0.5rem', color: '#667eea'}}></i>
                                 Màu Hợp Tuổi
                             </h1>
                             <p style={{
@@ -158,8 +159,10 @@ const MauHopTuoiPage = () => {
                                 borderRadius: '12px',
                                 color: 'white'
                             }}>
-                                <i className="fas fa-paint-brush" style={{ fontSize: '1.5rem', marginBottom: '0.3rem' }}></i>
-                                <h3 style={{ margin: '0', fontSize: '1.1rem', color: 'white' }}>Nhập thông tin của bạn</h3>
+                                <i className="fas fa-paint-brush"
+                                   style={{fontSize: '1.5rem', marginBottom: '0.3rem'}}></i>
+                                <h3 style={{margin: '0', fontSize: '1.1rem', color: 'white'}}>Nhập thông tin của
+                                    bạn</h3>
                             </div>
 
                             <form onSubmit={handleSubmit}>
@@ -178,8 +181,9 @@ const MauHopTuoiPage = () => {
                                             color: '#2d3748',
                                             fontSize: '0.9rem'
                                         }}>
-                                            <i className="fas fa-calendar-alt" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
-                                            Năm sinh <span style={{ color: '#dc2626' }}>*</span>
+                                            <i className="fas fa-calendar-alt"
+                                               style={{marginRight: '0.5rem', color: '#667eea'}}></i>
+                                            Năm sinh <span style={{color: '#dc2626'}}>*</span>
                                         </label>
                                         <input
                                             type="number"
@@ -210,7 +214,8 @@ const MauHopTuoiPage = () => {
                                             color: '#2d3748',
                                             fontSize: '0.9rem'
                                         }}>
-                                            <i className="fas fa-venus-mars" style={{ marginRight: '0.5rem', color: '#ec4899' }}></i>
+                                            <i className="fas fa-venus-mars"
+                                               style={{marginRight: '0.5rem', color: '#ec4899'}}></i>
                                             Giới tính
                                         </label>
                                         <div style={{
@@ -234,9 +239,10 @@ const MauHopTuoiPage = () => {
                                                     value="nam"
                                                     checked={formData.gioiTinh === 'nam'}
                                                     onChange={handleInputChange}
-                                                    style={{ marginRight: '0.5rem' }}
+                                                    style={{marginRight: '0.5rem'}}
                                                 />
-                                                <i className="fas fa-mars" style={{ marginRight: '0.25rem', color: '#3b82f6' }}></i>
+                                                <i className="fas fa-mars"
+                                                   style={{marginRight: '0.25rem', color: '#3b82f6'}}></i>
                                                 Nam
                                             </label>
 
@@ -256,9 +262,10 @@ const MauHopTuoiPage = () => {
                                                     value="nu"
                                                     checked={formData.gioiTinh === 'nu'}
                                                     onChange={handleInputChange}
-                                                    style={{ marginRight: '0.5rem' }}
+                                                    style={{marginRight: '0.5rem'}}
                                                 />
-                                                <i className="fas fa-venus" style={{ marginRight: '0.25rem', color: '#ec4899' }}></i>
+                                                <i className="fas fa-venus"
+                                                   style={{marginRight: '0.25rem', color: '#ec4899'}}></i>
                                                 Nữ
                                             </label>
                                         </div>
@@ -266,7 +273,7 @@ const MauHopTuoiPage = () => {
                                 </div>
 
                                 {/* Menh Selection */}
-                                <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{marginBottom: '1.5rem'}}>
                                     <label style={{
                                         display: 'block',
                                         marginBottom: '0.8rem',
@@ -274,61 +281,78 @@ const MauHopTuoiPage = () => {
                                         color: '#2d3748',
                                         fontSize: '0.9rem'
                                     }}>
-                                        <i className="fas fa-yin-yang" style={{ marginRight: '0.5rem', color: '#8b5cf6' }}></i>
+                                        <i className="fas fa-yin-yang"
+                                           style={{marginRight: '0.5rem', color: '#8b5cf6'}}></i>
                                         Mệnh của bạn (Ngũ hành)
                                     </label>
 
-                                    <div style={{
-                                        display: 'grid',
-                                        gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-                                        gap: '1rem'
-                                    }}>
-                                        {menhOptions.map(menh => (
-                                            <label
-                                                key={menh.value}
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    alignItems: 'center',
-                                                    padding: '1rem 0.5rem',
-                                                    border: `2px solid ${formData.menhData === menh.value ? menh.color : '#e2e8f0'}`,
-                                                    borderRadius: '12px',
-                                                    cursor: 'pointer',
-                                                    background: formData.menhData === menh.value ? `${menh.color}15` : 'white',
-                                                    transition: 'all 0.3s ease',
-                                                    textAlign: 'center'
-                                                }}
-                                            >
-                                                <input
-                                                    type="radio"
-                                                    name="menhData"
-                                                    value={menh.value}
-                                                    checked={formData.menhData === menh.value}
-                                                    onChange={handleInputChange}
-                                                    style={{ display: 'none' }}
-                                                />
-                                                <div style={{
-                                                    fontSize: '1.5rem',
-                                                    marginBottom: '0.5rem',
-                                                    color: menh.color
-                                                }}>
-                                                    {menh.icon}
-                                                </div>
-                                                <div style={{
-                                                    fontWeight: '600',
-                                                    color: formData.menhData === menh.value ? menh.color : '#2d3748',
-                                                    fontSize: '0.85rem',
-                                                    lineHeight: '1.3'
-                                                }}>
-                                                    {menh.label}
-                                                </div>
-                                            </label>
-                                        ))}
+                                    <div style={{position: 'relative'}}>
+                                        <select
+                                            name="menhData"
+                                            value={formData.menhData}
+                                            onChange={handleInputChange}
+                                            style={{
+                                                width: '100%',
+                                                padding: '0.75rem 2.5rem 0.75rem 0.75rem',
+                                                border: '2px solid #e2e8f0',
+                                                borderRadius: '8px',
+                                                fontSize: '1rem',
+                                                outline: 'none',
+                                                background: 'white',
+                                                cursor: 'pointer',
+                                                appearance: 'none',
+                                                WebkitAppearance: 'none',
+                                                MozAppearance: 'none'
+                                            }}
+                                        >
+                                            {menhOptions.map(menh => (
+                                                <option key={menh.value} value={menh.value}>
+                                                    {menh.icon} {menh.label}
+                                                </option>
+                                            ))}
+                                        </select>
+
+                                        {/* Custom dropdown arrow */}
+                                        <div style={{
+                                            position: 'absolute',
+                                            right: '0.75rem',
+                                            top: '50%',
+                                            transform: 'translateY(-50%)',
+                                            pointerEvents: 'none',
+                                            color: '#667eea'
+                                        }}>
+                                            <i className="fas fa-chevron-down"></i>
+                                        </div>
                                     </div>
+
+                                    {/* Display selected option info */}
+                                    {formData.menhData !== 'auto' && (
+                                        <div style={{
+                                            marginTop: '0.5rem',
+                                            padding: '0.75rem',
+                                            background: `${menhOptions.find(m => m.value === formData.menhData)?.color}15`,
+                                            border: `1px solid ${menhOptions.find(m => m.value === formData.menhData)?.color}30`,
+                                            borderRadius: '8px',
+                                            fontSize: '0.9rem',
+                                            color: '#4a5568',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '0.5rem'
+                                        }}>
+            <span style={{fontSize: '1.2rem'}}>
+                {menhOptions.find(m => m.value === formData.menhData)?.icon}
+            </span>
+                                            <span>
+                Đã chọn: <strong style={{color: menhOptions.find(m => m.value === formData.menhData)?.color}}>
+                    {menhOptions.find(m => m.value === formData.menhData)?.label}
+                </strong>
+            </span>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {/* Purpose Selection */}
-                                <div style={{ marginBottom: '1.5rem' }}>
+                                <div style={{marginBottom: '1.5rem'}}>
                                     <label style={{
                                         display: 'block',
                                         marginBottom: '0.8rem',
@@ -336,7 +360,8 @@ const MauHopTuoiPage = () => {
                                         color: '#2d3748',
                                         fontSize: '0.9rem'
                                     }}>
-                                        <i className="fas fa-home" style={{ marginRight: '0.5rem', color: '#10b981' }}></i>
+                                        <i className="fas fa-home"
+                                           style={{marginRight: '0.5rem', color: '#10b981'}}></i>
                                         Mục đích sử dụng màu sắc
                                     </label>
 
@@ -367,7 +392,7 @@ const MauHopTuoiPage = () => {
                                                     value={purpose.value}
                                                     checked={formData.mucDich === purpose.value}
                                                     onChange={handleInputChange}
-                                                    style={{ display: 'none' }}
+                                                    style={{display: 'none'}}
                                                 />
                                                 <div style={{
                                                     fontSize: '1.5rem',
@@ -389,7 +414,7 @@ const MauHopTuoiPage = () => {
                                 </div>
 
                                 {/* Submit Button */}
-                                <div style={{ textAlign: 'center' }}>
+                                <div style={{textAlign: 'center'}}>
                                     <button
                                         type="submit"
                                         disabled={loading}
@@ -444,15 +469,16 @@ const MauHopTuoiPage = () => {
                                     borderRadius: '12px',
                                     color: 'white'
                                 }}>
-                                    <i className="fas fa-palette" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}></i>
-                                    <h3 style={{ margin: '0', fontSize: '1.2rem' }}>Tư vấn màu sắc phong thủy</h3>
+                                    <i className="fas fa-palette"
+                                       style={{fontSize: '1.5rem', marginBottom: '0.5rem'}}></i>
+                                    <h3 style={{margin: '0', fontSize: '1.2rem'}}>Tư vấn màu sắc phong thủy</h3>
                                 </div>
 
                                 <div style={{
                                     color: '#2d3748',
                                     lineHeight: '1.6',
                                     whiteSpace: 'pre-wrap'
-                                }} dangerouslySetInnerHTML={{ __html: result }}>
+                                }} dangerouslySetInnerHTML={{__html: result}}>
                                 </div>
                             </div>
                         )}
@@ -462,7 +488,7 @@ const MauHopTuoiPage = () => {
                 {/* FAQ Section */}
                 <section className="section">
                     <div className="container">
-                        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+                        <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
                             <h2 style={{
                                 color: '#2d3748',
                                 fontSize: '1.8rem',
@@ -470,7 +496,8 @@ const MauHopTuoiPage = () => {
                                 margin: '0 0 0.5rem 0',
                                 lineHeight: '1.2'
                             }}>
-                                <i className="fas fa-question-circle" style={{ marginRight: '0.5rem', color: '#667eea' }}></i>
+                                <i className="fas fa-question-circle"
+                                   style={{marginRight: '0.5rem', color: '#667eea'}}></i>
                                 Câu hỏi thường gặp
                             </h2>
                             <p style={{
@@ -483,7 +510,7 @@ const MauHopTuoiPage = () => {
                             </p>
                         </div>
 
-                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                        <div style={{maxWidth: '800px', margin: '0 auto'}}>
                             {faqData.map((faq, index) => (
                                 <div key={index} className={`faq-item ${activeFaq === index ? 'active' : ''}`}>
                                     <div className="faq-question" onClick={() => toggleFaq(index)}>
@@ -499,10 +526,10 @@ const MauHopTuoiPage = () => {
                     </div>
                 </section>
 
-                <CTAContent />
+                <CTAContent/>
             </main>
-            <Footer />
-            <FloatButtons />
+            <Footer/>
+            <FloatButtons/>
         </>
     );
 };

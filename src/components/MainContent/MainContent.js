@@ -16,7 +16,7 @@ const MainContent = ({ activeSection, setActiveSection }) => {
         switch(activeSection) {
             case 'contact':
                 return (
-                    <main style={{ marginTop: '80px' }}>
+                    <main style={{ marginTop: '10px' }}>
                         <ContactSection />
                         <Footer />
                     </main>
@@ -24,7 +24,7 @@ const MainContent = ({ activeSection, setActiveSection }) => {
 
             case 'portfolio':
                 return (
-                    <main style={{ marginTop: '80px' }}>
+                    <main style={{ marginTop: '10px' }}>
                         <PortfolioSection />
                         <FeaturesSection />
                         <Footer />
@@ -33,7 +33,7 @@ const MainContent = ({ activeSection, setActiveSection }) => {
 
             case 'apps':
                 return (
-                    <main style={{ marginTop: '80px' }}>
+                    <main style={{ marginTop: '10px' }}>
                         <AppsSection />
                         <NewsSection />
                         <Footer />
@@ -42,7 +42,7 @@ const MainContent = ({ activeSection, setActiveSection }) => {
 
             case 'features':
                 return (
-                    <main style={{ marginTop: '80px' }}>
+                    <main style={{ marginTop: '10px' }}>
                         <FeaturesSection />
                         <PortfolioSection />
                         <Footer />
@@ -51,7 +51,7 @@ const MainContent = ({ activeSection, setActiveSection }) => {
 
             case 'news':
                 return (
-                    <main style={{ marginTop: '80px' }}>
+                    <main style={{ marginTop: '10px' }}>
                         <NewsSection />
                         <ContactSection />
                         <Footer />

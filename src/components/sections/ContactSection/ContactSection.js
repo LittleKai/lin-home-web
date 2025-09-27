@@ -18,20 +18,17 @@ const ContactSection = () => {
         {
             icon: 'fa-phone',
             title: 'Điện thoại',
-            content: contactInfo.phone,
-            href: `tel:${contactInfo.phone.replace(/\s/g, '')}`
+            content: contactInfo.phone
         },
         {
             icon: 'fa-envelope',
             title: 'Email',
-            content: contactInfo.email,
-            href: `mailto:${contactInfo.email}`
+            content: contactInfo.email
         },
         {
             icon: 'fa-map-marker-alt',
             title: 'Địa chỉ',
-            content: contactInfo.address,
-            href: contactInfo.maps
+            content: contactInfo.address
         },
         {
             icon: 'fa-clock',
@@ -122,17 +119,6 @@ const ContactSection = () => {
         }
     };
 
-    // Handle contact item click
-    const handleContactItemClick = (item) => {
-        if (item.href) {
-            if (item.href.startsWith('http')) {
-                window.open(item.href, '_blank', 'noopener,noreferrer');
-            } else {
-                window.location.href = item.href;
-            }
-        }
-    };
-
     return (
         <section className="contact">
             <div className="container">
@@ -146,73 +132,6 @@ const ContactSection = () => {
                 </div>
 
                 <div className="contact-content">
-                    {/* Contact Information */}
-                    <div className="contact-info">
-                        <h3>Thông tin liên hệ</h3>
-                        {contactInfoItems.map((info, index) => (
-                            <div
-                                key={index}
-                                className={`contact-item ${info.href ? 'clickable' : ''}`}
-                                onClick={() => handleContactItemClick(info)}
-                                role={info.href ? 'button' : undefined}
-                                tabIndex={info.href ? 0 : undefined}
-                                onKeyDown={(e) => {
-                                    if (info.href && (e.key === 'Enter' || e.key === ' ')) {
-                                        e.preventDefault();
-                                        handleContactItemClick(info);
-                                    }
-                                }}
-                            >
-                                <div className="contact-icon">
-                                    <i className={`fas ${info.icon}`} aria-hidden="true"></i>
-                                </div>
-                                <div className="contact-item-content">
-                                    <h4>{info.title}</h4>
-                                    <p>{info.content}</p>
-                                </div>
-                            </div>
-                        ))}
-
-                        {/* Social Links */}
-                        <div className="contact-social">
-                            <h4>Theo dõi chúng tôi</h4>
-                            <div className="social-links">
-                                <a
-                                    href={contactInfo.facebook}
-                                    className="social-link facebook"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Facebook"
-                                >
-                                    <i className="fab fa-facebook-f" aria-hidden="true"></i>
-                                </a>
-                                <a
-                                    href={contactInfo.zalo}
-                                    className="social-link zalo"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Zalo"
-                                >
-                                    <span className="zalo-icon" aria-hidden="true"></span>
-                                </a>
-                                <button
-                                    className="social-link youtube"
-                                    onClick={() => alert('Chuyển đến YouTube')}
-                                    aria-label="YouTube"
-                                >
-                                    <i className="fab fa-youtube" aria-hidden="true"></i>
-                                </button>
-                                <button
-                                    className="social-link instagram"
-                                    onClick={() => alert('Chuyển đến Instagram')}
-                                    aria-label="Instagram"
-                                >
-                                    <i className="fab fa-instagram" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
                     {/* Contact Form */}
                     <div className="contact-form">
                         <h3>Gửi yêu cầu tư vấn</h3>
@@ -336,6 +255,55 @@ const ContactSection = () => {
                                 )}
                             </button>
                         </form>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div className="contact-info">
+                        <div className="note_contact">
+                            <h2>Cty TNHH Xây Dựng LinHome</h2>
+
+                            <div className="address">
+                                <div className="address_list">
+                                    <div className="address_item">
+                                        <h3>+/ Văn phòng chính</h3>
+                                        <p><b>Địa chỉ:</b> {contactInfo.address}</p>
+                                        <p><b>Điện thoại:</b> {contactInfo.phone}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="contact_details">
+                                <h3><strong><span style={{color: '#ff3300', fontSize: '20px'}}>Hotline: {contactInfo.phone}</span></strong></h3>
+                                <p>Website: lin-home.vn</p>
+                                <p>Email: {contactInfo.email}</p>
+                                <p>Giờ làm việc: {contactInfo.workingHours}</p>
+                            </div>
+
+                            {/* Social Links */}
+                            <div className="contact-social">
+                                <h4>Theo dõi chúng tôi</h4>
+                                <div className="social-links">
+                                    <a
+                                        href={contactInfo.facebook}
+                                        className="social-link facebook"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Facebook"
+                                    >
+                                        <i className="fab fa-facebook-f" aria-hidden="true"></i>
+                                    </a>
+                                    <a
+                                        href={contactInfo.zalo}
+                                        className="social-link zalo"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Zalo"
+                                    >
+                                        <span className="zalo-icon" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
