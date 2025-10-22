@@ -1,4 +1,4 @@
-// src/components/Header/Header.js - Updated with Applications section
+// src/components/Header/Header.js - FIXED với error handling và fallback icons + project colors
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Header.css';
@@ -13,78 +13,71 @@ const Header = ({ activeSection, setActiveSection }) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Section icon mapping
+    // Default section icons mapping with fallback
     const getSectionIcon = (section) => {
         const iconMap = {
-            'Thiết kế': 'pencil-ruler',
-            'Thi công': 'hard-hat',
-            'Ứng dụng': 'mobile-alt', // New icon for Applications
-            'Báo giá': 'calculator'
+            'Thiết kế': 'fas fa-pencil-ruler',
+            'Thi công': 'fas fa-hard-hat',
+            'Báo giá': 'fas fa-calculator',
+            'Ứng dụng': 'fas fa-mobile-alt',
+            'Dự án': 'fas fa-folder-open'
         };
-        return iconMap[section] || 'circle';
+        return iconMap[section] || 'fas fa-circle';
     };
 
-    // Check if a section is active
-    const isActiveSection = (section) => {
-        if (!activeSection && !location.pathname) return false;
+    // Get item icon with fallback and special project handling
+    const getItemIcon = (item, section) => {
+        if (item.icon) return item.icon;
 
-        const currentPath = location.pathname.toLowerCase();
-        const sectionLower = section.toLowerCase();
+        // Fallback icons based on title keywords
+        const title = item.title?.toLowerCase() || '';
+        if (title.includes('quy trình')) return 'fas fa-route';
+        if (title.includes('kiến trúc')) return 'fas fa-building';
+        if (title.includes('nội thất')) return 'fas fa-couch';
+        if (title.includes('trọn gói')) return 'fas fa-box';
+        if (title.includes('hạng mục')) return 'fas fa-tools';
+        if (title.includes('trần') || title.includes('thạch cao')) return 'fas fa-layer-group';
+        if (title.includes('sàn gỗ')) return 'fas fa-tree';
+        if (title.includes('đá') || title.includes('ốp lát')) return 'fas fa-th-large';
+        if (title.includes('cửa')) return 'fas fa-door-open';
+        if (title.includes('rèm')) return 'fas fa-th';
+        if (title.includes('chống thấm')) return 'fas fa-shield-alt';
+        if (title.includes('koi') || title.includes('sân vườn')) return 'fas fa-fish';
+        if (title.includes('nhôm kính')) return 'fas fa-window-maximize';
+        if (title.includes('điện') && title.includes('thông minh')) return 'fas fa-home';
+        if (title.includes('phào chỉ')) return 'fas fa-border-style';
+        if (title.includes('mặt trời')) return 'fas fa-solar-panel';
+        if (title.includes('tư vấn')) return 'fas fa-calculator';
+        if (title.includes('ứng dụng')) return 'fas fa-mobile-alt';
+        if (title.includes('dự án')) return 'fas fa-folder';
 
-        // Check for home page
-        if (section === 'home' || sectionLower === 'home') {
-            return currentPath === '/' || currentPath === '';
-        }
-
-        // Check for contact page
-        if (section === 'contact' || sectionLower === 'contact') {
-            return currentPath === '/contact' || currentPath.includes('contact');
-        }
-
-        return currentPath.includes(sectionLower) || activeSection === sectionLower;
+        return 'fas fa-circle';
     };
 
-    // Handle scroll effect for header background
+    // Get project-specific CSS class for distinct colors
+    const getProjectClass = (item, section) => {
+        if (section !== 'Dự án') return '';
+
+        const title = item.title?.toLowerCase() || '';
+        if (title.includes('biệt thự')) return 'project-villa';
+        if (title.includes('nhà phố')) return 'project-townhouse';
+        if (title.includes('căn hộ')) return 'project-apartment';
+        if (title.includes('thương mại')) return 'project-commercial';
+
+        return '';
+    };
+
+    // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
-            const scrollTop = window.scrollY;
-            setIsScrolled(scrollTop > 50);
+            setIsScrolled(window.scrollY > 50);
         };
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Close mobile menu on window resize
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth > 768 && isMobileMenuOpen) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, [isMobileMenuOpen]);
-
-    // Close dropdown when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!event.target.closest('.nav-item-dropdown')) {
-                setActiveDropdown(null);
-                setActiveSubmenu(null);
-            }
-
-            if (isMobileMenuOpen && !event.target.closest('.header')) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        document.addEventListener('click', handleClickOutside);
-        return () => document.removeEventListener('click', handleClickOutside);
-    }, [isMobileMenuOpen]);
-
-    // Prevent body scroll when mobile menu is open
+    // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
@@ -104,6 +97,27 @@ const Header = ({ activeSection, setActiveSection }) => {
         setActiveSubmenu(null);
         setMobileActiveSubmenu(null);
     }, [location.pathname]);
+
+    // Check if a section is active
+    const isActiveSection = (section) => {
+        if (!activeSection && !location.pathname) return false;
+
+        const currentPath = location.pathname.toLowerCase();
+        const sectionLower = section.toLowerCase();
+
+        // Check for home page
+        if (section === 'home' || sectionLower === 'home') {
+            return currentPath === '/' || currentPath === '';
+        }
+
+        // Check for contact page
+        if (section === 'contact' || sectionLower === 'contact') {
+            return currentPath === '/contact' || currentPath.includes('contact');
+        }
+
+        // Check if current path starts with section
+        return currentPath.includes(sectionLower.replace(/\s+/g, '-'));
+    };
 
     // Handle dropdown item click with routing
     const handleDropdownItemClick = (item, event) => {
@@ -169,24 +183,12 @@ const Header = ({ activeSection, setActiveSection }) => {
         }
     };
 
-    // Handle contact navigation - scroll to ContactSection
-    const handleContactClick = (e) => {
-        e.preventDefault();
-
-        // Check if we're on the home page
-        if (location.pathname === '/') {
-            // Scroll to contact section on home page
-            const contactSection = document.querySelector('.contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-                setActiveSection('contact');
-            }
-        } else {
-            // Navigate to home page with contact hash
-            navigate('/#contact');
-        }
-
+    // Handle contact click
+    const handleContactClick = (event) => {
+        event.preventDefault();
         setIsMobileMenuOpen(false);
+        setActiveDropdown(null);
+        navigate('/contact');
     };
 
     return (
@@ -194,11 +196,7 @@ const Header = ({ activeSection, setActiveSection }) => {
             <div className="container">
                 <div className="header-content">
                     {/* Logo */}
-                    <Link
-                        to="/"
-                        className="logo"
-                        aria-label="LIN HOME - Về trang chủ"
-                    >
+                    <Link to="/" className="logo">
                         <div className="logo-icon">
                             <i className="fas fa-building" aria-hidden="true"></i>
                         </div>
@@ -208,18 +206,19 @@ const Header = ({ activeSection, setActiveSection }) => {
                     {/* Desktop Navigation */}
                     <nav className="nav-desktop" aria-label="Menu điều hướng chính">
                         <ul className="nav-menu">
-                            {/* Home Link */}
+                            {/* Home Item */}
                             <li className="nav-item">
                                 <Link
                                     to="/"
                                     className={`nav-link ${isActiveSection('home') ? 'active' : ''}`}
                                     aria-current={isActiveSection('home') ? 'page' : undefined}
                                 >
-                                    Trang chủ
+                                    <i className="fas fa-home nav-link-icon" aria-hidden="true"></i>
+                                    <span>Trang chủ</span>
                                 </Link>
                             </li>
 
-                            {/* Dynamic Menu Items with Dropdowns */}
+                            {/* Dynamic Menu Items */}
                             {Object.entries(menuData).map(([section, items]) => (
                                 <li
                                     key={section}
@@ -228,68 +227,73 @@ const Header = ({ activeSection, setActiveSection }) => {
                                     onMouseLeave={handleDropdownLeave}
                                 >
                                     <button
-                                        className={`nav-link ${isActiveSection(section.toLowerCase()) ? 'active' : ''}`}
+                                        className={`nav-link ${isActiveSection(section) ? 'active' : ''}`}
                                         aria-expanded={activeDropdown === section}
                                         aria-haspopup="true"
                                     >
+                                        <i className={`${getSectionIcon(section)} nav-link-icon`} aria-hidden="true"></i>
                                         <span>{section}</span>
                                         <i className="fas fa-chevron-down dropdown-icon" aria-hidden="true"></i>
                                     </button>
 
-                                    {/* First Level Dropdown Menu */}
+                                    {/* Desktop Dropdown */}
                                     <div className={`dropdown ${activeDropdown === section ? 'show' : ''}`}>
-                                        {items.map((item, index) => (
-                                            <div
+                                        {Array.isArray(items) && items.map((item, index) => (
+                                            <button
                                                 key={index}
                                                 className={`dropdown-item ${item.hasSubmenu ? 'has-submenu' : ''}`}
+                                                onClick={(e) => !item.hasSubmenu && handleDropdownItemClick(item, e)}
                                                 onMouseEnter={() => handleSubmenuEnter(item)}
                                                 onMouseLeave={handleSubmenuLeave}
                                             >
-                                                <a
-                                                    href={item.href || '#'}
-                                                    className="dropdown-link"
-                                                    onClick={(e) => handleDropdownItemClick(item, e)}
-                                                >
-                                                    <div className="dropdown-content">
-                                                        <div className="dropdown-title">{item.title}</div>
+                                                <div className="dropdown-item-content">
+                                                    <i
+                                                        className={`${getItemIcon(item, section)} dropdown-item-icon ${getProjectClass(item, section)}`}
+                                                        aria-hidden="true"
+                                                    ></i>
+                                                    <div className="dropdown-item-text">
+                                                        <span className="dropdown-item-title">{item.title}</span>
                                                         {item.description && (
-                                                            <div className="dropdown-description">{item.description}</div>
+                                                            <span className="dropdown-item-description">{item.description}</span>
                                                         )}
                                                     </div>
-                                                </a>
+                                                    {item.hasSubmenu && (
+                                                        <i className="fas fa-chevron-right submenu-arrow" aria-hidden="true"></i>
+                                                    )}
+                                                </div>
 
-                                                {/* Second Level Submenu (if exists) */}
-                                                {item.hasSubmenu && item.submenu && (
+                                                {/* Desktop Submenu */}
+                                                {item.hasSubmenu && item.submenu && Array.isArray(item.submenu) && (
                                                     <div className={`submenu ${activeSubmenu === item.title ? 'show' : ''}`}>
-                                                        <div className="submenu-header">
-                                                            <i className="fas fa-tools"></i>
-                                                        </div>
                                                         {item.submenu.map((subItem, subIndex) => (
-                                                            <a
+                                                            <button
                                                                 key={subIndex}
-                                                                href={subItem.href || '#'}
                                                                 className="submenu-item"
                                                                 onClick={(e) => handleDropdownItemClick(subItem, e)}
                                                             >
-                                                                <div className="submenu-item-title">
-                                                                    {subItem.title}
-                                                                </div>
-                                                                {subItem.description && (
-                                                                    <div className="submenu-item-description">
-                                                                        {subItem.description}
+                                                                <div className="submenu-item-content">
+                                                                    <i
+                                                                        className={`${getItemIcon(subItem, section)} submenu-item-icon ${getProjectClass(subItem, section)}`}
+                                                                        aria-hidden="true"
+                                                                    ></i>
+                                                                    <div className="submenu-item-text">
+                                                                        <span className="submenu-item-title">{subItem.title}</span>
+                                                                        {subItem.description && (
+                                                                            <span className="submenu-item-description">{subItem.description}</span>
+                                                                        )}
                                                                     </div>
-                                                                )}
-                                                            </a>
+                                                                </div>
+                                                            </button>
                                                         ))}
                                                     </div>
                                                 )}
-                                            </div>
+                                            </button>
                                         ))}
                                     </div>
                                 </li>
                             ))}
 
-                            {/* Contact Link */}
+                            {/* Contact Item */}
                             <li className="nav-item">
                                 <a
                                     href="#contact"
@@ -297,7 +301,8 @@ const Header = ({ activeSection, setActiveSection }) => {
                                     onClick={handleContactClick}
                                     aria-current={isActiveSection('contact') ? 'page' : undefined}
                                 >
-                                    Liên hệ
+                                    <i className="fas fa-phone nav-link-icon" aria-hidden="true"></i>
+                                    <span>Liên hệ</span>
                                 </a>
                             </li>
                         </ul>
@@ -352,72 +357,69 @@ const Header = ({ activeSection, setActiveSection }) => {
                                 className={`mobile-nav-link ${isActiveSection('home') ? 'active' : ''}`}
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                <i className="fas fa-home" aria-hidden="true"></i>
+                                <i className="fas fa-home mobile-nav-icon"></i>
                                 <span>Trang chủ</span>
                             </Link>
                         </li>
 
-                        {/* Dynamic Menu Items for Mobile */}
+                        {/* Dynamic Mobile Menu Items */}
                         {Object.entries(menuData).map(([section, items]) => (
-                            <li key={section} className="mobile-nav-item">
+                            <li key={section} className="mobile-nav-item mobile-nav-dropdown">
                                 <button
                                     className={`mobile-nav-link ${activeDropdown === section ? 'active' : ''}`}
                                     onClick={(e) => handleMobileDropdownToggle(section, e)}
                                     aria-expanded={activeDropdown === section}
                                 >
-                                    <i className={`fas fa-${getSectionIcon(section)}`} aria-hidden="true"></i>
-                                    <span>{section}</span>
-                                    <i className={`fas fa-chevron-${activeDropdown === section ? 'up' : 'down'} mobile-dropdown-icon`} aria-hidden="true"></i>
+                                    <span className="mobile-nav-text">
+                                        <i className={`${getSectionIcon(section)} mobile-nav-icon`}></i>
+                                        <span>{section}</span>
+                                    </span>
+                                    <i className={`fas fa-chevron-${activeDropdown === section ? 'up' : 'down'} mobile-dropdown-arrow`}></i>
                                 </button>
 
-                                {/* Mobile First Level Dropdown */}
-                                <div className={`mobile-dropdown ${activeDropdown === section ? 'active' : ''}`}>
-                                    {items.map((item, index) => (
-                                        <div key={index}>
+                                {/* Mobile Dropdown Content */}
+                                <div className={`mobile-dropdown-content ${activeDropdown === section ? 'show' : ''}`}>
+                                    {Array.isArray(items) && items.map((item, index) => (
+                                        <div key={index} className="mobile-dropdown-item">
                                             <button
-                                                className="mobile-dropdown-item"
+                                                className={`mobile-dropdown-link ${item.hasSubmenu ? 'has-submenu' : ''}`}
                                                 onClick={(e) => handleMobileSubmenuToggle(item, e)}
                                             >
-                                                <div className="mobile-dropdown-content">
-                                                    <div className="mobile-dropdown-title">
-                                                        {item.title}
-                                                        {item.hasSubmenu && (
-                                                            <i
-                                                                className={`fas fa-chevron-${mobileActiveSubmenu === item.title ? 'up' : 'down'} mobile-submenu-icon`}
-                                                                aria-hidden="true"
-                                                            ></i>
+                                                <div className="mobile-dropdown-content-wrapper">
+                                                    <i
+                                                        className={`${getItemIcon(item, section)} mobile-dropdown-icon ${getProjectClass(item, section)}`}
+                                                    ></i>
+                                                    <div className="mobile-dropdown-text">
+                                                        <span className="mobile-dropdown-title">{item.title}</span>
+                                                        {item.description && (
+                                                            <span className="mobile-dropdown-description">{item.description}</span>
                                                         )}
                                                     </div>
-                                                    {item.description && (
-                                                        <div className="mobile-dropdown-description">
-                                                            {item.description}
-                                                        </div>
+                                                    {item.hasSubmenu && (
+                                                        <i className={`fas fa-chevron-${mobileActiveSubmenu === item.title ? 'up' : 'down'} mobile-submenu-arrow`}></i>
                                                     )}
                                                 </div>
                                             </button>
 
-                                            {/* Mobile Second Level Submenu */}
-                                            {item.hasSubmenu && item.submenu && (
-                                                <div className={`mobile-submenu ${mobileActiveSubmenu === item.title ? 'active' : ''}`}>
-                                                    <div className="mobile-submenu-header">
-                                                        <i className="fas fa-tools"></i>
-                                                    </div>
+                                            {/* Mobile Submenu */}
+                                            {item.hasSubmenu && item.submenu && Array.isArray(item.submenu) && (
+                                                <div className={`mobile-submenu ${mobileActiveSubmenu === item.title ? 'show' : ''}`}>
                                                     {item.submenu.map((subItem, subIndex) => (
-                                                        <a
+                                                        <button
                                                             key={subIndex}
-                                                            href={subItem.href || '#'}
-                                                            className="mobile-submenu-item"
+                                                            className="mobile-submenu-link"
                                                             onClick={(e) => handleDropdownItemClick(subItem, e)}
                                                         >
-                                                            <span className="mobile-submenu-title">
-                                                                {subItem.title}
-                                                            </span>
-                                                            {subItem.description && (
-                                                                <span className="mobile-submenu-description">
-                                                                    {subItem.description}
-                                                                </span>
-                                                            )}
-                                                        </a>
+                                                            <i
+                                                                className={`${getItemIcon(subItem, section)} mobile-submenu-icon ${getProjectClass(subItem, section)}`}
+                                                            ></i>
+                                                            <div className="mobile-submenu-text">
+                                                                <span className="mobile-submenu-title">{subItem.title}</span>
+                                                                {subItem.description && (
+                                                                    <span className="mobile-submenu-description">{subItem.description}</span>
+                                                                )}
+                                                            </div>
+                                                        </button>
                                                     ))}
                                                 </div>
                                             )}
@@ -427,21 +429,36 @@ const Header = ({ activeSection, setActiveSection }) => {
                             </li>
                         ))}
 
-                        {/* Contact Item */}
+                        {/* Mobile Contact Item */}
                         <li className="mobile-nav-item">
                             <a
                                 href="#contact"
                                 className={`mobile-nav-link ${isActiveSection('contact') ? 'active' : ''}`}
-                                onClick={(e) => {
-                                    handleContactClick(e);
-                                    setIsMobileMenuOpen(false);
-                                }}
+                                onClick={handleContactClick}
                             >
-                                <i className="fas fa-envelope" aria-hidden="true"></i>
+                                <i className="fas fa-phone mobile-nav-icon"></i>
                                 <span>Liên hệ</span>
                             </a>
                         </li>
                     </ul>
+
+                    {/* Mobile Contact Info */}
+                    {contactInfo && (
+                        <div className="mobile-contact-info">
+                            {contactInfo.phone && (
+                                <div className="mobile-contact-item">
+                                    <i className="fas fa-phone"></i>
+                                    <a href={`tel:${contactInfo.phone}`}>{contactInfo.phone}</a>
+                                </div>
+                            )}
+                            {contactInfo.email && (
+                                <div className="mobile-contact-item">
+                                    <i className="fas fa-envelope"></i>
+                                    <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </nav>
         </header>

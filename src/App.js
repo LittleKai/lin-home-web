@@ -8,6 +8,9 @@ import Header from './components/Header/Header';
 import MainContent from './components/MainContent/MainContent';
 import FloatButtons from './components/FloatButtons/FloatButtons';
 
+// Import ContactSection
+import ContactSection from './components/sections/ContactSection/ContactSection';
+
 // Import design pages
 import QuyTrinhThietKePage from './pages/thiet-ke/quy-trinh-thiet-ke';
 import ThietKeKienTrucPage from './pages/thiet-ke/thiet-ke-kien-truc';
@@ -45,13 +48,30 @@ import PhaoChiPage from './pages/thi-cong/hang-muc-thi-cong/phao-chi';
 import DienMatTroiPage from './pages/thi-cong/hang-muc-thi-cong/dien-mat-troi';
 
 // Import pricing pages - main page
-import BaoGiaThietKeThiCongNhaPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong-nha';
+import BaoGiaThietKeThiCongNhaPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong';
 
 // Import pricing detail pages
 import ThietKeKienTrucPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc';
 import ThiCongPhanThoPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-phan-tho';
 import ThiCongHoanThienPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-hoan-thien';
 import ThiCongTronGoiPricingPage from './pages/bao-gia/bao-gia-thiet-ke-thi-cong/thi-cong-tron-goi';
+
+// Import existing pricing pages
+import BaoGiaThiCongHangMucPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc';
+
+// ========== IMPORT 11 TRANG BÁO GIÁ THI CÔNG HẠNG MỤC ==========
+import BaoGiaTranVachThachCaoPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/tran-vach-thach-cao';
+import BaoGiaSanGoPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/san-go';
+import BaoGiaOpLatGachDaPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/op-lat-gach-da';
+import BaoGiaNhomKinhPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/nhom-kinh';
+import BaoGiaCuaCompositePage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/cua-composite';
+import BaoGiaDienNangLuongMatTroiPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/dien-nang-luong-mat-troi';
+import BaoGiaSmarthomePage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/smarthome';
+import BaoGiaHoCaKoiTieuCanhPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/ho-ca-koi-tieu-canh';
+import BaoGiaRemCuaCaoCapPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/rem-cua-cao-cap';
+import BaoGiaChongThamPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/chong-tham';
+import BaoGiaPhaoChiPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/phao-chi-pu-ps-thach-cao';
+
 
 // Import Application Pages
 import UngDungPage from './pages/ung-dung/UngDungPage';
@@ -61,14 +81,18 @@ import ThuocLoBanPage from './pages/ung-dung/ThuocLoBanPage';
 import HuongNhaHopTuoiPage from './pages/ung-dung/HuongNhaHopTuoiPage';
 import MauHopTuoiPage from './pages/ung-dung/MauHopTuoiPage';
 
-// Import other pricing pages (tạm thời placeholder nếu chưa có)
-const BaoGiaThiCongHangMucPage = () => (
-    <div style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
-        <div className="container">
-            <h1>Báo giá thi công hạng mục</h1>
-            <p>Trang đang được phát triển...</p>
+// Component để hiển thị ContactSection với Header và FloatButtons
+const ContactPageWrapper = () => (
+    <>
+        <Header
+            activeSection="contact"
+            setActiveSection={() => {}}
+        />
+        <div style={{ marginTop: '80px' }}>
+            <ContactSection />
         </div>
-    </div>
+        <FloatButtons />
+    </>
 );
 
 const TuVanBaoGiaPage = () => (
@@ -100,7 +124,7 @@ function App() {
             setActiveSection('tin tức');
         } else if (path.startsWith('/ung-dung')) {
             setActiveSection('ứng dụng');
-        } else if (path === '/contact') {
+        } else if (path === '/contact' || path === '/lien-he') {
             setActiveSection('contact');
         }
     }, []);
@@ -128,71 +152,88 @@ function App() {
                     />
 
                     {/* Design Routes */}
-                    <Route path="/thiet-ke/quy-trinh-thiet-ke" element={<QuyTrinhThietKePage />} />
-                    <Route path="/thiet-ke/thiet-ke-kien-truc" element={<ThietKeKienTrucPage />} />
-                    <Route path="/thiet-ke/thiet-ke-noi-that" element={<ThietKeNoiThatPage />} />
+                    <Route path="/thiet-ke/quy-trinh-thiet-ke" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <QuyTrinhThietKePage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThietKeKienTrucPage />
+                            <FloatButtons />
+                        </>
+                    } />
+                    <Route path="/thiet-ke/thiet-ke-noi-that" element={
+                        <>
+                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                            <ThietKeNoiThatPage />
+                            <FloatButtons />
+                        </>
+                    } />
 
                     {/* Construction Main Routes */}
-                    <Route path="/thi-cong/quy-trinh-thi-cong" element={<QuyTrinhThiCongPage />} />
-                    <Route path="/thi-cong/thi-cong-tron-goi-kien-truc" element={<ThiCongTronGoiKienTrucPage />} />
-                    <Route path="/thi-cong/thi-cong-tron-goi-noi-that" element={<ThiCongTronGoiNoiThatPage />} />
-                    <Route path="/thi-cong/thi-cong-hang-muc" element={<ThiCongHangMucPage />} />
+                    <Route path="/thi-cong/quy-trinh-thi-cong" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><QuyTrinhThiCongPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/thi-cong-tron-goi-kien-truc" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThiCongTronGoiKienTrucPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/thi-cong-tron-goi-noi-that" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThiCongTronGoiNoiThatPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/thi-cong-hang-muc" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThiCongHangMucPage /><FloatButtons /></>} />
 
-                    {/* Thi công sửa chữa cải tạo - Main page */}
-                    <Route path="/thi-cong/sua-chua-cai-tao" element={<SuaChuaCaiTaoPage />} />
+                    {/* Construction - Sửa chữa cải tạo main page */}
+                    <Route path="/thi-cong/sua-chua-cai-tao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><SuaChuaCaiTaoPage /><FloatButtons /></>} />
 
-                    {/* 7 submenu routes cho cải tạo trong hang-muc-cai-tao */}
-                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o" element={<ThiCongSuaChuaCaiTaoNhaOPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong" element={<CaiTaoNangTangMoRongPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho" element={<ThiCongCaiTaoNhaPhoPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh" element={<CaiTaoBepNhaVeSinhPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach" element={<CaiTaoPhongNguPhongKhachPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-mat-tien-ngoai-that" element={<CaiTaoMatTienNgoaiThatPage />} />
-                    <Route path="/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao" element={<ToiUuChiPhiCaiTaoPage />} />
+                    {/* Construction - 7 routes cho submenu cải tạo */}
+                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-sua-chua-cai-tao-nha-o" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThiCongSuaChuaCaiTaoNhaOPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-nang-tang-mo-rong" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoNangTangMoRongPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/thi-cong-cai-tao-nha-pho" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThiCongCaiTaoNhaPhoPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-bep-nha-ve-sinh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoBepNhaVeSinhPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoPhongNguPhongKhachPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/cai-tao-mat-tien-ngoai-that" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoMatTienNgoaiThatPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-cai-tao/toi-uu-chi-phi-cai-tao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ToiUuChiPhiCaiTaoPage /><FloatButtons /></>} />
 
-                    {/* Construction Category Routes - 11 articles */}
-                    <Route path="/thi-cong/tran-vach-thach-cao" element={<TranVachThachCaoPage />} />
-                    <Route path="/thi-cong/san-go" element={<SanGoPage />} />
-                    <Route path="/thi-cong/da-op-lat" element={<DaOpLatPage />} />
-                    <Route path="/thi-cong/cua-composite" element={<CuaCompositePage />} />
-                    <Route path="/thi-cong/rem-cua" element={<RemCuaPage />} />
-                    <Route path="/thi-cong/chong-tham" element={<ChongThamPage />} />
-                    <Route path="/thi-cong/ho-koi-san-vuon" element={<HoKoiSanVuonPage />} />
-                    <Route path="/thi-cong/nhom-kinh" element={<NhomKinhPage />} />
-                    <Route path="/thi-cong/dien-thong-minh" element={<DienThongMinhPage />} />
-                    <Route path="/thi-cong/phao-chi" element={<PhaoChiPage />} />
-                    <Route path="/thi-cong/dien-mat-troi" element={<DienMatTroiPage />} />
+                    {/* Construction Category Routes - 11 routes */}
+                    <Route path="/thi-cong/hang-muc-thi-cong/tran-vach-thach-cao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><TranVachThachCaoPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/san-go" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><SanGoPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/da-op-lat" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DaOpLatPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/cua-composite" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CuaCompositePage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/rem-cua" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><RemCuaPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/chong-tham" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ChongThamPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/ho-koi-san-vuon" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><HoKoiSanVuonPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/nhom-kinh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NhomKinhPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/dien-thong-minh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DienThongMinhPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/phao-chi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><PhaoChiPage /><FloatButtons /></>} />
+                    <Route path="/thi-cong/hang-muc-thi-cong/dien-mat-troi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DienMatTroiPage /><FloatButtons /></>} />
 
                     {/* Application Routes */}
-                    <Route path="/ung-dung" element={<UngDungPage />} />
-                    <Route path="/ung-dung/tinh-chi-phi-xay-dung" element={<TinhChiPhiXayDungPage />} />
-                    <Route path="/ung-dung/xem-tuoi-lam-nha" element={<XemTuoiLamNhaPage />} />
-                    <Route path="/ung-dung/thuoc-lo-ban" element={<ThuocLoBanPage />} />
-                    <Route path="/ung-dung/huong-nha-hop-tuoi" element={<HuongNhaHopTuoiPage />} />
-                    <Route path="/ung-dung/mau-hop-tuoi" element={<MauHopTuoiPage />} />
+                    <Route path="/ung-dung" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><UngDungPage /><FloatButtons /></>} />
+                    <Route path="/ung-dung/tinh-chi-phi-xay-dung" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><TinhChiPhiXayDungPage /><FloatButtons /></>} />
+                    <Route path="/ung-dung/xem-tuoi-lam-nha" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XemTuoiLamNhaPage /><FloatButtons /></>} />
+                    <Route path="/ung-dung/thuoc-lo-ban" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ThuocLoBanPage /><FloatButtons /></>} />
+                    <Route path="/ung-dung/huong-nha-hop-tuoi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><HuongNhaHopTuoiPage /><FloatButtons /></>} />
+                    <Route path="/ung-dung/mau-hop-tuoi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><MauHopTuoiPage /><FloatButtons /></>} />
 
-                    {/* Pricing Routes - Main Pages */}
-                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong-nha" element={
+                    {/* Pricing Main Route */}
+                    <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong" element={
                         <>
                             <Header activeSection={activeSection} setActiveSection={setActiveSection} />
                             <BaoGiaThietKeThiCongNhaPage />
                             <FloatButtons />
                         </>
                     } />
-                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc" element={
-                        <>
-                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-                            <BaoGiaThiCongHangMucPage />
-                            <FloatButtons />
-                        </>
-                    } />
-                    <Route path="/bao-gia/tu-van-bao-gia" element={
-                        <>
-                            <Header activeSection={activeSection} setActiveSection={setActiveSection} />
-                            <TuVanBaoGiaPage />
-                            <FloatButtons />
-                        </>
-                    } />
+
+                    {/* ===== ROUTES KẾT NỐI VỚI CONTACTSECTION ===== */}
+                    {/* Route /bao-gia/tu-van-bao-gia */}
+                    <Route path="/bao-gia/tu-van-bao-gia" element={<ContactPageWrapper />} />
+
+                    {/* Route /pages/bao-gia/tu-van-bao-gia */}
+                    <Route path="/pages/bao-gia/tu-van-bao-gia" element={<ContactPageWrapper />} />
+
+                    {/* Route /lien-he */}
+                    <Route path="/lien-he" element={<ContactPageWrapper />} />
+
+                    {/* Route /contact (đã có sẵn, sẽ được thay thế) */}
+                    <Route path="/contact" element={<ContactPageWrapper />} />
 
                     {/* Pricing Detail Routes - Submenu của "Báo giá thiết kế, thi công nhà" */}
                     <Route path="/bao-gia/bao-gia-thiet-ke-thi-cong/thiet-ke-kien-truc" element={
@@ -224,30 +265,30 @@ function App() {
                         </>
                     } />
 
-                    {/* Contact Route */}
                     <Route
-                        path="/contact"
+                        path="/bao-gia/bao-gia-thi-cong-hang-muc"
                         element={
                             <>
-                                <Header
-                                    activeSection={activeSection}
-                                    setActiveSection={setActiveSection}
-                                />
-                                <div className="contact-page" style={{ marginTop: '80px', padding: '40px 0', textAlign: 'center' }}>
-                                    <div className="container">
-                                        <h1>Liên hệ</h1>
-                                        <p>Trang liên hệ sẽ được phát triển sau.</p>
-                                        <div style={{ marginTop: '30px' }}>
-                                            <p><strong>Hotline:</strong> 0941 090 333</p>
-                                            <p><strong>Email:</strong> info@linhome.vn</p>
-                                            <p><strong>Website:</strong> www.linhome.vn</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Header activeSection={activeSection} setActiveSection={setActiveSection} />
+                                <BaoGiaThiCongHangMucPage />
                                 <FloatButtons />
                             </>
                         }
                     />
+
+
+                    {/* ========== 11 ROUTES CHO TRANG BÁO GIÁ THI CÔNG HẠNG MỤC ========== */}
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/tran-vach-thach-cao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaTranVachThachCaoPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/san-go" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaSanGoPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/op-lat-gach-da" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaOpLatGachDaPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/nhom-kinh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaNhomKinhPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/cua-composite" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaCuaCompositePage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/dien-nang-luong-mat-troi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaDienNangLuongMatTroiPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/smarthome" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaSmarthomePage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/ho-ca-koi-tieu-canh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaHoCaKoiTieuCanhPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/rem-cua-cao-cap" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaRemCuaCaoCapPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/chong-tham" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaChongThamPage /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-thi-cong-hang-muc/phao-chi-pu-ps-thach-cao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaPhaoChiPage /><FloatButtons /></>} />
 
                     {/* Placeholder routes for other sections */}
                     <Route path="/du-an/*" element={
