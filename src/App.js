@@ -215,15 +215,15 @@ function App() {
                     <Route path="/thi-cong/hang-muc-thi-cong/phao-chi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><PhaoChiPage /><FloatButtons /></>} />
                     <Route path="/thi-cong/hang-muc-thi-cong/dien-mat-troi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DienMatTroiPage /><FloatButtons /></>} />
 
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao" element={<BaoGiaSuaChuaCaiTao />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cach-uoc-tinh-chi-phi" element={<CachUocTinhChiPhi />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/quy-trinh-sua-chua" element={<QuyTrinhSuaChua />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-khach" element={<SuaChuaPhongKhach />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-bep" element={<CaiTaoPhongBep />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-ngu" element={<SuaChuaPhongNgu />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-tam" element={<CaiTaoPhongTam />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/chon-don-vi-uy-tin" element={<ChonDonViUyTin />} />
-                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/xu-huong-cai-tao" element={<XuHuongCaiTao />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BaoGiaSuaChuaCaiTao /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cach-uoc-tinh-chi-phi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CachUocTinhChiPhi /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/quy-trinh-sua-chua" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><QuyTrinhSuaChua /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-khach" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><SuaChuaPhongKhach /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-bep" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoPhongBep /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-ngu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><SuaChuaPhongNgu /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-tam" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CaiTaoPhongTam /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/chon-don-vi-uy-tin" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ChonDonViUyTin /><FloatButtons /></>} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/xu-huong-cai-tao" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XuHuongCaiTao /><FloatButtons /></>} />
 
                     {/* Application Routes */}
                     <Route path="/ung-dung" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><UngDungPage /><FloatButtons /></>} />

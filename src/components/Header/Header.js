@@ -242,7 +242,13 @@ const Header = ({ activeSection, setActiveSection }) => {
                                             <button
                                                 key={index}
                                                 className={`dropdown-item ${item.hasSubmenu ? 'has-submenu' : ''}`}
-                                                onClick={(e) => !item.hasSubmenu && handleDropdownItemClick(item, e)}
+                                                onClick={(e) => {
+                                                    // Nếu item có href, cho phép click để navigate
+                                                    if (item.href) {
+                                                        e.stopPropagation();
+                                                        handleDropdownItemClick(item, e);
+                                                    }
+                                                }}
                                                 onMouseEnter={() => handleSubmenuEnter(item)}
                                                 onMouseLeave={handleSubmenuLeave}
                                             >

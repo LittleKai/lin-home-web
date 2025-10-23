@@ -169,7 +169,7 @@ export const menuData = {
     'Báo giá': [
         {
             title: 'Báo giá thiết kế, thi công nhà',
-            href: '/bao-gia/bao-gia-thiet-ke-thi-cong-nha',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong',
             description: 'Báo giá chi tiết cho dự án thiết kế và thi công nhà ở',
             icon: 'fas fa-home',
             hasSubmenu: true,
@@ -277,7 +277,7 @@ export const menuData = {
         },
         {
             title: 'Báo giá sửa chữa cải tạo',
-            path: '/bao-gia/bao-gia-sua-chua-cai-tao',
+            href: '/bao-gia/bao-gia-sua-chua-cai-tao',
             icon: 'fas fa-tools',
             hasSubmenu: true,
             description: 'Báo giá chi tiết sửa chữa, cải tạo nhà trọn gói',

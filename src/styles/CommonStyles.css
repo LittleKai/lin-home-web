@@ -370,7 +370,13 @@
     padding: 0 1.2rem 1.2rem;
     color: #4a5568;
     line-height: 1.5;
-    font-size: 0.9rem;
+    font-size: 1.0rem;
+}
+
+.construction-detail-page,
+.hangmuc-detail-page,
+.suachua-detail-page {
+    padding-top: 80px;
 }
 
 /* Responsive adjustments */

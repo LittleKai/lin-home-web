@@ -46,7 +46,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 0;
+    padding: 12px 0;
 }
 
 /* Logo */
@@ -1226,7 +1226,7 @@
     }
 
     .header-content {
-        padding: 12px 0;
+        padding: 10px 0;
     }
 
     .logo {
@@ -1312,6 +1312,63 @@
 .mobile-submenu-link:hover .mobile-submenu-icon {
     transform: scale(1.1);
     filter: brightness(1.2) saturate(1.1) drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Mobile dropdown improvements */
+.mobile-dropdown-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+}
+
+.mobile-dropdown-link.has-submenu .mobile-dropdown-content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-submenu-arrow {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Tạo vùng click lớn hơn cho arrow */
+.mobile-submenu-arrow::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    z-index: 1;
+}
+
+/* Desktop dropdown improvements */
+.dropdown-item.has-submenu {
+    cursor: pointer;
+}
+
+.dropdown-item.has-submenu:hover {
+    background-color: #f3f4f6;
+}
+
+/* Làm rõ item có thể click */
+.dropdown-item.has-submenu .dropdown-item-title {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dropdown-item.has-submenu:hover .dropdown-item-title {
+    color: var(--color-primary);
+    text-decoration: underline;
 }
 
 /* Color legend for reference:
