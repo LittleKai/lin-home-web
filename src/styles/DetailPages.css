@@ -1,0 +1,44 @@
+/* src/styles/DetailPages.css */
+/* Styles specific to detail pages and content sections */
+
+/* Detail Content - improved grid layout */
+.detail-content {
+    padding: 1.5rem;
+}
+
+.detail-content.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Feature sections inside detail-content */
+.features-section,
+.brands-section,
+.suitable-section,
+.applications-section,
+.sizes-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.features-section h4,
+.brands-section h4,
+.suitable-section h4,
+.applications-section h4,
+.sizes-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .detail-content.grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}

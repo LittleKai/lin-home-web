@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
 import '../BaoGiaThiCongHangMuc.css';
-import '../ConstructionDetailPages.css';
+// import '../ConstructionDetailPages.css';
 
 const PhaoChiPage = () => {
     const [activeTab, setActiveTab] = useState('pu');

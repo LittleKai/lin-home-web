@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import '../BaoGiaThiCongHangMuc.css';
+import Footer from '../../../components/Footer/Footer';
+
+// import '../BaoGiaThiCongHangMuc.css';
 
 const TranVachThachCaoPage = () => {
     const [activeTab, setActiveTab] = useState('basic');
