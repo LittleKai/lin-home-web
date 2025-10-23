@@ -48,67 +48,67 @@ export const menuData = {
             submenu: [
                 {
                     title: 'Trần & vách thạch cao',
-                    href: '/thi-cong/tran-vach-thach-cao',
+                    href: '/thi-cong/hang-muc-thi-cong/tran-vach-thach-cao',
                     description: 'Thi công trần thạch cao cách âm, chống nóng',
                     icon: 'fas fa-layer-group'
                 },
                 {
                     title: 'Sàn gỗ công nghiệp',
-                    href: '/thi-cong/san-go',
+                    href: '/thi-cong/hang-muc-thi-cong/san-go',
                     description: 'Lắp đặt sàn gỗ chất lượng cao',
                     icon: 'fas fa-tree'
                 },
                 {
                     title: 'Đá ốp lát',
-                    href: '/thi-cong/da-op-lat',
+                    href: '/thi-cong/hang-muc-thi-cong/da-op-lat',
                     description: 'Ốp lát đá tự nhiên và nhân tạo',
                     icon: 'fas fa-th-large'
                 },
                 {
                     title: 'Cửa composite',
-                    href: '/thi-cong/cua-composite',
+                    href: '/thi-cong/hang-muc-thi-cong/cua-composite',
                     description: 'Lắp đặt cửa composite chống nước',
                     icon: 'fas fa-door-open'
                 },
                 {
                     title: 'Rèm cửa',
-                    href: '/thi-cong/rem-cua',
+                    href: '/thi-cong/hang-muc-thi-cong/rem-cua',
                     description: 'Rèm cửa cao cấp, hiện đại',
                     icon: 'fas fa-th'
                 },
                 {
                     title: 'Chống thấm',
-                    href: '/thi-cong/chong-tham',
+                    href: '/thi-cong/hang-muc-thi-cong/chong-tham',
                     description: 'Xử lý chống thấm chuyên nghiệp',
                     icon: 'fas fa-shield-alt'
                 },
                 {
                     title: 'Hồ koi sân vườn',
-                    href: '/thi-cong/ho-koi-san-vuon',
+                    href: '/thi-cong/hang-muc-thi-cong/ho-koi-san-vuon',
                     description: 'Thi công hồ koi và sân vườn',
                     icon: 'fas fa-fish'
                 },
                 {
                     title: 'Nhôm kính',
-                    href: '/thi-cong/nhom-kinh',
+                    href: '/thi-cong/hang-muc-thi-cong/nhom-kinh',
                     description: 'Lắp đặt nhôm kính cao cấp',
                     icon: 'fas fa-window-maximize'
                 },
                 {
                     title: 'Điện thông minh',
-                    href: '/thi-cong/dien-thong-minh',
+                    href: '/thi-cong/hang-muc-thi-cong/dien-thong-minh',
                     description: 'Hệ thống điện thông minh',
                     icon: 'fas fa-home'
                 },
                 {
                     title: 'Phào chỉ',
-                    href: '/thi-cong/phao-chi',
+                    href: '/thi-cong/hang-muc-thi-cong/phao-chi',
                     description: 'Lắp đặt phào chỉ trang trí',
                     icon: 'fas fa-border-style'
                 },
                 {
                     title: 'Điện mặt trời',
-                    href: '/thi-cong/dien-mat-troi',
+                    href: '/thi-cong/hang-muc-thi-cong/dien-mat-troi',
                     description: 'Hệ thống điện năng lượng mặt trời',
                     icon: 'fas fa-solar-panel'
                 }

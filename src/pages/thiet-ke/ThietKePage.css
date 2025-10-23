@@ -1,4 +1,5 @@
 /* src/pages/thiet-ke/ThietKePage.css */
+@import '../../styles/CommonStyles.css';
 
 .thiet-ke-page {
     min-height: 100vh;
