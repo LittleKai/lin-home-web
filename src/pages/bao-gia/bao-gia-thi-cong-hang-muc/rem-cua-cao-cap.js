@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import '../BaoGiaThiCongHangMuc.css';
-import '../ConstructionDetailPages.css';
 
 const RemCuaCaoCapPage = () => {
     const [activeTab, setActiveTab] = useState('fabric');

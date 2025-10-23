@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import '../BaoGiaThiCongHangMuc.css';
-import '../ConstructionDetailPages.css';
 
 const HoCaKoiTieuCanhPage = () => {
     const [activeTab, setActiveTab] = useState('koi-outdoor');

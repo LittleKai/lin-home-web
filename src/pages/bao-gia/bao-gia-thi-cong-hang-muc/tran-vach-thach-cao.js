@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import Footer from '../../../components/Footer/Footer';
 
 // import '../BaoGiaThiCongHangMuc.css';
 

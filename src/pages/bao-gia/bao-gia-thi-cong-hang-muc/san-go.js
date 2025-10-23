@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import '../BaoGiaThiCongHangMuc.css';
 
 const SanGoPage = () => {
     const [activeTab, setActiveTab] = useState('industrial');
