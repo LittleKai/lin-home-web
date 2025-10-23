@@ -614,6 +614,39 @@
     color: var(--icon-pink);
 }
 
+.submenu-item .fa-calculator {
+    color: #667eea; /* Màu tím cho calculator */
+}
+
+.submenu-item .fa-clipboard-list {
+    color: #764ba2; /* Màu tím đậm cho quy trình */
+}
+
+.submenu-item .fa-couch {
+    color: #10b981; /* Màu xanh lá cho phòng khách */
+}
+
+.submenu-item .fa-utensils {
+    color: #f59e0b; /* Màu cam cho phòng bếp */
+}
+
+.submenu-item .fa-bed {
+    color: #ef4444; /* Màu đỏ cho phòng ngủ */
+}
+
+.submenu-item .fa-shower {
+    color: #3b82f6; /* Màu xanh dương cho phòng tắm */
+}
+
+.submenu-item .fa-award {
+    color: #8b5cf6; /* Màu tím cho chọn đơn vị */
+}
+
+.submenu-item .fa-lightbulb {
+    color: #06b6d4; /* Màu xanh cyan cho xu hướng */
+}
+
+
 .submenu-item:hover .submenu-item-icon {
     transform: scale(1.1);
     filter: brightness(1.2);

@@ -276,6 +276,63 @@ export const menuData = {
             ]
         },
         {
+            title: 'Báo giá sửa chữa cải tạo',
+            path: '/bao-gia/bao-gia-sua-chua-cai-tao',
+            icon: 'fas fa-tools',
+            hasSubmenu: true,
+            description: 'Báo giá chi tiết sửa chữa, cải tạo nhà trọn gói',
+            submenu: [
+                {
+                    title: 'Cách ước tính chi phí',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/cach-uoc-tinh-chi-phi',
+                    icon: 'fas fa-calculator',
+                    description: 'Hướng dẫn tính toán chi phí sửa chữa chính xác'
+                },
+                {
+                    title: 'Quy trình sửa chữa',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/quy-trinh-sua-chua',
+                    icon: 'fas fa-clipboard-list',
+                    description: 'Quy trình làm việc chuyên nghiệp từ A-Z'
+                },
+                {
+                    title: 'Sửa chữa phòng khách',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-khach',
+                    icon: 'fas fa-couch',
+                    description: 'Chi phí cải tạo phòng khách hiện đại'
+                },
+                {
+                    title: 'Cải tạo phòng bếp',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-bep',
+                    icon: 'fas fa-utensils',
+                    description: 'Nâng cấp không gian bếp tiện nghi'
+                },
+                {
+                    title: 'Sửa chữa phòng ngủ',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-ngu',
+                    icon: 'fas fa-bed',
+                    description: 'Tạo không gian nghỉ ngơi lý tưởng'
+                },
+                {
+                    title: 'Cải tạo phòng tắm',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-tam',
+                    icon: 'fas fa-shower',
+                    description: 'Nâng cấp phòng tắm hiện đại, sạch sẽ'
+                },
+                {
+                    title: 'Chọn đơn vị uy tín',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/chon-don-vi-uy-tin',
+                    icon: 'fas fa-award',
+                    description: 'Tiêu chí lựa chọn nhà thầu chất lượng'
+                },
+                {
+                    title: 'Xu hướng cải tạo 2025',
+                    href: '/bao-gia/bao-gia-sua-chua-cai-tao/xu-huong-cai-tao',
+                    icon: 'fas fa-lightbulb',
+                    description: 'Xu hướng thiết kế hiện đại và bền vững'
+                }
+            ]
+        },
+        {
             title: 'Tư vấn báo giá',
             href: '/bao-gia/tu-van-bao-gia',
             description: 'Tư vấn miễn phí và báo giá chi tiết cho dự án',

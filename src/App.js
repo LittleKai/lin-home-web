@@ -72,6 +72,16 @@ import BaoGiaRemCuaCaoCapPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/re
 import BaoGiaChongThamPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/chong-tham';
 import BaoGiaPhaoChiPage from './pages/bao-gia/bao-gia-thi-cong-hang-muc/phao-chi-pu-ps-thach-cao';
 
+// Thêm vào phần import của báo giá sửa chữa cải tạo
+import BaoGiaSuaChuaCaiTao from './pages/bao-gia/BaoGiaSuaChuaCaiTao';
+import CachUocTinhChiPhi from './pages/bao-gia/bao-gia-sua-chua-cai-tao/CachUocTinhChiPhi';
+import QuyTrinhSuaChua from './pages/bao-gia/bao-gia-sua-chua-cai-tao/QuyTrinhSuaChua';
+import SuaChuaPhongKhach from './pages/bao-gia/bao-gia-sua-chua-cai-tao/SuaChuaPhongKhach';
+import CaiTaoPhongBep from './pages/bao-gia/bao-gia-sua-chua-cai-tao/CaiTaoPhongBep';
+import SuaChuaPhongNgu from './pages/bao-gia/bao-gia-sua-chua-cai-tao/SuaChuaPhongNgu';
+import CaiTaoPhongTam from './pages/bao-gia/bao-gia-sua-chua-cai-tao/CaiTaoPhongTam';
+import ChonDonViUyTin from './pages/bao-gia/bao-gia-sua-chua-cai-tao/ChonDonViUyTin';
+import XuHuongCaiTao from './pages/bao-gia/bao-gia-sua-chua-cai-tao/XuHuongCaiTao';
 
 // Import Application Pages
 import UngDungPage from './pages/ung-dung/UngDungPage';
@@ -204,6 +214,16 @@ function App() {
                     <Route path="/thi-cong/hang-muc-thi-cong/dien-thong-minh" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DienThongMinhPage /><FloatButtons /></>} />
                     <Route path="/thi-cong/hang-muc-thi-cong/phao-chi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><PhaoChiPage /><FloatButtons /></>} />
                     <Route path="/thi-cong/hang-muc-thi-cong/dien-mat-troi" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><DienMatTroiPage /><FloatButtons /></>} />
+
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao" element={<BaoGiaSuaChuaCaiTao />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cach-uoc-tinh-chi-phi" element={<CachUocTinhChiPhi />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/quy-trinh-sua-chua" element={<QuyTrinhSuaChua />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-khach" element={<SuaChuaPhongKhach />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-bep" element={<CaiTaoPhongBep />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/sua-chua-phong-ngu" element={<SuaChuaPhongNgu />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/cai-tao-phong-tam" element={<CaiTaoPhongTam />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/chon-don-vi-uy-tin" element={<ChonDonViUyTin />} />
+                    <Route path="/bao-gia/bao-gia-sua-chua-cai-tao/xu-huong-cai-tao" element={<XuHuongCaiTao />} />
 
                     {/* Application Routes */}
                     <Route path="/ung-dung" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><UngDungPage /><FloatButtons /></>} />
