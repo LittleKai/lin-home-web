@@ -1,0 +1,33 @@
+/* src/components/Header/HeaderVariables.css */
+/* CSS Variables and Color System */
+
+/* === ICON COLOR SYSTEM - 16 COLORS === */
+:root {
+    /* Primary Brand Colors */
+    --icon-primary: #667eea;      /* Main brand blue */
+    --icon-secondary: #764ba2;    /* Brand purple */
+
+    /* Functional Colors */
+    --icon-success: #10b981;      /* Green for positive actions */
+    --icon-warning: #f59e0b;      /* Orange for attention */
+    --icon-info: #3b82f6;         /* Blue for information */
+    --icon-accent: #8b5cf6;       /* Purple for premium */
+
+    /* Extended Color Palette */
+    --icon-red: #ef4444;          /* Red for important items */
+    --icon-teal: #14b8a6;         /* Teal for water/nature */
+    --icon-indigo: #6366f1;       /* Indigo for tech/smart items */
+    --icon-pink: #ec4899;         /* Pink for design/aesthetics */
+    --icon-emerald: #059669;      /* Emerald for eco/nature */
+    --icon-amber: #d97706;        /* Amber for energy/tools */
+
+    /* Additional Colors (16-color palette) */
+    --icon-cyan: #06b6d4;         /* Cyan for fresh/modern */
+    --icon-lime: #84cc16;         /* Lime for energy/fresh */
+    --icon-orange: #f97316;       /* Orange for warm/active */
+    --icon-violet: #7c3aed;       /* Violet for premium/luxury */
+
+    /* Neutral Colors */
+    --icon-dark: #374151;         /* Dark gray */
+    --icon-medium: #6b7280;       /* Medium gray */
+}

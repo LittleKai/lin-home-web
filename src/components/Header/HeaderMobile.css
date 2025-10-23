@@ -1,0 +1,887 @@
+/* src/components/Header/HeaderMobile.css */
+/* Mobile Menu Styles */
+
+/* === MOBILE MENU STYLES === */
+.mobile-menu-button {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.mobile-menu-button:focus {
+    outline: 2px solid var(--icon-primary);
+    outline-offset: 2px;
+}
+
+.hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: #4a5568;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-menu-button.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: var(--icon-primary);
+}
+
+.mobile-menu-button.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.mobile-menu-button.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--icon-primary);
+}
+
+/* Mobile Navigation - FIXED BACKGROUND & SCROLL */
+.nav-mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 350px;
+    max-width: 350px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    z-index: 1001;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.nav-mobile.active {
+    right: 0;
+}
+
+.mobile-nav-content {
+    padding: 10px;
+    height: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.98);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Mobile Navigation Header */
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a365d;
+}
+
+.mobile-logo .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+}
+
+.mobile-close-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(74, 85, 104, 0.1);
+    border-radius: 8px;
+    color: #4a5568;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.mobile-close-button:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--icon-primary);
+}
+
+.mobile-nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    background: transparent;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 200px);
+}
+
+.mobile-nav-item {
+    margin-bottom: 8px;
+    background: transparent;
+}
+
+.mobile-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #4a5568;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--icon-primary);
+}
+
+.mobile-nav-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Apply 12-color scheme to mobile nav icons */
+.mobile-nav-icon.fa-home {
+    color: var(--icon-primary);
+}
+
+.mobile-nav-icon.fa-pencil-ruler {
+    color: var(--icon-info);
+}
+
+.mobile-nav-icon.fa-hard-hat {
+    color: var(--icon-warning);
+}
+
+.mobile-nav-icon.fa-calculator {
+    color: var(--icon-success);
+}
+
+.mobile-nav-icon.fa-mobile-alt {
+    color: var(--icon-accent);
+}
+
+.mobile-nav-icon.fa-folder-open {
+    color: var(--icon-medium);
+}
+
+.mobile-nav-icon.fa-folder-open {
+    color: var(--icon-amber);
+}
+
+.mobile-nav-icon.fa-phone {
+    color: var(--icon-primary);
+}
+
+.mobile-nav-link:hover .mobile-nav-icon,
+.mobile-nav-link.active .mobile-nav-icon {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.mobile-nav-text {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.mobile-dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    color: var(--icon-medium);
+}
+
+.mobile-nav-link.active .mobile-dropdown-arrow {
+    color: var(--icon-primary);
+    transform: rotate(180deg);
+}
+
+/* Mobile Dropdown Content */
+.mobile-dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(247, 250, 252, 0.5);
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+.mobile-dropdown-content.show {
+    max-height: 800px;
+    padding: 8px;
+}
+
+.mobile-dropdown-item {
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.mobile-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 6px;
+    color: #4a5568;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+}
+
+/* Thêm padding cho item có submenu để nhường chỗ cho mũi tên */
+.mobile-dropdown-link.has-submenu {
+    padding-right: 35px;
+}
+
+/* Mũi tên cố định ở cuối cho mobile item có submenu */
+.mobile-dropdown-item.has-submenu::after {
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--icon-medium);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Ẩn mũi tên khi submenu đang mở */
+.mobile-dropdown-item.has-submenu.submenu-open::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.mobile-dropdown-link:hover {
+    background: white;
+    color: var(--icon-primary);
+}
+
+.mobile-dropdown-icon {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+/* Apply 16-color scheme to mobile dropdown icons */
+.mobile-dropdown-icon.fa-route {
+    color: var(--icon-cyan);
+}
+
+.mobile-dropdown-icon.fa-building {
+    color: var(--icon-primary);
+}
+
+.mobile-dropdown-icon.fa-couch {
+    color: var(--icon-warning);
+}
+
+.mobile-dropdown-icon.fa-clipboard-list {
+    color: var(--icon-lime);
+}
+
+.mobile-dropdown-icon.fa-hard-hat {
+    color: var(--icon-warning);
+}
+
+.mobile-dropdown-icon.fa-paint-brush {
+    color: var(--icon-pink);
+}
+
+.mobile-dropdown-icon.fa-tools {
+    color: var(--icon-amber);
+}
+
+.mobile-dropdown-icon.fa-wrench {
+    color: var(--icon-orange);
+}
+
+.mobile-dropdown-icon.fa-home {
+    color: var(--icon-primary);
+}
+
+.mobile-dropdown-icon.fa-list-alt {
+    color: var(--icon-success);
+}
+
+.mobile-dropdown-icon.fa-calculator {
+    color: var(--icon-success);
+}
+
+.mobile-dropdown-icon.fa-mobile-alt {
+    color: var(--icon-accent);
+}
+
+.mobile-dropdown-icon.fa-folder {
+    color: var(--icon-amber);
+}
+
+.mobile-dropdown-icon.fa-folder-open {
+    color: var(--icon-amber);
+}
+
+.mobile-dropdown-icon.fa-pencil-ruler {
+    color: var(--icon-info);
+}
+
+.mobile-dropdown-icon.fa-ruler {
+    color: var(--icon-orange);
+}
+
+.mobile-dropdown-icon.fa-calendar-alt {
+    color: var(--icon-violet);
+}
+
+.mobile-dropdown-icon.fa-compass {
+    color: var(--icon-cyan);
+}
+
+.mobile-dropdown-icon.fa-palette {
+    color: var(--icon-pink);
+}
+
+.mobile-dropdown-icon.fa-box {
+    color: var(--icon-orange);
+}
+
+/* Báo giá sửa chữa mobile icons */
+.mobile-dropdown-icon.fa-hammer {
+    color: var(--icon-amber);
+}
+
+.mobile-dropdown-icon.fa-screwdriver {
+    color: var(--icon-orange);
+}
+
+.mobile-dropdown-icon.fa-cog {
+    color: var(--icon-medium);
+}
+
+.mobile-dropdown-icon.fa-toolbox {
+    color: var(--icon-amber);
+}
+
+.mobile-dropdown-icon.fa-paint-roller {
+    color: var(--icon-pink);
+}
+
+.mobile-dropdown-icon.fa-brush {
+    color: var(--icon-pink);
+}
+
+.mobile-dropdown-icon.fa-drafting-compass {
+    color: var(--icon-cyan);
+}
+
+.mobile-dropdown-icon.fa-ruler-combined {
+    color: var(--icon-orange);
+}
+
+.mobile-dropdown-icon.fa-tape {
+    color: var(--icon-lime);
+}
+
+.mobile-dropdown-icon.fa-level-ruler {
+    color: var(--icon-violet);
+}
+
+.mobile-dropdown-icon.fa-couch {
+    color: var(--icon-red);  /* Đỏ - Phòng khách */
+}
+
+.mobile-dropdown-icon.fa-utensils {
+    color: var(--icon-emerald);  /* Xanh lá - Phòng bếp */
+}
+
+.mobile-dropdown-icon.fa-check-circle {
+    color: var(--icon-violet);  /* Tím - Chọn đơn vị */
+}
+
+.mobile-dropdown-icon.fa-chart-line {
+    color: var(--icon-info);  /* Xanh dương - Xu hướng */
+}
+
+.mobile-dropdown-icon.fa-lightbulb {
+    color: var(--icon-warning);  /* Cam vàng - Ý tưởng */
+}
+
+.mobile-dropdown-icon.fa-clipboard-check {
+    color: var(--icon-lime);  /* Xanh lime - Checklist */
+}
+
+.mobile-dropdown-icon.fa-tasks {
+    color: var(--icon-cyan);  /* Xanh cyan - Tasks */
+}
+
+.mobile-dropdown-icon.fa-user-check {
+    color: var(--icon-success);
+}
+
+.mobile-dropdown-icon.fa-award {
+    color: var(--icon-amber);  /* Vàng amber - Giải thưởng */
+}
+
+.mobile-dropdown-icon.fa-certificate {
+    color: var(--icon-orange);  /* Cam - Chứng chỉ */
+}
+
+.mobile-dropdown-icon.fa-star {
+    color: var(--icon-warning);
+}
+
+.mobile-dropdown-icon.fa-thumbs-up {
+    color: var(--icon-teal);  /* Xanh teal - Like */
+}
+
+.mobile-dropdown-link:hover .mobile-dropdown-icon {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.mobile-dropdown-text {
+    flex: 1;
+}
+
+.mobile-dropdown-title {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 1px;
+}
+
+.mobile-dropdown-description {
+    display: none !important;
+}
+
+.mobile-submenu-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    color: var(--icon-medium);
+    margin-left: auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-dropdown-link.has-submenu .mobile-submenu-arrow {
+    transform: rotate(0deg);
+}
+
+/* Mobile Submenu */
+.mobile-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: white;
+    border-radius: 6px;
+    margin-top: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.mobile-submenu.show {
+    max-height: 600px;
+    padding: 4px;
+}
+
+.mobile-submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: #4a5568;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-submenu-link:last-child {
+    border-bottom: none;
+}
+
+.mobile-submenu-link:hover {
+    background: #f7fafc;
+    color: var(--icon-primary);
+}
+
+.mobile-submenu-icon {
+    font-size: 12px;
+    width: 14px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+/* Apply 16-color scheme to mobile submenu icons */
+.mobile-submenu-icon.fa-layer-group {
+    color: var(--icon-indigo);
+}
+
+.mobile-submenu-icon.fa-shower {
+    color: var(--icon-indigo);
+}
+
+.mobile-submenu-icon.fa-tree {
+    color: var(--icon-emerald);
+}
+
+.mobile-submenu-icon.fa-th-large {
+    color: var(--icon-violet);
+}
+
+.mobile-submenu-icon.fa-door-open {
+    color: var(--icon-amber);
+}
+
+.mobile-submenu-icon.fa-th {
+    color: var(--icon-accent);
+}
+
+.mobile-submenu-icon.fa-shield-alt {
+    color: var(--icon-teal);
+}
+
+.mobile-submenu-icon.fa-fish {
+    color: var(--icon-cyan);
+}
+
+.mobile-submenu-icon.fa-window-maximize {
+    color: var(--icon-info);
+}
+
+.mobile-submenu-icon.fa-solar-panel {
+    color: var(--icon-warning);
+}
+
+.mobile-submenu-icon.fa-border-style {
+    color: var(--icon-pink);
+}
+
+.mobile-submenu-icon.fa-arrow-up {
+    color: var(--icon-lime);
+}
+
+.mobile-submenu-icon.fa-city {
+    color: var(--icon-indigo);
+}
+
+.mobile-submenu-icon.fa-bath {
+    color: var(--icon-cyan);
+}
+
+.mobile-submenu-icon.fa-bed {
+    color: var(--icon-pink);
+}
+
+.mobile-submenu-icon.fa-dollar-sign {
+    color: var(--icon-success);
+}
+
+.mobile-submenu-icon.fa-pencil-ruler {
+    color: var(--icon-info);
+}
+
+.mobile-submenu-icon.fa-home {
+    color: var(--icon-primary);
+}
+
+.mobile-submenu-icon.fa-hard-hat {
+    color: var(--icon-warning);
+}
+
+.mobile-submenu-icon.fa-paint-brush {
+    color: var(--icon-pink);
+}
+
+.mobile-submenu-icon.fa-wrench {
+    color: var(--icon-orange);
+}
+
+.mobile-submenu-icon.fa-route {
+    color: var(--icon-cyan);
+}
+
+.mobile-submenu-icon.fa-compass {
+    color: var(--icon-cyan);
+}
+
+.mobile-submenu-icon.fa-ruler {
+    color: var(--icon-orange);
+}
+
+.mobile-submenu-icon.fa-calendar-alt {
+    color: var(--icon-violet);
+}
+
+.mobile-submenu-icon.fa-box {
+    color: var(--icon-orange);
+}
+
+/* Báo giá sửa chữa mobile submenu icons */
+.mobile-submenu-icon.fa-hammer {
+    color: var(--icon-amber);
+}
+
+.mobile-submenu-icon.fa-screwdriver {
+    color: var(--icon-orange);
+}
+
+.mobile-submenu-icon.fa-cog {
+    color: var(--icon-medium);
+}
+
+.mobile-submenu-icon.fa-toolbox {
+    color: var(--icon-amber);
+}
+
+.mobile-submenu-icon.fa-paint-roller {
+    color: var(--icon-pink);
+}
+
+.mobile-submenu-icon.fa-brush {
+    color: var(--icon-pink);
+}
+
+.mobile-submenu-icon.fa-drafting-compass {
+    color: var(--icon-cyan);
+}
+
+.mobile-submenu-icon.fa-ruler-combined {
+    color: var(--icon-orange);
+}
+
+.mobile-submenu-icon.fa-tape {
+    color: var(--icon-lime);
+}
+
+.mobile-submenu-icon.fa-level-ruler {
+    color: var(--icon-violet);
+}
+
+.mobile-submenu-icon.fa-list-alt {
+    color: var(--icon-success);
+}
+
+.mobile-submenu-icon.fa-calculator {
+    color: var(--icon-success);
+}
+
+/* Submenu Báo giá sửa chữa - MÀU ĐA DẠNG */
+.mobile-submenu-icon.fa-couch {
+    color: var(--icon-red);  /* Đỏ - Phòng khách */
+}
+
+.mobile-submenu-icon.fa-utensils {
+    color: var(--icon-emerald);  /* Xanh lá - Phòng bếp */
+}
+
+.mobile-submenu-icon.fa-check-circle {
+    color: var(--icon-violet);  /* Tím - Chọn đơn vị */
+}
+
+.mobile-submenu-icon.fa-chart-line {
+    color: var(--icon-info);  /* Xanh dương - Xu hướng */
+}
+
+.mobile-submenu-icon.fa-lightbulb {
+    color: var(--icon-warning);  /* Cam vàng - Ý tưởng */
+}
+
+.mobile-submenu-icon.fa-building {
+    color: var(--icon-indigo);
+}
+
+.mobile-submenu-icon.fa-clipboard-check {
+    color: var(--icon-lime);  /* Xanh lime - Checklist */
+}
+
+.mobile-submenu-icon.fa-tasks {
+    color: var(--icon-cyan);  /* Xanh cyan - Tasks */
+}
+
+.mobile-submenu-icon.fa-user-check {
+    color: var(--icon-success);
+}
+
+.mobile-submenu-icon.fa-award {
+    color: var(--icon-amber);  /* Vàng amber - Giải thưởng */
+}
+
+.mobile-submenu-icon.fa-certificate {
+    color: var(--icon-orange);  /* Cam - Chứng chỉ */
+}
+
+.mobile-submenu-icon.fa-star {
+    color: var(--icon-warning);
+}
+
+.mobile-submenu-icon.fa-thumbs-up {
+    color: var(--icon-teal);  /* Xanh teal - Like */
+}
+
+.mobile-submenu-icon.fa-tools {
+    color: var(--icon-amber);
+}
+
+.mobile-submenu-icon.fa-clipboard-list {
+    color: var(--icon-accent);  /* Tím accent - Danh sách */
+}
+
+
+
+.mobile-submenu-link:hover .mobile-submenu-icon {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.mobile-submenu-text {
+    flex: 1;
+}
+
+.mobile-submenu-title {
+    display: block;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 1px;
+}
+
+.mobile-submenu-description {
+    display: none !important;
+}
+
+/* Mobile dropdown improvements */
+.mobile-dropdown-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.7rem;
+}
+
+.mobile-dropdown-link.has-submenu .mobile-dropdown-content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-dropdown-link .mobile-dropdown-content-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-submenu-arrow {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.mobile-submenu-arrow::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    z-index: 1;
+}
+
+/* Overlay for mobile menu */
+.nav-mobile.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .header-content {
+        padding: 10px 0;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-mobile {
+        max-width: 100%;
+    }
+}
