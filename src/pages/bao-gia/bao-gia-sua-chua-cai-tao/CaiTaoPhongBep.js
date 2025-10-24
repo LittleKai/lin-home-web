@@ -1,551 +1,481 @@
 // src/pages/bao-gia/bao-gia-sua-chua-cai-tao/CaiTaoPhongBep.js
 import React, { useState } from 'react';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import './SuaChuaCaiTaoStyles.css';
 
 const CaiTaoPhongBep = () => {
-    const [selectedLayout, setSelectedLayout] = useState('L');
+    const [activeTab, setActiveTab] = useState('basic');
+    const [activeFaq, setActiveFaq] = useState(null);
 
-    const kitchenLayouts = {
-        'L': {
-            name: 'Bếp chữ L',
-            description: 'Phù hợp với không gian vừa và nhỏ, tối ưu góc',
-            advantages: ['Tiết kiệm không gian', 'Dễ di chuyển', 'Phù hợp góc vuông'],
-            price: '15 - 25 triệu'
-        },
-        'I': {
-            name: 'Bếp chữ I',
-            description: 'Bố trí thẳng hàng, phù hợp không gian hẹp',
-            advantages: ['Đơn giản', 'Tiết kiệm chi phí', 'Phù hợp căn hộ nhỏ'],
-            price: '12 - 20 triệu'
-        },
-        'U': {
-            name: 'Bếp chữ U',
-            description: 'Không gian bếp rộng rãi với 3 mặt tủ',
-            advantages: ['Nhiều không gian lưu trữ', 'Tiện nghi', 'Phù hợp gia đình lớn'],
-            price: '25 - 40 triệu'
-        },
-        'Island': {
-            name: 'Bếp có đảo',
-            description: 'Hiện đại với đảo bếp trung tâm',
-            advantages: ['Sang trọng', 'Đa chức năng', 'Tạo điểm nhấn'],
-            price: '35 - 60 triệu'
-        }
-    };
-
-    const renovationItems = [
+    // Kitchen renovation packages
+    const kitchenPackages = [
         {
-            category: 'Tủ bếp',
-            items: [
-                { name: 'Tủ bếp gỗ công nghiệp MDF', price: '3.000.000 - 4.500.000/md', note: 'Chống ẩm, phủ Melamine' },
-                { name: 'Tủ bếp gỗ Acrylic', price: '4.500.000 - 6.000.000/md', note: 'Bề mặt bóng, dễ vệ sinh' },
-                { name: 'Tủ bếp gỗ tự nhiên', price: '6.000.000 - 10.000.000/md', note: 'Sang trọng, bền vững' }
-            ]
+            id: 'basic',
+            name: 'Bếp Cơ Bản',
+            price: '30,000,000 - 55,000,000 VNĐ',
+            pricePerSqm: '1,500,000 - 2,500,000 VNĐ/m²',
+            description: 'Cải tạo bếp đơn giản, vật liệu tiết kiệm, chức năng đầy đủ',
+            features: [
+                'Tủ bếp gỗ công nghiệp MDF',
+                'Bếp từ/gas âm 2 bếp',
+                'Máy hút mùi cơ bản',
+                'Mặt đá nhân tạo Việt Nam',
+                'Bồn rửa inox 304',
+                'Vòi rửa đồng mạ',
+                'Bảo hành 12 tháng'
+            ],
+            includes: ['Thi công 10-15 ngày', 'Vật liệu tiết kiệm', 'Thiết kế đơn giản'],
+            suitable: ['Bếp 6-10m²', 'Nhà cho thuê', 'Ngân sách hạn chế'],
+            bgColor: '#10b981'
         },
         {
-            category: 'Mặt bếp',
-            items: [
-                { name: 'Đá Granite nhân tạo', price: '1.200.000 - 1.800.000/m²', note: 'Đa dạng màu sắc' },
-                { name: 'Đá Marble tự nhiên', price: '2.500.000 - 4.000.000/m²', note: 'Cao cấp, vân đẹp' },
-                { name: 'Đá thạch anh', price: '3.000.000 - 5.000.000/m²', note: 'Độ cứng cao, chống trầy' }
-            ]
+            id: 'standard',
+            name: 'Bếp Tiêu Chuẩn',
+            price: '55,000,000 - 100,000,000 VNĐ',
+            pricePerSqm: '2,500,000 - 4,000,000 VNĐ/m²',
+            description: 'Bếp hiện đại, đầy đủ tính năng, vật liệu tốt',
+            features: [
+                'Tủ bếp gỗ tự nhiên/Acrylic',
+                'Bếp từ/gas 3-4 bếp cao cấp',
+                'Máy hút âm tủ/khử mùi ion',
+                'Mặt đá granite/quartz',
+                'Bồn rửa Franke/Teka',
+                'Vòi rửa cao cấp Hansgrohe',
+                'Lò vi sóng âm tủ',
+                'Máy rửa chén nhập khẩu',
+                'Bảo hành 18-24 tháng'
+            ],
+            includes: ['Thiết kế 3D', 'Thi công 20-30 ngày', 'Vật liệu chất lượng'],
+            suitable: ['Bếp 10-18m²', 'Nhà phố', 'Chung cư cao cấp'],
+            bgColor: '#f59e0b'
         },
         {
-            category: 'Thiết bị bếp',
-            items: [
-                { name: 'Bếp từ đôi', price: '5.000.000 - 15.000.000', note: 'Tiết kiệm điện, an toàn' },
-                { name: 'Máy hút mùi', price: '3.000.000 - 12.000.000', note: 'Công suất 600-1200m³/h' },
-                { name: 'Lò nướng âm tủ', price: '8.000.000 - 25.000.000', note: 'Đa chức năng' },
-                { name: 'Máy rửa bát', price: '8.000.000 - 20.000.000', note: 'Tiết kiệm nước, thời gian' }
-            ]
-        },
-        {
-            category: 'Ốp tường & Sàn',
-            items: [
-                { name: 'Gạch ốp tường 30x60', price: '150.000 - 250.000/m²', note: 'Dễ vệ sinh' },
-                { name: 'Kính ốp tường', price: '400.000 - 600.000/m²', note: 'Hiện đại, sạch sẽ' },
-                { name: 'Gạch lát sàn chống trượt', price: '200.000 - 350.000/m²', note: 'An toàn' }
-            ]
-        }
-    ];
-
-    const budgetPlans = [
-        {
-            level: 'Tiết kiệm',
-            total: '25 - 40 triệu',
-            icon: 'fas fa-piggy-bank',
-            includes: [
-                'Tủ bếp MDF cơ bản',
-                'Bếp gas đôi',
-                'Chậu rửa inox',
-                'Gạch ốp tường thông thường',
-                'Sơn tường mới'
-            ]
-        },
-        {
-            level: 'Trung bình',
-            total: '50 - 80 triệu',
-            icon: 'fas fa-star',
-            includes: [
-                'Tủ bếp Acrylic',
-                'Bếp từ + Máy hút mùi',
-                'Mặt đá granite',
-                'Gạch ốp cao cấp',
-                'Đèn LED âm tủ'
-            ]
-        },
-        {
-            level: 'Cao cấp',
-            total: '100 - 200 triệu',
-            icon: 'fas fa-crown',
-            includes: [
-                'Tủ bếp gỗ tự nhiên/nhập khẩu',
-                'Full thiết bị Bosch/Hafele',
-                'Mặt đá thạch anh',
-                'Kính ốp tường',
-                'Hệ thống lọc nước'
-            ]
+            id: 'luxury',
+            name: 'Bếp Luxury',
+            price: '100,000,000 - 250,000,000 VNĐ',
+            pricePerSqm: '4,000,000 - 7,000,000 VNĐ/m²',
+            description: 'Bếp đẳng cấp, thiết bị nhập khẩu, smarthome',
+            features: [
+                'Tủ bếp gỗ tự nhiên cao cấp',
+                'Bếp từ Bosch/Electrolux 5 bếp',
+                'Máy hút âm trần công suất lớn',
+                'Mặt đá marble nhập khẩu',
+                'Bồn rửa đá tự nhiên',
+                'Vòi cảm ứng thông minh',
+                'Lò nướng âm tủ cao cấp',
+                'Tủ lạnh âm tủ Side by Side',
+                'Máy rửa chén Bosch/Miele',
+                'Hệ thống smarthome tích hợp',
+                'Bảo hành 24-36 tháng'
+            ],
+            includes: ['Thiết kế kiến trúc', 'Thi công 40-60 ngày', 'Vật liệu nhập khẩu'],
+            suitable: ['Bếp >20m²', 'Biệt thự', 'Penthouse'],
+            bgColor: '#8b5cf6'
         }
     ];
 
-    const savingTips = [
-        'Giữ lại khung tủ cũ nếu còn tốt, chỉ thay cánh tủ',
-        'Chọn thiết bị bếp combo để tiết kiệm',
-        'Tự thi công phần sơn tường đơn giản',
-        'Mua thiết bị trong đợt khuyến mãi',
-        'Chọn vật liệu trong nước chất lượng cao'
+    // Kitchen components pricing
+    const components = [
+        {
+            name: 'Tủ Bếp',
+            items: [
+                { type: 'MDF phủ Melamine', price: '2,500,000 - 3,500,000 VNĐ/m dài' },
+                { type: 'MDF phủ Acrylic', price: '3,500,000 - 5,000,000 VNĐ/m dài' },
+                { type: 'Gỗ công nghiệp veneer', price: '5,000,000 - 7,500,000 VNĐ/m dài' },
+                { type: 'Gỗ tự nhiên sồi/xoan', price: '8,000,000 - 15,000,000 VNĐ/m dài' }
+            ],
+            icon: 'fas fa-cabinet-filing'
+        },
+        {
+            name: 'Mặt Bếp',
+            items: [
+                { type: 'Đá nhân tạo Việt Nam', price: '800,000 - 1,200,000 VNĐ/m dài' },
+                { type: 'Granite tự nhiên', price: '1,500,000 - 2,500,000 VNĐ/m dài' },
+                { type: 'Quartz nhập khẩu', price: '2,500,000 - 4,000,000 VNĐ/m dài' },
+                { type: 'Marble cao cấp', price: '4,000,000 - 8,000,000 VNĐ/m dài' }
+            ],
+            icon: 'fas fa-th-large'
+        },
+        {
+            name: 'Thiết Bị Bếp',
+            items: [
+                { type: 'Bếp từ/gas 2 bếp', price: '3,000,000 - 8,000,000 VNĐ' },
+                { type: 'Bếp từ 3-4 bếp cao cấp', price: '8,000,000 - 20,000,000 VNĐ' },
+                { type: 'Máy hút mùi cơ bản', price: '2,000,000 - 5,000,000 VNĐ' },
+                { type: 'Máy hút khử mùi cao cấp', price: '5,000,000 - 15,000,000 VNĐ' }
+            ],
+            icon: 'fas fa-fire'
+        },
+        {
+            name: 'Thiết Bị Vệ Sinh',
+            items: [
+                { type: 'Bồn rửa inox 304', price: '800,000 - 2,500,000 VNĐ' },
+                { type: 'Bồn rửa Franke/Teka', price: '2,500,000 - 5,000,000 VNĐ' },
+                { type: 'Vòi rửa đồng mạ', price: '500,000 - 1,500,000 VNĐ' },
+                { type: 'Vòi cảm ứng cao cấp', price: '2,000,000 - 5,000,000 VNĐ' }
+            ],
+            icon: 'fas fa-sink'
+        }
+    ];
+
+    // Kitchen layouts
+    const layouts = [
+        {
+            layout: 'Bếp Chữ I',
+            area: '4-8m²',
+            description: 'Bếp 1 hàng, tiết kiệm diện tích',
+            cost: '25-45 triệu',
+            pros: ['Tiết kiệm không gian', 'Chi phí thấp', 'Dễ thi công'],
+            cons: ['Ít diện tích làm việc', 'Không gian lưu trữ hạn chế']
+        },
+        {
+            layout: 'Bếp Chữ L',
+            area: '6-12m²',
+            description: 'Bếp góc, tận dụng không gian',
+            cost: '40-80 triệu',
+            pros: ['Tận dụng góc', 'Linh hoạt', 'Nhiều không gian làm việc'],
+            cons: ['Cần diện tích vừa phải', 'Chi phí cao hơn chữ I']
+        },
+        {
+            layout: 'Bếp Chữ U',
+            area: '8-15m²',
+            description: 'Bếp 3 hàng, nhiều không gian',
+            cost: '60-120 triệu',
+            pros: ['Rất nhiều không gian', 'Tiện nghi cao', 'Đẹp mắt'],
+            cons: ['Cần diện tích lớn', 'Chi phí cao', 'Khó vệ sinh góc']
+        },
+        {
+            layout: 'Bếp Đảo',
+            area: '>15m²',
+            description: 'Bếp có đảo trung tâm, sang trọng',
+            cost: '100-250 triệu',
+            pros: ['Sang trọng', 'Đa năng', 'Không gian giao tiếp'],
+            cons: ['Cần diện tích rộng', 'Chi phí rất cao', 'Phức tạp thi công']
+        }
+    ];
+
+    // Construction items
+    const constructionItems = [
+        {
+            item: 'Phá Dỡ Bếp Cũ',
+            price: '3,000,000 - 5,000,000 VNĐ',
+            note: 'Bao gồm tháo tủ, thiết bị, dọn rác'
+        },
+        {
+            item: 'Chống Thấm Tường Bếp',
+            price: '120,000 - 180,000 VNĐ/m²',
+            note: 'Sơn chống thấm chuyên dụng'
+        },
+        {
+            item: 'Ốp Gạch Tường',
+            price: '150,000 - 300,000 VNĐ/m²',
+            note: 'Gạch 30x60 hoặc 30x30'
+        },
+        {
+            item: 'Lát Nền Bếp',
+            price: '180,000 - 350,000 VNĐ/m²',
+            note: 'Gạch chống trơn 60x60 hoặc 80x80'
+        },
+        {
+            item: 'Điện Nước Bếp',
+            price: '5,000,000 - 10,000,000 VNĐ',
+            note: 'Đi dây điện, đường ống nước'
+        },
+        {
+            item: 'Trần Thạch Cao',
+            price: '150,000 - 250,000 VNĐ/m²',
+            note: 'Trần chống ẩm có đèn LED'
+        }
+    ];
+
+    // FAQ data
+    const faqData = [
+        {
+            question: 'Chi phí làm mới bếp 8m² hết bao nhiêu tiền?',
+            answer: 'Bếp 8m² chi phí dao động: Gói cơ bản 30-45 triệu, gói tiêu chuẩn 45-80 triệu, gói luxury 80-150 triệu. Bao gồm tủ bếp, thiết bị, ốp lát, điện nước. Giá cụ thể phụ thuộc vật liệu và thiết bị chọn.'
+        },
+        {
+            question: 'Thời gian cải tạo bếp mất bao lâu?',
+            answer: 'Thời gian cải tạo bếp: Gói cơ bản 10-15 ngày, gói tiêu chuẩn 20-30 ngày, gói luxury 40-60 ngày. Bao gồm phá dỡ, thi công, lắp đặt. Thời gian có thể lâu hơn nếu chờ thiết bị nhập khẩu.'
+        },
+        {
+            question: 'Nên chọn tủ bếp gỗ công nghiệp hay gỗ tự nhiên?',
+            answer: 'Gỗ công nghiệp (MDF/Acrylic): bền, chống ẩm tốt, giá 2.5-5M/m dài, đa dạng màu sắc. Gỗ tự nhiên: sang trọng, bền lâu, giá 8-15M/m dài, cần bảo dưỡng. Nên chọn gỗ công nghiệp nếu ngân sách hạn chế.'
+        },
+        {
+            question: 'Mặt bếp đá tự nhiên hay đá nhân tạo tốt hơn?',
+            answer: 'Đá nhân tạo: không thấm nước, ít xốp, giá 800K-4M/m dài, màu đều. Đá tự nhiên (granite/marble): sang, bền, giá 1.5-8M/m dài, có vân tự nhiên. Đá nhân tạo phù hợp hơn vì dễ vệ sinh và bền màu.'
+        },
+        {
+            question: 'Bếp từ hay bếp gas tốt hơn?',
+            answer: 'Bếp từ: an toàn, sạch, tiết kiệm điện, giá 3-20 triệu, cần nồi chuyên dụng. Bếp gas: quen thuộc, nấu nhanh, giá 1-5 triệu. Xu hướng hiện nay dùng bếp từ cho an toàn và vệ sinh.'
+        },
+        {
+            question: 'Chi phí máy hút mùi bao nhiêu?',
+            answer: 'Máy hút mùi: Loại cơ bản 2-5 triệu, loại khử mùi ion 5-10 triệu, loại âm trần 10-15 triệu. Nên chọn công suất phù hợp diện tích bếp: 6-8m² dùng 600-800m³/h, >10m² dùng 1000m³/h trở lên.'
+        }
     ];
 
     return (
-        <div className="suachua-detail-page">
-            {/* Header */}
-            <section className="detail-hero">
+        <div className="pricing-page">
+            {/* Hero Section */}
+            <section className="hero-section">
                 <div className="container">
-                    <nav className="breadcrumb">
-                        <a href="/">Trang chủ</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia">Báo giá</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao">Báo giá sửa chữa cải tạo</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <span>Cải tạo phòng bếp</span>
-                    </nav>
-                    <h1 className="detail-title">
-                        <i className="fas fa-utensils"></i>
-                        Chi Phí Cải Tạo Phòng Bếp Hiện Đại
-                    </h1>
-                    <p className="detail-subtitle">
-                        Giải pháp nâng cấp không gian bếp với mức giá phải chăng
+                    <h1 className="section-title">🍳 Báo Giá Cải Tạo Phòng Bếp</h1>
+                    <p className="section-subtitle">
+                        Báo giá chi tiết cải tạo bếp hiện đại, đầy đủ tiện nghi
                     </p>
+
+                    <div className="hero-stats grid-4">
+                        <div className="stat-item">
+                            <div className="stat-number">30-250M</div>
+                            <div className="stat-label">Chi Phí Tổng</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">10-60</div>
+                            <div className="stat-label">Ngày Thi Công</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">3</div>
+                            <div className="stat-label">Gói Bếp</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">12-36</div>
+                            <div className="stat-label">Tháng Bảo Hành</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            {/* Introduction */}
+            {/* Kitchen Packages */}
             <section className="section">
                 <div className="container">
-                    <div className="detail-intro">
-                        <p>
-                            Phòng bếp không chỉ là nơi nấu nướng mà còn là không gian sum họp gia đình. 
-                            Một phòng bếp được cải tạo đẹp và tiện nghi sẽ giúp việc nấu ăn trở nên thú vị 
-                            và tăng giá trị cho ngôi nhà.
-                        </p>
-                        <p>
-                            <strong>LinHome</strong> cung cấp giải pháp cải tạo phòng bếp toàn diện với 
-                            nhiều mức giá phù hợp, từ tiết kiệm đến cao cấp.
-                        </p>
+                    <h2 className="section-title">📦 Gói Cải Tạo Bếp</h2>
+                    <p className="section-subtitle">
+                        3 gói bếp từ cơ bản đến luxury
+                    </p>
+
+                    <div className="tabs-container">
+                        <div className="tabs">
+                            {kitchenPackages.map((pkg) => (
+                                <button
+                                    key={pkg.id}
+                                    className={`tab ${activeTab === pkg.id ? 'active' : ''}`}
+                                    onClick={() => setActiveTab(pkg.id)}
+                                >
+                                    {pkg.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        {kitchenPackages.map((pkg) => (
+                            <div
+                                key={pkg.id}
+                                className={`tab-content ${activeTab === pkg.id ? 'active' : ''}`}
+                            >
+                                <div className="pricing-card card">
+                                    <div className="card-header" style={{ background: `linear-gradient(135deg, ${pkg.bgColor}, ${pkg.bgColor}dd)` }}>
+                                        <h3>{pkg.name}</h3>
+                                        <div className="price-range">{pkg.price}</div>
+                                        <div className="price-note">{pkg.pricePerSqm}</div>
+                                        <p>{pkg.description}</p>
+                                    </div>
+
+                                    <div className="card-body">
+                                        <div className="features-section">
+                                            <h4>🔧 Bao Gồm:</h4>
+                                            <ul>
+                                                {pkg.features.map((feature, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-check-circle"></i>
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="includes-section">
+                                            <h4>🎁 Ưu Đãi:</h4>
+                                            <ul>
+                                                {pkg.includes.map((item, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-gift"></i>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="suitable-section">
+                                            <h4>✅ Phù Hợp:</h4>
+                                            <ul>
+                                                {pkg.suitable.map((item, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-home"></i>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div className="pricing-actions">
+                                        <a href="/lien-he" className="btn btn-primary">
+                                            <i className="fas fa-phone"></i>
+                                            Liên Hệ Ngay
+                                        </a>
+                                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao" className="btn btn-secondary">
+                                            <i className="fas fa-calculator"></i>
+                                            Tính Chi Phí
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Components Pricing */}
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">💰 Bảng Giá Chi Tiết</h2>
+                    <p className="section-subtitle">
+                        Chi phí từng bộ phận của bếp
+                    </p>
+
+                    <div className="components-grid grid-2">
+                        {components.map((component, index) => (
+                            <div key={index} className="component-card card">
+                                <div className="card-header">
+                                    <i className={`${component.icon} icon-large`}></i>
+                                    <h3>{component.name}</h3>
+                                </div>
+
+                                <div className="card-body">
+                                    {component.items.map((item, itemIndex) => (
+                                        <div key={itemIndex} className="component-item">
+                                            <div className="item-type">{item.type}</div>
+                                            <div className="item-price">{item.price}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
             {/* Kitchen Layouts */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">📐 Bố Cục Bếp</h2>
+                    <p className="section-subtitle">
+                        4 kiểu bố cục bếp phổ biến
+                    </p>
+
+                    <div className="layouts-grid grid-2">
+                        {layouts.map((layout, index) => (
+                            <div key={index} className="layout-card card">
+                                <div className="card-header">
+                                    <h3>{layout.layout}</h3>
+                                    <div className="layout-info">
+                                        <span className="area">
+                                            <i className="fas fa-ruler-combined"></i>
+                                            {layout.area}
+                                        </span>
+                                        <span className="cost">
+                                            <i className="fas fa-dollar-sign"></i>
+                                            {layout.cost}
+                                        </span>
+                                    </div>
+                                    <p>{layout.description}</p>
+                                </div>
+
+                                <div className="card-body">
+                                    <div className="pros-cons">
+                                        <div className="pros">
+                                            <h4>👍 Ưu điểm:</h4>
+                                            <ul>
+                                                {layout.pros.map((pro, proIndex) => (
+                                                    <li key={proIndex}>
+                                                        <i className="fas fa-plus"></i>
+                                                        {pro}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="cons">
+                                            <h4>👎 Nhược điểm:</h4>
+                                            <ul>
+                                                {layout.cons.map((con, conIndex) => (
+                                                    <li key={conIndex}>
+                                                        <i className="fas fa-minus"></i>
+                                                        {con}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Construction Items */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">Các Kiểu Bố Trí Phòng Bếp</h2>
-                    
-                    <div className="layout-selector">
-                        <div className="layout-tabs">
-                            {Object.entries(kitchenLayouts).map(([key, layout]) => (
+                    <h2 className="section-title">🔨 Chi Phí Thi Công</h2>
+                    <p className="section-subtitle">
+                        Bảng giá các hạng mục thi công bếp
+                    </p>
+
+                    <div className="construction-grid">
+                        {constructionItems.map((item, index) => (
+                            <div key={index} className="construction-item card">
+                                <div className="item-header">
+                                    <h4>{item.item}</h4>
+                                    <div className="item-price">{item.price}</div>
+                                </div>
+                                <div className="item-note">{item.note}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
+
+                    <div className="faq-list">
+                        {faqData.map((faq, index) => (
+                            <div key={index} className="faq-item">
                                 <button
-                                    key={key}
-                                    className={`layout-tab ${selectedLayout === key ? 'active' : ''}`}
-                                    onClick={() => setSelectedLayout(key)}
+                                    className={`faq-question ${activeFaq === index ? 'active' : ''}`}
+                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
                                 >
-                                    {layout.name}
+                                    <span>{faq.question}</span>
+                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
                                 </button>
-                            ))}
-                        </div>
-                        
-                        <div className="layout-content">
-                            <h3>{kitchenLayouts[selectedLayout].name}</h3>
-                            <p className="layout-desc">{kitchenLayouts[selectedLayout].description}</p>
-                            <div className="layout-price">
-                                Chi phí tủ bếp: {kitchenLayouts[selectedLayout].price}
-                            </div>
-                            <h4>Ưu điểm:</h4>
-                            <ul className="layout-advantages">
-                                {kitchenLayouts[selectedLayout].advantages.map((adv, index) => (
-                                    <li key={index}>
-                                        <i className="fas fa-check"></i>
-                                        {adv}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Detailed Pricing */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">Bảng Giá Chi Tiết Cải Tạo Phòng Bếp</h2>
-                    
-                    <div className="renovation-categories">
-                        {renovationItems.map((category, index) => (
-                            <div key={index} className="category-block">
-                                <h3 className="category-header">
-                                    <i className="fas fa-layer-group"></i>
-                                    {category.category}
-                                </h3>
-                                <div className="items-table">
-                                    <table>
-                                        <tbody>
-                                            {category.items.map((item, idx) => (
-                                                <tr key={idx}>
-                                                    <td className="item-name">{item.name}</td>
-                                                    <td className="item-note">{item.note}</td>
-                                                    <td className="item-price">{item.price}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                {activeFaq === index && (
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Budget Plans */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">Gói Cải Tạo Theo Ngân Sách</h2>
-                    
-                    <div className="budget-grid">
-                        {budgetPlans.map((plan, index) => (
-                            <div key={index} className="budget-card">
-                                <div className="budget-header">
-                                    <i className={plan.icon}></i>
-                                    <h3>{plan.level}</h3>
-                                </div>
-                                <div className="budget-price">{plan.total}</div>
-                                <h4>Bao gồm:</h4>
-                                <ul className="budget-includes">
-                                    {plan.includes.map((item, idx) => (
-                                        <li key={idx}>
-                                            <i className="fas fa-check-circle"></i>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <button className="btn btn-primary">
-                                    Xem Chi Tiết
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Process Steps */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">Quy Trình Cải Tạo Phòng Bếp</h2>
-                    
-                    <div className="process-steps">
-                        {[
-                            { number: '1', title: 'Khảo sát & Đo đạc', desc: 'Kiểm tra hiện trạng, đo kích thước' },
-                            { number: '2', title: 'Thiết kế 3D', desc: 'Bản vẽ chi tiết và hình ảnh 3D' },
-                            { number: '3', title: 'Chọn vật liệu', desc: 'Tư vấn và lựa chọn vật liệu phù hợp' },
-                            { number: '4', title: 'Thi công', desc: 'Tháo dỡ cũ, lắp đặt mới' },
-                            { number: '5', title: 'Hoàn thiện', desc: 'Lắp thiết bị, dọn dẹp' },
-                            { number: '6', title: 'Bàn giao', desc: 'Nghiệm thu và hướng dẫn sử dụng' }
-                        ].map((step, index) => (
-                            <div key={index} className="process-step">
-                                <div className="process-number">{step.number}</div>
-                                <h4>{step.title}</h4>
-                                <p>{step.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Saving Tips */}
-            <section className="section section-gradient">
-                <div className="container">
-                    <div className="tips-box">
-                        <h2>Mẹo Tiết Kiệm Chi Phí Cải Tạo Bếp</h2>
-                        <ul className="saving-tips-list">
-                            {savingTips.map((tip, index) => (
-                                <li key={index}>
-                                    <i className="fas fa-lightbulb"></i>
-                                    {tip}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA */}
-            <section className="section">
-                <div className="container">
-                    <div className="conclusion-box">
-                        <h2>Sẵn Sàng Cải Tạo Phòng Bếp?</h2>
-                        <p>
-                            LinHome cam kết mang đến không gian bếp hiện đại, tiện nghi với chi phí hợp lý nhất.
-                            Liên hệ ngay để được tư vấn miễn phí!
-                        </p>
-                        <div className="cta-buttons">
-                            <a href="tel:0941090333" className="btn btn-primary">
-                                <i className="fas fa-phone"></i>
-                                Hotline: 0941 090 333
-                            </a>
-                            <a href="/lien-he" className="btn btn-secondary">
-                                <i className="fas fa-calendar-check"></i>
-                                Đặt Lịch Tư Vấn
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <style jsx>{`
-                .layout-selector {
-                    background: white;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                }
-
-                .layout-tabs {
-                    display: flex;
-                    background: #f7fafc;
-                    border-bottom: 2px solid #e2e8f0;
-                }
-
-                .layout-tab {
-                    flex: 1;
-                    padding: 1rem;
-                    background: none;
-                    border: none;
-                    font-weight: 600;
-                    color: #4a5568;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                }
-
-                .layout-tab.active {
-                    background: white;
-                    color: #667eea;
-                    border-bottom: 3px solid #667eea;
-                    margin-bottom: -2px;
-                }
-
-                .layout-content {
-                    padding: 2rem;
-                }
-
-                .layout-desc {
-                    color: #4a5568;
-                    margin-bottom: 1rem;
-                }
-
-                .layout-price {
-                    font-size: 1.3rem;
-                    font-weight: 700;
-                    color: #667eea;
-                    margin-bottom: 1.5rem;
-                }
-
-                .layout-advantages {
-                    list-style: none;
-                }
-
-                .layout-advantages li {
-                    padding: 0.3rem 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-
-                .layout-advantages i {
-                    color: #10b981;
-                }
-
-                .renovation-categories {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.5rem;
-                }
-
-                .category-block {
-                    background: white;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                }
-
-                .category-header {
-                    background: linear-gradient(135deg, #667eea, #764ba2);
-                    color: white;
-                    padding: 1rem 1.5rem;
-                    margin: 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                }
-
-                .items-table {
-                    padding: 1rem;
-                }
-
-                .items-table table {
-                    width: 100%;
-                }
-
-                .items-table td {
-                    padding: 0.75rem;
-                    border-bottom: 1px solid #e2e8f0;
-                }
-
-                .item-note {
-                    color: #718096;
-                    font-size: 0.9rem;
-                }
-
-                .budget-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                    gap: 1.5rem;
-                }
-
-                .budget-card {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 2rem;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                    text-align: center;
-                    transition: all 0.3s;
-                }
-
-                .budget-card:hover {
-                    transform: translateY(-3px);
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-                }
-
-                .budget-header i {
-                    font-size: 3rem;
-                    color: #667eea;
-                    margin-bottom: 0.5rem;
-                }
-
-                .budget-header h3 {
-                    margin: 0;
-                    color: #2d3748;
-                }
-
-                .budget-price {
-                    font-size: 1.8rem;
-                    font-weight: 700;
-                    color: #764ba2;
-                    margin: 1rem 0 1.5rem;
-                }
-
-                .budget-includes {
-                    list-style: none;
-                    text-align: left;
-                    margin-bottom: 1.5rem;
-                }
-
-                .budget-includes li {
-                    padding: 0.3rem 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    color: #4a5568;
-                }
-
-                .budget-includes i {
-                    color: #10b981;
-                    font-size: 0.9rem;
-                }
-
-                .tips-box {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 2.5rem;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-                    text-align: center;
-                }
-
-                .tips-box h2 {
-                    color: #2d3748;
-                    margin-bottom: 2rem;
-                }
-
-                .saving-tips-list {
-                    list-style: none;
-                    max-width: 600px;
-                    margin: 0 auto;
-                    text-align: left;
-                }
-
-                .saving-tips-list li {
-                    padding: 0.75rem 0;
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 0.75rem;
-                    color: #4a5568;
-                    border-bottom: 1px solid #e2e8f0;
-                }
-
-                .saving-tips-list li:last-child {
-                    border-bottom: none;
-                }
-
-                .saving-tips-list i {
-                    color: #f59e0b;
-                    margin-top: 0.2rem;
-                }
-
-                @media (max-width: 768px) {
-                    .layout-tabs {
-                        flex-wrap: wrap;
-                    }
-
-                    .layout-tab {
-                        flex: 1 1 50%;
-                    }
-
-                    .items-table {
-                        overflow-x: auto;
-                    }
-
-                    .items-table td {
-                        font-size: 0.9rem;
-                    }
-
-                    .budget-grid {
-                        grid-template-columns: 1fr;
-                    }
-
-                    .budget-price {
-                        font-size: 1.5rem;
-                    }
-                }
-            `}</style>
+            {/* CTA Section */}
+            <CTAContent />
         </div>
     );
 };

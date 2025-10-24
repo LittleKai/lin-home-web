@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../thiet-ke/ThietKePage.css';
 import '../../thi-cong/ThiCongHangMuc.css';
-import '../BaoGiaThietKeThiCongNha.css';
+import '../BaoGiaThietKeThiCong.css';
 
 const ThiCongHoanThienPricingPage = () => {
     const [activeCategory, setActiveCategory] = useState('co-ban');

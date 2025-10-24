@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../thiet-ke/ThietKePage.css';
-import '../BaoGiaThietKeThiCongNha.css';
+import '../BaoGiaThietKeThiCong.css';
 
 const ThietKeKienTrucPricingPage = () => {
     const [activeTab, setActiveTab] = useState('basic');

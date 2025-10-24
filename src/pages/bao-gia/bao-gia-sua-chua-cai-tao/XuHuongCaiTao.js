@@ -1,685 +1,516 @@
 // src/pages/bao-gia/bao-gia-sua-chua-cai-tao/XuHuongCaiTao.js
 import React, { useState } from 'react';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import './SuaChuaCaiTaoStyles.css';
 
 const XuHuongCaiTao = () => {
-    const [selectedTrend, setSelectedTrend] = useState(0);
+    const [activeFaq, setActiveFaq] = useState(null);
 
-    const trends2025 = [
+    // Latest renovation trends
+    const trends = [
         {
-            id: 'open-space',
-            title: 'Không gian mở & Tối ưu ánh sáng tự nhiên',
-            icon: 'fas fa-sun',
-            color: '#f59e0b',
-            description: 'Xu hướng phá bỏ vách ngăn, tạo không gian thông thoáng và tràn ngập ánh sáng',
+            id: 1,
+            trend: 'Smarthome & Tự Động Hóa',
+            description: 'Tích hợp công nghệ thông minh vào nhà cũ',
+            cost: '10,000,000 - 50,000,000 VNĐ',
             features: [
-                'Phòng khách liên thông bếp, hạn chế vách ngăn cứng',
-                'Sử dụng cửa kính lớn, giếng trời, giếng thông gió',
-                'Màu sơn sáng và trần cao giúp ngôi nhà rộng rãi hơn'
+                'Điều khiển đèn, điều hòa bằng giọng nói/app',
+                'Camera an ninh thông minh',
+                'Khóa vân tay, khóa điện tử',
+                'Rèm tự động theo giờ',
+                'Cảm biến chuyển động tiết kiệm điện'
             ],
-            benefits: 'Tiết kiệm điện chiếu sáng, tạo cảm giác thoải mái',
-            suitable: 'Nhà phố, căn hộ có diện tích vừa và nhỏ'
+            icon: 'fas fa-home',
+            color: '#3b82f6'
         },
         {
-            id: 'eco-friendly',
-            title: 'Vật liệu xanh & Thân thiện môi trường',
+            id: 2,
+            trend: 'Không Gian Mở',
+            description: 'Phá bỏ tường ngăn tạo không gian thông thoáng',
+            cost: '15,000,000 - 40,000,000 VNĐ',
+            features: [
+                'Bếp mở liền phòng khách',
+                'Phòng ngủ kết hợp phòng làm việc',
+                'Sử dụng vách kính thay tường',
+                'Thiết kế đa chức năng',
+                'Tăng ánh sáng tự nhiên'
+            ],
+            icon: 'fas fa-expand-arrows-alt',
+            color: '#10b981'
+        },
+        {
+            id: 3,
+            trend: 'Xanh & Bền Vững',
+            description: 'Sử dụng vật liệu thân thiện môi trường',
+            cost: '20,000,000 - 60,000,000 VNĐ',
+            features: [
+                'Sơn không VOC',
+                'Gỗ tái chế, tre',
+                'Điện mặt trời',
+                'Hệ thống thu nước mưa',
+                'Cây xanh trong nhà'
+            ],
             icon: 'fas fa-leaf',
-            color: '#10b981',
-            description: 'Ưu tiên vật liệu bền vững, an toàn cho sức khỏe và môi trường',
-            features: [
-                'Gạch không nung, sơn sinh thái, gỗ tái chế',
-                'Ưu tiên vật liệu tiết kiệm năng lượng, an toàn sức khỏe',
-                'Lát sàn bằng tre ép, gỗ công nghiệp chống ẩm'
-            ],
-            benefits: 'Giảm tác động môi trường, an toàn cho gia đình',
-            suitable: 'Mọi loại công trình, đặc biệt nhà có trẻ nhỏ'
+            color: '#059669'
         },
         {
-            id: 'smart-furniture',
-            title: 'Nội thất thông minh, đa công năng',
-            icon: 'fas fa-cube',
-            color: '#667eea',
-            description: 'Tối ưu không gian với nội thất có nhiều chức năng',
+            id: 4,
+            trend: 'Phong Cách Tối Giản',
+            description: 'Thiết kế đơn giản, gọn gàng, ít đồ đạc',
+            cost: '12,000,000 - 35,000,000 VNĐ',
             features: [
-                'Giường kết hợp tủ kéo, bàn gấp gọn, sofa giường',
-                'Tủ âm tường giúp tiết kiệm diện tích',
-                'Ứng dụng cơ khí thông minh: ray trượt, bản lề giảm chấn'
+                'Màu trung tính (trắng, xám, be)',
+                'Tủ âm tường tiết kiệm không gian',
+                'Đồ nội thất đa năng',
+                'Tối giản hóa decor',
+                'Tăng không gian lưu trữ ẩn'
             ],
-            benefits: 'Tối ưu diện tích, linh hoạt sử dụng',
-            suitable: 'Căn hộ nhỏ, phòng đa năng'
+            icon: 'fas fa-shapes',
+            color: '#6366f1'
         },
         {
-            id: 'smart-home',
-            title: 'Ứng dụng công nghệ nhà thông minh',
-            icon: 'fas fa-microchip',
-            color: '#3b82f6',
-            description: 'Tích hợp công nghệ IoT vào không gian sống',
+            id: 5,
+            trend: 'Năng Lượng Mặt Trời',
+            description: 'Lắp đặt hệ thống điện mặt trời',
+            cost: '60,000,000 - 150,000,000 VNĐ',
             features: [
-                'Hệ thống đèn, rèm, điều hòa điều khiển bằng smartphone/giọng nói',
-                'Camera an ninh, khóa cửa vân tay',
-                'Thiết bị điện tiết kiệm năng lượng, kết nối IoT'
+                'Hệ thống 3-5kW cho hộ gia đình',
+                'Giảm 50-70% tiền điện',
+                'Thân thiện môi trường',
+                'Hoàn vốn sau 5-7 năm',
+                'Bảo hành 10-25 năm'
             ],
-            benefits: 'Tiện nghi, an toàn, tiết kiệm năng lượng',
-            suitable: 'Nhà cao cấp, căn hộ hiện đại'
+            icon: 'fas fa-solar-panel',
+            color: '#f59e0b'
         },
         {
-            id: 'minimalist',
-            title: 'Phong cách tối giản & Bắc Âu',
-            icon: 'fas fa-mountain',
-            color: '#6b7280',
-            description: 'Đơn giản hóa không gian, tập trung vào công năng',
+            id: 6,
+            trend: 'Phòng Đa Năng',
+            description: 'Thiết kế phòng linh hoạt nhiều chức năng',
+            cost: '10,000,000 - 30,000,000 VNĐ',
             features: [
-                'Loại bỏ chi tiết rườm rà, tập trung vào công năng',
-                'Gam màu trung tính: trắng, be, xám',
-                'Kết hợp ánh sáng tự nhiên và nội thất gỗ sáng màu'
+                'Phòng làm việc/phòng khách',
+                'Phòng ngủ/phòng tập yoga',
+                'Nội thất có thể di chuyển',
+                'Vách ngăn di động',
+                'Phù hợp nhà nhỏ'
             ],
-            benefits: 'Dễ dàng vệ sinh, tạo cảm giác thư thái',
-            suitable: 'Mọi không gian, đặc biệt người yêu thích sự đơn giản'
-        },
-        {
-            id: 'green-space',
-            title: 'Cải tạo ban công, sân thượng xanh',
-            icon: 'fas fa-seedling',
-            color: '#059669',
-            description: 'Biến không gian ngoài trời thành khu vườn mini',
-            features: [
-                'Trang trí cây xanh, vườn nhỏ, giàn hoa',
-                'Bố trí bàn ghế tạo góc "chill" thư giãn',
-                'Sử dụng vật liệu ngoài trời bền bỉ, chống thấm'
-            ],
-            benefits: 'Cải thiện không khí, tạo không gian thư giãn',
-            suitable: 'Nhà có ban công, sân thượng'
+            icon: 'fas fa-th',
+            color: '#8b5cf6'
         }
     ];
 
-    const trendApplications = [
+    // Popular styles
+    const styles = [
         {
-            space: 'Phòng khách',
-            applications: [
-                'Không gian mở với bếp',
-                'Sofa đa năng, bàn coffee thông minh',
-                'Hệ thống đèn LED điều khiển',
-                'Tường kính lớn lấy sáng'
-            ]
+            style: 'Scandinavian',
+            characteristics: ['Sáng, tối giản', 'Gỗ sáng màu', 'Xanh tự nhiên', 'Chức năng cao'],
+            cost: '1,500,000 - 3,000,000 VNĐ/m²',
+            suitable: 'Nhà phố, chung cư nhỏ'
         },
         {
-            space: 'Phòng bếp',
-            applications: [
-                'Đảo bếp đa chức năng',
-                'Tủ bếp thông minh với ngăn kéo êm',
-                'Thiết bị bếp kết nối IoT',
-                'Vật liệu dễ vệ sinh, kháng khuẩn'
-            ]
+            style: 'Industrial',
+            characteristics: ['Gạch thô', 'Kim loại đen', 'Bê tông', 'Phong cách công nghiệp'],
+            cost: '1,800,000 - 3,500,000 VNĐ/m²',
+            suitable: 'Quán cafe, loft, studio'
         },
         {
-            space: 'Phòng ngủ',
-            applications: [
-                'Giường có ngăn chứa đồ',
-                'Rèm tự động điều khiển',
-                'Ánh sáng điều chỉnh theo giờ sinh học',
-                'Vật liệu cách âm, cách nhiệt'
-            ]
+            style: 'Japandi',
+            characteristics: ['Kết hợp Nhật-Bắc Âu', 'Tối giản ấm áp', 'Gỗ tự nhiên', 'Thiền'],
+            cost: '2,000,000 - 4,000,000 VNĐ/m²',
+            suitable: 'Nhà phố, biệt thự'
         },
         {
-            space: 'Phòng tắm',
-            applications: [
-                'Smart toilet với nhiều chức năng',
-                'Gương thông minh có đèn LED',
-                'Sen tắm tiết kiệm nước',
-                'Gạch chống trượt, kháng khuẩn'
-            ]
+            style: 'Modern Luxury',
+            characteristics: ['Sang trọng', 'Vật liệu cao cấp', 'Ánh sáng thông minh', 'Chi tiết tinh xảo'],
+            cost: '3,000,000 - 6,000,000 VNĐ/m²',
+            suitable: 'Biệt thự, penthouse'
         }
     ];
 
-    const costComparison = [
-        { trend: 'Không gian mở', basic: '5-10%', premium: '15-25%' },
-        { trend: 'Vật liệu xanh', basic: '10-15%', premium: '20-30%' },
-        { trend: 'Nội thất thông minh', basic: '15-20%', premium: '25-40%' },
-        { trend: 'Smart Home', basic: '20-30%', premium: '40-60%' },
-        { trend: 'Phong cách tối giản', basic: '0-5%', premium: '10-15%' },
-        { trend: 'Không gian xanh', basic: '5-10%', premium: '15-20%' }
+    // Technology integrations
+    const techIntegrations = [
+        {
+            tech: 'Smarthome Cơ Bản',
+            devices: ['Công tắc thông minh', 'Đèn LED điều khiển', 'Camera WiFi'],
+            cost: '5-15 triệu',
+            brands: 'Google Home, Xiaomi, Broadlink'
+        },
+        {
+            tech: 'Smarthome Trung Cấp',
+            devices: ['Điều hòa thông minh', 'Rèm tự động', 'Khóa vân tay', 'Hub điều khiển'],
+            cost: '15-35 triệu',
+            brands: 'Xiaomi, Tuya, Aqara'
+        },
+        {
+            tech: 'Smarthome Cao Cấp',
+            devices: ['Toàn bộ hệ thống', 'Cảm biến AI', 'Tích hợp giọng nói', 'Màn hình trung tâm'],
+            cost: '35-100 triệu',
+            brands: 'Lumi, Acis, Control4'
+        }
     ];
 
-    const implementationTips = [
+    // Eco-friendly materials
+    const ecoMaterials = [
         {
-            icon: 'fas fa-pencil-ruler',
-            title: 'Lập kế hoạch chi tiết',
-            desc: 'Xác định rõ xu hướng phù hợp với nhu cầu và ngân sách'
+            material: 'Sơn Không VOC',
+            benefit: 'An toàn sức khỏe, không mùi độc',
+            cost: '+20-30% so với sơn thường',
+            brands: 'Dulux, Jotun, Nippon'
         },
         {
-            icon: 'fas fa-balance-scale',
-            title: 'Cân bằng thẩm mỹ & công năng',
-            desc: 'Đừng chạy theo xu hướng mà quên đi tính thực dụng'
+            material: 'Gỗ Tái Chế',
+            benefit: 'Bảo vệ rừng, độc đáo',
+            cost: 'Tương đương gỗ thường',
+            brands: 'Gỗ pallet, gỗ thông tái chế'
         },
         {
-            icon: 'fas fa-dollar-sign',
-            title: 'Đầu tư thông minh',
-            desc: 'Ưu tiên những xu hướng mang lại giá trị lâu dài'
+            material: 'Tre',
+            benefit: 'Bền, nhanh tái sinh, đẹp',
+            cost: 'Rẻ hơn gỗ 30-40%',
+            brands: 'Sàn tre, tường tre'
         },
         {
-            icon: 'fas fa-user-tie',
-            title: 'Tư vấn chuyên gia',
-            desc: 'Làm việc với kiến trúc sư để tối ưu thiết kế'
+            material: 'Gạch Tái Chế',
+            benefit: 'Giảm rác thải, tiết kiệm',
+            cost: 'Rẻ hơn 20-30%',
+            brands: 'Gạch xi măng tái chế'
+        }
+    ];
+
+    // Budget by trend
+    const budgetBreakdown = [
+        {
+            trend: 'Smarthome Cơ Bản',
+            minBudget: '10-20 triệu',
+            items: 'Đèn + công tắc thông minh + camera'
+        },
+        {
+            trend: 'Không Gian Mở',
+            minBudget: '30-60 triệu',
+            items: 'Phá tường + hoàn thiện + điều chỉnh điện'
+        },
+        {
+            trend: 'Phong Cách Tối Giản',
+            minBudget: '20-40 triệu/phòng',
+            items: 'Sơn + tủ âm tường + sàn gỗ'
+        },
+        {
+            trend: 'Điện Mặt Trời',
+            minBudget: '60-150 triệu',
+            items: 'Hệ thống 3-5kW + lắp đặt'
+        },
+        {
+            trend: 'Xanh Bền Vững',
+            minBudget: '+15-25% chi phí thường',
+            items: 'Vật liệu eco-friendly'
+        }
+    ];
+
+    // Benefits of trendy renovation
+    const benefits = [
+        {
+            benefit: 'Tăng Giá Trị Nhà',
+            description: 'Nhà hiện đại, xu hướng mới có giá trị cao hơn 15-30%',
+            icon: 'fas fa-arrow-up'
+        },
+        {
+            benefit: 'Tiết Kiệm Dài Hạn',
+            description: 'Smarthome, điện mặt trời giúp tiết kiệm tiền hàng tháng',
+            icon: 'fas fa-piggy-bank'
+        },
+        {
+            benefit: 'Sống Tiện Nghi Hơn',
+            description: 'Công nghệ giúp cuộc sống dễ dàng, thoải mái hơn',
+            icon: 'fas fa-couch'
+        },
+        {
+            benefit: 'Thân Thiện Môi Trường',
+            description: 'Giảm tác động xấu đến môi trường, sống xanh',
+            icon: 'fas fa-seedling'
+        },
+        {
+            benefit: 'Không Gian Đẹp Hơn',
+            description: 'Thiết kế hiện đại, xu hướng mới đẹp mắt hơn',
+            icon: 'fas fa-palette'
+        },
+        {
+            benefit: 'An Toàn & Bảo Mật',
+            description: 'Camera, khóa thông minh tăng cường an ninh',
+            icon: 'fas fa-shield-alt'
+        }
+    ];
+
+    // FAQ data
+    const faqData = [
+        {
+            question: 'Xu hướng cải tạo nhà năm 2025 là gì?',
+            answer: 'Xu hướng 2025: (1) Smarthome & tự động hóa, (2) Không gian mở thông thoáng, (3) Vật liệu xanh bền vững, (4) Phong cách tối giản, (5) Năng lượng mặt trời, (6) Phòng đa năng linh hoạt. Chi phí áp dụng từ 10-150 triệu tùy xu hướng.'
+        },
+        {
+            question: 'Chi phí lắp đặt smarthome bao nhiêu?',
+            answer: 'Chi phí smarthome: Cơ bản 5-15 triệu (đèn, công tắc, camera), trung cấp 15-35 triệu (điều hòa, rèm, khóa), cao cấp 35-100 triệu (toàn bộ hệ thống). Tiết kiệm điện 20-30%, hoàn vốn sau 3-5 năm.'
+        },
+        {
+            question: 'Phong cách nào phù hợp nhà nhỏ?',
+            answer: 'Nhà nhỏ nên dùng: (1) Scandinavian: sáng, tối giản, (2) Japandi: ấm áp, tinh tế, (3) Không gian mở: phá tường tạo rộng, (4) Tủ âm tường: tiết kiệm diện tích. Chi phí 1.5-4M/m².'
+        },
+        {
+            question: 'Có nên lắp điện mặt trời không?',
+            answer: 'Nên lắp nếu: (1) Mái rộng, hướng Nam, (2) Tiền điện >2 triệu/tháng, (3) Muốn sống xanh. Chi phí 60-150 triệu cho hệ 3-5kW, giảm 50-70% tiền điện, hoàn vốn sau 5-7 năm.'
+        },
+        {
+            question: 'Vật liệu eco-friendly có đắt hơn không?',
+            answer: 'Tùy loại: Sơn không VOC đắt hơn 20-30%, tre rẻ hơn gỗ 30-40%, gạch tái chế rẻ hơn 20-30%. Tổng chi phí xanh chỉ tăng 15-25% nhưng an toàn sức khỏe và môi trường.'
+        },
+        {
+            question: 'Làm sao để tạo không gian mở?',
+            answer: 'Tạo không gian mở: (1) Phá bỏ tường ngăn không chịu lực, (2) Dùng vách kính thay tường, (3) Bếp mở liền phòng khách, (4) Màu sáng tăng cảm giác rộng. Chi phí phá tường + hoàn thiện 30-60 triệu.'
         }
     ];
 
     return (
-        <div className="suachua-detail-page">
-            {/* Header */}
-            <section className="detail-hero">
+        <div className="pricing-page">
+            {/* Hero Section */}
+            <section className="hero-section">
                 <div className="container">
-                    <nav className="breadcrumb">
-                        <a href="/">Trang chủ</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia">Báo giá</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao">Báo giá sửa chữa cải tạo</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <span>Xu hướng cải tạo 2025</span>
-                    </nav>
-                    <h1 className="detail-title">
-                        <i className="fas fa-lightbulb"></i>
-                        Xu Hướng Sửa Chữa - Cải Tạo Nhà 2025
-                    </h1>
-                    <p className="detail-subtitle">
-                        Hiện đại, thông minh và bền vững - Cập nhật xu hướng thiết kế mới nhất
-                    </p>
-                </div>
-            </section>
-
-            {/* Introduction */}
-            <section className="section">
-                <div className="container">
-                    <div className="detail-intro">
-                        <p>
-                            Năm 2025 đánh dấu sự thay đổi mạnh mẽ trong xu hướng thiết kế và cải tạo nhà ở. 
-                            Người dùng ngày càng quan tâm đến công năng – thẩm mỹ – công nghệ – tính bền vững. 
-                        </p>
-                        <p>
-                            Dưới đây là những xu hướng sửa chữa – cải tạo nhà nổi bật 2025, giúp bạn nắm bắt 
-                            để có không gian sống tiện nghi, đẳng cấp và lâu bền.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Main Trends */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">6 Xu Hướng Nổi Bật 2025</h2>
-                    
-                    <div className="trends-showcase">
-                        <div className="trends-selector">
-                            {trends2025.map((trend, index) => (
-                                <button
-                                    key={index}
-                                    className={`trend-button ${selectedTrend === index ? 'active' : ''}`}
-                                    onClick={() => setSelectedTrend(index)}
-                                    style={{ borderColor: selectedTrend === index ? trend.color : 'transparent' }}
-                                >
-                                    <i className={trend.icon} style={{ color: trend.color }}></i>
-                                    <span>{trend.title}</span>
-                                </button>
-                            ))}
-                        </div>
-
-                        <div className="trend-detail">
-                            <div className="trend-header" style={{ background: `linear-gradient(135deg, ${trends2025[selectedTrend].color}20, ${trends2025[selectedTrend].color}10)` }}>
-                                <i className={trends2025[selectedTrend].icon} style={{ color: trends2025[selectedTrend].color }}></i>
-                                <div>
-                                    <h3>{trends2025[selectedTrend].title}</h3>
-                                    <p>{trends2025[selectedTrend].description}</p>
-                                </div>
-                            </div>
-                            
-                            <div className="trend-content">
-                                <h4>Đặc điểm chính:</h4>
-                                <ul>
-                                    {trends2025[selectedTrend].features.map((feature, idx) => (
-                                        <li key={idx}>
-                                            <i className="fas fa-check" style={{ color: trends2025[selectedTrend].color }}></i>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                                
-                                <div className="trend-info">
-                                    <div className="info-item">
-                                        <strong>Lợi ích:</strong>
-                                        <span>{trends2025[selectedTrend].benefits}</span>
-                                    </div>
-                                    <div className="info-item">
-                                        <strong>Phù hợp với:</strong>
-                                        <span>{trends2025[selectedTrend].suitable}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Application by Space */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">Ứng Dụng Theo Không Gian</h2>
-                    
-                    <div className="application-grid">
-                        {trendApplications.map((app, index) => (
-                            <div key={index} className="application-card">
-                                <h3>{app.space}</h3>
-                                <ul>
-                                    {app.applications.map((item, idx) => (
-                                        <li key={idx}>
-                                            <i className="fas fa-arrow-right"></i>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Cost Impact */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">Tác Động Đến Chi Phí</h2>
+                    <h1 className="section-title">🎨 Xu Hướng Cải Tạo 2025</h1>
                     <p className="section-subtitle">
-                        Mức tăng chi phí so với cải tạo thông thường
+                        Cập nhật xu hướng thiết kế và cải tạo nhà mới nhất
                     </p>
-                    
-                    <div className="cost-table-container">
-                        <table className="trend-cost-table">
-                            <thead>
-                                <tr>
-                                    <th>Xu hướng</th>
-                                    <th>Mức cơ bản</th>
-                                    <th>Mức cao cấp</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {costComparison.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.trend}</td>
-                                        <td className="cost-basic">+{item.basic}</td>
-                                        <td className="cost-premium">+{item.premium}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <p className="table-note">
-                            <i className="fas fa-info-circle"></i>
-                            Chi phí có thể thay đổi tùy theo quy mô và yêu cầu cụ thể
-                        </p>
+
+                    <div className="hero-stats grid-4">
+                        <div className="stat-item">
+                            <div className="stat-number">6</div>
+                            <div className="stat-label">Xu Hướng Hot</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">4</div>
+                            <div className="stat-label">Phong Cách Phổ Biến</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">15-30%</div>
+                            <div className="stat-label">Tăng Giá Trị Nhà</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">20-50%</div>
+                            <div className="stat-label">Tiết Kiệm Năng Lượng</div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Implementation Tips */}
+            {/* Latest Trends */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">Lời Khuyên Khi Áp Dụng Xu Hướng</h2>
-                    
-                    <div className="tips-grid">
-                        {implementationTips.map((tip, index) => (
-                            <div key={index} className="implementation-tip">
-                                <div className="tip-icon">
-                                    <i className={tip.icon}></i>
+                    <h2 className="section-title">🔥 Xu Hướng Nổi Bật 2025</h2>
+                    <p className="section-subtitle">
+                        6 xu hướng cải tạo được yêu thích nhất
+                    </p>
+
+                    <div className="trends-grid grid-3">
+                        {trends.map((item) => (
+                            <div key={item.id} className="trend-card card">
+                                <div className="card-header" style={{ background: `linear-gradient(135deg, ${item.color}, ${item.color}dd)` }}>
+                                    <i className={`${item.icon} icon-large`}></i>
+                                    <h3>{item.trend}</h3>
+                                    <p>{item.description}</p>
+                                    <div className="trend-cost">{item.cost}</div>
                                 </div>
-                                <h4>{tip.title}</h4>
-                                <p>{tip.desc}</p>
+
+                                <div className="card-body">
+                                    <ul>
+                                        {item.features.map((feature, index) => (
+                                            <li key={index}>
+                                                <i className="fas fa-star"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Future Outlook */}
-            <section className="section section-gradient">
+            {/* Popular Styles */}
+            <section className="section section-alt">
                 <div className="container">
-                    <div className="future-outlook">
-                        <h2>Tầm Nhìn Tương Lai</h2>
-                        <p>
-                            Xu hướng cải tạo nhà 2025 không chỉ là làm đẹp không gian mà còn hướng tới 
-                            sự bền vững, thông minh và thân thiện với môi trường. Đầu tư vào những xu hướng 
-                            này không chỉ nâng cao chất lượng sống mà còn tăng giá trị bất động sản trong tương lai.
-                        </p>
-                        <div className="outlook-stats">
-                            <div className="stat">
-                                <h3>70%</h3>
-                                <p>Khách hàng quan tâm đến vật liệu xanh</p>
+                    <h2 className="section-title">🎭 Phong Cách Phổ Biến</h2>
+                    <p className="section-subtitle">
+                        4 phong cách thiết kế được ưa chuộng
+                    </p>
+
+                    <div className="styles-grid grid-2">
+                        {styles.map((style, index) => (
+                            <div key={index} className="style-card card">
+                                <div className="card-header">
+                                    <h3>{style.style}</h3>
+                                    <div className="style-cost">{style.cost}</div>
+                                </div>
+
+                                <div className="card-body">
+                                    <div className="characteristics">
+                                        <h4>Đặc điểm:</h4>
+                                        <ul>
+                                            {style.characteristics.map((char, charIndex) => (
+                                                <li key={charIndex}>
+                                                    <i className="fas fa-check"></i>
+                                                    {char}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="suitable">
+                                        <p><strong>Phù hợp:</strong> {style.suitable}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="stat">
-                                <h3>85%</h3>
-                                <p>Ưu tiên không gian đa năng</p>
-                            </div>
-                            <div className="stat">
-                                <h3>60%</h3>
-                                <p>Sẵn sàng đầu tư cho Smart Home</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
+            {/* Technology Integration */}
             <section className="section">
                 <div className="container">
-                    <div className="conclusion-box">
-                        <h2>Bắt Kịp Xu Hướng Cùng LinHome</h2>
-                        <p>
-                            LinHome luôn cập nhật xu hướng mới nhất để mang đến giải pháp cải tạo 
-                            hiện đại và phù hợp nhất cho ngôi nhà của bạn. Hãy liên hệ ngay!
-                        </p>
-                        <div className="cta-buttons">
-                            <a href="tel:0941090333" className="btn btn-primary">
-                                <i className="fas fa-phone"></i>
-                                Tư Vấn: 0941 090 333
-                            </a>
-                            <a href="/du-an" className="btn btn-secondary">
-                                <i className="fas fa-images"></i>
-                                Xem Dự Án Mẫu
-                            </a>
-                        </div>
+                    <h2 className="section-title">💻 Tích Hợp Công Nghệ</h2>
+                    <p className="section-subtitle">
+                        Chi phí smarthome theo từng mức độ
+                    </p>
+
+                    <div className="tech-grid grid-3">
+                        {techIntegrations.map((tech, index) => (
+                            <div key={index} className="tech-card card">
+                                <div className="card-header">
+                                    <h3>{tech.tech}</h3>
+                                    <div className="tech-cost">{tech.cost}</div>
+                                </div>
+
+                                <div className="card-body">
+                                    <h4>Thiết bị:</h4>
+                                    <ul>
+                                        {tech.devices.map((device, deviceIndex) => (
+                                            <li key={deviceIndex}>
+                                                <i className="fas fa-microchip"></i>
+                                                {device}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <p className="brands"><strong>Thương hiệu:</strong> {tech.brands}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            <style jsx>{`
-                .trends-showcase {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 2rem;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-                }
+            {/* Eco Materials */}
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">🌱 Vật Liệu Xanh</h2>
+                    <p className="section-subtitle">
+                        Vật liệu thân thiện môi trường phổ biến
+                    </p>
 
-                .trends-selector {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                    gap: 1rem;
-                    margin-bottom: 2rem;
-                }
+                    <div className="eco-grid grid-2">
+                        {ecoMaterials.map((material, index) => (
+                            <div key={index} className="eco-card card">
+                                <div className="card-header">
+                                    <i className="fas fa-leaf icon-large"></i>
+                                    <h3>{material.material}</h3>
+                                </div>
 
-                .trend-button {
-                    padding: 1rem;
-                    background: white;
-                    border: 2px solid #e2e8f0;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition: all 0.3s;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    text-align: left;
-                }
+                                <div className="card-body">
+                                    <p><strong>Lợi ích:</strong> {material.benefit}</p>
+                                    <p><strong>Chi phí:</strong> {material.cost}</p>
+                                    <p><strong>Thương hiệu:</strong> {material.brands}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                .trend-button:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                }
+            {/* Budget Breakdown */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">💰 Ngân Sách Theo Xu Hướng</h2>
+                    <p className="section-subtitle">
+                        Chi phí tối thiểu để áp dụng từng xu hướng
+                    </p>
 
-                .trend-button.active {
-                    background: #f7fafc;
-                    border-width: 2px;
-                }
+                    <div className="budget-list">
+                        {budgetBreakdown.map((item, index) => (
+                            <div key={index} className="budget-item card">
+                                <div className="budget-header">
+                                    <h4>{item.trend}</h4>
+                                    <div className="budget-amount">{item.minBudget}</div>
+                                </div>
+                                <div className="budget-content">
+                                    <p>{item.items}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                .trend-button i {
-                    font-size: 1.5rem;
-                }
+            {/* Benefits */}
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">✨ Lợi Ích Cải Tạo Xu Hướng</h2>
+                    <p className="section-subtitle">
+                        6 lợi ích khi áp dụng xu hướng mới
+                    </p>
 
-                .trend-button span {
-                    flex: 1;
-                    font-weight: 600;
-                    color: #2d3748;
-                    font-size: 0.9rem;
-                }
+                    <div className="benefits-grid grid-3">
+                        {benefits.map((item, index) => (
+                            <div key={index} className="benefit-card card">
+                                <div className="card-header">
+                                    <i className={`${item.icon} icon-large`}></i>
+                                    <h3>{item.benefit}</h3>
+                                </div>
 
-                .trend-detail {
-                    border: 1px solid #e2e8f0;
-                    border-radius: 12px;
-                    overflow: hidden;
-                }
+                                <div className="card-body">
+                                    <p>{item.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                .trend-header {
-                    padding: 1.5rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 1.5rem;
-                }
+            {/* FAQ Section */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
 
-                .trend-header i {
-                    font-size: 3rem;
-                }
+                    <div className="faq-list">
+                        {faqData.map((faq, index) => (
+                            <div key={index} className="faq-item">
+                                <button
+                                    className={`faq-question ${activeFaq === index ? 'active' : ''}`}
+                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                >
+                                    <span>{faq.question}</span>
+                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                </button>
 
-                .trend-header h3 {
-                    margin: 0 0 0.5rem 0;
-                    color: #2d3748;
-                }
+                                {activeFaq === index && (
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                .trend-header p {
-                    margin: 0;
-                    color: #4a5568;
-                }
-
-                .trend-content {
-                    padding: 1.5rem;
-                }
-
-                .trend-content h4 {
-                    margin-bottom: 1rem;
-                    color: #2d3748;
-                }
-
-                .trend-content ul {
-                    list-style: none;
-                    margin-bottom: 1.5rem;
-                }
-
-                .trend-content li {
-                    padding: 0.5rem 0;
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 0.75rem;
-                }
-
-                .trend-content i {
-                    margin-top: 0.1rem;
-                }
-
-                .trend-info {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 1rem;
-                    padding-top: 1rem;
-                    border-top: 1px solid #e2e8f0;
-                }
-
-                .info-item {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-                }
-
-                .info-item strong {
-                    color: #2d3748;
-                }
-
-                .info-item span {
-                    color: #4a5568;
-                }
-
-                .application-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                    gap: 1.5rem;
-                }
-
-                .application-card {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 1.5rem;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                }
-
-                .application-card h3 {
-                    color: #667eea;
-                    margin-bottom: 1rem;
-                }
-
-                .application-card ul {
-                    list-style: none;
-                }
-
-                .application-card li {
-                    padding: 0.5rem 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    color: #4a5568;
-                }
-
-                .application-card i {
-                    color: #10b981;
-                    font-size: 0.8rem;
-                }
-
-                .trend-cost-table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    background: white;
-                    border-radius: 12px;
-                    overflow: hidden;
-                }
-
-                .trend-cost-table th {
-                    background: linear-gradient(135deg, #667eea, #764ba2);
-                    color: white;
-                    padding: 1rem;
-                    text-align: left;
-                }
-
-                .trend-cost-table td {
-                    padding: 1rem;
-                    border-bottom: 1px solid #e2e8f0;
-                }
-
-                .cost-basic {
-                    color: #10b981;
-                    font-weight: 600;
-                }
-
-                .cost-premium {
-                    color: #f59e0b;
-                    font-weight: 600;
-                }
-
-                .implementation-tip {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 1.5rem;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                    text-align: center;
-                }
-
-                .tip-icon {
-                    width: 60px;
-                    height: 60px;
-                    background: linear-gradient(135deg, #667eea, #764ba2);
-                    border-radius: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 0 auto 1rem;
-                }
-
-                .tip-icon i {
-                    font-size: 1.5rem;
-                    color: white;
-                }
-
-                .implementation-tip h4 {
-                    margin-bottom: 0.5rem;
-                    color: #2d3748;
-                }
-
-                .implementation-tip p {
-                    color: #4a5568;
-                    margin: 0;
-                }
-
-                .future-outlook {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 3rem;
-                    text-align: center;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-                }
-
-                .future-outlook h2 {
-                    color: #2d3748;
-                    margin-bottom: 1.5rem;
-                }
-
-                .future-outlook > p {
-                    font-size: 1.1rem;
-                    line-height: 1.8;
-                    color: #4a5568;
-                    margin-bottom: 2rem;
-                }
-
-                .outlook-stats {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                    gap: 2rem;
-                    margin-top: 2rem;
-                }
-
-                .stat {
-                    text-align: center;
-                }
-
-                .stat h3 {
-                    font-size: 2.5rem;
-                    color: #667eea;
-                    margin-bottom: 0.5rem;
-                }
-
-                .stat p {
-                    color: #4a5568;
-                    margin: 0;
-                }
-
-                @media (max-width: 768px) {
-                    .trends-selector {
-                        grid-template-columns: 1fr;
-                    }
-
-                    .trend-header {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-
-                    .application-grid {
-                        grid-template-columns: 1fr;
-                    }
-
-                    .trend-cost-table {
-                        font-size: 0.9rem;
-                    }
-
-                    .outlook-stats {
-                        grid-template-columns: 1fr;
-                        gap: 1.5rem;
-                    }
-
-                    .future-outlook {
-                        padding: 2rem 1.5rem;
-                    }
-                }
-            `}</style>
+            {/* CTA Section */}
+            <CTAContent />
         </div>
     );
 };

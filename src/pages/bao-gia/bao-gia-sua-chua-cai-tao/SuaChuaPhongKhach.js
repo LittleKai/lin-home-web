@@ -1,254 +1,364 @@
 // src/pages/bao-gia/bao-gia-sua-chua-cai-tao/SuaChuaPhongKhach.js
 import React, { useState } from 'react';
+import CTAContent from '../../../components/CTAContent/CTAContent';
 import '../../../styles/CommonStyles.css';
-import './SuaChuaCaiTaoStyles.css';
 
 const SuaChuaPhongKhach = () => {
     const [activeTab, setActiveTab] = useState('basic');
+    const [activeFaq, setActiveFaq] = useState(null);
 
-    const renovationPackages = {
-        basic: {
+    // Renovation packages for living room
+    const renovationPackages = [
+        {
+            id: 'basic',
             name: 'Gói Cơ Bản',
-            price: '15 - 25 triệu',
-            area: 'Cho phòng khách 15-20m²',
+            price: '25,000,000 - 45,000,000 VNĐ',
+            pricePerSqm: '1,000,000 - 1,500,000 VNĐ/m²',
+            description: 'Sửa chữa cơ bản, làm mới không gian phòng khách',
             features: [
-                'Sơn lại toàn bộ tường và trần',
-                'Thay đổi hệ thống đèn chiếu sáng cơ bản',
-                'Lắp đặt rèm cửa mới',
-                'Vệ sinh và đánh bóng sàn hiện có',
-                'Sửa chữa các hư hỏng nhỏ'
-            ]
+                'Sơn lại tường, trần',
+                'Thay gạch hoặc sàn gỗ',
+                'Sửa chữa điện, đèn',
+                'Thay cửa sổ cũ',
+                'Bảo hành 12 tháng'
+            ],
+            includes: [
+                'Vật liệu giá tốt',
+                'Thi công nhanh 7-10 ngày',
+                'Không thay đổi bố cục'
+            ],
+            suitable: ['Phòng khách 20-30m²', 'Nhà cũ 10-15 năm'],
+            bgColor: '#10b981'
         },
-        standard: {
+        {
+            id: 'standard',
             name: 'Gói Tiêu Chuẩn',
-            price: '35 - 50 triệu',
-            area: 'Cho phòng khách 20-30m²',
+            price: '45,000,000 - 80,000,000 VNĐ',
+            pricePerSqm: '1,500,000 - 2,500,000 VNĐ/m²',
+            description: 'Cải tạo nâng cấp, thay đổi bố cục, vật liệu tốt hơn',
             features: [
-                'Làm mới trần thạch cao phẳng',
-                'Ốp tường trang trí 1 mặt',
-                'Thay sàn gỗ công nghiệp/gạch mới',
-                'Hệ thống đèn LED âm trần',
-                'Thi công kệ TV âm tường',
-                'Sơn tường với màu sắc tùy chọn'
-            ]
+                'Thay đổi bố cục không gian',
+                'Trần thạch cao giật cấp',
+                'Sàn gỗ công nghiệp cao cấp',
+                'Điện âm tường, đèn LED',
+                'Sơn chống bám bẩn',
+                'Bảo hành 18 tháng'
+            ],
+            includes: [
+                'Thiết kế 2D miễn phí',
+                'Vật liệu chất lượng tốt',
+                'Thi công 15-20 ngày'
+            ],
+            suitable: ['Phòng khách 30-50m²', 'Nhà phố', 'Chung cư'],
+            bgColor: '#f59e0b'
         },
-        premium: {
+        {
+            id: 'premium',
             name: 'Gói Cao Cấp',
-            price: '60 - 100 triệu',
-            area: 'Cho phòng khách 30-40m²',
+            price: '80,000,000 - 150,000,000 VNĐ',
+            pricePerSqm: '2,500,000 - 4,000,000 VNĐ/m²',
+            description: 'Cải tạo toàn diện, thiết kế hiện đại, vật liệu cao cấp',
             features: [
-                'Trần thạch cao giật cấp có đèn hắt',
-                'Ốp tường gỗ/đá cao cấp',
-                'Sàn gỗ tự nhiên/đá marble',
-                'Hệ thống chiếu sáng thông minh',
-                'Tủ kệ trang trí theo yêu cầu',
-                'Vách ngăn CNC trang trí',
-                'Điều hòa âm trần/cassette'
-            ]
-        }
-    };
-
-    const priceDetails = [
-        {
-            category: 'Phá dỡ & Chuẩn bị',
-            items: [
-                { name: 'Tháo dỡ nội thất cũ', price: '50.000 - 80.000/m²' },
-                { name: 'Đập phá tường (nếu có)', price: '150.000 - 200.000/m²' },
-                { name: 'Vận chuyển phế thải', price: '500.000 - 800.000/chuyến' }
-            ]
-        },
-        {
-            category: 'Xây dựng & Hoàn thiện',
-            items: [
-                { name: 'Trần thạch cao phẳng', price: '150.000 - 180.000/m²' },
-                { name: 'Trần thạch cao giật cấp', price: '200.000 - 280.000/m²' },
-                { name: 'Sơn tường cao cấp', price: '80.000 - 120.000/m²' },
-                { name: 'Ốp tường gỗ/đá', price: '300.000 - 800.000/m²' }
-            ]
-        },
-        {
-            category: 'Sàn nhà',
-            items: [
-                { name: 'Sàn gỗ công nghiệp', price: '250.000 - 450.000/m²' },
-                { name: 'Sàn gạch 60x60', price: '180.000 - 250.000/m²' },
-                { name: 'Sàn gạch 80x80', price: '220.000 - 350.000/m²' },
-                { name: 'Sàn gỗ tự nhiên', price: '600.000 - 1.200.000/m²' }
-            ]
-        },
-        {
-            category: 'Điện & Chiếu sáng',
-            items: [
-                { name: 'Đèn LED âm trần', price: '150.000 - 250.000/bộ' },
-                { name: 'Đèn chùm trang trí', price: '1.000.000 - 5.000.000/bộ' },
-                { name: 'Hệ thống điện âm tường', price: '50.000 - 80.000/m' },
-                { name: 'Công tắc, ổ cắm cao cấp', price: '200.000 - 400.000/điểm' }
-            ]
+                'Thiết kế kiến trúc mới',
+                'Trần 3D, vách trang trí',
+                'Đá marble/granite',
+                'Hệ thống ánh sáng thông minh',
+                'Điều hòa âm trần',
+                'Nội thất cao cấp',
+                'Bảo hành 24-36 tháng'
+            ],
+            includes: [
+                'Thiết kế 3D chi tiết',
+                'Vật liệu nhập khẩu',
+                'Smarthome tích hợp',
+                'Thi công 30-45 ngày'
+            ],
+            suitable: ['Phòng khách >50m²', 'Biệt thự', 'Penthouse'],
+            bgColor: '#8b5cf6'
         }
     ];
 
-    const designStyles = [
+    // Work items breakdown
+    const workItems = [
         {
-            style: 'Hiện đại',
-            image: '/images/modern-living.jpg',
-            features: ['Tông màu trung tính', 'Nội thất tối giản', 'Ánh sáng tự nhiên'],
-            suitable: 'Phù hợp với gia đình trẻ, yêu thích sự đơn giản'
+            category: 'Phá Dỡ',
+            items: [
+                { name: 'Phá trần cũ', price: '50,000 - 80,000 VNĐ/m²' },
+                { name: 'Bứng gạch cũ', price: '60,000 - 90,000 VNĐ/m²' },
+                { name: 'Phá tường không chịu lực', price: '80,000 - 120,000 VNĐ/m²' }
+            ],
+            icon: 'fas fa-hammer'
         },
         {
-            style: 'Tân cổ điển',
-            image: '/images/classic-living.jpg',
-            features: ['Chi tiết cầu kỳ', 'Màu sắc ấm áp', 'Nội thất sang trọng'],
-            suitable: 'Phù hợp với những ai yêu thích vẻ đẹp hoàng gia'
+            category: 'Xây Mới',
+            items: [
+                { name: 'Xây tường gạch', price: '180,000 - 250,000 VNĐ/m²' },
+                { name: 'Trát tường', price: '60,000 - 90,000 VNĐ/m²' },
+                { name: 'Làm vách thạch cao', price: '200,000 - 350,000 VNĐ/m²' }
+            ],
+            icon: 'fas fa-building'
+        },
+        {
+            category: 'Điện',
+            items: [
+                { name: 'Đi dây điện mới', price: '150,000 - 250,000 VNĐ/điểm' },
+                { name: 'Lắp đèn downlight', price: '200,000 - 400,000 VNĐ/bộ' },
+                { name: 'Lắp đèn chùm', price: '500,000 - 2,000,000 VNĐ/bộ' }
+            ],
+            icon: 'fas fa-bolt'
+        },
+        {
+            category: 'Trần',
+            items: [
+                { name: 'Trần thạch cao phẳng', price: '120,000 - 180,000 VNĐ/m²' },
+                { name: 'Trần giật cấp', price: '220,000 - 350,000 VNĐ/m²' },
+                { name: 'Trần 3D trang trí', price: '400,000 - 600,000 VNĐ/m²' }
+            ],
+            icon: 'fas fa-layer-group'
+        },
+        {
+            category: 'Sàn',
+            items: [
+                { name: 'Sàn gỗ công nghiệp', price: '180,000 - 450,000 VNĐ/m²' },
+                { name: 'Gạch ceramic 60x60', price: '150,000 - 300,000 VNĐ/m²' },
+                { name: 'Đá marble', price: '350,000 - 550,000 VNĐ/m²' }
+            ],
+            icon: 'fas fa-th-large'
+        },
+        {
+            category: 'Sơn & Hoàn Thiện',
+            items: [
+                { name: 'Sơn nội thất cao cấp', price: '50,000 - 90,000 VNĐ/m²' },
+                { name: 'Sơn hiệu ứng', price: '100,000 - 200,000 VNĐ/m²' },
+                { name: 'Giấy dán tường', price: '80,000 - 300,000 VNĐ/m²' }
+            ],
+            icon: 'fas fa-paint-roller'
+        }
+    ];
+
+    // Design styles
+    const designStyles = [
+        {
+            style: 'Hiện Đại',
+            features: ['Tối giản', 'Màu trung tính', 'Ánh sáng LED', 'Vật liệu công nghiệp'],
+            cost: '2,000,000 - 3,500,000 VNĐ/m²'
+        },
+        {
+            style: 'Tân Cổ Điển',
+            features: ['Phào chỉ', 'Màu ấm', 'Đèn chùm', 'Gỗ tự nhiên'],
+            cost: '2,500,000 - 4,500,000 VNĐ/m²'
         },
         {
             style: 'Scandinavian',
-            image: '/images/scandi-living.jpg',
-            features: ['Tông màu sáng', 'Vật liệu tự nhiên', 'Không gian thoáng'],
-            suitable: 'Phù hợp với người yêu thích phong cách Bắc Âu'
+            features: ['Sáng tạo', 'Gỗ sáng màu', 'Tối giản', 'Xanh tự nhiên'],
+            cost: '1,800,000 - 3,000,000 VNĐ/m²'
         },
         {
-            style: 'Industrial',
-            image: '/images/industrial-living.jpg',
-            features: ['Vật liệu thô', 'Màu tối', 'Chi tiết kim loại'],
-            suitable: 'Phù hợp với không gian loft, căn hộ hiện đại'
+            style: 'Indochine',
+            features: ['Gỗ óc chó', 'Đèn mây tre', 'Màu đất', 'Decor dân gian'],
+            cost: '2,200,000 - 3,800,000 VNĐ/m²'
         }
     ];
 
-    const renovationTips = [
+    // Cost saving tips
+    const savingTips = [
         {
-            icon: 'fas fa-palette',
-            title: 'Chọn màu sắc phù hợp',
-            content: 'Màu sáng giúp không gian rộng hơn, màu tối tạo cảm giác ấm cúng'
+            tip: 'Giữ Lại Kết Cấu',
+            description: 'Không phá tường, chỉ sửa bề mặt',
+            saving: 'Tiết kiệm 20-30%',
+            icon: 'fas fa-save'
         },
         {
-            icon: 'fas fa-lightbulb',
-            title: 'Tối ưu ánh sáng',
-            content: 'Kết hợp ánh sáng tự nhiên và nhân tạo để tạo không gian sống động'
+            tip: 'Vật Liệu Hợp Lý',
+            description: 'Chọn vật liệu tốt nhưng không quá cao cấp',
+            saving: 'Tiết kiệm 15-25%',
+            icon: 'fas fa-boxes'
         },
         {
-            icon: 'fas fa-couch',
-            title: 'Bố trí nội thất hợp lý',
-            content: 'Đảm bảo lối đi thông thoáng, tạo điểm nhấn với sofa hoặc kệ TV'
+            tip: 'Tự Mua Vật Liệu',
+            description: 'Mua trực tiếp thay vì qua nhà thầu',
+            saving: 'Tiết kiệm 10-15%',
+            icon: 'fas fa-shopping-cart'
         },
         {
-            icon: 'fas fa-leaf',
-            title: 'Thêm cây xanh',
-            content: 'Cây cảnh giúp thanh lọc không khí và tạo điểm nhấn tự nhiên'
+            tip: 'Thi Công Từng Giai Đoạn',
+            description: 'Làm dần theo khả năng tài chính',
+            saving: 'Linh hoạt chi phí',
+            icon: 'fas fa-tasks'
+        }
+    ];
+
+    // FAQ data
+    const faqData = [
+        {
+            question: 'Sửa chữa phòng khách 30m² hết bao nhiêu tiền?',
+            answer: 'Chi phí sửa phòng khách 30m² dao động: Gói cơ bản 30-45 triệu, gói tiêu chuẩn 45-75 triệu, gói cao cấp 75-120 triệu. Giá cụ thể phụ thuộc vào mức độ cải tạo, vật liệu và thiết kế.'
+        },
+        {
+            question: 'Thời gian sửa chữa phòng khách mất bao lâu?',
+            answer: 'Thời gian thi công phụ thuộc gói: Gói cơ bản 7-10 ngày, gói tiêu chuẩn 15-20 ngày, gói cao cấp 30-45 ngày. Thời gian có thể kéo dài nếu thay đổi thiết kế hoặc chờ vật liệu.'
+        },
+        {
+            question: 'Có cần thay đổi bố cục phòng khách không?',
+            answer: 'Không bắt buộc. Sửa cơ bản giữ nguyên bố cục tiết kiệm chi phí. Thay đổi bố cục giúp tối ưu không gian nhưng tốn thêm 20-30% chi phí do phải phá dỡ và xây mới.'
+        },
+        {
+            question: 'Nên chọn sàn gỗ hay gạch cho phòng khách?',
+            answer: 'Sàn gỗ: ấm áp, đẹp mắt, giá 180-450K/m², cách âm tốt. Gạch: bền, dễ vệ sinh, giá 150-350K/m², mát hơn. Chọn tùy phong cách và khí hậu. Miền Bắc nên dùng gỗ, miền Nam có thể dùng gạch.'
+        },
+        {
+            question: 'Chi phí trần thạch cao phòng khách bao nhiêu?',
+            answer: 'Trần thạch cao: Trần phẳng 120-180K/m², trần giật cấp 220-350K/m², trần 3D trang trí 400-600K/m². Bao gồm vật liệu, thi công, đèn LED. Giá tăng nếu làm hình dạng phức tạp.'
+        },
+        {
+            question: 'Có nên lắp điều hòa âm trần không?',
+            answer: 'Điều hòa âm trần: đẹp, tiết kiệm không gian, giá 15-25 triệu/bộ 1 chiều, 20-35 triệu/bộ 2 chiều. Phù hợp phòng >25m², trần cao >2.8m. Nếu phòng nhỏ, dùng điều hòa treo tường tiết kiệm hơn.'
         }
     ];
 
     return (
-        <div className="suachua-detail-page">
-            {/* Header */}
-            <section className="detail-hero">
+        <div className="pricing-page">
+            {/* Hero Section */}
+            <section className="hero-section">
                 <div className="container">
-                    <nav className="breadcrumb">
-                        <a href="/">Trang chủ</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia">Báo giá</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao">Báo giá sửa chữa cải tạo</a>
-                        <i className="fas fa-chevron-right"></i>
-                        <span>Sửa chữa phòng khách</span>
-                    </nav>
-                    <h1 className="detail-title">
-                        <i className="fas fa-couch"></i>
-                        Chi Phí Sửa Chữa Cải Tạo Phòng Khách
-                    </h1>
-                    <p className="detail-subtitle">
-                        Báo giá chi tiết cho việc cải tạo phòng khách hiện đại, tiện nghi và sang trọng
+                    <h1 className="section-title">🛋️ Báo Giá Sửa Chữa Phòng Khách</h1>
+                    <p className="section-subtitle">
+                        Báo giá chi tiết cải tạo, nâng cấp phòng khách hiện đại
                     </p>
-                </div>
-            </section>
 
-            {/* Introduction */}
-            <section className="section">
-                <div className="container">
-                    <div className="detail-intro">
-                        <p>
-                            Phòng khách là không gian trung tâm của ngôi nhà, nơi tiếp đón khách và sum họp gia đình. 
-                            Việc cải tạo phòng khách không chỉ làm mới không gian sống mà còn thể hiện gu thẩm mỹ và 
-                            phong cách của gia chủ.
-                        </p>
-                        <p>
-                            <strong>LinHome</strong> cung cấp dịch vụ sửa chữa cải tạo phòng khách trọn gói với nhiều 
-                            phương án phù hợp mọi ngân sách và phong cách thiết kế.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Renovation Packages */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">Gói Cải Tạo Phòng Khách</h2>
-                    
-                    <div className="tabs">
-                        <button 
-                            className={`tab ${activeTab === 'basic' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('basic')}
-                        >
-                            <i className="fas fa-home"></i>
-                            Cơ Bản
-                        </button>
-                        <button 
-                            className={`tab ${activeTab === 'standard' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('standard')}
-                        >
-                            <i className="fas fa-star"></i>
-                            Tiêu Chuẩn
-                        </button>
-                        <button 
-                            className={`tab ${activeTab === 'premium' ? 'active' : ''}`}
-                            onClick={() => setActiveTab('premium')}
-                        >
-                            <i className="fas fa-crown"></i>
-                            Cao Cấp
-                        </button>
-                    </div>
-
-                    <div className="package-content">
-                        <div className="package-card">
-                            <h3>{renovationPackages[activeTab].name}</h3>
-                            <div className="package-price">{renovationPackages[activeTab].price}</div>
-                            <p className="package-area">{renovationPackages[activeTab].area}</p>
-                            <h4>Bao gồm:</h4>
-                            <ul className="package-features">
-                                {renovationPackages[activeTab].features.map((feature, index) => (
-                                    <li key={index}>
-                                        <i className="fas fa-check"></i>
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                            <button className="btn btn-primary">
-                                <i className="fas fa-phone"></i>
-                                Liên Hệ Báo Giá
-                            </button>
+                    <div className="hero-stats grid-4">
+                        <div className="stat-item">
+                            <div className="stat-number">25-150M</div>
+                            <div className="stat-label">Chi Phí Tổng</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">7-45</div>
+                            <div className="stat-label">Ngày Thi Công</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">3</div>
+                            <div className="stat-label">Gói Dịch Vụ</div>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-number">12-36</div>
+                            <div className="stat-label">Tháng Bảo Hành</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Detailed Pricing */}
+            {/* Renovation Packages */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">Bảng Giá Chi Tiết Theo Hạng Mục</h2>
-                    
-                    <div className="pricing-details">
-                        {priceDetails.map((category, index) => (
-                            <div key={index} className="price-category">
-                                <h3 className="category-title">{category.category}</h3>
-                                <div className="price-items">
-                                    <table className="price-table">
-                                        <tbody>
-                                            {category.items.map((item, idx) => (
-                                                <tr key={idx}>
-                                                    <td className="item-name">{item.name}</td>
-                                                    <td className="item-price">{item.price}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                    <h2 className="section-title">📦 Gói Sửa Chữa Phòng Khách</h2>
+                    <p className="section-subtitle">
+                        3 gói dịch vụ phù hợp với mọi nhu cầu và ngân sách
+                    </p>
+
+                    <div className="tabs-container">
+                        <div className="tabs">
+                            {renovationPackages.map((pkg) => (
+                                <button
+                                    key={pkg.id}
+                                    className={`tab ${activeTab === pkg.id ? 'active' : ''}`}
+                                    onClick={() => setActiveTab(pkg.id)}
+                                >
+                                    {pkg.name}
+                                </button>
+                            ))}
+                        </div>
+
+                        {renovationPackages.map((pkg) => (
+                            <div
+                                key={pkg.id}
+                                className={`tab-content ${activeTab === pkg.id ? 'active' : ''}`}
+                            >
+                                <div className="pricing-card card">
+                                    <div className="card-header" style={{ background: `linear-gradient(135deg, ${pkg.bgColor}, ${pkg.bgColor}dd)` }}>
+                                        <h3>{pkg.name}</h3>
+                                        <div className="price-range">{pkg.price}</div>
+                                        <div className="price-note">{pkg.pricePerSqm}</div>
+                                        <p>{pkg.description}</p>
+                                    </div>
+
+                                    <div className="card-body">
+                                        <div className="features-section">
+                                            <h4>✨ Hạng Mục Bao Gồm:</h4>
+                                            <ul>
+                                                {pkg.features.map((feature, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-check-circle"></i>
+                                                        {feature}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="includes-section">
+                                            <h4>🎁 Ưu Đãi Kèm Theo:</h4>
+                                            <ul>
+                                                {pkg.includes.map((item, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-gift"></i>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className="suitable-section">
+                                            <h4>🏠 Phù Hợp Cho:</h4>
+                                            <ul>
+                                                {pkg.suitable.map((item, index) => (
+                                                    <li key={index}>
+                                                        <i className="fas fa-home"></i>
+                                                        {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div className="pricing-actions">
+                                        <a href="/lien-he" className="btn btn-primary">
+                                            <i className="fas fa-phone"></i>
+                                            Liên Hệ Báo Giá
+                                        </a>
+                                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao" className="btn btn-secondary">
+                                            <i className="fas fa-calculator"></i>
+                                            Tính Chi Phí
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Work Items Breakdown */}
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">🔨 Bảng Giá Từng Hạng Mục</h2>
+                    <p className="section-subtitle">
+                        Chi phí chi tiết cho từng công việc trong phòng khách
+                    </p>
+
+                    <div className="work-items-grid grid-2">
+                        {workItems.map((category, index) => (
+                            <div key={index} className="work-category-card card">
+                                <div className="card-header">
+                                    <i className={`${category.icon} icon-large`}></i>
+                                    <h3>{category.category}</h3>
+                                </div>
+
+                                <div className="card-body">
+                                    {category.items.map((item, itemIndex) => (
+                                        <div key={itemIndex} className="work-item">
+                                            <div className="item-name">{item.name}</div>
+                                            <div className="item-price">{item.price}</div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         ))}
@@ -257,186 +367,95 @@ const SuaChuaPhongKhach = () => {
             </section>
 
             {/* Design Styles */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">Phong Cách Thiết Kế Phòng Khách</h2>
-                    
-                    <div className="style-grid">
-                        {designStyles.map((style, index) => (
-                            <div key={index} className="style-card">
-                                <h3>{style.style}</h3>
-                                <ul>
-                                    {style.features.map((feature, idx) => (
-                                        <li key={idx}>
-                                            <i className="fas fa-check"></i>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <p className="style-suitable">{style.suitable}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Tips */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">Lưu Ý Khi Cải Tạo Phòng Khách</h2>
-                    
-                    <div className="tips-grid">
-                        {renovationTips.map((tip, index) => (
-                            <div key={index} className="tip-card">
-                                <i className={tip.icon}></i>
-                                <h4>{tip.title}</h4>
-                                <p>{tip.content}</p>
+                    <h2 className="section-title">🎨 Phong Cách Thiết Kế</h2>
+                    <p className="section-subtitle">
+                        Chi phí theo phong cách thiết kế phòng khách
+                    </p>
+
+                    <div className="styles-grid grid-2">
+                        {designStyles.map((style, index) => (
+                            <div key={index} className="style-card card">
+                                <div className="card-header">
+                                    <h3>{style.style}</h3>
+                                    <div className="style-cost">{style.cost}</div>
+                                </div>
+
+                                <div className="card-body">
+                                    <ul>
+                                        {style.features.map((feature, featureIndex) => (
+                                            <li key={featureIndex}>
+                                                <i className="fas fa-palette"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* CTA */}
-            <section className="section section-gradient">
+            {/* Saving Tips */}
+            <section className="section section-alt">
                 <div className="container">
-                    <div className="conclusion-box">
-                        <h2>Bắt Đầu Cải Tạo Phòng Khách Của Bạn</h2>
-                        <p>
-                            Hãy để LinHome giúp bạn biến phòng khách thành không gian sống lý tưởng. 
-                            Liên hệ ngay để được tư vấn và báo giá miễn phí!
-                        </p>
-                        <div className="cta-buttons">
-                            <a href="tel:0941090333" className="btn btn-primary">
-                                <i className="fas fa-phone"></i>
-                                Gọi Ngay: 0941 090 333
-                            </a>
-                            <a href="https://zalo.me/0941090333" className="btn btn-secondary">
-                                <i className="fas fa-comments"></i>
-                                Chat Zalo
-                            </a>
-                        </div>
+                    <h2 className="section-title">💡 Mẹo Tiết Kiệm Chi Phí</h2>
+                    <p className="section-subtitle">
+                        Cách giảm chi phí mà vẫn đảm bảo chất lượng
+                    </p>
+
+                    <div className="tips-grid grid-2">
+                        {savingTips.map((item, index) => (
+                            <div key={index} className="tip-card card">
+                                <div className="card-header">
+                                    <i className={`${item.icon} icon-large`}></i>
+                                    <h3>{item.tip}</h3>
+                                </div>
+
+                                <div className="card-body">
+                                    <p>{item.description}</p>
+                                    <div className="saving-amount">
+                                        <i className="fas fa-arrow-down"></i>
+                                        {item.saving}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            <style jsx>{`
-                .package-content {
-                    max-width: 600px;
-                    margin: 2rem auto 0;
-                }
+            {/* FAQ Section */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
 
-                .package-card {
-                    background: white;
-                    border-radius: 12px;
-                    padding: 2rem;
-                    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-                    text-align: center;
-                }
+                    <div className="faq-list">
+                        {faqData.map((faq, index) => (
+                            <div key={index} className="faq-item">
+                                <button
+                                    className={`faq-question ${activeFaq === index ? 'active' : ''}`}
+                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                >
+                                    <span>{faq.question}</span>
+                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                </button>
 
-                .package-card h3 {
-                    color: #667eea;
-                    margin-bottom: 1rem;
-                }
+                                {activeFaq === index && (
+                                    <div className="faq-answer">
+                                        <p>{faq.answer}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                .package-price {
-                    font-size: 2.5rem;
-                    font-weight: 800;
-                    color: #764ba2;
-                    margin-bottom: 0.5rem;
-                }
-
-                .package-area {
-                    color: #718096;
-                    margin-bottom: 2rem;
-                }
-
-                .package-card h4 {
-                    margin-bottom: 1rem;
-                    color: #2d3748;
-                }
-
-                .package-features {
-                    list-style: none;
-                    text-align: left;
-                    margin-bottom: 2rem;
-                }
-
-                .package-features li {
-                    padding: 0.5rem 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    color: #4a5568;
-                }
-
-                .package-features i {
-                    color: #10b981;
-                }
-
-                .pricing-details {
-                    display: grid;
-                    gap: 1.5rem;
-                }
-
-                .style-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 1.5rem;
-                }
-
-                .style-card {
-                    background: white;
-                    padding: 1.5rem;
-                    border-radius: 12px;
-                    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-                }
-
-                .style-card h3 {
-                    color: #667eea;
-                    margin-bottom: 1rem;
-                }
-
-                .style-card ul {
-                    list-style: none;
-                    margin-bottom: 1rem;
-                }
-
-                .style-card li {
-                    padding: 0.3rem 0;
-                    color: #4a5568;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-
-                .style-card i {
-                    color: #10b981;
-                    font-size: 0.8rem;
-                }
-
-                .style-suitable {
-                    font-style: italic;
-                    color: #718096;
-                    font-size: 0.9rem;
-                    margin: 0;
-                }
-
-                .tip-card h4 {
-                    margin: 0.75rem 0 0.5rem;
-                    color: #2d3748;
-                }
-
-                @media (max-width: 768px) {
-                    .package-price {
-                        font-size: 2rem;
-                    }
-
-                    .style-grid {
-                        grid-template-columns: 1fr;
-                    }
-                }
-            `}</style>
+            {/* CTA Section */}
+            <CTAContent />
         </div>
     );
 };

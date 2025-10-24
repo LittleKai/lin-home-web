@@ -1,4 +1,8 @@
 
+@import url('./bao-gia-thiet-ke-thi-cong/BaoGiaThietKeThiCong.css');
+
+@import url('./bao-gia-thiet-ke-thi-cong/ConstructionDetailPages.css');
+
 /* Base layout styles - must be imported first */
 @import url('./BaseLayout.css');
 

@@ -6,9 +6,12 @@
 }
 
 .main-content {
-    margin-top: 80px;
+    margin-top: 80px!important;
 }
 
+.section-header {
+    margin-top: 80px!important;
+}
 /* Hero Section */
 .hero-section {
     padding: 60px 0 40px;

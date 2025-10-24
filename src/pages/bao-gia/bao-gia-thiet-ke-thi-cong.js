@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import CTAContent from '../../components/CTAContent/CTAContent';
 import '../thiet-ke/ThietKePage.css';
 import '../thi-cong/ThiCongHangMuc.css';
-import './BaoGiaThietKeThiCongNha.css';
+import './BaoGiaThietKeThiCong.css';
 
 const BaoGiaThietKeThiCongNhaPage = () => {
     const [activePackage, setActivePackage] = useState('nha-pho');
