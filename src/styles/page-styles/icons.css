@@ -1,0 +1,359 @@
+/* src/styles/page-styles/icons.css */
+/* Construction-themed colored icons for web xây dựng */
+
+/* ============================================
+   SECTION TITLE ICONS
+   ============================================ */
+
+/* Add icon wrapper to section titles */
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.section-title .icon {
+    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   CONSTRUCTION ICON COLORS
+   ============================================ */
+
+/* Pricing/Money icons - Green */
+.icon-pricing,
+.icon-money,
+.fa-tags,
+.fa-dollar-sign,
+.fa-money-bill-wave,
+.fa-calculator {
+    color: #10b981;
+}
+.fas {
+padding-right: 0.3rem;
+}
+/* Process/Steps icons - Purple */
+.icon-process,
+.icon-steps,
+.fa-tasks,
+.fa-list-check,
+.fa-clipboard-list {
+    color: #8b5cf6;
+}
+
+/* Construction/Building icons - Orange */
+.icon-construction,
+.icon-building,
+.fa-hammer,
+.fa-tools,
+.fa-hard-hat,
+.fa-wrench,
+.fa-screwdriver,
+.fa-drill,
+.fa-ruler,
+.fa-ruler-combined,
+.fa-drafting-compass {
+    color: #f59e0b;
+}
+
+/* Materials icons - Brown */
+.icon-materials,
+.fa-cubes,
+.fa-box,
+.fa-pallet,
+.fa-layer-group {
+    color: #92400e;
+}
+
+/* Quality/Certificate icons - Blue */
+.icon-quality,
+.icon-certificate,
+.fa-certificate,
+.fa-award,
+.fa-medal,
+.fa-shield-alt,
+.fa-check-circle {
+    color: #3b82f6;
+}
+
+/* FAQ/Question icons - Indigo */
+.icon-faq,
+.icon-question,
+.fa-question-circle,
+.fa-circle-question {
+    color: #667eea;
+}
+
+/* Tips/Advice icons - Cyan */
+.icon-tips,
+.icon-advice,
+.fa-lightbulb,
+.fa-info-circle,
+.fa-circle-info {
+    color: #06b6d4;
+}
+
+/* Safety/Warning icons - Red */
+.icon-safety,
+.icon-warning,
+.fa-exclamation-triangle,
+.fa-triangle-exclamation,
+.fa-fire-extinguisher {
+    color: #ef4444;
+}
+
+/* Eco/Environment icons - Green */
+.icon-eco,
+.icon-environment,
+.fa-leaf,
+.fa-tree,
+.fa-recycle,
+.fa-seedling {
+    color: #059669;
+}
+
+/* Time/Schedule icons - Amber */
+.icon-time,
+.icon-schedule,
+.fa-clock,
+.fa-calendar,
+.fa-calendar-days,
+.fa-hourglass {
+    color: #f59e0b;
+}
+
+/* Location/Map icons - Pink */
+.icon-location,
+.fa-map-marker-alt,
+.fa-location-dot,
+.fa-map,
+.fa-compass {
+    color: #ec4899;
+}
+
+/* Design/Style icons - Purple */
+.icon-design,
+.icon-style,
+.fa-palette,
+.fa-paint-brush,
+.fa-spray-can {
+    color: #a855f7;
+}
+
+/* Comparison/Analysis icons - Teal */
+.icon-comparison,
+.icon-analysis,
+.fa-balance-scale,
+.fa-chart-bar,
+.fa-chart-line {
+    color: #14b8a6;
+}
+
+/* ============================================
+   SPECIFIC CATEGORY ICONS
+   ============================================ */
+
+/* Flooring icons */
+.icon-flooring,
+.fa-border-all,
+.fa-table-cells {
+    color: #8b5a2b;
+}
+
+/* Ceiling/Wall icons */
+.icon-ceiling,
+.icon-wall,
+.fa-grip-lines,
+.fa-bars {
+    color: #64748b;
+}
+
+/* Door/Window icons */
+.icon-door,
+.icon-window,
+.fa-door-open,
+.fa-door-closed {
+    color: #0284c7;
+}
+
+/* Electrical icons */
+.icon-electrical,
+.fa-bolt,
+.fa-plug,
+.fa-lightbulb {
+    color: #eab308;
+}
+
+/* Plumbing/Water icons */
+.icon-plumbing,
+.icon-water,
+.fa-droplet,
+.fa-faucet,
+.fa-shower {
+    color: #0ea5e9;
+}
+
+/* Paint icons */
+.icon-paint,
+.fa-fill-drip,
+.fa-paint-roller {
+    color: #d946ef;
+}
+
+/* Glass icons */
+.icon-glass,
+.fa-wine-glass {
+    color: #38bdf8;
+}
+
+/* ============================================
+   ICON SIZES
+   ============================================ */
+
+.icon-xs {
+    font-size: 0.75rem;
+}
+
+.icon-sm {
+    font-size: 1rem;
+}
+
+.icon-md {
+    font-size: 1.5rem;
+}
+
+.icon-lg {
+    font-size: 2rem;
+}
+
+.icon-xl {
+    font-size: 2.5rem;
+}
+
+.icon-2xl {
+    font-size: 3rem;
+}
+
+/* ============================================
+   ICON STYLES
+   ============================================ */
+
+/* Icon with background circle */
+.icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon with gradient background */
+.icon-gradient {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Animated icon */
+.icon-pulse {
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Icon with shadow */
+.icon-shadow {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* ============================================
+   UTILITY CLASSES FOR CONSTRUCTION ICONS
+   ============================================ */
+
+/* Icon list with colored bullets */
+.icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+}
+
+.icon-list li i {
+    flex-shrink: 0;
+}
+
+/* Icon badge */
+.icon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    background: #f0f9ff;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.icon-badge i {
+    font-size: 1rem;
+}
+
+/* Icon header (for cards) */
+.icon-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.icon-header i {
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .section-title {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .section-title .icon {
+        font-size: 1.5rem;
+    }
+    
+    .icon-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .icon-lg {
+        font-size: 1.5rem;
+    }
+    
+    .icon-xl {
+        font-size: 2rem;
+    }
+}

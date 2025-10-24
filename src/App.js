@@ -306,6 +306,7 @@ function App() {
                                 <Header activeSection={activeSection} setActiveSection={setActiveSection} />
                                 <BaoGiaThiCongHangMucPage />
                                 <FloatButtons />
+                                <Footer />
                             </>
                         }
                     />

@@ -1,0 +1,375 @@
+/* src/styles/page-styles/details.css */
+/* Styles specific to detail pages: brands, sizes, applications, specs */
+
+/* ============================================
+   DETAIL CARD WRAPPER
+   ============================================ */
+
+.detail-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-top: 2rem;
+    border: 1px solid #e2e8f0;
+}
+
+/* ============================================
+   DETAIL HEADER
+   ============================================ */
+
+.detail-header {
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.detail-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.detail-header .price-range {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.detail-header p {
+    opacity: 0.9;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   DETAIL CONTENT
+   ============================================ */
+
+.detail-content {
+    padding: 2rem;
+}
+
+.detail-content.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* ============================================
+   INFO SECTIONS
+   ============================================ */
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.info-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-section h4 i {
+    color: #667eea;
+}
+
+/* List with checkmarks or icons */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.info-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.info-list li i {
+    color: #10b981;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   ITEM LISTS (Brands, Sizes, Applications)
+   ============================================ */
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+/* Standard item card with 2 pieces of info */
+.item-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.item-card:hover {
+    background: #f1f5f9;
+    transform: translateX(3px);
+}
+
+.item-name {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+
+.item-price {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Extended item card with 3+ pieces of info */
+.item-card-extended {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    gap: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.item-card-extended:hover {
+    background: #f1f5f9;
+    transform: translateX(3px);
+}
+
+.item-type {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.9rem;
+}
+
+.item-specs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-size,
+.item-detail {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.item-price-extended {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   DETAIL ACTIONS
+   ============================================ */
+
+.detail-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.detail-actions .btn {
+    flex: 1;
+}
+
+/* ============================================
+   SPECIFICATIONS SECTION
+   ============================================ */
+
+.spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.spec-item {
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.spec-name {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.spec-price {
+    color: #667eea;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.spec-note {
+    color: #718096;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ============================================
+   COMPARISON CARDS
+   ============================================ */
+
+.comparison-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.comparison-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.comparison-card h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.comparison-card .material-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 0.5rem 0;
+}
+
+/* Pros and Cons */
+.pros-cons {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.pros h4 {
+    color: #10b981;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.cons h4 {
+    color: #ef4444;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.pros ul,
+.cons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pros ul li,
+.cons ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    color: #4a5568;
+}
+
+.pros ul li i {
+    color: #10b981;
+    font-size: 0.75rem;
+}
+
+.cons ul li i {
+    color: #ef4444;
+    font-size: 0.75rem;
+}
+
+/* ============================================
+   RATING DISPLAY
+   ============================================ */
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.rating .fa-star {
+    color: #e2e8f0;
+    font-size: 0.9rem;
+}
+
+.rating .fa-star.active {
+    color: #f59e0b;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .detail-header {
+        padding: 1.5rem;
+    }
+    
+    .detail-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .detail-header .price-range {
+        font-size: 1.5rem;
+    }
+    
+    .detail-content {
+        padding: 1.5rem;
+    }
+    
+    .detail-content.grid-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .detail-actions {
+        flex-direction: column;
+    }
+    
+    .item-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+    }
+}

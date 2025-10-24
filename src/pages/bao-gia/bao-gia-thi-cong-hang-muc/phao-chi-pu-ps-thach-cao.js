@@ -1,8 +1,7 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/phao-chi-pu-ps-thach-cao.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
-
+import '../../../styles/PageStyles.css';
 
 const PhaoChiPage = () => {
     const [activeTab, setActiveTab] = useState('pu');
@@ -75,7 +74,7 @@ const PhaoChiPage = () => {
         }
     ];
 
-    // Installation process
+    // Installation steps
     const installationSteps = [
         {
             step: 1,
@@ -128,41 +127,47 @@ const PhaoChiPage = () => {
             style: 'Tân Cổ Điển',
             description: 'Hoa văn tinh tế, đường cong mềm mại, chi tiết phong phú',
             materials: ['PU cao cấp', 'Thạch cao điêu khắc'],
-            spaces: ['Biệt thự', 'Khách sạn 4-5*', 'Nhà hàng sang'],
-            priceRange: '80-180K/m',
+            spaces: ['Biệt thự', 'Khách sạn 4-5*', 'Nhà hàng cao cấp'],
+            priceRange: '80-150K/m',
             icon: 'fas fa-crown'
         },
         {
             style: 'Cổ Điển Châu Âu',
-            description: 'Hoa văn phức tạp, nhiều tầng lớp, phong cách hoàng gia',
-            materials: ['Thạch cao điêu khắc', 'PU hoa văn phức tạp'],
-            spaces: ['Villa cao cấp', 'Dinh thự', 'Cung điện'],
-            priceRange: '120-250K/m',
-            icon: 'fas fa-chess-queen'
+            description: 'Hoa văn phức tạp, đường nét cầu kỳ, phong cách hoàng gia',
+            materials: ['Thạch cao điêu khắc', 'PU cao cấp nhập khẩu'],
+            spaces: ['Biệt thự sang trọng', 'Lâu đài', 'Dinh thự'],
+            priceRange: '120-180K/m',
+            icon: 'fas fa-chess-king'
         },
         {
-            style: 'Phong Cách Á Đông',
-            description: 'Họa tiết truyền thống, màu sắc ấm áp, hài hòa phong thủy',
-            materials: ['Thạch cao', 'PU có họa tiết'],
-            spaces: ['Nhà hàng Á Đông', 'Resort', 'Spa'],
-            priceRange: '70-150K/m',
-            icon: 'fas fa-yin-yang'
+            style: 'Scandinavian',
+            description: 'Tối giản, màu trắng sáng, đường nét mảnh thanh thoát',
+            materials: ['PS trắng', 'PU đơn giản'],
+            spaces: ['Căn hộ nhỏ', 'Phòng khách hiện đại', 'Không gian mở'],
+            priceRange: '30-70K/m',
+            icon: 'fas fa-igloo'
         }
     ];
 
-    // Comparison table
+    // Comparison data
     const comparison = [
         {
             aspect: 'Giá thành',
-            pu: 'Trung bình',
-            ps: 'Rẻ nhất',
-            gypsum: 'Cao nhất'
+            pu: '45-150K/m',
+            ps: '25-85K/m',
+            gypsum: '65-180K/m'
         },
         {
             aspect: 'Độ bền',
-            pu: '8-12 năm',
-            ps: '3-5 năm',
-            gypsum: '10-20 năm'
+            pu: 'Rất tốt (20+ năm)',
+            ps: 'Trung bình (10-15 năm)',
+            gypsum: 'Tốt (15-20 năm)'
+        },
+        {
+            aspect: 'Trọng lượng',
+            pu: 'Rất nhẹ',
+            ps: 'Siêu nhẹ',
+            gypsum: 'Nặng hơn'
         },
         {
             aspect: 'Chống ẩm',
@@ -173,83 +178,102 @@ const PhaoChiPage = () => {
         {
             aspect: 'Tạo hình',
             pu: 'Đa dạng',
-            ps: 'Hạn chế',
-            gypsum: 'Linh hoạt nhất'
+            ps: 'Cơ bản',
+            gypsum: 'Rất đa dạng'
         },
         {
             aspect: 'Thi công',
-            pu: 'Dễ',
+            pu: 'Dễ dàng',
             ps: 'Rất dễ',
-            gypsum: 'Phức tạp'
+            gypsum: 'Khó hơn'
+        },
+        {
+            aspect: 'Bảo dưỡng',
+            pu: 'Ít',
+            ps: 'Ít',
+            gypsum: 'Trung bình'
         }
     ];
 
     // FAQ data
     const faqData = [
         {
-            question: 'Nên chọn phào chỉ PU hay PS?',
-            answer: 'PU bền hơn, chống ẩm tốt, đa dạng mẫu mã nhưng đắt hơn. PS giá rẻ, thi công nhanh, phù hợp nội thất cơ bản. Chọn tùy ngân sách và yêu cầu.'
+            question: 'Nên chọn phào chỉ PU, PS hay thạch cao?',
+            answer: 'PS phù hợp ngân sách thấp, không gian đơn giản. PU là lựa chọn cân bằng giữa giá và chất lượng, phù hợp hầu hết công trình. Thạch cao dành cho biệt thự, khách sạn cần tạo hình phức tạp và sang trọng.'
         },
         {
-            question: 'Phào chỉ có bị cong vênh không?',
-            answer: 'PU và thạch cao ít bị cong vênh. PS có thể bị cong nếu nhiệt độ cao hoặc thi công không đúng kỹ thuật.'
+            question: 'Phào chỉ có bền không? Có bị cong vênh không?',
+            answer: 'PU và thạch cao ít bị cong vênh. PS có thể bị cong nếu nhiệt độ cao hoặc thi công không đúng kỹ thuật. PU có độ bền cao nhất (20+ năm).'
         },
         {
-            question: 'Chi phí lắp phào chỉ cho căn hộ 80m² bao nhiều?',
-            answer: 'Phào trần + chân tường: PS 3-5 triệu, PU 6-10 triệu, thạch cao 8-15 triệu tùy độ phức tạp.'
+            question: 'Chi phí lắp phào chỉ cho căn hộ 80m² bao nhiêu?',
+            answer: 'Phào trần + chân tường: PS 3-5 triệu, PU 6-10 triệu, thạch cao 8-15 triệu tùy độ phức tạp của hoa văn và mẫu mã.'
         },
         {
             question: 'Phào chỉ có cần bảo dưỡng không?',
-            answer: 'Chỉ cần vệ sinh bụi bẩn định kỳ. Nếu sơn phai màu có thể sơn lại. PU và thạch cao bền lâu, ít cần bảo dưỡng.'
+            answer: 'Chỉ cần vệ sinh bụi bẩn định kỳ bằng khăn mềm. Nếu sơn phai màu có thể sơn lại. PU và thạch cao bền lâu, ít cần bảo dưỡng đặc biệt.'
+        },
+        {
+            question: 'Thời gian thi công phào chỉ mất bao lâu?',
+            answer: 'Căn hộ 80m²: PS mất 1-2 ngày, PU 2-3 ngày, thạch cao 3-5 ngày tùy độ phức tạp. Bao gồm cả thời gian sơn hoàn thiện.'
+        },
+        {
+            question: 'Phào chỉ có chống cháy không?',
+            answer: 'PS và PU có khả năng chống cháy tương đối tốt. Thạch cao là vật liệu chống cháy tốt nhất trong 3 loại, an toàn với công trình cao tầng.'
         }
     ];
 
     const currentType = moldingTypes.find(type => type.id === activeTab);
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🎨 Báo Giá Thi Công Phào Chỉ PU - PS - Thạch Cao 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết lắp đặt phào chỉ trang trí PU, PS, thạch cao 
-                            tại Hà Nội & Nha Trang. Đẹp - Sang - Giá hợp lý.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-border-style"></i>
-                                <span>Đa Dạng Mẫu Mã</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-hammer"></i>
-                                <span>Thi Công Chuyên Nghiệp</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-paint-brush"></i>
-                                <span>Hoàn Thiện Tinh Tế</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-award"></i>
-                                <span>Chất Lượng Cao</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-grip-lines icon-design"></i>
+                        Báo Giá Phào Chỉ PU - PS - Thạch Cao
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công lắp đặt phào chỉ trang trí PU, PS, thạch cao chuyên nghiệp
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-palette icon-design"></i>
+                            <span>Đa Dạng Mẫu Mã</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-hammer icon-construction"></i>
+                            <span>Thi Công Chuyên Nghiệp</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-paint-brush icon-paint"></i>
+                            <span>Hoàn Thiện Tinh Tế</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-award icon-quality"></i>
+                            <span>Chất Lượng Cao</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Molding Types */}
+            {/* Molding Types Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🏛️ Loại Phào Chỉ & Báo Giá</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Loại Phào Chỉ & Báo Giá
+                    </h2>
                     <p className="section-subtitle">
                         3 loại phào chỉ phổ biến với đặc điểm và giá cả khác nhau
                     </p>
 
+                    {/* Tabs */}
                     <div className="tabs">
                         {moldingTypes.map(type => (
                             <button
@@ -262,18 +286,23 @@ const PhaoChiPage = () => {
                         ))}
                     </div>
 
+                    {/* Detail Card */}
                     {currentType && (
-                        <div className="molding-detail">
-                            <div className="detail-header" style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}>
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}
+                            >
                                 <h3>{currentType.name}</h3>
                                 <div className="price-range">{currentType.price}</div>
                                 <p>{currentType.description}</p>
                             </div>
 
-                            <div className="detail-content grid-2">
-                                <div className="features-section">
-                                    <h4>✨ Đặc điểm:</h4>
-                                    <ul className="features-list">
+                            <div className="detail-content grid-layout">
+                                {/* Features Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Đặc điểm nổi bật:</h4>
+                                    <ul className="info-list">
                                         {currentType.features.map((feature, index) => (
                                             <li key={index}>
                                                 <i className="fas fa-check"></i>
@@ -283,29 +312,35 @@ const PhaoChiPage = () => {
                                     </ul>
                                 </div>
 
-                                <div className="applications-section">
-                                    <h4>🏠 Ứng dụng & giá:</h4>
-                                    <div className="applications-list">
+                                {/* Applications Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-home"></i> Ứng dụng & giá:</h4>
+                                    <div className="item-list">
                                         {currentType.applications.map((app, index) => (
-                                            <div key={index} className="application-item">
-                                                <div className="app-type">{app.type}</div>
-                                                <div className="app-size">Kích thước: {app.size}</div>
-                                                <div className="app-price">{app.price}/m</div>
+                                            <div key={index} className="item-card-extended">
+                                                <span className="item-type">{app.type}</span>
+                                                <div className="item-specs">
+                                                    <span className="item-size">Kích thước: {app.size}</span>
+                                                    <span className="item-price-extended">{app.price}/m</span>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="detail-actions">
-                                <a href="/lien-he" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Liên Hệ Báo Giá
-                                </a>
-                                <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                    <i className="fas fa-eye"></i>
-                                    Xem Mẫu Phào
-                                </a>
+                            {/* Action Buttons */}
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-eye"></i>
+                                        Xem Mẫu Phào
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -315,12 +350,15 @@ const PhaoChiPage = () => {
             {/* Design Styles */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🎭 Phong Cách Thiết Kế</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-palette icon-design"></i>
+                        Phong Cách Thiết Kế
+                    </h2>
                     <p className="section-subtitle">
                         Các phong cách phào chỉ phù hợp từng không gian
                     </p>
 
-                    <div className="styles-grid grid-4">
+                    <div className="grid-4">
                         {designStyles.map((style, index) => (
                             <div key={index} className="style-card card">
                                 <div className="card-header">
@@ -333,7 +371,7 @@ const PhaoChiPage = () => {
                                 </div>
                                 <div className="card-body">
                                     <div className="materials">
-                                        <h4>📦 Vật liệu:</h4>
+                                        <h4>Vật liệu:</h4>
                                         <div className="tags">
                                             {style.materials.map((material, i) => (
                                                 <span key={i} className="tag">{material}</span>
@@ -341,7 +379,7 @@ const PhaoChiPage = () => {
                                         </div>
                                     </div>
                                     <div className="spaces">
-                                        <h4>🏠 Phù hợp:</h4>
+                                        <h4>Phù hợp:</h4>
                                         <ul>
                                             {style.spaces.map((space, i) => (
                                                 <li key={i}>
@@ -358,45 +396,13 @@ const PhaoChiPage = () => {
                 </div>
             </section>
 
-            {/* Comparison Table */}
+            {/* Installation Process */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">⚖️ So Sánh Chi Tiết</h2>
-                    <p className="section-subtitle">
-                        Bảng so sánh 3 loại phào chỉ PU - PS - Thạch cao
-                    </p>
-
-                    <div className="comparison-table">
-                        <div className="table-wrapper">
-                            <table className="comparison">
-                                <thead>
-                                    <tr>
-                                        <th>Tiêu Chí</th>
-                                        <th style={{ background: '#f59e0b' }}>PU</th>
-                                        <th style={{ background: '#10b981' }}>PS</th>
-                                        <th style={{ background: '#8b5cf6' }}>Thạch Cao</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {comparison.map((row, index) => (
-                                        <tr key={index}>
-                                            <td className="aspect-name">{row.aspect}</td>
-                                            <td>{row.pu}</td>
-                                            <td>{row.ps}</td>
-                                            <td>{row.gypsum}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Installation Process */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Thi Công</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Thi Công
+                    </h2>
                     <p className="section-subtitle">
                         5 bước lắp đặt phào chỉ chuyên nghiệp
                     </p>
@@ -422,20 +428,62 @@ const PhaoChiPage = () => {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="section">
+            {/* Comparison Table */}
+            <section className="section section-gradient">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <h2 className="section-title">
+                        <i className="fas fa-balance-scale icon-comparison"></i>
+                        So Sánh Chi Tiết
+                    </h2>
+                    <p className="section-subtitle">
+                        Bảng so sánh 3 loại phào chỉ PU - PS - Thạch Cao
+                    </p>
+
+                    <div className="table-wrapper">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Tiêu Chí</th>
+                                <th style={{ background: '#f59e0b', color: 'white' }}>PU</th>
+                                <th style={{ background: '#10b981', color: 'white' }}>PS</th>
+                                <th style={{ background: '#8b5cf6', color: 'white' }}>Thạch Cao</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {comparison.map((row, index) => (
+                                <tr key={index}>
+                                    <td style={{ fontWeight: '600' }}>{row.aspect}</td>
+                                    <td>{row.pu}</td>
+                                    <td>{row.ps}</td>
+                                    <td>{row.gypsum}</td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="faq-section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về phào chỉ trang trí
+                    </p>
+
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

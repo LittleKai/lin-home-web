@@ -1,245 +1,285 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/rem-cua-cao-cap.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
 const RemCuaCaoCapPage = () => {
-    const [activeTab, setActiveTab] = useState('fabric');
+    const [activeTab, setActiveTab] = useState('roller');
     const [activeFaq, setActiveFaq] = useState(null);
 
     // Curtain types
     const curtainTypes = [
         {
-            id: 'fabric',
-            name: 'Rèm Vải Cao Cấp',
-            price: '450,000 - 850,000 VNĐ/m²',
-            description: 'Rèm vải 2 lớp chống nắng, cách nhiệt, cách âm tốt',
+            id: 'roller',
+            name: 'Rèm Cuốn',
+            price: '250,000 - 450,000 VNĐ/m²',
+            description: 'Rèm cuốn hiện đại, tiện dụng cho văn phòng và gia đình',
             features: [
-                'Vải 2 lớp chống nắng 95%',
-                'Ray trượt im lặng Đức',
-                'Điều khiển từ xa',
-                'Bảo hành 18 tháng',
-                'Đa dạng màu sắc',
-                'Dễ vệ sinh'
+                'Vải chống nắng Hàn Quốc/Đài Loan',
+                'Motor Somfy/Dooya tự động',
+                'Ray nhôm bền chắc',
+                'Remote điều khiển từ xa',
+                'Bảo hành 12-24 tháng'
             ],
-            materials: [
-                { name: 'Vải nhung cao cấp', price: '650-850K', origin: 'Hàn Quốc' },
-                { name: 'Vải linen tự nhiên', price: '550-750K', origin: 'Châu Âu' },
-                { name: 'Vải blackout', price: '450-650K', origin: 'Việt Nam' }
-            ],
-            bgColor: '#8b5cf6'
-        },
-        {
-            id: 'rainbow',
-            name: 'Rèm Cầu Vồng',
-            price: '320,000 - 650,000 VNĐ/m²',
-            description: 'Điều chỉnh ánh sáng linh hoạt, phù hợp văn phòng, chung cư',
-            features: [
-                'Điều chỉnh ánh sáng linh hoạt',
-                'Vải chống UV 70-85%',
-                'Lắp đặt nhanh gọn',
-                'Bảo hành 12 tháng',
-                'Tiết kiệm không gian',
-                'Giá cả hợp lý'
-            ],
-            materials: [
-                { name: 'Vải polyester', price: '320-450K', origin: 'Trung Quốc' },
-                { name: 'Vải screen cao cấp', price: '480-580K', origin: 'Hàn Quốc' },
-                { name: 'Vải chống cháy', price: '550-650K', origin: 'Nhật Bản' }
-            ],
-            bgColor: '#ec4899'
-        },
-        {
-            id: 'smart',
-            name: 'Rèm Tự Động Smarthome',
-            price: '1,200,000 - 2,500,000 VNĐ/m²',
-            description: 'Rèm tự động điều khiển bằng app, hẹn giờ thông minh',
-            features: [
-                'Motor Somfy chính hãng',
-                'App điều khiển iOS/Android',
-                'Hẹn giờ tự động',
-                'Bảo hành 24 tháng',
-                'Tích hợp Google/Alexa',
-                'Cảm biến ánh sáng'
-            ],
-            materials: [
-                { name: 'Vải cao cấp + Motor', price: '1,200-1,800K', origin: 'Pháp' },
-                { name: 'Motor im lặng', price: '1,500-2,000K', origin: 'Đức' },
-                { name: 'Cảm biến thông minh', price: '1,800-2,500K', origin: 'Mỹ' }
+            types: [
+                { type: 'Rèm cuốn cầu vồng', price: '250-350K/m²', feature: 'Điều chỉnh ánh sáng' },
+                { type: 'Rèm cuốn 1 màu', price: '280-380K/m²', feature: 'Che sáng hoàn toàn' },
+                { type: 'Rèm cuốn cảm ứng', price: '350-450K/m²', feature: 'Tự động thông minh' }
             ],
             bgColor: '#3b82f6'
+        },
+        {
+            id: 'vertical',
+            name: 'Rèm Lá Dọc',
+            price: '180,000 - 320,000 VNĐ/m²',
+            description: 'Rèm lá dọc sang trọng, phù hợp văn phòng, cửa kính lớn',
+            features: [
+                'Lá nhựa PVC/vải cao cấp',
+                'Xoay 180° điều chỉnh ánh sáng',
+                'Ray trượt êm ái',
+                'Dễ vệ sinh, bảo dưỡng',
+                'Bảo hành 12-18 tháng'
+            ],
+            types: [
+                { type: 'Lá nhựa PVC', price: '180-250K/m²', feature: 'Chống nước, bền' },
+                { type: 'Lá vải dệt', price: '220-280K/m²', feature: 'Mềm mại, sang trọng' },
+                { type: 'Lá vải nhựa', price: '250-320K/m²', feature: 'Chống ẩm cao cấp' }
+            ],
+            bgColor: '#10b981'
+        },
+        {
+            id: 'luxury',
+            name: 'Rèm Vải Cao Cấp',
+            price: '350,000 - 800,000 VNĐ/m²',
+            description: 'Rèm vải luxury, thêu hoa văn tinh xảo cho biệt thự',
+            features: [
+                'Vải nhập khẩu Châu Âu/Nhật',
+                'Thêu tay hoặc in 3D',
+                'Ray điện Somfy cao cấp',
+                'Thiết kế theo yêu cầu',
+                'Bảo hành 24-36 tháng'
+            ],
+            types: [
+                { type: 'Rèm vải gấm thêu', price: '450-650K/m²', feature: 'Sang trọng cổ điển' },
+                { type: 'Rèm vải nhung', price: '400-600K/m²', feature: 'Cách âm, cách nhiệt' },
+                { type: 'Rèm vải lụa Nhật', price: '550-800K/m²', feature: 'Luxury, mềm mại' }
+            ],
+            bgColor: '#8b5cf6'
         }
     ];
 
-    // Installation process
+    // Installation steps
     const installationSteps = [
         {
             step: 1,
-            title: 'Khảo Sát & Đo Đạc',
-            description: 'Đo chính xác cửa sổ, cửa đi, tư vấn loại rèm phù hợp',
+            title: 'Khảo Sát & Tư Vấn',
+            description: 'Đo kích thước cửa sổ, tư vấn loại rèm phù hợp',
             duration: '0.5 ngày',
             icon: 'fas fa-ruler'
         },
         {
             step: 2,
-            title: 'Tư Vấn & Chọn Mẫu',
-            description: 'Chọn loại rèm, màu sắc, chất liệu phù hợp phong cách',
-            duration: '1 ngày',
+            title: 'Chọn Mẫu & Màu Sắc',
+            description: 'Chọn vải, màu sắc, kiểu dáng theo phong cách',
+            duration: '1-2 ngày',
             icon: 'fas fa-palette'
         },
         {
             step: 3,
-            title: 'Thiết Kế & Báo Giá',
-            description: 'Thiết kế chi tiết, báo giá rõ ràng từng hạng mục',
-            duration: '1-2 ngày',
-            icon: 'fas fa-calculator'
-        },
-        {
-            step: 4,
-            title: 'Gia Công Rèm',
-            description: 'Gia công rèm theo thiết kế, chuẩn bị phụ kiện',
+            title: 'Sản Xuất Rèm',
+            description: 'Cắt vải, may rèm theo kích thước chính xác',
             duration: '3-7 ngày',
             icon: 'fas fa-cut'
         },
         {
-            step: 5,
-            title: 'Lắp Đặt & Bàn Giao',
-            description: 'Thi công lắp đặt tại công trình, kiểm tra chất lượng',
-            duration: '1 ngày',
+            step: 4,
+            title: 'Lắp Đặt Ray & Motor',
+            description: 'Lắp ray, motor điện (nếu có), kiểm tra vận hành',
+            duration: '0.5-1 ngày',
             icon: 'fas fa-tools'
+        },
+        {
+            step: 5,
+            title: 'Treo Rèm & Hoàn Thiện',
+            description: 'Treo rèm, điều chỉnh, vệ sinh, hướng dẫn sử dụng',
+            duration: '0.5 ngày',
+            icon: 'fas fa-check-circle'
         }
     ];
 
-    // Curtain features comparison
-    const featureComparison = [
+    // Curtain benefits
+    const benefits = [
         {
-            feature: 'Chống Nắng',
-            fabric: '95%',
-            rainbow: '70-85%',
-            smart: '95%'
+            title: 'Chống Nắng & Cách Nhiệt',
+            description: 'Giảm nhiệt độ phòng 3-5°C, tiết kiệm điện điều hòa',
+            icon: 'fas fa-sun',
+            color: '#f59e0b'
         },
         {
-            feature: 'Cách Âm',
-            fabric: 'Tốt',
-            rainbow: 'Trung bình',
-            smart: 'Tốt'
+            title: 'Tăng Sự Riêng Tư',
+            description: 'Che chắn ánh nhìn từ bên ngoài, tạo không gian riêng tư',
+            icon: 'fas fa-eye-slash',
+            color: '#3b82f6'
         },
         {
-            feature: 'Độ Bền',
-            fabric: '5-7 năm',
-            rainbow: '3-5 năm',
-            smart: '7-10 năm'
+            title: 'Cách Âm Tốt',
+            description: 'Rèm vải dày giảm tiếng ồn từ bên ngoài 20-30%',
+            icon: 'fas fa-volume-mute',
+            color: '#8b5cf6'
         },
         {
-            feature: 'Điều Khiển',
-            fabric: 'Tay + Remote',
-            rainbow: 'Tay',
-            smart: 'App + Voice'
-        },
-        {
-            feature: 'Bảo Hành',
-            fabric: '18 tháng',
-            rainbow: '12 tháng',
-            smart: '24 tháng'
+            title: 'Trang Trí Nội Thất',
+            description: 'Tạo điểm nhấn, nâng tầm thẩm mỹ không gian',
+            icon: 'fas fa-home',
+            color: '#10b981'
         }
     ];
 
-    // Applications by space
-    const applications = [
+    // Fabric types
+    const fabricTypes = [
         {
-            space: 'Phòng Ngủ',
-            recommended: 'Rèm Vải Blackout',
-            reason: 'Chống sáng tối đa, cách âm, riêng tư',
-            price: '650-850K/m²',
-            icon: 'fas fa-bed'
+            fabric: 'Vải Polyester',
+            pros: ['Giá rẻ', 'Dễ giặt', 'Không nhăn', 'Bền màu'],
+            cons: ['Ít sang trọng', 'Thấm hút kém'],
+            price: '80,000 - 150,000 VNĐ/m',
+            suitable: ['Văn phòng', 'Nhà phố', 'Căn hộ']
         },
         {
-            space: 'Phòng Khách',
-            recommended: 'Rèm Vải 2 Lớp',
-            reason: 'Sang trọng, điều chỉnh ánh sáng linh hoạt',
-            price: '550-750K/m²',
-            icon: 'fas fa-couch'
+            fabric: 'Vải Gấm Thêu',
+            pros: ['Sang trọng', 'Bền đẹp', 'Cách nhiệt tốt', 'Thẩm mỹ cao'],
+            cons: ['Giá cao', 'Nặng', 'Khó giặt'],
+            price: '200,000 - 400,000 VNĐ/m',
+            suitable: ['Biệt thự', 'Khách sạn', 'Nhà hàng cao cấp']
         },
         {
-            space: 'Văn Phòng',
-            recommended: 'Rèm Cầu Vồng',
-            reason: 'Tiện lợi, tiết kiệm, chống chói',
-            price: '400-600K/m²',
-            icon: 'fas fa-briefcase'
+            fabric: 'Vải Nhung',
+            pros: ['Cách âm tốt', 'Sang trọng', 'Bền', 'Cách nhiệt'],
+            cons: ['Dễ bám bụi', 'Nặng', 'Giá cao'],
+            price: '180,000 - 350,000 VNĐ/m',
+            suitable: ['Phòng ngủ', 'Rạp chiếu phim', 'Phòng thu']
         },
         {
-            space: 'Biệt Thự',
-            recommended: 'Rèm Tự Động',
-            reason: 'Hiện đại, tiện nghi, tự động hóa',
-            price: '1,500-2,500K/m²',
-            icon: 'fas fa-home'
+            fabric: 'Vải Lụa Tơ Tằm',
+            pros: ['Mềm mại', 'Sang trọng', 'Thoáng khí', 'Luxury'],
+            cons: ['Giá rất cao', 'Dễ nhăn', 'Khó bảo quản'],
+            price: '300,000 - 600,000 VNĐ/m',
+            suitable: ['Biệt thự cao cấp', 'Suite khách sạn 5*']
+        }
+    ];
+
+    // Maintenance tips
+    const maintenanceTips = [
+        {
+            category: 'Vệ Sinh Định Kỳ',
+            tips: [
+                'Hút bụi rèm 1-2 tuần/lần',
+                'Giặt khô 6-12 tháng/lần',
+                'Lau ray và motor định kỳ',
+                'Kiểm tra remote, pin'
+            ],
+            frequency: '1-2 tuần',
+            icon: 'fas fa-broom'
+        },
+        {
+            category: 'Bảo Quản Rèm',
+            tips: [
+                'Tránh ánh nắng trực tiếp lâu',
+                'Không kéo rèm quá mạnh',
+                'Giữ ray sạch sẽ, không bụi',
+                'Kiểm tra motor định kỳ'
+            ],
+            frequency: 'Thường xuyên',
+            icon: 'fas fa-shield-alt'
+        },
+        {
+            category: 'Xử Lý Sự Cố',
+            tips: [
+                'Rèm kẹt: kiểm tra ray',
+                'Motor không hoạt động: thay pin',
+                'Vải bám mùi: phơi nắng nhẹ',
+                'Nhăn: ủi nhiệt độ thấp'
+            ],
+            frequency: 'Khi cần',
+            icon: 'fas fa-wrench'
         }
     ];
 
     // FAQ data
     const faqData = [
         {
+            question: 'Nên chọn rèm cuốn hay rèm vải?',
+            answer: 'Rèm cuốn phù hợp văn phòng, hiện đại, tiện lợi, giá rẻ. Rèm vải sang trọng hơn, cách âm tốt hơn, phù hợp phòng ngủ, biệt thự. Tùy không gian và mục đích sử dụng.'
+        },
+        {
+            question: 'Motor rèm Somfy có tốt không?',
+            answer: 'Somfy là thương hiệu motor rèm số 1 thế giới (Pháp), êm, bền, chính xác, bảo hành 5 năm. Giá cao hơn 50-100% so với motor Trung Quốc nhưng chất lượng vượt trội.'
+        },
+        {
+            question: 'Chi phí làm rèm cho căn hộ 80m²?',
+            answer: 'Căn hộ 80m² có khoảng 15-20m² cửa sổ. Rèm cuốn: 4-7 triệu. Rèm lá dọc: 3-6 triệu. Rèm vải cao cấp: 7-15 triệu. Giá đã bao gồm vật liệu + thi công.'
+        },
+        {
+            question: 'Thời gian làm rèm mất bao lâu?',
+            answer: 'Rèm cuốn, lá dọc: 3-5 ngày (may + lắp). Rèm vải may: 5-10 ngày (thiết kế + may + lắp). Thời gian phụ thuộc độ phức tạp và số lượng.'
+        },
+        {
             question: 'Rèm có chống nắng hiệu quả không?',
-            answer: 'Rèm blackout chống nắng 95-99%, rèm screen chống 70-85% ánh sáng và tia UV. Tùy chọn phù hợp nhu cầu sử dụng.'
+            answer: 'Rèm cuốn chống nắng chặn 70-95% ánh sáng và nhiệt. Rèm vải dày chặn 80-90%. Rèm 2 lớp (blackout) chặn 99%. Giảm nhiệt độ phòng 3-5°C, tiết kiệm điện.'
         },
         {
-            question: 'Rèm có bền trong khí hậu nhiệt đới?',
-            answer: 'Vải chất lượng cao chống UV, chống ẩm có thể bền 5-7 năm. Ở Nha Trang cần chọn vải chống mặn.'
-        },
-        {
-            question: 'Chi phí bảo dưỡng rèm như thế nào?',
-            answer: 'Rèm vải cần giặt 6-12 tháng/lần (100-300K), rèm tự động cần bảo dưỡng motor 1 năm/lần (200-500K).'
-        },
-        {
-            question: 'Có thể thay chỉ vải rèm không?',
-            answer: 'Có thể thay vải mới giữ nguyên ray và phụ kiện, tiết kiệm 30-50% chi phí so với làm mới hoàn toàn.'
+            question: 'Có thể lắp rèm tự động cho rèm cũ không?',
+            answer: 'Có thể nếu ray còn tốt và phù hợp. Chi phí motor + lắp đặt: 2-5 triệu/bộ tùy loại motor (Dooya, Somfy). Thợ sẽ khảo sát để tư vấn cụ thể.'
         }
     ];
 
     const currentType = curtainTypes.find(type => type.id === activeTab);
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🪟 Báo Giá Thi Công Rèm Cửa Cao Cấp 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết lắp đặt rèm vải, rèm cầu vồng, rèm tự động 
-                            tại Hà Nội & Nha Trang. Đẹp - Sang - Giá tốt.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-sun"></i>
-                                <span>Chống Nắng 95%</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-volume-mute"></i>
-                                <span>Cách Âm Tốt</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-mobile-alt"></i>
-                                <span>Điều Khiển Thông Minh</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-palette"></i>
-                                <span>Đa Dạng Mẫu Mã</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-window-maximize"></i>
+                        Báo Giá Rèm Cửa Cao Cấp
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công rèm cuốn, rèm lá dọc, rèm vải cao cấp chuyên nghiệp
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-sun"></i>
+                            <span>Chống Nắng Hiệu Quả</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-palette icon-design"></i>
+                            <span>Đa Dạng Mẫu Mã</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-certificate icon-quality"></i>
+                            <span>Bảo Hành Dài</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-robot"></i>
+                            <span>Motor Tự Động</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Curtain Types */}
+            {/* Curtain Types Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🎭 Loại Rèm Cửa & Báo Giá</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Loại Rèm & Báo Giá
+                    </h2>
                     <p className="section-subtitle">
-                        3 dòng rèm cửa phù hợp mọi không gian và nhu cầu
+                        3 loại rèm cửa phổ biến
                     </p>
 
                     <div className="tabs">
@@ -255,17 +295,20 @@ const RemCuaCaoCapPage = () => {
                     </div>
 
                     {currentType && (
-                        <div className="curtain-detail">
-                            <div className="detail-header" style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}>
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}
+                            >
                                 <h3>{currentType.name}</h3>
                                 <div className="price-range">{currentType.price}</div>
                                 <p>{currentType.description}</p>
                             </div>
 
-                            <div className="detail-content grid-2">
-                                <div className="features-section">
-                                    <h4>✨ Đặc điểm:</h4>
-                                    <ul className="features-list">
+                            <div className="detail-content grid-layout">
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Đặc điểm:</h4>
+                                    <ul className="info-list">
                                         {currentType.features.map((feature, index) => (
                                             <li key={index}>
                                                 <i className="fas fa-check"></i>
@@ -275,66 +318,60 @@ const RemCuaCaoCapPage = () => {
                                     </ul>
                                 </div>
 
-                                <div className="materials-section">
-                                    <h4>🎨 Chất liệu & giá:</h4>
-                                    <div className="materials-list">
-                                        {currentType.materials.map((material, index) => (
-                                            <div key={index} className="material-item">
-                                                <div className="material-name">{material.name}</div>
-                                                <div className="material-price">{material.price}</div>
-                                                <div className="material-origin">Xuất xứ: {material.origin}</div>
+                                <div className="info-section">
+                                    <h4><i className="fas fa-list"></i> Phân loại & giá:</h4>
+                                    <div className="item-list">
+                                        {currentType.types.map((item, index) => (
+                                            <div key={index} className="item-card-extended">
+                                                <span className="item-type">{item.type}</span>
+                                                <div className="item-specs">
+                                                    <span className="item-size">{item.feature}</span>
+                                                    <span className="item-price-extended">{item.price}</span>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="detail-actions">
-                                <a href="/lien-he" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Liên Hệ Báo Giá
-                                </a>
-                                <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                    <i className="fas fa-eye"></i>
-                                    Xem Mẫu Rèm
-                                </a>
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-eye"></i>
+                                        Xem Mẫu Rèm
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     )}
                 </div>
             </section>
 
-            {/* Feature Comparison */}
+            {/* Benefits */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">⚖️ So Sánh Tính Năng</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-star icon-quality"></i>
+                        Lợi Ích Rèm Cửa
+                    </h2>
                     <p className="section-subtitle">
-                        Bảng so sánh chi tiết 3 loại rèm cửa
+                        Tại sao nên lắp rèm cửa cao cấp
                     </p>
 
-                    <div className="comparison-table">
-                        <div className="table-wrapper">
-                            <table className="comparison">
-                                <thead>
-                                    <tr>
-                                        <th>Tính Năng</th>
-                                        <th style={{ background: '#8b5cf6' }}>Rèm Vải</th>
-                                        <th style={{ background: '#ec4899' }}>Rèm Cầu Vồng</th>
-                                        <th style={{ background: '#3b82f6' }}>Rèm Tự Động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {featureComparison.map((row, index) => (
-                                        <tr key={index}>
-                                            <td className="feature-name">{row.feature}</td>
-                                            <td>{row.fabric}</td>
-                                            <td>{row.rainbow}</td>
-                                            <td>{row.smart}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                    <div className="grid-4">
+                        {benefits.map((benefit, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: benefit.color }}>
+                                    <i className={benefit.icon}></i>
+                                    {benefit.title}
+                                </h3>
+                                <p>{benefit.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -342,7 +379,10 @@ const RemCuaCaoCapPage = () => {
             {/* Installation Process */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Thi Công</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Thi Công
+                    </h2>
                     <p className="section-subtitle">
                         5 bước lắp đặt rèm cửa chuyên nghiệp
                     </p>
@@ -368,35 +408,47 @@ const RemCuaCaoCapPage = () => {
                 </div>
             </section>
 
-            {/* Applications by Space */}
-            <section className="section section-alt">
+            {/* Fabric Types */}
+            <section className="section section-gradient">
                 <div className="container">
-                    <h2 className="section-title">🏠 Ứng Dụng Theo Không Gian</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-th icon-materials"></i>
+                        Loại Vải Rèm
+                    </h2>
                     <p className="section-subtitle">
-                        Gợi ý loại rèm phù hợp từng không gian
+                        So sánh các loại vải rèm phổ biến
                     </p>
 
-                    <div className="applications-grid grid-4">
-                        {applications.map((app, index) => (
-                            <div key={index} className="application-card card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className={app.icon}></i>
-                                        {app.space}
-                                    </h3>
-                                </div>
-                                <div className="card-body">
-                                    <div className="recommended">
-                                        <h4>💡 Gợi ý:</h4>
-                                        <p className="product-name">{app.recommended}</p>
-                                    </div>
-                                    <div className="reason">
-                                        <h4>📋 Lý do:</h4>
-                                        <p>{app.reason}</p>
-                                    </div>
-                                    <div className="app-price">
-                                        <strong>{app.price}</strong>
-                                    </div>
+                    <div className="grid-4">
+                        {fabricTypes.map((fabric, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className="fas fa-tshirt"></i>
+                                    {fabric.fabric}
+                                </h3>
+                                <h4>Ưu điểm:</h4>
+                                <ul>
+                                    {fabric.pros.map((pro, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-plus-circle"></i>
+                                            {pro}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <h4>Nhược điểm:</h4>
+                                <ul>
+                                    {fabric.cons.map((con, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-minus-circle"></i>
+                                            {con}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="standard">{fabric.price}</span>
+                                <div className="tags">
+                                    {fabric.suitable.map((s, i) => (
+                                        <span key={i} className="tag">{s}</span>
+                                    ))}
                                 </div>
                             </div>
                         ))}
@@ -404,20 +456,59 @@ const RemCuaCaoCapPage = () => {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="section">
+            {/* Maintenance Tips */}
+            <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb icon-tips"></i>
+                        Hướng Dẫn Bảo Dưỡng
+                    </h2>
+                    <p className="section-subtitle">
+                        Giữ rèm cửa bền đẹp lâu dài
+                    </p>
+
+                    <div className="grid-3">
+                        {maintenanceTips.map((tip, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={tip.icon}></i>
+                                    {tip.category}
+                                </h3>
+                                <ul>
+                                    {tip.tips.map((t, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {t}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="frequency-badge">{tip.frequency}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="faq-section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về rèm cửa
+                    </p>
+
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

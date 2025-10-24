@@ -1,270 +1,405 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/tran-vach-thach-cao.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
-
-// import '../BaoGiaThiCongHangMuc.css';
+import '../../../styles/PageStyles.css';
 
 const TranVachThachCaoPage = () => {
-    const [activeTab, setActiveTab] = useState('basic');
+    const [activeTab, setActiveTab] = useState('ceiling');
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Pricing data for ceiling and wall construction
-    const pricingData = [
+    // Gypsum types
+    const gypsumTypes = [
         {
-            id: 'basic',
-            name: 'Trần Thạch Cao Cơ Bản',
-            price: '120,000 - 180,000 VNĐ/m²',
-            description: 'Trần phẳng đơn giản, phù hợp nhà ở dân dụng',
+            id: 'ceiling',
+            name: 'Trần Thạch Cao',
+            price: '120,000 - 250,000 VNĐ/m²',
+            description: 'Trần thạch cao phẳng, giật cấp, chống ẩm cho mọi không gian',
             features: [
-                'Trần phẳng thạch cao Vĩnh Tường',
-                'Khung xương thép mạ kẽm',
-                'Bả matit, sơn bóng 1 lớp',
-                'Điện cơ bản (đèn downlight)',
-                'Bảo hành 12 tháng'
+                'Tấm thạch cao Knauf/Gyproc',
+                'Khung xương C/U chịu lực',
+                'Đèn LED âm trần hiện đại',
+                'Sơn hoàn thiện mịn màng',
+                'Bảo hành 12-24 tháng'
             ],
-            suitable: ['Phòng khách', 'Phòng ngủ', 'Phòng ăn'],
+            types: [
+                { type: 'Trần phẳng cơ bản', price: '120-160K/m²', feature: 'Đơn giản, phổ biến' },
+                { type: 'Trần giật cấp 1-2 bậc', price: '160-200K/m²', feature: 'Tạo chiều sâu' },
+                { type: 'Trần giật cấp phức tạp', price: '200-250K/m²', feature: 'Nghệ thuật, sang trọng' }
+            ],
+            bgColor: '#3b82f6'
+        },
+        {
+            id: 'partition',
+            name: 'Vách Ngăn Thạch Cao',
+            price: '180,000 - 320,000 VNĐ/m²',
+            description: 'Vách ngăn phòng, cách âm, chống cháy',
+            features: [
+                'Vách đơn hoặc vách đôi',
+                'Chống cháy 2-4 giờ',
+                'Cách âm 35-45dB',
+                'Nhẹ, không ảnh hưởng móng',
+                'Bảo hành 12-18 tháng'
+            ],
+            types: [
+                { type: 'Vách đơn 75mm', price: '180-230K/m²', feature: 'Cách âm 35dB' },
+                { type: 'Vách đôi 100mm', price: '230-280K/m²', feature: 'Cách âm 40dB' },
+                { type: 'Vách chống cháy', price: '280-320K/m²', feature: 'Chống cháy 4h' }
+            ],
             bgColor: '#10b981'
         },
         {
-            id: 'premium',
-            name: 'Trần Giật Cấp Cao Cấp',
-            price: '220,000 - 320,000 VNĐ/m²',
-            description: 'Trần giật cấp với đèn LED âm trần, hiện đại',
+            id: 'decoration',
+            name: 'Trang Trí Thạch Cao',
+            price: '250,000 - 500,000 VNĐ/m²',
+            description: 'Trần 3D, hoa văn nghệ thuật, backdrop TV',
             features: [
-                'Trần giật cấp 2-3 tầng',
-                'Thạch cao Gyproc chống ẩm',
-                'LED strip + đèn downlight',
-                'Bả matit, sơn cao cấp',
-                'Thiết kế theo yêu cầu',
-                'Bảo hành 18 tháng'
+                'Thiết kế 3D theo yêu cầu',
+                'Hoa văn điêu khắc tinh xảo',
+                'Đèn LED RGB trang trí',
+                'Sơn phủ cao cấp',
+                'Bảo hành 18-36 tháng'
             ],
-            suitable: ['Phòng khách cao cấp', 'Phòng làm việc', 'Showroom'],
-            bgColor: '#667eea'
-        },
-        {
-            id: 'luxury',
-            name: 'Vách Thạch Cao + Cách Âm',
-            price: '280,000 - 380,000 VNĐ/m²',
-            description: 'Vách ngăn cách âm, trang trí nghệ thuật',
-            features: [
-                'Vách thạch cao 2 lớp',
-                'Cách âm bông thủy tinh',
-                'Tạo hình nghệ thuật',
-                'Sơn hiệu ứng đặc biệt',
-                'Âm thanh cách âm 40dB',
-                'Bảo hành 24 tháng'
+            types: [
+                { type: 'Backdrop TV', price: '250-350K/m²', feature: 'Điểm nhấn phòng khách' },
+                { type: 'Trần 3D nghệ thuật', price: '350-450K/m²', feature: 'Độc đáo, ấn tượng' },
+                { type: 'Cột thạch cao cổ điển', price: '400-500K/m²', feature: 'Sang trọng luxury' }
             ],
-            suitable: ['Studio âm thanh', 'Phòng karaoke', 'Văn phòng'],
             bgColor: '#8b5cf6'
         }
     ];
 
-    // Process steps
-    const processSteps = [
+    // Installation steps
+    const installationSteps = [
         {
             step: 1,
-            title: 'Khảo Sát & Tư Vấn',
-            description: 'Đo đạc, kiểm tra kết cấu, tư vấn thiết kế phù hợp',
+            title: 'Khảo Sát & Thiết Kế',
+            description: 'Đo đạc, thiết kế bản vẽ 3D, tư vấn mẫu mã',
             duration: '1-2 ngày',
-            icon: 'fas fa-search'
-        },
-        {
-            step: 2,
-            title: 'Thiết Kế & Báo Giá',
-            description: 'Tạo bản vẽ 3D, tính toán vật liệu, báo giá chi tiết',
-            duration: '2-3 ngày',
             icon: 'fas fa-drafting-compass'
         },
         {
-            step: 3,
-            title: 'Lắp Đặt Khung Xương',
-            description: 'Cố định khung thép mạ kẽm, đảm bảo độ thẳng đứng',
+            step: 2,
+            title: 'Lắp Khung Xương',
+            description: 'Lắp khung xương thép C/U, đảm bảo chịu lực tốt',
             duration: '1-2 ngày',
             icon: 'fas fa-hammer'
         },
         {
+            step: 3,
+            title: 'Lắp Tấm Thạch Cao',
+            description: 'Đóng tấm thạch cao, xử lý mối nối cẩn thận',
+            duration: '2-3 ngày',
+            icon: 'fas fa-th-large'
+        },
+        {
             step: 4,
-            title: 'Bắt Tấm Thạch Cao',
-            description: 'Lắp ghép tấm thạch cao, cố định bằng vít chuyên dụng',
-            duration: '1-2 ngày',
-            icon: 'fas fa-layer-group'
+            title: 'Xử Lý Bề Mặt',
+            description: 'Trét matit, chà nhám, chuẩn bị sơn',
+            duration: '2-3 ngày',
+            icon: 'fas fa-paint-roller'
         },
         {
             step: 5,
-            title: 'Hoàn Thiện & Bàn Giao',
-            description: 'Xử lý mối nối, bả matit, sơn hoàn thiện, vệ sinh',
-            duration: '2-3 ngày',
-            icon: 'fas fa-paint-brush'
+            title: 'Sơn & Hoàn Thiện',
+            description: 'Sơn hoàn thiện, lắp đèn LED, vệ sinh',
+            duration: '1-2 ngày',
+            icon: 'fas fa-check-circle'
         }
     ];
 
-    // Material comparison
-    const materials = [
+    // Gypsum board types
+    const boardTypes = [
         {
-            name: 'Thạch Cao Vĩnh Tường',
-            price: '45,000 - 55,000 VNĐ/m²',
-            pros: ['Giá hợp lý', 'Dễ thi công', 'Phổ biến'],
-            cons: ['Độ bền trung bình', 'Hút ẩm nhẹ'],
-            rating: 4
+            type: 'Thạch Cao Tiêu Chuẩn',
+            brand: 'Knauf/Gyproc',
+            thickness: '9.5-12.5mm',
+            uses: ['Trần phẳng', 'Vách thường'],
+            price: '45,000 - 65,000 VNĐ/tấm',
+            icon: 'fas fa-square'
         },
         {
-            name: 'Thạch Cao Gyproc',
-            price: '65,000 - 85,000 VNĐ/m²',
-            pros: ['Chống ẩm tốt', 'Bền đẹp', 'Cách âm'],
-            cons: ['Giá cao hơn', 'Cần thợ lành nghề'],
-            rating: 5
+            type: 'Thạch Cao Chống Ẩm',
+            brand: 'Knauf Aquapanel',
+            thickness: '12.5mm',
+            uses: ['Nhà bếp', 'Phòng tắm', 'Ban công'],
+            price: '70,000 - 95,000 VNĐ/tấm',
+            icon: 'fas fa-droplet'
         },
         {
-            name: 'Thạch Cao Knauf',
-            price: '75,000 - 95,000 VNĐ/m²',
-            pros: ['Chất lượng Đức', 'Chống cháy', 'Thân thiện môi trường'],
-            cons: ['Đắt nhất', 'Khó mua tại VN'],
-            rating: 5
+            type: 'Thạch Cao Chống Cháy',
+            brand: 'Gyproc Fireline',
+            thickness: '12.5-15mm',
+            uses: ['Văn phòng', 'Khách sạn', 'Bệnh viện'],
+            price: '80,000 - 110,000 VNĐ/tấm',
+            icon: 'fas fa-fire-extinguisher'
+        },
+        {
+            type: 'Thạch Cao Cách Âm',
+            brand: 'Knauf Soundshield',
+            thickness: '12.5mm',
+            uses: ['Phòng ngủ', 'Phòng họp', 'Studio'],
+            price: '85,000 - 120,000 VNĐ/tấm',
+            icon: 'fas fa-volume-mute'
+        }
+    ];
+
+    // Design styles
+    const designStyles = [
+        {
+            style: 'Hiện Đại - Tối Giản',
+            description: 'Trần phẳng, đường nét thẳng, đèn LED âm trần',
+            spaces: ['Căn hộ chung cư', 'Văn phòng', 'Showroom'],
+            price: '120-180K/m²',
+            icon: 'fas fa-minus'
+        },
+        {
+            style: 'Tân Cổ Điển',
+            description: 'Trần giật cấp, phào chỉ, đèn chùm pha lê',
+            spaces: ['Biệt thự', 'Nhà phố', 'Khách sạn'],
+            price: '200-300K/m²',
+            icon: 'fas fa-crown'
+        },
+        {
+            style: 'Cổ Điển Châu Âu',
+            description: 'Hoa văn điêu khắc, cột trang trí, đèn cổ điển',
+            spaces: ['Biệt thự sang trọng', 'Dinh thự', 'Resort cao cấp'],
+            price: '300-500K/m²',
+            icon: 'fas fa-chess-king'
+        },
+        {
+            style: 'Công Nghiệp',
+            description: 'Để lộ khung xương, đèn thả công nghiệp',
+            spaces: ['Cafe', 'Quán bar', 'Văn phòng sáng tạo'],
+            price: '100-150K/m²',
+            icon: 'fas fa-industry'
+        }
+    ];
+
+    // Benefits
+    const benefits = [
+        {
+            title: 'Cách Âm & Cách Nhiệt',
+            description: 'Giảm tiếng ồn 30-45dB, giữ nhiệt tốt',
+            icon: 'fas fa-volume-mute',
+            color: '#3b82f6'
+        },
+        {
+            title: 'Chống Cháy An Toàn',
+            description: 'Chống cháy 2-4 giờ, an toàn tuyệt đối',
+            icon: 'fas fa-fire-extinguisher',
+            color: '#ef4444'
+        },
+        {
+            title: 'Nhẹ & Linh Hoạt',
+            description: 'Không ảnh hưởng móng, dễ tạo hình',
+            icon: 'fas fa-feather',
+            color: '#10b981'
+        },
+        {
+            title: 'Thẩm Mỹ Cao',
+            description: 'Tạo không gian đẹp, sang trọng',
+            icon: 'fas fa-palette',
+            color: '#8b5cf6'
+        }
+    ];
+
+    // Maintenance tips
+    const maintenanceTips = [
+        {
+            category: 'Vệ Sinh Định Kỳ',
+            tips: [
+                'Lau bụi bằng khăn mềm khô',
+                'Tránh dùng nước trực tiếp',
+                'Kiểm tra vết nứt nhỏ',
+                'Sơn lại khi phai màu'
+            ],
+            frequency: '3-6 tháng',
+            icon: 'fas fa-broom'
+        },
+        {
+            category: 'Bảo Vệ Trần',
+            tips: [
+                'Tránh va đập mạnh',
+                'Không treo đồ quá nặng',
+                'Kiểm tra rò rỉ nước',
+                'Thông gió tốt tránh ẩm'
+            ],
+            frequency: 'Thường xuyên',
+            icon: 'fas fa-shield-alt'
+        },
+        {
+            category: 'Xử Lý Sự Cố',
+            tips: [
+                'Nứt nhỏ: trét matit lại',
+                'Ẩm mốc: sơn chống ẩm',
+                'Rò rỉ: sửa nguồn nước',
+                'Vết bẩn: sơn lại'
+            ],
+            frequency: 'Khi cần',
+            icon: 'fas fa-wrench'
         }
     ];
 
     // FAQ data
     const faqData = [
         {
-            question: 'Trần thạch cao có bền không?',
-            answer: 'Trần thạch cao có độ bền từ 10-15 năm nếu thi công đúng kỹ thuật và sử dụng vật liệu chất lượng. Tuy nhiên cần tránh va đập mạnh và môi trường quá ẩm ướt.'
+            question: 'Trần thạch cao có bền không? Có bị nứt không?',
+            answer: 'Trần thạch cao rất bền nếu thi công đúng kỹ thuật (tuổi thọ 15-20 năm). Có thể bị nứt nhỏ do co giãn nhiệt độ nhưng dễ sửa chữa. Cần chọn vật liệu chất lượng và thợ có kinh nghiệm.'
         },
         {
-            question: 'Thời gian thi công trần thạch cao bao lâu?',
-            answer: 'Thời gian thi công phụ thuộc diện tích: Phòng 20m² mất 3-5 ngày, căn hộ 80m² mất 7-10 ngày, bao gồm cả thời gian khô sơn.'
+            question: 'Trần thạch cao có chống ẩm được không?',
+            answer: 'Trần thạch cao tiêu chuẩn sợ ẩm. Nhưng có loại chống ẩm đặc biệt (Aquapanel) chịu được môi trường ẩm ướt. Phù hợp bếp, phòng tắm. Giá cao hơn 30-40% nhưng bền hơn nhiều.'
         },
         {
-            question: 'Có nên làm trần thạch cao cho nhà ẩm ướt?',
-            answer: 'Nên chọn loại thạch cao chống ẩm (Gyproc, Knauf) và đảm bảo thông gió tốt. Tránh làm trần thạch cao ở khu vực thường xuyên bị ngập úng.'
+            question: 'Chi phí làm trần thạch cao cho căn hộ 80m² bao nhiêu?',
+            answer: 'Trần phẳng đơn giản: 10-13 triệu (120-160K/m²). Trần giật cấp 1-2 bậc: 13-16 triệu (160-200K/m²). Trần có thiết kế phức tạp: 16-20 triệu (200-250K/m²). Đã bao gồm vật liệu + thi công.'
         },
         {
-            question: 'Chi phí trần thạch cao có phát sinh không?',
-            answer: 'Không phát sinh nếu theo đúng thiết kế đã thống nhất. Chỉ phát sinh khi khách hàng yêu cầu thay đổi thiết kế hoặc nâng cấp vật liệu.'
+            question: 'Thời gian thi công trần thạch cao mất bao lâu?',
+            answer: 'Căn hộ 80m² trần phẳng: 7-10 ngày. Trần giật cấp: 10-14 ngày. Bao gồm lắp khung (2-3 ngày), đóng tấm (2-3 ngày), trét matit (2-3 ngày), sơn (2-3 ngày), phơi khô.'
+        },
+        {
+            question: 'Vách thạch cao có cách âm tốt không?',
+            answer: 'Vách đơn 75mm: ~35dB (đủ dùng). Vách đôi 100mm có bông cách âm: ~40-45dB (tốt). Vách chuyên dụng: ~50dB (rất tốt). Hiệu quả cách âm phụ thuộc độ dày và vật liệu cách âm bên trong.'
+        },
+        {
+            question: 'Có thể tháo dỡ và lắp lại vách thạch cao không?',
+            answer: 'Rất khó và thường làm hỏng tấm thạch cao. Nếu cần di chuyển vách thì phải phá bỏ và làm lại. Đây là nhược điểm của thạch cao so với vách panel có thể tháo lắp.'
         }
     ];
 
+    const currentType = gypsumTypes.find(type => type.id === activeTab);
+
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🏗️ Báo Giá Thi Công Trần & Vách Thạch Cao 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết thi công trần thạch cao phẳng, giật cấp, vách ngăn cách âm 
-                            tại Hà Nội & Nha Trang. Uy tín - Chất lượng - Bảo hành dài hạn.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-layer-group"></i>
-                                <span>Đa Dạng Mẫu Mã</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-volume-off"></i>
-                                <span>Cách Âm Tốt</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-fire-extinguisher"></i>
-                                <span>Chống Cháy</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-leaf"></i>
-                                <span>Thân thiện MÔI</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-grip-lines icon-ceiling"></i>
+                        Báo Giá Trần Vách Thạch Cao
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công trần thạch cao, vách ngăn, trang trí thạch cao chuyên nghiệp
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-feather"></i>
+                            <span>Nhẹ & Linh Hoạt</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-volume-mute"></i>
+                            <span>Cách Âm Tốt</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-fire-extinguisher icon-safety"></i>
+                            <span>Chống Cháy</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-palette icon-design"></i>
+                            <span>Thẩm Mỹ Cao</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Pricing Packages */}
+            {/* Gypsum Types Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">💰 Bảng Giá Thi Công Trần Thạch Cao</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Loại Hình & Báo Giá
+                    </h2>
                     <p className="section-subtitle">
-                        Báo giá chi tiết 3 gói dịch vụ phù hợp mọi nhu cầu và ngân sách
+                        3 loại hình thạch cao phổ biến
                     </p>
 
                     <div className="tabs">
-                        {pricingData.map(pkg => (
+                        {gypsumTypes.map(type => (
                             <button
-                                key={pkg.id}
-                                className={`tab ${activeTab === pkg.id ? 'active' : ''}`}
-                                onClick={() => setActiveTab(pkg.id)}
+                                key={type.id}
+                                className={`tab ${activeTab === type.id ? 'active' : ''}`}
+                                onClick={() => setActiveTab(type.id)}
                             >
-                                {pkg.name}
+                                {type.name}
                             </button>
                         ))}
                     </div>
 
-                    <div className="pricing-grid">
-                        {pricingData.map(pkg => (
-                            <div 
-                                key={pkg.id} 
-                                className={`pricing-card ${activeTab === pkg.id ? 'active' : ''}`}
-                                style={{ display: activeTab === pkg.id ? 'block' : 'none' }}
+                    {currentType && (
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}
                             >
-                                <div 
-                                    className="pricing-header"
-                                    style={{ background: `linear-gradient(135deg, ${pkg.bgColor}, ${pkg.bgColor}dd)` }}
-                                >
-                                    <h3>{pkg.name}</h3>
-                                    <div className="pricing-price">{pkg.price}</div>
-                                    <p>{pkg.description}</p>
+                                <h3>{currentType.name}</h3>
+                                <div className="price-range">{currentType.price}</div>
+                                <p>{currentType.description}</p>
+                            </div>
+
+                            <div className="detail-content grid-layout">
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Đặc điểm:</h4>
+                                    <ul className="info-list">
+                                        {currentType.features.map((feature, index) => (
+                                            <li key={index}>
+                                                <i className="fas fa-check"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
 
-                                <div className="pricing-body">
-                                    <div className="pricing-features">
-                                        <h4>✨ Bao gồm:</h4>
-                                        <ul>
-                                            {pkg.features.map((feature, index) => (
-                                                <li key={index}>
-                                                    <i className="fas fa-check"></i>
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="suitable-for">
-                                        <h4>🏠 Phù hợp:</h4>
-                                        <div className="tags">
-                                            {pkg.suitable.map((item, index) => (
-                                                <span key={index} className="tag">{item}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div className="pricing-actions">
-                                        <a href="/lien-he" className="btn btn-primary">
-                                            <i className="fas fa-phone"></i>
-                                            Liên Hệ Báo Giá
-                                        </a>
-                                        <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                            <i className="fas fa-calculator"></i>
-                                            Tính Chi Phí
-                                        </a>
+                                <div className="info-section">
+                                    <h4><i className="fas fa-list"></i> Phân loại & giá:</h4>
+                                    <div className="item-list">
+                                        {currentType.types.map((item, index) => (
+                                            <div key={index} className="item-card-extended">
+                                                <span className="item-type">{item.type}</span>
+                                                <div className="item-specs">
+                                                    <span className="item-size">{item.feature}</span>
+                                                    <span className="item-price-extended">{item.price}</span>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-eye"></i>
+                                        Xem Mẫu Thiết Kế
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </section>
 
-            {/* Construction Process */}
+            {/* Installation Process */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Thi Công Chuẩn</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Thi Công
+                    </h2>
                     <p className="section-subtitle">
-                        5 bước thi công chuyên nghiệp đảm bảo chất lượng và tiến độ
+                        5 bước thi công trần thạch cao chuyên nghiệp
                     </p>
 
                     <div className="process-timeline">
-                        {processSteps.map((step, index) => (
+                        {installationSteps.map((step, index) => (
                             <div key={index} className="process-step">
                                 <div className="step-number">
                                     <i className={step.icon}></i>
@@ -284,57 +419,129 @@ const TranVachThachCaoPage = () => {
                 </div>
             </section>
 
-            {/* Material Comparison */}
+            {/* Board Types */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🧱 So Sánh Vật Liệu Thạch Cao</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-th icon-materials"></i>
+                        Các Loại Tấm Thạch Cao
+                    </h2>
                     <p className="section-subtitle">
-                        Chọn loại thạch cao phù hợp với ngân sách và yêu cầu chất lượng
+                        Chọn loại tấm phù hợp với mục đích
                     </p>
 
-                    <div className="materials-grid grid-3">
-                        {materials.map((material, index) => (
-                            <div key={index} className="material-card card">
-                                <div className="card-header">
-                                    <h3>{material.name}</h3>
-                                    <div className="material-price">{material.price}</div>
-                                    <div className="rating">
-                                        {[...Array(5)].map((_, i) => (
-                                            <i 
-                                                key={i} 
-                                                className={`fas fa-star ${i < material.rating ? 'active' : ''}`}
-                                            ></i>
-                                        ))}
-                                    </div>
-                                </div>
+                    <div className="grid-4">
+                        {boardTypes.map((board, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={board.icon}></i>
+                                    {board.type}
+                                </h3>
+                                <p><strong>Thương hiệu:</strong> {board.brand}</p>
+                                <p><strong>Độ dày:</strong> {board.thickness}</p>
+                                <h4>Ứng dụng:</h4>
+                                <ul>
+                                    {board.uses.map((use, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {use}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="standard">{board.price}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                                <div className="card-body">
-                                    <div className="pros-cons">
-                                        <div className="pros">
-                                            <h4>👍 Ưu điểm:</h4>
-                                            <ul>
-                                                {material.pros.map((pro, i) => (
-                                                    <li key={i}>
-                                                        <i className="fas fa-plus"></i>
-                                                        {pro}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+            {/* Design Styles */}
+            <section className="section section-gradient">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-palette icon-design"></i>
+                        Phong Cách Thiết Kế
+                    </h2>
+                    <p className="section-subtitle">
+                        Các phong cách trần thạch cao phổ biến
+                    </p>
 
-                                        <div className="cons">
-                                            <h4>👎 Nhược điểm:</h4>
-                                            <ul>
-                                                {material.cons.map((con, i) => (
-                                                    <li key={i}>
-                                                        <i className="fas fa-minus"></i>
-                                                        {con}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div className="grid-4">
+                        {designStyles.map((style, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={style.icon}></i>
+                                    {style.style}
+                                </h3>
+                                <p>{style.description}</p>
+                                <h4>Phù hợp:</h4>
+                                <ul>
+                                    {style.spaces.map((space, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-dot-circle"></i>
+                                            {space}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="standard">{style.price}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Benefits */}
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-star icon-quality"></i>
+                        Ưu Điểm Thạch Cao
+                    </h2>
+                    <p className="section-subtitle">
+                        Lợi ích của trần vách thạch cao
+                    </p>
+
+                    <div className="grid-4">
+                        {benefits.map((benefit, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: benefit.color }}>
+                                    <i className={benefit.icon}></i>
+                                    {benefit.title}
+                                </h3>
+                                <p>{benefit.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Maintenance Tips */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb icon-tips"></i>
+                        Hướng Dẫn Bảo Dưỡng
+                    </h2>
+                    <p className="section-subtitle">
+                        Giữ trần thạch cao bền đẹp
+                    </p>
+
+                    <div className="grid-3">
+                        {maintenanceTips.map((tip, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={tip.icon}></i>
+                                    {tip.category}
+                                </h3>
+                                <ul>
+                                    {tip.tips.map((t, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {t}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="frequency-badge">{tip.frequency}</span>
                             </div>
                         ))}
                     </div>
@@ -342,19 +549,25 @@ const TranVachThachCaoPage = () => {
             </section>
 
             {/* FAQ Section */}
-            <section className="section section-alt">
+            <section className="faq-section">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về trần thạch cao
+                    </p>
+
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

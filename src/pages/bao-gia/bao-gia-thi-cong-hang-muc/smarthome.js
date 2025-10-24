@@ -1,7 +1,7 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/smarthome.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
 const SmarthomePage = () => {
     const [activeTab, setActiveTab] = useState('basic');
@@ -27,7 +27,7 @@ const SmarthomePage = () => {
                 'Cảm biến PIR',
                 'Hub điều khiển trung tâm'
             ],
-            suitable: ['Căn hộ chung cư', 'Nhà phố nhỏ', 'Văn phòng'],
+            suitable: ['Căn hộ chung cư', 'Nhà phố nhỏ', 'Văn phòng nhỏ'],
             bgColor: '#10b981'
         },
         {
@@ -79,7 +79,7 @@ const SmarthomePage = () => {
         }
     ];
 
-    // Smart systems categories
+    // Smart systems
     const smartSystems = [
         {
             category: 'Chiếu Sáng Thông Minh',
@@ -125,7 +125,7 @@ const SmarthomePage = () => {
         }
     ];
 
-    // Installation process
+    // Installation steps
     const installationSteps = [
         {
             step: 1,
@@ -137,125 +137,137 @@ const SmarthomePage = () => {
         {
             step: 2,
             title: 'Thiết Kế Hệ Thống',
-            description: 'Thiết kế sơ đồ, chọn thiết bị, lập báo giá chi tiết',
-            duration: '3-5 ngày',
+            description: 'Thiết kế sơ đồ, chọn thiết bị, lập dự toán chi tiết',
+            duration: '2-3 ngày',
             icon: 'fas fa-drafting-compass'
         },
         {
             step: 3,
-            title: 'Thi Công & Lắp Đặt',
-            description: 'Lắp đặt thiết bị, đi dây điện, kết nối mạng',
-            duration: '3-10 ngày',
+            title: 'Lắp Đặt Thiết Bị',
+            description: 'Lắp đặt các thiết bị thông minh, kéo dây, đấu nối',
+            duration: '3-7 ngày',
             icon: 'fas fa-tools'
         },
         {
             step: 4,
             title: 'Cấu Hình & Kết Nối',
-            description: 'Cấu hình hệ thống, kết nối các thiết bị, test',
+            description: 'Cấu hình thiết bị, kết nối mạng, tích hợp các hệ thống',
             duration: '1-2 ngày',
-            icon: 'fas fa-cog'
+            icon: 'fas fa-cogs'
         },
         {
             step: 5,
-            title: 'Hướng Dẫn & Bàn Giao',
-            description: 'Hướng dẫn sử dụng app, bàn giao tài liệu',
+            title: 'Chạy Thử & Bàn Giao',
+            description: 'Test hệ thống, hướng dẫn sử dụng, bàn giao tài liệu',
             duration: '1 ngày',
-            icon: 'fas fa-graduation-cap'
+            icon: 'fas fa-check-circle'
         }
     ];
 
-    // Brand comparison
-    const brands = [
+    // Benefits
+    const benefits = [
         {
-            name: 'Aqara (Xiaomi)',
-            origin: 'Trung Quốc',
-            priceRange: 'Bình dân',
-            pros: ['Giá hợp lý', 'Đa dạng sản phẩm', 'App dễ dùng'],
-            cons: ['Server Trung Quốc', 'Hỗ trợ tiếng Việt hạn chế'],
-            rating: 4
+            title: 'Tiện Nghi & Thoải Mái',
+            description: 'Điều khiển mọi thiết bị từ xa, tự động hóa theo lịch',
+            icon: 'fas fa-mobile-alt',
+            color: '#3b82f6'
         },
         {
-            name: 'BKAV SmartHome',
-            origin: 'Việt Nam',
-            priceRange: 'Trung cấp',
-            pros: ['Made in Vietnam', 'Hỗ trợ tốt', 'Tích hợp AI'],
-            cons: ['Ít sản phẩm', 'Giá cao hơn Xiaomi'],
-            rating: 4.5
+            title: 'An Toàn & Bảo Mật',
+            description: 'Giám sát 24/7, cảnh báo ngay khi có xâm nhập',
+            icon: 'fas fa-shield-alt',
+            color: '#ef4444'
         },
         {
-            name: 'Schneider KNX',
-            origin: 'Pháp',
-            priceRange: 'Cao cấp',
-            pros: ['Chuẩn châu Âu', 'Độ bền cao', 'Chuyên nghiệp'],
-            cons: ['Giá rất đắt', 'Phức tạp', 'Cần kỹ thuật cao'],
-            rating: 5
+            title: 'Tiết Kiệm Năng Lượng',
+            description: 'Tối ưu điện năng, giảm 20-30% hóa đơn điện',
+            icon: 'fas fa-leaf',
+            color: '#10b981'
+        },
+        {
+            title: 'Tăng Giá Trị BĐS',
+            description: 'Nhà có smarthome có giá trị cao hơn 5-10%',
+            icon: 'fas fa-home',
+            color: '#f59e0b'
         }
     ];
 
     // FAQ data
     const faqData = [
         {
-            question: 'Smarthome có tiết kiệm điện không?',
-            answer: 'Có, hệ thống smarthome có thể tiết kiệm 15-30% điện năng nhờ tự động tắt/mở thiết bị theo lịch và tối ưu hóa hoạt động.'
+            question: 'Smarthome có phức tạp không? Người già có dùng được?',
+            answer: 'Smarthome hiện đại rất dễ dùng với app trực quan, voice control. Người già có thể điều khiển bằng giọng nói hoặc remote đơn giản. Chúng tôi sẽ hướng dẫn kỹ và thiết lập sẵn các scenario thường dùng.'
         },
         {
-            question: 'Có thể nâng cấp dần từng phần không?',
-            answer: 'Có thể. Nên bắt đầu từ chiếu sáng thông minh, sau đó mở rộng dần an ninh, điều hòa, rèm cửa theo nhu cầu và ngân sách.'
+            question: 'Chi phí smarthome cho căn hộ 100m² bao nhiêu?',
+            answer: 'Gói cơ bản: 15-25 triệu (chiếu sáng + camera + điều hòa). Gói cao cấp: 35-55 triệu (full tính năng). Gói luxury: 80-150 triệu (KNX, AI, home theater). Tùy nhu cầu và ngân sách.'
+        },
+        {
+            question: 'Có thể nâng cấp dần được không?',
+            answer: 'Hoàn toàn được. Nên bắt đầu từ chiếu sáng thông minh, sau đó mở rộng dần an ninh, điều hòa, rèm cửa theo nhu cầu và ngân sách. Hệ thống được thiết kế để dễ dàng mở rộng.'
         },
         {
             question: 'Hệ thống có hoạt động khi mất internet?',
-            answer: 'Các chức năng cơ bản vẫn hoạt động. Chỉ điều khiển từ xa và một số tính năng AI cần internet mới bị ảnh hưởng.'
+            answer: 'Các chức năng cơ bản (bật/tắt đèn, điều hòa) vẫn hoạt động bình thường. Chỉ điều khiển từ xa và một số tính năng AI cần internet mới bị ảnh hưởng. Hệ thống hoạt động độc lập trong mạng LAN.'
+        },
+        {
+            question: 'Thời gian lắp đặt smarthome mất bao lâu?',
+            answer: 'Căn hộ 100m² gói cơ bản: 3-5 ngày. Gói cao cấp: 5-10 ngày. Biệt thự gói luxury: 10-20 ngày. Bao gồm lắp đặt, cấu hình, test và hướng dẫn sử dụng.'
         },
         {
             question: 'Chi phí vận hành hàng tháng như thế nào?',
-            answer: 'Rất thấp, chủ yếu là tiền điện cho các thiết bị (50,000-200,000 VNĐ/tháng) và chi phí internet nếu có.'
+            answer: 'Rất thấp, chủ yếu là tiền điện cho các thiết bị (50,000-200,000 VNĐ/tháng) và chi phí internet nếu có. Không có phí duy trì hệ thống. Tiết kiệm điện còn giúp giảm hóa đơn tổng thể.'
         }
     ];
 
     const currentPackage = smarthomePackages.find(pkg => pkg.id === activeTab);
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🏡 Báo Giá Thi Công Smarthome (Nhà Thông Minh) 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết thi công hệ thống nhà thông minh 
-                            tại Hà Nội & Nha Trang. Tiện nghi - An toàn - Hiện đại.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-mobile-alt"></i>
-                                <span>Điều Khiển Từ Xa</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-robot"></i>
-                                <span>Tự Động Hóa AI</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-shield-alt"></i>
-                                <span>An Ninh Thông Minh</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-leaf"></i>
-                                <span>Tiết Kiệm Năng Lượng</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-home icon-construction"></i>
+                        Báo Giá Smarthome - Nhà Thông Minh
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công hệ thống nhà thông minh tiện nghi, an toàn, hiện đại
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-mobile-alt"></i>
+                            <span>Điều Khiển Từ Xa</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-robot"></i>
+                            <span>Tự Động Hóa AI</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-shield-alt icon-safety"></i>
+                            <span>An Ninh Thông Minh</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-leaf icon-eco"></i>
+                            <span>Tiết Kiệm Năng Lượng</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Smarthome Packages */}
+            {/* Smarthome Packages Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🏠 Gói Smarthome & Báo Giá</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Gói Smarthome & Báo Giá
+                    </h2>
                     <p className="section-subtitle">
-                        3 gói smarthome phù hợp mọi quy mô và ngân sách
+                        3 gói smarthome phù hợp mọi quy mô
                     </p>
 
                     <div className="tabs">
@@ -271,17 +283,20 @@ const SmarthomePage = () => {
                     </div>
 
                     {currentPackage && (
-                        <div className="smarthome-detail">
-                            <div className="detail-header" style={{ background: `linear-gradient(135deg, ${currentPackage.bgColor}, ${currentPackage.bgColor}dd)` }}>
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentPackage.bgColor}, ${currentPackage.bgColor}dd)` }}
+                            >
                                 <h3>{currentPackage.name}</h3>
                                 <div className="price-range">{currentPackage.price}</div>
                                 <p>{currentPackage.description}</p>
                             </div>
 
-                            <div className="detail-content grid-2">
-                                <div className="features-section">
-                                    <h4>✨ Chức năng:</h4>
-                                    <ul className="features-list">
+                            <div className="detail-content grid-layout">
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Tính năng:</h4>
+                                    <ul className="info-list">
                                         {currentPackage.features.map((feature, index) => (
                                             <li key={index}>
                                                 <i className="fas fa-check"></i>
@@ -291,37 +306,36 @@ const SmarthomePage = () => {
                                     </ul>
                                 </div>
 
-                                <div className="devices-section">
-                                    <h4>📱 Thiết bị:</h4>
-                                    <ul className="devices-list">
+                                <div className="info-section">
+                                    <h4><i className="fas fa-microchip"></i> Thiết bị:</h4>
+                                    <ul className="info-list">
                                         {currentPackage.devices.map((device, index) => (
                                             <li key={index}>
-                                                <i className="fas fa-microchip"></i>
+                                                <i className="fas fa-check"></i>
                                                 {device}
                                             </li>
                                         ))}
                                     </ul>
+                                    <h4 style={{ marginTop: '1rem' }}>Phù hợp:</h4>
+                                    <div className="tags">
+                                        {currentPackage.suitable.map((s, i) => (
+                                            <span key={i} className="tag">{s}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="suitable-for">
-                                <h4>🏠 Phù hợp:</h4>
-                                <div className="tags">
-                                    {currentPackage.suitable.map((item, index) => (
-                                        <span key={index} className="tag">{item}</span>
-                                    ))}
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-calculator"></i>
+                                        Tư Vấn Giải Pháp
+                                    </a>
                                 </div>
-                            </div>
-
-                            <div className="detail-actions">
-                                <a href="/lien-he" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Liên Hệ Báo Giá
-                                </a>
-                                <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                    <i className="fas fa-eye"></i>
-                                    Demo Trải Nghiệm
-                                </a>
                             </div>
                         </div>
                     )}
@@ -331,37 +345,57 @@ const SmarthomePage = () => {
             {/* Smart Systems */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🔧 Hạng Mục Smarthome</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-cogs icon-construction"></i>
+                        Các Hệ Thống Thông Minh
+                    </h2>
                     <p className="section-subtitle">
-                        Các hệ thống thông minh phổ biến trong nhà
+                        Các giải pháp smarthome phổ biến
                     </p>
 
-                    <div className="systems-grid grid-3">
+                    <div className="grid-3">
                         {smartSystems.map((system, index) => (
-                            <div key={index} className="system-card card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className={system.icon}></i>
-                                        {system.category}
-                                    </h3>
-                                    <p>{system.description}</p>
-                                </div>
-                                <div className="card-body">
-                                    <div className="system-devices">
-                                        <h4>Thiết bị:</h4>
-                                        <ul>
-                                            {system.devices.map((device, i) => (
-                                                <li key={i}>
-                                                    <i className="fas fa-dot-circle"></i>
-                                                    {device}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="system-price">
-                                        <strong>{system.price}</strong>
-                                    </div>
-                                </div>
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={system.icon}></i>
+                                    {system.category}
+                                </h3>
+                                <p>{system.description}</p>
+                                <h4>Thiết bị:</h4>
+                                <ul>
+                                    {system.devices.map((device, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-dot-circle"></i>
+                                            {device}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="standard">{system.price}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Benefits */}
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-star icon-quality"></i>
+                        Lợi Ích Smarthome
+                    </h2>
+                    <p className="section-subtitle">
+                        Tại sao nên có nhà thông minh
+                    </p>
+
+                    <div className="grid-4">
+                        {benefits.map((benefit, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: benefit.color }}>
+                                    <i className={benefit.icon}></i>
+                                    {benefit.title}
+                                </h3>
+                                <p>{benefit.description}</p>
                             </div>
                         ))}
                     </div>
@@ -369,11 +403,14 @@ const SmarthomePage = () => {
             </section>
 
             {/* Installation Process */}
-            <section className="section">
+            <section className="section section-gradient">
                 <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Thi Công</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Triển Khai
+                    </h2>
                     <p className="section-subtitle">
-                        5 bước triển khai hệ thống smarthome chuyên nghiệp
+                        5 bước triển khai smarthome chuyên nghiệp
                     </p>
 
                     <div className="process-timeline">
@@ -397,79 +434,26 @@ const SmarthomePage = () => {
                 </div>
             </section>
 
-            {/* Brand Comparison */}
-            <section className="section section-alt">
+            {/* FAQ Section */}
+            <section className="faq-section">
                 <div className="container">
-                    <h2 className="section-title">🏷️ So Sánh Thương Hiệu</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
                     <p className="section-subtitle">
-                        So sánh các thương hiệu smarthome phổ biến
+                        Giải đáp thắc mắc về smarthome
                     </p>
 
-                    <div className="brands-grid grid-3">
-                        {brands.map((brand, index) => (
-                            <div key={index} className="brand-card card">
-                                <div className="card-header">
-                                    <h3>{brand.name}</h3>
-                                    <div className="brand-info">
-                                        <span className="origin">Xuất xứ: {brand.origin}</span>
-                                        <span className="price-range">Giá: {brand.priceRange}</span>
-                                    </div>
-                                    <div className="rating">
-                                        {[...Array(5)].map((_, i) => (
-                                            <i 
-                                                key={i} 
-                                                className={`fas fa-star ${i < brand.rating ? 'active' : ''}`}
-                                            ></i>
-                                        ))}
-                                        <span>{brand.rating}/5</span>
-                                    </div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="pros-cons">
-                                        <div className="pros">
-                                            <h4>👍 Ưu điểm:</h4>
-                                            <ul>
-                                                {brand.pros.map((pro, i) => (
-                                                    <li key={i}>
-                                                        <i className="fas fa-plus"></i>
-                                                        {pro}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="cons">
-                                            <h4>👎 Nhược điểm:</h4>
-                                            <ul>
-                                                {brand.cons.map((con, i) => (
-                                                    <li key={i}>
-                                                        <i className="fas fa-minus"></i>
-                                                        {con}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* FAQ Section */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

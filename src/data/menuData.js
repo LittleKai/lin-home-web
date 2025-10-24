@@ -41,7 +41,7 @@ export const menuData = {
         },
         {
             title: 'Thi công hạng mục',
-            path: '/thi-cong/thi-cong-hang-muc',
+            href: '/thi-cong/thi-cong-hang-muc',
             description: 'Thi công theo từng hạng mục cụ thể',
             icon: 'fas fa-tools',
             hasSubmenu: true,
@@ -116,7 +116,7 @@ export const menuData = {
         },
         {
             title: 'Thi công sửa chữa cải tạo',
-            path: '/thi-cong/sua-chua-cai-tao',
+            href: '/thi-cong/sua-chua-cai-tao',
             description: 'Sửa chữa, cải tạo, nâng cấp công trình',
             icon: 'fas fa-wrench',
             hasSubmenu: true,
@@ -169,7 +169,7 @@ export const menuData = {
     'Báo giá': [
         {
             title: 'Báo giá thiết kế, thi công nhà',
-            path: '/bao-gia/bao-gia-thiet-ke-thi-cong',
+            href: '/bao-gia/bao-gia-thiet-ke-thi-cong',
             description: 'Báo giá chi tiết cho dự án thiết kế và thi công nhà ở',
             icon: 'fas fa-home',
             hasSubmenu: true,
@@ -203,7 +203,7 @@ export const menuData = {
         {
             title: 'Báo giá thi công hạng mục',
             description: 'Báo giá 11 hạng mục thi công chuyên biệt',
-            path: '/bao-gia/bao-gia-thi-cong-hang-muc',
+            href: '/bao-gia/bao-gia-thi-cong-hang-muc',
             icon: 'fas fa-list-alt',
             hasSubmenu: true,
             submenu: [
@@ -277,7 +277,7 @@ export const menuData = {
         },
         {
             title: 'Báo giá sửa chữa cải tạo',
-            path: '/bao-gia/bao-gia-sua-chua-cai-tao',
+            href: '/bao-gia/bao-gia-sua-chua-cai-tao',
             icon: 'fas fa-tools',
             hasSubmenu: true,
             description: 'Báo giá chi tiết sửa chữa, cải tạo nhà trọn gói',

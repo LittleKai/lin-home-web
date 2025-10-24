@@ -1,7 +1,7 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/chong-tham.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
 const ChongThamPage = () => {
     const [activeTab, setActiveTab] = useState('wall');
@@ -39,44 +39,44 @@ const ChongThamPage = () => {
                 'Sơn PU đàn hồi',
                 'Xử lý khe co giãn',
                 'Bảo hành 3-5 năm',
-                'Chống nứt cao',
-                'Chống tia UV'
+                'Chống tia UV',
+                'Chịu nhiệt tốt'
             ],
             applications: [
-                { type: 'Mái sân thượng', price: '180-280K', method: 'Màng bitum' },
-                { type: 'Sàn WC', price: '120-180K', method: 'PU liquid' },
-                { type: 'Ban công', price: '150-220K', method: 'Acrylic membrane' }
+                { type: 'Mái sân thượng', price: '180-280K', method: 'Màng khò nóng' },
+                { type: 'Sàn WC', price: '120-180K', method: 'Vữa + màng' },
+                { type: 'Ban công', price: '150-220K', method: 'Sơn PU' }
             ],
-            bgColor: '#059669'
+            bgColor: '#0ea5e9'
         },
         {
             id: 'basement',
-            name: 'Chống Thấm Tầng Hầm',
-            price: '180,000 - 350,000 VNĐ/m²',
-            description: 'Chống thấm ngược, chống nước ngầm cho tầng hầm',
+            name: 'Chống Thấm Ngược',
+            price: '220,000 - 380,000 VNĐ/m²',
+            description: 'Chống thấm từ bên trong tầng hầm, hầm xe, công trình ngầm',
             features: [
-                'Vật liệu gốc xi măng',
-                'Chống nước ngầm áp lực cao',
-                'Công nghệ Crystalline',
-                'Bảo hành 5 năm',
-                'Thẩm thấu sâu',
-                'Tự lành vết nứt nhỏ'
+                'Hệ chống thấm áp lực ngược',
+                'Kháng áp lực nước cao',
+                'Keo chuyên dụng Sikadur',
+                'Bảo hành 5-7 năm',
+                'Không cần đào bới',
+                'Thi công nhanh'
             ],
             applications: [
-                { type: 'Tầng hầm gia đình', price: '180-250K', method: 'Xi măng polymer' },
-                { type: 'Hầm xe chung cư', price: '220-300K', method: 'Crystalline + membrane' },
-                { type: 'Basement cao cấp', price: '280-350K', method: 'Hệ 3 lớp' }
+                { type: 'Tầng hầm', price: '220-320K', method: 'Crystalline' },
+                { type: 'Hầm xe', price: '250-350K', method: 'Epoxy injection' },
+                { type: 'Hố thang máy', price: '280-380K', method: 'Membrane system' }
             ],
             bgColor: '#7c3aed'
         }
     ];
 
-    // Installation process
+    // Installation steps
     const installationSteps = [
         {
             step: 1,
-            title: 'Khảo Sát Tình Trạng',
-            description: 'Xác định nguyên nhân thấm, mức độ hư hỏng, đề xuất giải pháp',
+            title: 'Khảo Sát & Tìm Nguyên Nhân',
+            description: 'Kiểm tra kỹ nguồn gốc thấm dột, đánh giá mức độ hư hỏng',
             duration: '0.5-1 ngày',
             icon: 'fas fa-search'
         },
@@ -110,7 +110,7 @@ const ChongThamPage = () => {
         }
     ];
 
-    // Waterproofing materials
+    // Waterproofing materials/brands
     const materials = [
         {
             brand: 'Sika (Thụy Sĩ)',
@@ -121,7 +121,8 @@ const ChongThamPage = () => {
             ],
             pros: ['Chất lượng cao', 'Bền lâu', 'Công nghệ tiên tiến'],
             priceRange: 'Cao',
-            warranty: '5-7 năm'
+            warranty: '5-7 năm',
+            icon: 'fas fa-award'
         },
         {
             brand: 'Kova (Việt Nam)',
@@ -132,7 +133,8 @@ const ChongThamPage = () => {
             ],
             pros: ['Giá hợp lý', 'Phù hợp khí hậu VN', 'Hỗ trợ tốt'],
             priceRange: 'Trung bình',
-            warranty: '3-5 năm'
+            warranty: '3-5 năm',
+            icon: 'fas fa-certificate'
         },
         {
             brand: 'Neomax (Hàn Quốc)',
@@ -143,7 +145,8 @@ const ChongThamPage = () => {
             ],
             pros: ['Tính năng tốt', 'Giá cạnh tranh', 'Dễ thi công'],
             priceRange: 'Trung bình',
-            warranty: '3-5 năm'
+            warranty: '3-5 năm',
+            icon: 'fas fa-medal'
         }
     ];
 
@@ -183,68 +186,81 @@ const ChongThamPage = () => {
     const faqData = [
         {
             question: 'Chống thấm có bền lâu không?',
-            answer: 'Nếu thi công đúng kỹ thuật và sử dụng vật liệu chất lượng, chống thấm có thể bền 5-10 năm. Cần bảo dưỡng định kỳ và kiểm tra hàng năm.'
+            answer: 'Nếu thi công đúng kỹ thuật và sử dụng vật liệu chất lượng, chống thấm có thể bền 5-10 năm. Cần bảo dưỡng định kỳ và kiểm tra hàng năm, đặc biệt sau mùa mưa.'
         },
         {
             question: 'Tại sao nhà vẫn thấm sau khi đã chống thấm?',
-            answer: 'Có thể do: chưa xử lý triệt để nguyên nhân, chất lượng vật liệu kém, thi công không đúng kỹ thuật, hoặc có vết nứt mới xuất hiện.'
+            answer: 'Có thể do: chưa xử lý triệt để nguyên nhân, chất lượng vật liệu kém, thi công không đúng kỹ thuật, hoặc có vết nứt mới xuất hiện do lún móng. Cần khảo sát lại để tìm nguyên nhân.'
         },
         {
-            question: 'Chi phí chống thấm toàn bộ nhà bao nhiều?',
-            answer: 'Nhà 4 tầng (80m²): mái + sân thượng khoảng 15-25 triệu, tường ngoài 10-18 triệu, phòng tắm 3-5 triệu/phòng.'
+            question: 'Chi phí chống thấm toàn bộ nhà bao nhiêu?',
+            answer: 'Nhà 4 tầng (80m²/tầng): mái + sân thượng khoảng 15-25 triệu, tường ngoài 10-18 triệu, phòng tắm 3-5 triệu/phòng, tùy vào mức độ hư hỏng và vật liệu sử dụng.'
         },
         {
             question: 'Có cần đục phá để chống thấm không?',
-            answer: 'Tùy mức độ hư hỏng. Chống thấm ngoài chỉ cần làm sạch bề mặt. Chống thấm trong có thể cần đục bỏ lớp hoàn thiện cũ.'
+            answer: 'Tùy mức độ hư hỏng. Chống thấm ngoài chỉ cần làm sạch bề mặt. Chống thấm trong (như phòng tắm) có thể cần đục bỏ lớp hoàn thiện cũ để xử lý tận gốc.'
+        },
+        {
+            question: 'Thời gian thi công chống thấm mất bao lâu?',
+            answer: 'Mái sân thượng 60m²: 3-5 ngày. Tường ngoài: 5-7 ngày. Phòng tắm: 3-4 ngày. Tầng hầm: 7-15 ngày. Bao gồm cả thời gian khô và dưỡng hộ vật liệu.'
+        },
+        {
+            question: 'Có thể tự chống thấm được không?',
+            answer: 'Có thể với các vị trí đơn giản như tường trong nhà. Tuy nhiên, các vị trí quan trọng như mái, tầng hầm, sàn nhà vệ sinh nên thuê thợ chuyên nghiệp để đảm bảo chất lượng và có bảo hành.'
         }
     ];
 
     const currentType = waterproofTypes.find(type => type.id === activeTab);
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🧱 Báo Giá Thi Công Chống Thấm 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết chống thấm tường, sàn, mái, tầng hầm 
-                            tại Hà Nội & Nha Trang. Hiệu quả - Bền lâu - Giá hợp lý.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-shield-alt"></i>
-                                <span>Chống Thấm Triệt Để</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-award"></i>
-                                <span>Vật Liệu Chính Hãng</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-tools"></i>
-                                <span>Thi Công Chuyên Nghiệp</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-clock"></i>
-                                <span>Bảo Hành 2-5 Năm</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-droplet icon-water"></i>
+                        Báo Giá Chống Thấm
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công chống thấm tường, mái, sàn, tầng hầm chuyên nghiệp
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-shield-alt icon-safety"></i>
+                            <span>Bảo Vệ Công Trình</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-certificate icon-quality"></i>
+                            <span>Bảo Hành Dài Hạn</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-user-tie"></i>
+                            <span>Thợ Chuyên Nghiệp</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-check-circle icon-quality"></i>
+                            <span>Cam Kết Chất Lượng</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Waterproofing Types */}
+            {/* Waterproofing Types Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🛡️ Loại Chống Thấm & Báo Giá</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Loại Hình Chống Thấm & Báo Giá
+                    </h2>
                     <p className="section-subtitle">
-                        3 loại chống thấm chuyên biệt cho từng hạng mục
+                        Giải pháp chống thấm cho từng vị trí cụ thể
                     </p>
 
+                    {/* Tabs */}
                     <div className="tabs">
                         {waterproofTypes.map(type => (
                             <button
@@ -257,18 +273,23 @@ const ChongThamPage = () => {
                         ))}
                     </div>
 
+                    {/* Detail Card */}
                     {currentType && (
-                        <div className="waterproof-detail">
-                            <div className="detail-header" style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}>
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}
+                            >
                                 <h3>{currentType.name}</h3>
                                 <div className="price-range">{currentType.price}</div>
                                 <p>{currentType.description}</p>
                             </div>
 
-                            <div className="detail-content grid-2">
-                                <div className="features-section">
-                                    <h4>✨ Đặc điểm:</h4>
-                                    <ul className="features-list">
+                            <div className="detail-content grid-layout">
+                                {/* Features Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Đặc điểm:</h4>
+                                    <ul className="info-list">
                                         {currentType.features.map((feature, index) => (
                                             <li key={index}>
                                                 <i className="fas fa-check"></i>
@@ -278,84 +299,50 @@ const ChongThamPage = () => {
                                     </ul>
                                 </div>
 
-                                <div className="applications-section">
-                                    <h4>🏠 Ứng dụng & giá:</h4>
-                                    <div className="applications-list">
+                                {/* Applications Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-home"></i> Ứng dụng & giá:</h4>
+                                    <div className="item-list">
                                         {currentType.applications.map((app, index) => (
-                                            <div key={index} className="application-item">
-                                                <div className="app-type">{app.type}</div>
-                                                <div className="app-method">{app.method}</div>
-                                                <div className="app-price">{app.price}/m²</div>
+                                            <div key={index} className="item-card-extended">
+                                                <span className="item-type">{app.type}</span>
+                                                <div className="item-specs">
+                                                    <span className="item-size">Phương pháp: {app.method}</span>
+                                                    <span className="item-price-extended">{app.price}/m²</span>
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="detail-actions">
-                                <a href="/lien-he" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Liên Hệ Báo Giá
-                                </a>
-                                <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                    <i className="fas fa-search"></i>
-                                    Khảo Sát Miễn Phí
-                                </a>
+                            {/* Action Buttons */}
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-calculator"></i>
+                                        Tính Chi Phí
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     )}
                 </div>
             </section>
 
-            {/* Common Problems */}
+            {/* Installation Process */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">⚠️ Vấn Đề Thấm Thường Gặp</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Thi Công
+                    </h2>
                     <p className="section-subtitle">
-                        Các vấn đề thấm dột phổ biến và giải pháp xử lý
-                    </p>
-
-                    <div className="problems-grid grid-4">
-                        {commonProblems.map((problem, index) => (
-                            <div key={index} className="problem-card card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className={problem.icon}></i>
-                                        {problem.problem}
-                                    </h3>
-                                </div>
-                                <div className="card-body">
-                                    <div className="causes">
-                                        <h4>🔍 Nguyên nhân:</h4>
-                                        <ul>
-                                            {problem.causes.map((cause, i) => (
-                                                <li key={i}>
-                                                    <i className="fas fa-dot-circle"></i>
-                                                    {cause}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="solution">
-                                        <h4>💡 Giải pháp:</h4>
-                                        <p>{problem.solution}</p>
-                                    </div>
-                                    <div className="problem-price">
-                                        <strong>{problem.price}</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Installation Process */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Thi Công</h2>
-                    <p className="section-subtitle">
-                        5 bước thi công chống thấm chuyên nghiệp
+                        5 bước chống thấm đảm bảo chất lượng
                     </p>
 
                     <div className="process-timeline">
@@ -379,42 +366,39 @@ const ChongThamPage = () => {
                 </div>
             </section>
 
-            {/* Materials Comparison */}
-            <section className="section section-alt">
+            {/* Materials/Brands */}
+            <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🧪 So Sánh Vật Liệu</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-box icon-materials"></i>
+                        Vật Liệu Chống Thấm
+                    </h2>
                     <p className="section-subtitle">
-                        So sánh các thương hiệu vật liệu chống thấm uy tín
+                        Các thương hiệu uy tín trên thị trường
                     </p>
 
-                    <div className="materials-grid grid-3">
+                    <div className="grid-3">
                         {materials.map((material, index) => (
-                            <div key={index} className="material-card card">
-                                <div className="card-header">
-                                    <h3>{material.brand}</h3>
-                                    <div className="price-range">Giá: {material.priceRange}</div>
-                                    <div className="warranty">BH: {material.warranty}</div>
-                                </div>
-                                <div className="card-body">
-                                    <div className="products">
-                                        <h4>📦 Sản phẩm:</h4>
-                                        <ul>
-                                            {material.products.map((product, i) => (
-                                                <li key={i}>
-                                                    <i className="fas fa-box"></i>
-                                                    {product}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    <div className="pros">
-                                        <h4>👍 Ưu điểm:</h4>
-                                        <div className="tags">
-                                            {material.pros.map((pro, i) => (
-                                                <span key={i} className="tag">{pro}</span>
-                                            ))}
-                                        </div>
-                                    </div>
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={material.icon}></i>
+                                    {material.brand}
+                                </h3>
+                                <p className="subtitle">Bảo hành: {material.warranty}</p>
+                                <h4>Sản phẩm:</h4>
+                                <ul>
+                                    {material.products.map((product, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-box"></i>
+                                            {product}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <h4>Ưu điểm:</h4>
+                                <div className="tags">
+                                    {material.pros.map((pro, i) => (
+                                        <span key={i} className="tag">{pro}</span>
+                                    ))}
                                 </div>
                             </div>
                         ))}
@@ -422,20 +406,62 @@ const ChongThamPage = () => {
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="section">
+            {/* Common Problems */}
+            <section className="section section-gradient">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <h2 className="section-title">
+                        <i className="fas fa-wrench icon-construction"></i>
+                        Vấn Đề Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Nguyên nhân và giải pháp chống thấm
+                    </p>
+
+                    <div className="grid-4">
+                        {commonProblems.map((item, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={item.icon}></i>
+                                    {item.problem}
+                                </h3>
+                                <h4>Nguyên nhân:</h4>
+                                <ul>
+                                    {item.causes.map((cause, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {cause}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <h4>Giải pháp:</h4>
+                                <p>{item.solution}</p>
+                                <span className="standard">Chi phí: {item.price}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* FAQ Section */}
+            <section className="faq-section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về chống thấm
+                    </p>
+
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

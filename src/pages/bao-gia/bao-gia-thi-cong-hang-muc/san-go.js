@@ -1,13 +1,13 @@
 // src/pages/bao-gia/bao-gia-thi-cong-hang-muc/san-go.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
 const SanGoPage = () => {
     const [activeTab, setActiveTab] = useState('industrial');
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Pricing data for flooring
+    // Pricing data for flooring types
     const flooringTypes = [
         {
             id: 'industrial',
@@ -36,36 +36,36 @@ const SanGoPage = () => {
             description: 'Gỗ tự nhiên cao cấp: sồi, căm xe, lim, teak',
             features: [
                 'Gỗ tự nhiên loại A 15-18mm',
-                'Xử lý chống mối mọt',
-                'Sơn PU hoặc UV cao cấp',
-                'Phào gỗ tự nhiên đồng bộ',
+                'Xử lý chống mối mọt, chống cong vênh',
+                'Sơn PU hoặc dầu tự nhiên',
+                'Thi công chuyên nghiệp',
                 'Bảo hành 24-36 tháng'
             ],
             brands: [
-                { name: 'Gỗ Sồi Nga', price: '450,000 - 650,000 VNĐ/m²' },
-                { name: 'Gỗ Căm Xe', price: '550,000 - 800,000 VNĐ/m²' },
-                { name: 'Gỗ Lim Nam Phi', price: '650,000 - 950,000 VNĐ/m²' },
-                { name: 'Gỗ Teak Burma', price: '800,000 - 1,200,000 VNĐ/m²' }
+                { name: 'Gỗ Sồi Nga', price: '650,000 - 950,000 VNĐ/m²' },
+                { name: 'Gỗ Căm Xe', price: '550,000 - 850,000 VNĐ/m²' },
+                { name: 'Gỗ Lim Nam Phi', price: '800,000 - 1,200,000 VNĐ/m²' },
+                { name: 'Gỗ Teak', price: '900,000 - 1,200,000 VNĐ/m²' }
             ],
             bgColor: '#92400e'
         },
         {
-            id: 'luxury',
-            name: 'Sàn Gỗ Luxury (SPC/LVT)',
-            price: '320,000 - 850,000 VNĐ/m²',
-            description: 'Sàn gỗ SPC chống nước 100%, phù hợp mọi không gian',
+            id: 'spc',
+            name: 'Sàn Nhựa SPC',
+            price: '150,000 - 350,000 VNĐ/m²',
+            description: 'Sàn nhựa composite SPC chống nước 100%, an toàn',
             features: [
-                'Cốt SPC chống nước tuyệt đối',
-                'Bề mặt wear layer bền 20 năm',
-                'Cách âm tốt, êm ái',
-                'Lắp đặt nhanh, click lock',
-                'Bảo hành 15-25 năm'
+                'Chống nước 100%',
+                'Chống trầy xước tốt',
+                'Không chứa formaldehyde',
+                'Lắp đặt nhanh không keo',
+                'Bảo hành 15-20 năm'
             ],
             brands: [
-                { name: 'Floorpan SPC', price: '320,000 - 480,000 VNĐ/m²' },
-                { name: 'Aimyhome LVT', price: '380,000 - 550,000 VNĐ/m²' },
-                { name: 'Smartwood SPC', price: '420,000 - 650,000 VNĐ/m²' },
-                { name: 'Pergo Rigid Core', price: '550,000 - 850,000 VNĐ/m²' }
+                { name: 'Aimaru', price: '200,000 - 350,000 VNĐ/m²' },
+                { name: 'Railflex', price: '180,000 - 320,000 VNĐ/m²' },
+                { name: 'Galaxy', price: '150,000 - 280,000 VNĐ/m²' },
+                { name: 'Kosmos', price: '170,000 - 300,000 VNĐ/m²' }
             ],
             bgColor: '#059669'
         }
@@ -75,7 +75,7 @@ const SanGoPage = () => {
     const installationSteps = [
         {
             step: 1,
-            title: 'Chuẩn Bị Mặt Bằng',
+            title: 'Chuẩn Bị Nền',
             description: 'Vệ sinh nền, kiểm tra độ phẳng, độ ẩm, xử lý khuyết tật',
             duration: '0.5-1 ngày',
             icon: 'fas fa-broom'
@@ -124,118 +124,195 @@ const SanGoPage = () => {
             icon: 'fas fa-cloud-rain'
         },
         {
-            location: 'Nha Trang',
-            climate: 'Khí hậu biển, độ ẩm cao',
+            location: 'TP.HCM',
+            climate: 'Nóng ẩm quanh năm',
             recommendations: [
-                'Chọn sàn SPC chống nước 100%',
-                'Tránh gỗ tự nhiên khu vực ven biển',
-                'Hệ thống thông gió tốt',
-                'Xử lý chống muối mặn cho phào gỗ'
+                'Sàn nhựa SPC là lựa chọn tốt',
+                'Gỗ công nghiệp chống ẩm cao cấp',
+                'Đảm bảo thông gió tốt',
+                'Kiểm tra độ ẩm nền trước lắp'
+            ],
+            icon: 'fas fa-sun'
+        },
+        {
+            location: 'Đà Nẵng - Ven Biển',
+            climate: 'Độ ẩm cao, gió mặn',
+            recommendations: [
+                'Ưu tiên sàn nhựa SPC',
+                'Gỗ tự nhiên cần xử lý đặc biệt',
+                'Kiểm tra thường xuyên',
+                'Bảo dưỡng 3-6 tháng/lần'
             ],
             icon: 'fas fa-water'
+        },
+        {
+            location: 'Tây Nguyên',
+            climate: 'Khô hanh, nhiệt độ thấp',
+            recommendations: [
+                'Gỗ tự nhiên hoạt động tốt',
+                'Cần giữ độ ẩm ổn định',
+                'Tránh gỗ công nghiệp giá rẻ',
+                'Sử dụng máy tạo ẩm mùa khô'
+            ],
+            icon: 'fas fa-mountain'
+        }
+    ];
+
+    // Quality standards
+    const qualityStandards = [
+        {
+            title: 'Tiêu Chuẩn Châu Âu E1',
+            description: 'Hàm lượng formaldehyde ≤ 0.5mg/L, an toàn sức khỏe',
+            standard: 'E1 / E0',
+            icon: 'fas fa-shield-alt'
+        },
+        {
+            title: 'Chống Ẩm AC4-AC5',
+            description: 'Chống mài mòn cấp cao, độ bền trên 15 năm',
+            standard: 'AC4 / AC5',
+            icon: 'fas fa-water'
+        },
+        {
+            title: 'Chứng Nhận FSC',
+            description: 'Gỗ từ nguồn bền vững, thân thiện môi trường',
+            standard: 'FSC Certified',
+            icon: 'fas fa-leaf'
+        },
+        {
+            title: 'ISO 9001:2015',
+            description: 'Quy trình sản xuất đạt chuẩn quốc tế',
+            standard: 'ISO 9001',
+            icon: 'fas fa-certificate'
         }
     ];
 
     // Maintenance tips
     const maintenanceTips = [
         {
-            category: 'Vệ sinh hàng ngày',
+            title: 'Vệ Sinh Hàng Ngày',
             tips: [
-                'Quét hoặc hút bụi nhẹ nhàng',
-                'Lau ẩm bằng khăn vắt khô',
-                'Tránh dùng nhiều nước',
-                'Lau khô ngay khi có nước đổ'
+                'Quét hoặc hút bụi thường xuyên',
+                'Lau ẩm bằng khăn mềm',
+                'Tránh để nước đọng lâu',
+                'Không dùng chất tẩy mạnh'
             ],
+            frequency: 'Hàng ngày',
             icon: 'fas fa-broom'
         },
         {
-            category: 'Bảo dưỡng định kỳ',
+            title: 'Bảo Dưỡng Định Kỳ',
             tips: [
-                'Đánh bóng 6 tháng/lần',
-                'Kiểm tra phào chân tường',
-                'Xử lý vết xước nhỏ',
-                'Bảo dưỡng chuyên nghiệp 2 năm/lần'
+                'Đánh bóng bề mặt 6 tháng/lần',
+                'Kiểm tra khe co giãn',
+                'Bổ sung dầu dưỡng gỗ tự nhiên',
+                'Sửa chữa kịp thời nếu hư hỏng'
             ],
+            frequency: '3-6 tháng',
             icon: 'fas fa-tools'
         },
         {
-            category: 'Lưu ý sử dụng',
+            title: 'Bảo Vệ Sàn Gỗ',
             tips: [
-                'Dùng đệm chân bàn ghế',
-                'Tránh đi giày cao gót nhọn',
-                'Kiểm soát độ ẩm 45-65%',
-                'Tránh ánh nắng trực tiếp'
+                'Dùng thảm chùi chân ở cửa ra vào',
+                'Đặt đệm lót chân bàn ghế',
+                'Tránh kéo lê đồ nặng',
+                'Không để nắng chiếu trực tiếp lâu'
             ],
-            icon: 'fas fa-exclamation-triangle'
+            frequency: 'Thường xuyên',
+            icon: 'fas fa-shield-alt'
+        },
+        {
+            title: 'Kiểm Soát Độ Ẩm',
+            tips: [
+                'Duy trì độ ẩm 40-60%',
+                'Sử dụng máy hút/tạo ẩm',
+                'Thông gió đều đặn',
+                'Tránh làm ướt sàn'
+            ],
+            frequency: 'Hàng ngày',
+            icon: 'fas fa-tint'
         }
     ];
 
     // FAQ data
     const faqData = [
         {
-            question: 'Sàn gỗ công nghiệp và tự nhiên khác gì?',
-            answer: 'Sàn gỗ công nghiệp làm từ gỗ ép HDF, chống ẩm tốt, giá hợp lý. Sàn gỗ tự nhiên là gỗ nguyên khối, sang trọng nhưng cần bảo dưỡng nhiều hơn và giá cao hơn.'
+            question: 'Sàn gỗ công nghiệp và sàn gỗ tự nhiên khác nhau như thế nào?',
+            answer: 'Sàn gỗ công nghiệp được làm từ gỗ HDF ép nhiều lớp với lớp phủ bề mặt, giá rẻ hơn, chống ẩm tốt hơn nhưng không thể đánh bóng lại. Sàn gỗ tự nhiên làm từ gỗ nguyên khối, bền hơn, sang trọng hơn, có thể đánh bóng nhiều lần nhưng giá cao và cần bảo dưỡng kỹ hơn.'
         },
         {
-            question: 'Thời gian thi công sàn gỗ bao lâu?',
-            answer: 'Căn hộ 80m² thường mất 2-3 ngày: 1 ngày chuẩn bị mặt bằng, 1-2 ngày lắp đặt sàn và phào. Thời gian có thể lâu hơn nếu nền không bằng phẳng.'
+            question: 'Sàn nhựa SPC có bền không? So với sàn gỗ thì sao?',
+            answer: 'Sàn nhựa SPC rất bền (bảo hành 15-20 năm), chống nước 100%, chống trầy tốt. Ưu điểm vượt trội là không sợ nước, phù hợp phòng tắm, bếp. Nhược điểm là không có cảm giác ấm áp, sang trọng như gỗ tự nhiên. Về giá cả thì SPC thường rẻ hơn gỗ tự nhiên nhưng tương đương hoặc cao hơn gỗ công nghiệp.'
         },
         {
-            question: 'Sàn gỗ có chống nước được không?',
-            answer: 'Sàn gỗ công nghiệp chống ẩm tốt nhưng không chống nước hoàn toàn. Sàn SPC/LVT chống nước 100%. Gỗ tự nhiên cần xử lý chống thấm đặc biệt.'
+            question: 'Thi công sàn gỗ cho căn hộ 80m² mất bao lâu?',
+            answer: 'Thông thường mất khoảng 3-5 ngày cho căn hộ 80m². Bao gồm: chuẩn bị nền (1 ngày), trải lót chống ẩm (0.5 ngày), lắp đặt sàn (1.5-2 ngày), lắp phào và hoàn thiện (1 ngày). Thời gian có thể lâu hơn nếu nền không bằng phẳng hoặc cần xử lý đặc biệt.'
         },
         {
-            question: 'Chi phí bảo dưỡng sàn gỗ như thế nào?',
-            answer: 'Sàn gỗ công nghiệp: 50,000-80,000 VNĐ/m²/2 năm. Sàn gỗ tự nhiên: 100,000-150,000 VNĐ/m²/2 năm. Bao gồm đánh bóng, sửa chữa nhỏ.'
+            question: 'Sàn gỗ có chống nước không? Có lắp được phòng tắm không?',
+            answer: 'Sàn gỗ công nghiệp chống ẩm tốt nhưng KHÔNG chống nước 100%, không nên lắp phòng tắm. Sàn gỗ tự nhiên rất kỵ nước. Chỉ có sàn nhựa SPC mới chống nước hoàn toàn và phù hợp cho phòng tắm, bếp, ban công.'
+        },
+        {
+            question: 'Chi phí trung bình để lắp sàn gỗ cho cả nhà?',
+            answer: 'Tùy loại sàn: Sàn nhựa SPC (150-350K/m²), sàn gỗ công nghiệp (180-450K/m²), sàn gỗ tự nhiên (450K-1.2tr/m²). Giá đã bao gồm vật liệu + thi công. Ví dụ căn hộ 80m² dùng sàn gỗ công nghiệp trung bình: 80m² x 280K = 22.4 triệu VNĐ.'
+        },
+        {
+            question: 'Làm thế nào để chọn sàn gỗ phù hợp với khí hậu miền Bắc?',
+            answer: 'Khí hậu miền Bắc ẩm, nhiệt độ thay đổi nên nên chọn: 1) Sàn gỗ công nghiệp chống ẩm tốt (Robina, Inovar), 2) Sàn nhựa SPC nếu không quan trọng thẩm mỹ gỗ, 3) Tránh gỗ tự nhiên giá rẻ dễ cong vênh, 4) Dùng lót chống ẩm EPE dày, 5) Sử dụng máy hút ẩm mùa đông.'
         }
     ];
 
-    const currentFlooring = flooringTypes.find(type => type.id === activeTab);
+    const currentType = flooringTypes.find(type => type.id === activeTab);
+
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
 
     return (
         <div className="construction-detail-page">
-            {/* Hero Section */}
+            {/* Header Section */}
             <section className="section section-gradient">
                 <div className="container">
-                    <div className="text-center">
-                        <h1 className="section-title">
-                            🏠 Báo Giá Thi Công Sàn Gỗ Công Nghiệp & Tự Nhiên 2025
-                        </h1>
-                        <p className="section-subtitle">
-                            Báo giá chi tiết lắp đặt sàn gỗ công nghiệp, tự nhiên, SPC/LVT 
-                            tại Hà Nội & Nha Trang. Chất lượng - Uy tín - Bảo hành dài hạn.
-                        </p>
-                        
-                        <div className="hero-features grid-4">
-                            <div className="feature-item">
-                                <i className="fas fa-leaf"></i>
-                                <span>Thân Thiện Môi Trường</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-shield-alt"></i>
-                                <span>Chống Trầy Xước</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-temperature-low"></i>
-                                <span>Cách Nhiệt Tốt</span>
-                            </div>
-                            <div className="feature-item">
-                                <i className="fas fa-heart"></i>
-                                <span>Êm Ái Dễ Chịu</span>
-                            </div>
+                    <h1 className="section-title">
+                        <i className="fas fa-table-cells icon-flooring"></i>
+                        Báo Giá Sàn Gỗ - Sàn Nhựa
+                    </h1>
+                    <p className="section-subtitle">
+                        Thi công lắp đặt sàn gỗ công nghiệp, gỗ tự nhiên, sàn nhựa SPC chuyên nghiệp
+                    </p>
+                    <div className="grid-4">
+                        <div className="feature-item">
+                            <i className="fas fa-tags icon-pricing"></i>
+                            <span>Giá Cạnh Tranh</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-shield-alt icon-quality"></i>
+                            <span>Bảo Hành Dài</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-user-tie"></i>
+                            <span>Thi Công Chuyên Nghiệp</span>
+                        </div>
+                        <div className="feature-item">
+                            <i className="fas fa-truck"></i>
+                            <span>Giao Hàng Nhanh</span>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Flooring Types */}
+            {/* Flooring Types Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🌳 Loại Sàn Gỗ & Báo Giá</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tags icon-pricing"></i>
+                        Bảng Giá Sàn Gỗ & Sàn Nhựa
+                    </h2>
                     <p className="section-subtitle">
-                        3 dòng sàn gỗ phổ biến phù hợp mọi nhu cầu và ngân sách
+                        Chọn loại sàn phù hợp với nhu cầu và ngân sách của bạn
                     </p>
 
+                    {/* Tabs */}
                     <div className="tabs">
                         {flooringTypes.map(type => (
                             <button
@@ -248,19 +325,24 @@ const SanGoPage = () => {
                         ))}
                     </div>
 
-                    {currentFlooring && (
-                        <div className="flooring-detail">
-                            <div className="detail-header" style={{ background: `linear-gradient(135deg, ${currentFlooring.bgColor}, ${currentFlooring.bgColor}dd)` }}>
-                                <h3>{currentFlooring.name}</h3>
-                                <div className="price-range">{currentFlooring.price}</div>
-                                <p>{currentFlooring.description}</p>
+                    {/* Detail Card */}
+                    {currentType && (
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentType.bgColor}, ${currentType.bgColor}dd)` }}
+                            >
+                                <h3>{currentType.name}</h3>
+                                <div className="price-range">{currentType.price}</div>
+                                <p>{currentType.description}</p>
                             </div>
 
-                            <div className="detail-content grid-2">
-                                <div className="features-section">
-                                    <h4>✨ Đặc điểm nổi bật:</h4>
-                                    <ul className="features-list">
-                                        {currentFlooring.features.map((feature, index) => (
+                            <div className="detail-content grid-layout">
+                                {/* Features Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Đặc điểm nổi bật:</h4>
+                                    <ul className="info-list">
+                                        {currentType.features.map((feature, index) => (
                                             <li key={index}>
                                                 <i className="fas fa-check"></i>
                                                 {feature}
@@ -269,28 +351,32 @@ const SanGoPage = () => {
                                     </ul>
                                 </div>
 
-                                <div className="brands-section">
-                                    <h4>🏷️ Thương hiệu & giá:</h4>
-                                    <div className="brands-list">
-                                        {currentFlooring.brands.map((brand, index) => (
-                                            <div key={index} className="brand-item">
-                                                <div className="brand-name">{brand.name}</div>
-                                                <div className="brand-price">{brand.price}</div>
+                                {/* Brands Section */}
+                                <div className="info-section">
+                                    <h4><i className="fas fa-award"></i> Thương hiệu & giá:</h4>
+                                    <div className="item-list">
+                                        {currentType.brands.map((brand, index) => (
+                                            <div key={index} className="item-card">
+                                                <span className="item-name">{brand.name}</span>
+                                                <span className="item-price">{brand.price}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="detail-actions">
-                                <a href="/lien-he" className="btn btn-primary">
-                                    <i className="fas fa-phone"></i>
-                                    Liên Hệ Báo Giá
-                                </a>
-                                <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
-                                    <i className="fas fa-calculator"></i>
-                                    Tính Chi Phí
-                                </a>
+                            {/* Action Buttons */}
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-calculator"></i>
+                                        Tính Chi Phí
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -300,9 +386,12 @@ const SanGoPage = () => {
             {/* Installation Process */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🔧 Quy Trình Lắp Đặt Sàn Gỗ</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks icon-process"></i>
+                        Quy Trình Thi Công
+                    </h2>
                     <p className="section-subtitle">
-                        5 bước thi công chuẩn kỹ thuật đảm bảo chất lượng và độ bền
+                        5 bước thi công chuẩn, đảm bảo chất lượng và thẩm mỹ
                     </p>
 
                     <div className="process-timeline">
@@ -326,35 +415,60 @@ const SanGoPage = () => {
                 </div>
             </section>
 
-            {/* Climate Considerations */}
+            {/* Climate Advice */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🌤️ Lưu Ý Theo Khí Hậu</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-cloud-rain icon-location"></i>
+                        Tư Vấn Theo Khí Hậu
+                    </h2>
                     <p className="section-subtitle">
-                        Chọn loại sàn gỗ phù hợp với đặc điểm khí hậu từng vùng
+                        Lựa chọn sàn gỗ phù hợp với điều kiện khí hậu địa phương
                     </p>
 
-                    <div className="climate-grid grid-2">
+                    <div className="grid-4">
                         {climateAdvice.map((advice, index) => (
-                            <div key={index} className="climate-card card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className={advice.icon}></i>
-                                        {advice.location}
-                                    </h3>
-                                    <p>{advice.climate}</p>
-                                </div>
-                                <div className="card-body">
-                                    <h4>💡 Khuyến nghị:</h4>
-                                    <ul>
-                                        {advice.recommendations.map((rec, i) => (
-                                            <li key={i}>
-                                                <i className="fas fa-arrow-right"></i>
-                                                {rec}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={advice.icon}></i>
+                                    {advice.location}
+                                </h3>
+                                <p className="subtitle">{advice.climate}</p>
+                                <h4>Khuyến nghị:</h4>
+                                <ul>
+                                    {advice.recommendations.map((rec, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {rec}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Quality Standards */}
+            <section className="section section-gradient">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-certificate icon-quality"></i>
+                        Tiêu Chuẩn Chất Lượng
+                    </h2>
+                    <p className="section-subtitle">
+                        Sản phẩm đạt các tiêu chuẩn quốc tế cao nhất
+                    </p>
+
+                    <div className="grid-4">
+                        {qualityStandards.map((standard, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={standard.icon}></i>
+                                    {standard.title}
+                                </h3>
+                                <p>{standard.description}</p>
+                                <span className="standard">{standard.standard}</span>
                             </div>
                         ))}
                     </div>
@@ -364,30 +478,30 @@ const SanGoPage = () => {
             {/* Maintenance Tips */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🧹 Hướng Dẫn Bảo Dưỡng</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb icon-tips"></i>
+                        Hướng Dẫn Bảo Dưỡng
+                    </h2>
                     <p className="section-subtitle">
-                        Cách chăm sóc sàn gỗ để tăng tuổi thọ và giữ vẻ đẹp lâu dài
+                        Bảo quản đúng cách giúp sàn gỗ bền đẹp lâu dài
                     </p>
 
-                    <div className="maintenance-grid grid-3">
+                    <div className="grid-4">
                         {maintenanceTips.map((tip, index) => (
-                            <div key={index} className="maintenance-card card">
-                                <div className="card-header">
-                                    <h3>
-                                        <i className={tip.icon}></i>
-                                        {tip.category}
-                                    </h3>
-                                </div>
-                                <div className="card-body">
-                                    <ul>
-                                        {tip.tips.map((item, i) => (
-                                            <li key={i}>
-                                                <i className="fas fa-check-circle"></i>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={tip.icon}></i>
+                                    {tip.title}
+                                </h3>
+                                <ul>
+                                    {tip.tips.map((t, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {t}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <span className="frequency-badge">{tip.frequency}</span>
                             </div>
                         ))}
                     </div>
@@ -395,19 +509,25 @@ const SanGoPage = () => {
             </section>
 
             {/* FAQ Section */}
-            <section className="section">
+            <section className="faq-section">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-                    
-                    <div className="faq-list">
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question icon-faq"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp các thắc mắc phổ biến về sàn gỗ
+                    </p>
+
+                    <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
-                                <button 
+                                <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">

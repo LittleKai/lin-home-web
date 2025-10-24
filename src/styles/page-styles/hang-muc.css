@@ -1,0 +1,378 @@
+/* src/styles/page-styles/hang-muc.css */
+/* Construction category specific styles: process timeline, climate advice, quality standards */
+
+/* ============================================
+   INSTALLATION PROCESS TIMELINE
+   ============================================ */
+
+.construction-items-page {
+    margin-top: 70px;
+}
+
+.process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+/* Vertical connecting line */
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 64px;
+    bottom: 64px;
+    width: 2px;
+    background: linear-gradient(to bottom, #667eea, #764ba2);
+}
+
+.process-step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.step-number i {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.step-number span {
+    font-size: 0.75rem;
+}
+
+.step-content {
+    flex: 1;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.step-content:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.step-content h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    color: #4a5568;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.step-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: #f0f9ff;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+}
+
+/* ============================================
+   CLIMATE/QUALITY/MAINTENANCE INFO CARDS
+   ============================================ */
+
+.info-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.info-card h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-card h3 i {
+    color: #667eea;
+    font-size: 1.3rem;
+}
+
+.info-card .subtitle {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.info-card h4 {
+    color: #2d3748;
+    font-size: 0.95rem;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-card ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    color: #4a5568;
+    font-size: 0.85rem;
+}
+
+.info-card ul li i {
+    color: #10b981;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Highlight for standards */
+.info-card .standard {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* ============================================
+   STYLE CARDS (Design Styles)
+   ============================================ */
+
+.style-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.style-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.style-card .card-header {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.style-card .card-header h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: white;
+}
+
+.style-card .card-header p {
+    font-size: 0.85rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.style-card .card-header .price-range {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    color: white;
+}
+
+.style-card .card-body {
+    padding: 1.5rem;
+}
+
+.style-card .card-body .materials,
+.style-card .card-body .spaces {
+    margin-bottom: 1rem;
+}
+
+.style-card .card-body h4 {
+    font-size: 0.9rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   MATERIALS/SPACES LISTS IN CARDS
+   ============================================ */
+
+.materials,
+.spaces {
+    margin: 1rem 0;
+}
+
+.materials h4,
+.spaces h4 {
+    font-size: 0.95rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.materials .tags {
+    margin-top: 0.5rem;
+}
+
+.spaces ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spaces ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    color: #4a5568;
+    font-size: 0.85rem;
+}
+
+.spaces ul li i {
+    color: #667eea;
+    font-size: 0.7rem;
+}
+
+/* ============================================
+   TIPS SECTION
+   ============================================ */
+
+.tips-section {
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #0ea5e9;
+    margin: 1rem 0;
+}
+
+.tips-section h4 {
+    color: #0369a1;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.tips-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-section ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    color: #0c4a6e;
+    font-size: 0.85rem;
+}
+
+.tips-section ul li i {
+    color: #0ea5e9;
+    font-size: 0.75rem;
+}
+
+/* ============================================
+   FREQUENCY BADGES
+   ============================================ */
+
+.frequency-badge {
+    display: inline-block;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .process-timeline::before {
+        left: 24px;
+        top: 56px;
+        bottom: 56px;
+    }
+    
+    .process-step {
+        gap: 1rem;
+    }
+    
+    .step-number {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .step-number i {
+        font-size: 1rem;
+    }
+    
+    .step-content {
+        padding: 1rem;
+    }
+    
+    .step-content h3 {
+        font-size: 1rem;
+    }
+    
+    .info-card {
+        padding: 1rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1rem;
+    }
+    
+    .style-card .card-header {
+        padding: 1rem;
+    }
+    
+    .style-card .card-body {
+        padding: 1rem;
+    }
+}

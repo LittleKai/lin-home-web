@@ -1,0 +1,21 @@
+/* src/styles/PageStyles.css */
+/* Main stylesheet for all construction category pages */
+/* Import order: Base → Components → Details → Specific modules → Icons */
+
+/* Import Font Awesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Base layout and common utilities */
+@import url('./page-styles/base.css');
+
+/* Reusable component styles */
+@import url('./page-styles/components.css');
+
+/* Detail page specific styles */
+@import url('./page-styles/details.css');
+
+/* Construction category specific styles */
+@import url('./page-styles/hang-muc.css');
+
+/* Construction icons */
+@import url('./page-styles/icons.css');
