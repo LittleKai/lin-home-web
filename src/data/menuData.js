@@ -11,13 +11,99 @@ export const menuData = {
             title: 'Thiết kế kiến trúc',
             href: '/thiet-ke/thiet-ke-kien-truc',
             description: 'Thiết kế kiến trúc hiện đại, độc đáo và phù hợp địa hình',
-            icon: 'fas fa-building'
+            icon: 'fas fa-building',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Thiết kế biệt thự',
+                    href: '/thiet-ke/thiet-ke-kien-truc/biet-thu',
+                    description: 'Thiết kế biệt thự cao cấp, sang trọng',
+                    icon: 'fas fa-home-lg-alt'
+                },
+                {
+                    title: 'Thiết kế nhà phố',
+                    href: '/thiet-ke/thiet-ke-kien-truc/nha-pho',
+                    description: 'Thiết kế nhà phố hiện đại, tối ưu diện tích',
+                    icon: 'fas fa-building'
+                },
+                {
+                    title: 'Thiết kế căn hộ chung cư',
+                    href: '/thiet-ke/thiet-ke-kien-truc/can-ho-chung-cu',
+                    description: 'Thiết kế nội thất căn hộ thông minh',
+                    icon: 'fas fa-city'
+                },
+                {
+                    title: 'Thiết kế villa',
+                    href: '/thiet-ke/thiet-ke-kien-truc/villa',
+                    description: 'Thiết kế villa nghỉ dưỡng',
+                    icon: 'fas fa-umbrella-beach'
+                },
+                {
+                    title: 'Thiết kế lâu đài, dinh thự',
+                    href: '/thiet-ke/thiet-ke-kien-truc/lau-dai-dinh-thu',
+                    description: 'Thiết kế lâu đài, dinh thự đẳng cấp',
+                    icon: 'fas fa-chess-rook'
+                },
+                {
+                    title: 'Thiết kế resort, du lịch',
+                    href: '/thiet-ke/thiet-ke-kien-truc/resort-du-lich',
+                    description: 'Thiết kế khu nghỉ dưỡng, resort',
+                    icon: 'fas fa-hotel'
+                },
+                {
+                    title: 'Thiết kế khách sạn, nhà hàng',
+                    href: '/thiet-ke/thiet-ke-kien-truc/khach-san-nha-hang',
+                    description: 'Thiết kế khách sạn, nhà hàng chuyên nghiệp',
+                    icon: 'fas fa-utensils'
+                },
+                {
+                    title: 'Thiết kế nhà xưởng công nghiệp',
+                    href: '/thiet-ke/thiet-ke-kien-truc/nha-xuong-cong-nghiep',
+                    description: 'Thiết kế nhà xưởng, kho bãi',
+                    icon: 'fas fa-industry'
+                },
+                {
+                    title: 'Thiết kế cảnh quan sân vườn',
+                    href: '/thiet-ke/thiet-ke-kien-truc/canh-quan-san-vuon',
+                    description: 'Thiết kế sân vườn, tiểu cảnh',
+                    icon: 'fas fa-tree'
+                },
+                {
+                    title: 'Thiết kế tư đường, nhà thờ',
+                    href: '/thiet-ke/thiet-ke-kien-truc/tu-duong-nha-tho',
+                    description: 'Thiết kế công trình tâm linh',
+                    icon: 'fas fa-place-of-worship'
+                }
+            ]
         },
         {
             title: 'Thiết kế nội thất',
             href: '/thiet-ke/thiet-ke-noi-that',
             description: 'Thiết kế nội thất sang trọng, tiện nghi và tối ưu không gian',
-            icon: 'fas fa-couch'
+            icon: 'fas fa-couch',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Phong cách hiện đại',
+                    description: 'Thiết kế tối giản, thanh lịch và tiện nghi',
+                    icon: 'fas fa-laptop-house'
+                },
+                {
+                    title: 'Phong cách Indochine',
+                    description: 'Hòa quyện văn hóa Đông - Tây độc đáo',
+                    icon: 'fas fa-fan'
+                },
+                {
+                    title: 'Phong cách tân cổ điển',
+                    description: 'Sang trọng, quý phái và lộng lẫy',
+                    icon: 'fas fa-crown'
+                },
+                {
+                    title: 'Phong cách Wabi-Sabi',
+                    description: 'Giản dị, tự nhiên theo triết lý Nhật Bản',
+                    icon: 'fas fa-spa'
+                }
+            ]
         }
     ],
     'Thi công': [

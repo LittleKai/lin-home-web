@@ -16,6 +16,18 @@ import QuyTrinhThietKePage from './pages/thiet-ke/quy-trinh-thiet-ke';
 import ThietKeKienTrucPage from './pages/thiet-ke/thiet-ke-kien-truc';
 import ThietKeNoiThatPage from './pages/thiet-ke/thiet-ke-noi-that';
 
+// Import architecture design category pages
+import BietThuPage from './pages/thiet-ke/thiet-ke-kien-truc/biet-thu';
+import NhaPhoPage from './pages/thiet-ke/thiet-ke-kien-truc/nha-pho';
+import CanHoChungCuPage from './pages/thiet-ke/thiet-ke-kien-truc/can-ho-chung-cu';
+import VillaPage from './pages/thiet-ke/thiet-ke-kien-truc/villa';
+import LauDaiDinhThuPage from './pages/thiet-ke/thiet-ke-kien-truc/lau-dai-dinh-thu';
+import ResortDuLichPage from './pages/thiet-ke/thiet-ke-kien-truc/resort-du-lich';
+import KhachSanNhaHangPage from './pages/thiet-ke/thiet-ke-kien-truc/khach-san-nha-hang';
+import NhaXuongCongNghiepPage from './pages/thiet-ke/thiet-ke-kien-truc/nha-xuong-cong-nghiep';
+import CanhQuanSanVuonPage from './pages/thiet-ke/thiet-ke-kien-truc/canh-quan-san-vuon';
+import TuDuongNhaThoPage from './pages/thiet-ke/thiet-ke-kien-truc/tu-duong-nha-tho';
+
 // Import construction main pages
 import QuyTrinhThiCongPage from './pages/thi-cong/quy-trinh-thi-cong';
 import ThiCongTronGoiKienTrucPage from './pages/thi-cong/thi-cong-tron-goi-kien-truc';
@@ -184,6 +196,18 @@ function App() {
                             <FloatButtons />
                         </>
                     } />
+
+                    {/* Architecture Design Category Routes */}
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/biet-thu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><BietThuPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/nha-pho" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NhaPhoPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/can-ho-chung-cu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CanHoChungCuPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/villa" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><VillaPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/lau-dai-dinh-thu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><LauDaiDinhThuPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/resort-du-lich" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><ResortDuLichPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/khach-san-nha-hang" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><KhachSanNhaHangPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/nha-xuong-cong-nghiep" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NhaXuongCongNghiepPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/canh-quan-san-vuon" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CanhQuanSanVuonPage /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-kien-truc/tu-duong-nha-tho" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><TuDuongNhaThoPage /><FloatButtons /><Footer /></>} />
 
                     {/* Construction Main Routes */}
                     <Route path="/thi-cong/quy-trinh-thi-cong" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><QuyTrinhThiCongPage /><FloatButtons /><Footer /></>} />

@@ -885,3 +885,20 @@
         max-width: 100%;
     }
 }
+
+/* === MOBILE INTERIOR DESIGN STYLE ICONS === */
+.mobile-submenu-icon.fa-laptop-house {
+    color: var(--icon-info);
+}
+
+.mobile-submenu-icon.fa-fan {
+    color: var(--icon-teal);
+}
+
+.mobile-submenu-icon.fa-crown {
+    color: var(--icon-violet);
+}
+
+.mobile-submenu-icon.fa-spa {
+    color: var(--icon-success);
+}

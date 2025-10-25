@@ -1034,3 +1034,89 @@
 .mobile-dropdown-icon.fa-circle {
     color: var(--icon-violet);
 }
+
+/* === ARCHITECTURE DESIGN CATEGORY ICONS === */
+/* Biệt thự */
+.dropdown-item-icon.fa-home-lg-alt,
+.submenu-item-icon.fa-home-lg-alt {
+    color: var(--icon-primary);
+}
+
+/* Nhà phố */
+.dropdown-item-icon.fa-building,
+.submenu-item-icon.fa-building {
+    color: var(--icon-emerald);
+}
+
+/* Căn hộ chung cư */
+.dropdown-item-icon.fa-city,
+.submenu-item-icon.fa-city {
+    color: var(--icon-indigo);
+}
+
+/* Villa nghỉ dưỡng */
+.dropdown-item-icon.fa-umbrella-beach,
+.submenu-item-icon.fa-umbrella-beach {
+    color: var(--icon-cyan);
+}
+
+/* Lâu đài, dinh thự */
+.dropdown-item-icon.fa-chess-rook,
+.submenu-item-icon.fa-chess-rook {
+    color: var(--icon-violet);
+}
+
+/* Resort du lịch */
+.dropdown-item-icon.fa-hotel,
+.submenu-item-icon.fa-hotel {
+    color: var(--icon-pink);
+}
+
+/* Khách sạn, nhà hàng */
+.dropdown-item-icon.fa-utensils,
+.submenu-item-icon.fa-utensils {
+    color: var(--icon-orange);
+}
+
+/* Nhà xưởng công nghiệp */
+.dropdown-item-icon.fa-industry,
+.submenu-item-icon.fa-industry {
+    color: var(--icon-amber);
+}
+
+/* Cảnh quan sân vườn */
+.dropdown-item-icon.fa-tree,
+.submenu-item-icon.fa-tree {
+    color: var(--icon-success);
+}
+
+/* Tư đường, nhà thờ */
+.dropdown-item-icon.fa-place-of-worship,
+.submenu-item-icon.fa-place-of-worship {
+    color: var(--icon-warning);
+}
+
+/* === INTERIOR DESIGN STYLE ICONS === */
+/* Phong cách hiện đại */
+.dropdown-item-icon.fa-laptop-house,
+.submenu-item-icon.fa-laptop-house {
+    color: var(--icon-info);
+}
+
+/* Phong cách Indochine */
+.dropdown-item-icon.fa-fan,
+.submenu-item-icon.fa-fan {
+    color: var(--icon-teal);
+}
+
+/* Phong cách tân cổ điển */
+.dropdown-item-icon.fa-crown,
+.submenu-item-icon.fa-crown {
+    color: var(--icon-violet);
+}
+
+/* Phong cách Wabi-Sabi */
+.dropdown-item-icon.fa-spa,
+.submenu-item-icon.fa-spa {
+    color: var(--icon-success);
+}
