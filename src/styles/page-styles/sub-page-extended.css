@@ -1,0 +1,1394 @@
+/* src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/SuaChuaCaiTaoStyles.css */
+
+/* ============================================
+   TAB BUTTONS SYSTEM
+   ============================================ */
+
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e2e8f0;
+    background: white;
+    color: #4a5568;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tab-btn:hover {
+    border-color: #667eea;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.tab-btn.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.tab-btn i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   CARD ICON COMPONENT
+   ============================================ */
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-icon i {
+    display: block;
+}
+
+/* ============================================
+   PRICE TAG COMPONENT
+   ============================================ */
+
+.price-tag {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.price-amount {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0369a1;
+    margin-bottom: 0.25rem;
+}
+
+.price-unit {
+    display: block;
+    font-size: 0.85rem;
+    color: #0c4a6e;
+    font-weight: 600;
+}
+
+/* ============================================
+   ESTIMATE CARDS
+   ============================================ */
+
+.estimate-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.estimate-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: center;
+}
+
+.estimate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    border-color: #667eea;
+}
+
+.estimate-card.highlight {
+    border-color: #667eea;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+}
+
+.estimate-card.highlight:hover {
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+}
+
+.estimate-card .badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.estimate-card h3 {
+    color: #2d3748;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.estimate-card h3 i {
+    color: #f59e0b;
+}
+
+.estimate-price {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 1rem 0 0.25rem;
+}
+
+.estimate-unit {
+    font-size: 0.9rem;
+    color: #718096;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.estimate-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.estimate-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.estimate-features li i {
+    color: #10b981;
+    font-size: 0.9rem;
+}
+
+.estimate-note {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.estimate-note i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.estimate-note strong {
+    color: #92400e;
+}
+
+/* ============================================
+   SERVICE LINK CARDS
+   ============================================ */
+
+.service-link-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    color: #4a5568;
+    text-decoration: none;
+}
+
+.service-link-card:hover {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.15);
+}
+
+.service-link-card > i:first-child {
+    font-size: 1.5rem;
+    color: #667eea;
+    flex-shrink: 0;
+}
+
+.service-link-card span {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.service-link-card > i:last-child {
+    font-size: 0.9rem;
+    color: #667eea;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.service-link-card:hover > i:last-child {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
+/* ============================================
+   PROCESS STEPS
+   ============================================ */
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.process-card {
+    background: white;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.process-card:hover {
+    border-color: #667eea;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);
+}
+
+.process-number {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+}
+
+.process-card h3 {
+    font-size: 1rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.process-card p {
+    font-size: 0.85rem;
+    color: #718096;
+    margin: 0;
+}
+
+/* ============================================
+   STEP LABEL COMPONENT
+   ============================================ */
+
+.step-label {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.process-step .step-label {
+    background: #f0f9ff;
+    color: #0369a1;
+    border: 2px solid #0ea5e9;
+}
+
+/* ============================================
+   CALCULATOR SECTION
+   ============================================ */
+
+.calculator-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.calculator-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.calculator-result {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.calculator-result h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.result-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.result-note {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ============================================
+   TIP CARDS
+   ============================================ */
+
+.tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tip-card i {
+    font-size: 1.5rem;
+    color: #667eea;
+    flex-shrink: 0;
+}
+
+.tip-card p {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* ============================================
+   EXAMPLE BOX
+   ============================================ */
+
+.example-box {
+    background: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.example-box strong {
+    color: #0369a1;
+}
+
+/* ============================================
+   STEP META INFORMATION
+   ============================================ */
+
+.step-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.step-duration,
+.step-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.step-duration i,
+.step-note i {
+    color: #667eea;
+}
+
+/* ============================================
+   TIMELINE EXAMPLE
+   ============================================ */
+
+.timeline-example {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-content h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: #718096;
+    margin: 0;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.importance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.importance-badge i {
+    color: #f59e0b;
+}
+
+.benefit-badge {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #065f46;
+    margin-top: 1rem;
+}
+
+.benefit-badge i {
+    color: #10b981;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   TIP TEXT
+   ============================================ */
+
+.tip-text {
+    background: #f0f9ff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #0c4a6e;
+    margin-top: 1rem;
+}
+
+.tip-text i {
+    color: #0ea5e9;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   WARNING SYSTEM
+   ============================================ */
+
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.warning-item {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #dc2626;
+}
+
+.warning-icon {
+    flex-shrink: 0;
+}
+
+.warning-icon i {
+    font-size: 1.5rem;
+    color: #dc2626;
+}
+
+.warning-content h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.warning-content p {
+    color: #718096;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.warning-content p i {
+    color: #dc2626;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   MISC COMPONENTS
+   ============================================ */
+
+.card-description {
+    color: #718096;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.5;
+}
+
+.step-description {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .tab-buttons {
+        gap: 0.5rem;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .estimate-cards {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .estimate-card {
+        padding: 1.5rem;
+    }
+
+    .estimate-price {
+        font-size: 1.8rem;
+    }
+
+    .service-link-card {
+        padding: 1rem;
+    }
+
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calculator-inputs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .result-price {
+        font-size: 1.5rem;
+    }
+
+    .tip-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .step-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+    }
+
+    .timeline-date {
+        width: 100%;
+    }
+
+    .warning-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .process-card {
+        padding: 1rem;
+    }
+}
+
+
+/* ============================================
+   CALCULATOR SECTION
+   ============================================ */
+
+.calculator-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.calculator-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.calculator-result {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.calculator-result h3 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+.result-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.result-note {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ============================================
+   TIP CARDS
+   ============================================ */
+
+.tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tip-card i {
+    font-size: 1.5rem;
+    color: #667eea;
+    flex-shrink: 0;
+}
+
+.tip-card p {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* ============================================
+   EXAMPLE BOX
+   ============================================ */
+
+.example-box {
+    background: #f0f9ff;
+    border-left: 4px solid #0ea5e9;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.example-box strong {
+    color: #0369a1;
+}
+
+/* ============================================
+   STEP META INFORMATION
+   ============================================ */
+
+.step-meta {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.step-duration,
+.step-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.step-duration i,
+.step-note i {
+    color: #667eea;
+}
+
+/* ============================================
+   TIMELINE EXAMPLE
+   ============================================ */
+
+.timeline-example {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-content h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: #718096;
+    margin: 0;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+.importance-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fef3c7;
+    color: #92400e;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.importance-badge i {
+    color: #f59e0b;
+}
+
+.benefit-badge {
+    background: #f0fdf4;
+    border-left: 4px solid #10b981;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #065f46;
+    margin-top: 1rem;
+}
+
+.benefit-badge i {
+    color: #10b981;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   TIP TEXT
+   ============================================ */
+
+.tip-text {
+    background: #f0f9ff;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #0c4a6e;
+    margin-top: 1rem;
+}
+
+.tip-text i {
+    color: #0ea5e9;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   WARNING SYSTEM
+   ============================================ */
+
+.warning-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.warning-item {
+    display: flex;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid #dc2626;
+}
+
+.warning-icon {
+    flex-shrink: 0;
+}
+
+.warning-icon i {
+    font-size: 1.5rem;
+    color: #dc2626;
+}
+
+.warning-content h4 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.warning-content p {
+    color: #718096;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.warning-content p i {
+    color: #dc2626;
+    margin-right: 0.5rem;
+}
+
+/* ============================================
+   MISC COMPONENTS
+   ============================================ */
+
+.card-description {
+    color: #718096;
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.5;
+}
+
+.step-description {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* ============================================
+   PROCESS STEP ENHANCEMENTS
+   ============================================ */
+
+.process-step ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0 0;
+}
+
+.process-step ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.process-step ul li i {
+    color: #667eea;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.process-step .step-content ul {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.step-content > p {
+    margin-bottom: 0.5rem;
+}
+
+.step-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f0f9ff;
+    color: #0369a1;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.step-duration i {
+    color: #0ea5e9;
+}
+
+/* Process step with additional info sections */
+.process-step .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.process-step .info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.process-step .info-list li i.fa-check-circle,
+.process-step .info-list li i.fa-check {
+    color: #10b981;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+}
+
+.process-step .info-list li i.fa-chevron-right {
+    color: #667eea;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+/* Step number variations */
+.step-number.completed {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.step-number.in-progress {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.step-number.pending {
+    background: linear-gradient(135deg, #94a3b8, #64748b);
+}
+
+/* Step content hover effect */
+.process-step:hover .step-content {
+    border-color: #667eea;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.process-step:hover .step-number {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   PRICE TABLE SYSTEM
+   ============================================ */
+
+.category-section {
+    margin-bottom: 2.5rem;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #e2e8f0;
+}
+
+.category-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.category-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #2d3748;
+}
+
+.price-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.price-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.price-row:last-child {
+    border-bottom: none;
+}
+
+.price-row:not(.header):hover {
+    background: #f8fafc;
+}
+
+.price-row.header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.price-row.header .col-name,
+.price-row.header .col-desc,
+.price-row.header .col-price {
+    color: white;
+}
+
+.col-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.col-name i {
+    color: #10b981;
+    font-size: 0.9rem;
+}
+
+.price-row.header .col-name i {
+    color: white;
+}
+
+.col-desc {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.col-price {
+    text-align: right;
+    font-weight: 600;
+}
+
+.price-value {
+    color: #667eea;
+    font-size: 1rem;
+    display: block;
+}
+
+.price-unit {
+    color: #718096;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 0.2rem;
+}
+
+.note-box {
+    background: #fff7ed;
+    border-left: 4px solid #f59e0b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.note-box i {
+    color: #f59e0b;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.note-box p {
+    margin: 0;
+    color: #92400e;
+    line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .tab-buttons {
+        gap: 0.5rem;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .calculator-inputs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .result-price {
+        font-size: 1.5rem;
+    }
+
+    .tip-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .step-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+    }
+
+    .timeline-date {
+        width: 100%;
+    }
+
+    .warning-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .price-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .col-name,
+    .col-desc,
+    .col-price {
+        text-align: left;
+    }
+
+    .price-row.header {
+        display: none;
+    }
+
+    .note-box {
+        flex-direction: column;
+        text-align: center;
+    }
+}

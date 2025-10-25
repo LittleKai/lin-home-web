@@ -4,6 +4,7 @@
 /* ============================================
    INSTALLATION PROCESS TIMELINE
    ============================================ */
+@import "sub-page-extended.css";
 
 .construction-items-page {
     margin-top: 70px;
@@ -17,15 +18,14 @@
     position: relative;
 }
 
-/* Vertical connecting line */
-.process-timeline::before {
-    content: '';
-    position: absolute;
-    left: 32px;
-    top: 64px;
-    bottom: 64px;
-    width: 2px;
-    background: linear-gradient(to bottom, #667eea, #764ba2);
+.filter-btn {
+    margin: 4px;
+}
+
+.filter-tabs {
+    margin: 8px;
+    /* Thêm thuộc tính này để căn giữa nội dung (bao gồm các item) */
+    text-align: center;
 }
 
 .process-step {
@@ -110,8 +110,13 @@
     padding: 1.5rem;
     border: 1px solid #e2e8f0;
     transition: all 0.3s ease;
-}
 
+}
+.info-card h3 {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
 .info-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -338,41 +343,42 @@
         top: 56px;
         bottom: 56px;
     }
-    
+
     .process-step {
         gap: 1rem;
     }
-    
+
     .step-number {
         width: 48px;
         height: 48px;
     }
-    
+
     .step-number i {
         font-size: 1rem;
     }
-    
+
     .step-content {
         padding: 1rem;
     }
-    
+
     .step-content h3 {
         font-size: 1rem;
     }
-    
+
     .info-card {
         padding: 1rem;
     }
-    
+
     .info-card h3 {
         font-size: 1rem;
     }
-    
+
     .style-card .card-header {
         padding: 1rem;
     }
-    
+
     .style-card .card-body {
         padding: 1rem;
     }
 }
+

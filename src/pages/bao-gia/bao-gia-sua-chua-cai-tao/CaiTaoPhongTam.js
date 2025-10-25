@@ -1,460 +1,307 @@
-// src/pages/bao-gia/bao-gia-sua-chua-cai-tao/CaiTaoPhongTam.js
+// src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/CaiTaoPhongTam.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
-const CaiTaoPhongTam = () => {
+const CaiTaoPhongTamPage = () => {
     const [activeTab, setActiveTab] = useState('basic');
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Bathroom renovation packages
     const bathroomPackages = [
         {
             id: 'basic',
-            name: 'Phòng Tắm Cơ Bản',
-            price: '20,000,000 - 40,000,000 VNĐ',
-            pricePerSqm: '2,500,000 - 4,000,000 VNĐ/m²',
-            description: 'Cải tạo phòng tắm đơn giản, thiết bị cơ bản',
+            name: 'Gói Cơ Bản',
+            price: '20,000,000 - 35,000,000 VNĐ',
+            description: 'Cải tạo WC cơ bản, tiết kiệm, đầy đủ chức năng',
             features: [
-                'Gạch ốp lát 30x60 giá tốt',
-                'Bồn cầu Caesar/Inax cơ bản',
-                'Sen tắm, lavabo đồng mạ',
-                'Gương phòng tắm có đèn',
-                'Điện nước an toàn',
-                'Chống thấm bảo hành 2 năm'
+                'Chống thấm sàn & tường',
+                'Gạch ốp lát 300x600mm',
+                'Bồn cầu 1 khối Viglacera',
+                'Lavabo treo tường',
+                'Sen tắm đơn giản',
+                'Gương phòng tắm',
+                'Đèn LED downlight'
             ],
-            includes: ['Thi công 10-15 ngày', 'Vật liệu tiết kiệm', 'Chống thấm chuẩn'],
-            suitable: ['WC 3-5m²', 'Nhà cho thuê', 'Ngân sách hạn chế'],
-            bgColor: '#10b981'
+            items: [
+                { name: 'Chống thấm toàn bộ', spec: '4-6m²', price: '3-5 triệu' },
+                { name: 'Ốp lát gạch', spec: '15-20m²', price: '6-10 triệu' },
+                { name: 'Thiết bị vệ sinh', spec: 'Cơ bản', price: '8-15 triệu' },
+                { name: 'Phụ kiện & hoàn thiện', spec: 'Đầy đủ', price: '3-5 triệu' }
+            ],
+            bgColor: '#06b6d4'
         },
         {
             id: 'standard',
-            name: 'Phòng Tắm Tiêu Chuẩn',
-            price: '40,000,000 - 80,000,000 VNĐ',
-            pricePerSqm: '4,000,000 - 6,500,000 VNĐ/m²',
-            description: 'Phòng tắm hiện đại, thiết bị tốt, thiết kế đẹp',
+            name: 'Gói Tiêu Chuẩn',
+            price: '35,000,000 - 60,000,000 VNĐ',
+            description: 'WC hiện đại với thiết bị cao cấp',
             features: [
-                'Gạch 40x80 hoặc 60x60 cao cấp',
-                'Bồn cầu TOTO/American Standard',
-                'Sen cây, bồn tắm nằm',
-                'Vách kính cường lực 10mm',
-                'Tủ lavabo có bàn đá',
-                'Máy nước nóng trực tiếp',
-                'Hệ thống chiếu sáng LED',
-                'Chống thấm bảo hành 3 năm'
+                'Chống thấm cao cấp Sika',
+                'Gạch ốp lát 600x600mm',
+                'Bồn cầu thông minh Inax',
+                'Lavabo đặt bàn + tủ',
+                'Sen cây + vòi sen',
+                'Buồng tắm kính cường lực',
+                'Gương tráng bạc + đèn LED',
+                'Máy nước nóng'
             ],
-            includes: ['Thiết kế 2D-3D', 'Thi công 20-30 ngày', 'Vật liệu chất lượng'],
-            suitable: ['WC 5-10m²', 'Nhà phố', 'Chung cư'],
-            bgColor: '#f59e0b'
+            items: [
+                { name: 'Chống thấm + xử lý', spec: '6-8m²', price: '5-8 triệu' },
+                { name: 'Ốp lát gạch cao cấp', spec: '20-30m²', price: '10-18 triệu' },
+                { name: 'Thiết bị vệ sinh', spec: 'Cao cấp', price: '15-25 triệu' },
+                { name: 'Vách kính & phụ kiện', spec: 'Đầy đủ', price: '5-9 triệu' }
+            ],
+            bgColor: '#3b82f6'
         },
         {
-            id: 'luxury',
-            name: 'Phòng Tắm Luxury',
-            price: '80,000,000 - 200,000,000 VNĐ',
-            pricePerSqm: '6,500,000 - 12,000,000 VNĐ/m²',
-            description: 'Phòng tắm sang trọng, thiết bị nhập khẩu cao cấp',
+            id: 'premium',
+            name: 'Gói Cao Cấp',
+            price: '60,000,000 - 100,000,000 VNĐ',
+            description: 'WC sang trọng với thiết bị nhập khẩu',
             features: [
-                'Đá marble/granite nhập khẩu',
-                'Bồn cầu Duravit/Kohler',
-                'Bồn tắm Jacuzzi massage',
-                'Phòng xông hơi ướt/khô',
-                'Sen thác đa chức năng',
-                'Tủ lavabo gỗ tự nhiên',
-                'Máy sưởi âm trần',
-                'Smarthome tích hợp',
-                'Chống thấm bảo hành 5 năm'
+                'Chống thấm epoxy cao cấp',
+                'Gạch vân đá Marble 800x800mm',
+                'Bồn cầu thông minh Toto',
+                'Lavabo Kohler + tủ gỗ',
+                'Sen tắm nhiệt độ Grohe',
+                'Buồng tắm kính cao cấp',
+                'Bồn tắm massage',
+                'Gương thông minh LED',
+                'Hệ thống sưởi ấm'
             ],
-            includes: ['Thiết kế kiến trúc', 'Thi công 40-60 ngày', 'Thiết bị nhập khẩu'],
-            suitable: ['WC >10m²', 'Biệt thự', 'Penthouse'],
+            items: [
+                { name: 'Chống thấm chuyên sâu', spec: '8-12m²', price: '8-15 triệu' },
+                { name: 'Ốp lát đá cao cấp', spec: '30-40m²', price: '20-35 triệu' },
+                { name: 'Thiết bị nhập khẩu', spec: 'Cao cấp', price: '25-40 triệu' },
+                { name: 'Nội thất & smart home', spec: 'Sang trọng', price: '7-10 triệu' }
+            ],
             bgColor: '#8b5cf6'
         }
     ];
 
-    // Construction items
-    const constructionItems = [
+    const currentPackage = bathroomPackages.find(pkg => pkg.id === activeTab);
+
+    const features = [
         {
-            category: 'Phá Dỡ & Chống Thấm',
-            items: [
-                { name: 'Phá dỡ WC cũ', price: '2,000,000 - 4,000,000 VNĐ' },
-                { name: 'Chống thấm sàn', price: '150,000 - 250,000 VNĐ/m²' },
-                { name: 'Chống thấm tường', price: '120,000 - 200,000 VNĐ/m²' }
-            ],
-            icon: 'fas fa-hammer'
+            icon: 'fas fa-shield-alt',
+            title: 'Chống Thấm',
+            items: ['Xử lý bề mặt cũ', 'Sơn/màng chống thấm', 'Test áp lực 24-48h']
         },
         {
-            category: 'Ốp Lát',
-            items: [
-                { name: 'Gạch ốp tường 30x60', price: '180,000 - 300,000 VNĐ/m²' },
-                { name: 'Gạch lát nền 60x60', price: '200,000 - 350,000 VNĐ/m²' },
-                { name: 'Đá marble ốp lát', price: '500,000 - 1,200,000 VNĐ/m²' }
-            ],
-            icon: 'fas fa-th-large'
+            icon: 'fas fa-toilet',
+            title: 'Bồn Cầu',
+            items: ['1 khối/2 khối', 'Xả nước tiết kiệm', 'Bồn cầu thông minh']
         },
         {
-            category: 'Thiết Bị Vệ Sinh',
-            items: [
-                { name: 'Bồn cầu 1 khối', price: '2,000,000 - 15,000,000 VNĐ' },
-                { name: 'Lavabo + tủ', price: '3,000,000 - 20,000,000 VNĐ' },
-                { name: 'Sen tắm + vòi', price: '2,000,000 - 12,000,000 VNĐ' }
-            ],
-            icon: 'fas fa-toilet'
+            icon: 'fas fa-sink',
+            title: 'Lavabo',
+            items: ['Treo tường/đặt bàn', 'Ceramic cao cấp', 'Tủ lavabo gỗ']
         },
         {
-            category: 'Vách Kính & Phụ Kiện',
-            items: [
-                { name: 'Vách kính 8mm', price: '1,200,000 - 1,800,000 VNĐ/m²' },
-                { name: 'Vách kính 10mm', price: '1,800,000 - 2,500,000 VNĐ/m²' },
-                { name: 'Phụ kiện inox 304', price: '500,000 - 2,000,000 VNĐ/bộ' }
-            ],
-            icon: 'fas fa-door-open'
-        },
-        {
-            category: 'Điện & Nước Nóng',
-            items: [
-                { name: 'Điện nước phòng tắm', price: '3,000,000 - 6,000,000 VNĐ' },
-                { name: 'Máy nước nóng trực tiếp', price: '2,500,000 - 8,000,000 VNĐ' },
-                { name: 'Máy nước nóng gián tiếp', price: '5,000,000 - 15,000,000 VNĐ' }
-            ],
-            icon: 'fas fa-bolt'
-        },
-        {
-            category: 'Thông Gió & Chiếu Sáng',
-            items: [
-                { name: 'Quạt hút âm trần', price: '800,000 - 2,500,000 VNĐ' },
-                { name: 'Đèn LED downlight', price: '300,000 - 800,000 VNĐ/bộ' },
-                { name: 'Máy sưởi âm trần', price: '3,000,000 - 8,000,000 VNĐ' }
-            ],
-            icon: 'fas fa-fan'
+            icon: 'fas fa-shower',
+            title: 'Sen Tắm',
+            items: ['Sen cây/sen âm tường', 'Điều chỉnh nhiệt độ', 'Buồng tắm kính']
         }
     ];
 
-    // Bathroom layouts
-    const layouts = [
+    const bathroomStyles = [
         {
-            size: 'WC Nhỏ (3-4m²)',
-            layout: 'Bố cục 1 hàng',
-            features: ['Bồn cầu + lavabo nhỏ', 'Sen tắm đứng', 'Tiết kiệm không gian'],
-            cost: '18-35 triệu'
+            style: 'WC Khô Ướt Liền',
+            description: 'Tiết kiệm diện tích, phù hợp nhà nhỏ',
+            area: '3-5m²',
+            features: ['Lavabo + bồn cầu', 'Sen tắm + rèm', 'Thoát nước tập trung']
         },
         {
-            size: 'WC Vừa (4-6m²)',
-            layout: 'Bố cục góc',
-            features: ['Bồn cầu + lavabo', 'Cabin sen', 'Máy giặt (tùy chọn)'],
-            cost: '30-60 triệu'
+            style: 'WC Khô Ướt Tách',
+            description: 'Khu vực khô và ướt riêng biệt',
+            area: '5-8m²',
+            features: ['Phòng tắm riêng', 'Khu vực lavabo', 'Thông thoáng hơn']
         },
         {
-            size: 'WC Lớn (6-10m²)',
-            layout: 'Chia 2 khu vực',
-            features: ['Khu WC riêng', 'Khu tắm rửa', 'Bồn tắm nằm'],
-            cost: '50-100 triệu'
+            style: 'WC Có Bồn Tắm',
+            description: 'Sang trọng, thư giãn tối đa',
+            area: '8-12m²',
+            features: ['Bồn tắm ngâm', 'Sen tắm riêng', 'Không gian rộng rãi']
         },
         {
-            size: 'WC Master (>10m²)',
-            layout: 'Đa chức năng',
-            features: ['Khu WC', 'Khu tắm + bồn Jacuzzi', 'Phòng xông hơi'],
-            cost: '100-250 triệu'
+            style: 'WC Phong Cách Spa',
+            description: 'Thiết kế resort, thư giãn cao cấp',
+            area: '10-20m²',
+            features: ['Bồn tắm nằm', 'Sauna nhỏ', 'Đá tự nhiên cao cấp']
         }
     ];
 
-    // Waterproofing tips
-    const waterproofTips = [
-        {
-            area: 'Sàn Phòng Tắm',
-            method: 'Màng khò nóng + sơn chống thấm',
-            layers: '3 lớp: màng + vữa polymer + sơn PU',
-            warranty: '3-5 năm'
-        },
-        {
-            area: 'Tường Ướt',
-            method: 'Sơn chống thấm Sika/Kova',
-            layers: '2 lớp sơn + lưới thủy tinh',
-            warranty: '2-3 năm'
-        },
-        {
-            area: 'Góc Tường - Sàn',
-            method: 'Băng chống thấm chuyên dụng',
-            layers: 'Băng keo + vữa trám khe',
-            warranty: '2 năm'
-        },
-        {
-            area: 'Hố Ga Thoát Nước',
-            method: 'Xi măng + silicone',
-            layers: 'Chống thấm vòng ga kỹ lưỡng',
-            warranty: '1-2 năm'
-        }
+    const tips = [
+        'Đầu tư chống thấm kỹ lưỡng tránh thấm dột',
+        'Chọn gạch chống trơn, an toàn khi ướt',
+        'Hệ thống thoát nước phải đủ dốc',
+        'Lắp quạt hút/cửa sổ đảm bảo thông gió',
+        'Chọn thiết bị vệ sinh tiết kiệm nước',
+        'Bố trí ổ điện an toàn, tránh nước'
     ];
 
-    // Equipment brands comparison
-    const equipmentBrands = [
+    const faqs = [
         {
-            brand: 'Caesar (VN)',
-            price: 'Tốt',
-            quality: '⭐⭐⭐',
-            warranty: '2 năm',
-            note: 'Giá cả hợp lý, chất lượng ổn'
+            question: 'Cải tạo WC nhỏ 3m² hết bao nhiêu?',
+            answer: 'WC 3m² cải tạo cơ bản khoảng 20-35 triệu, gói tiêu chuẩn 35-50 triệu. Chi phí bao gồm chống thấm, ốp lát, thiết bị vệ sinh cơ bản.'
         },
         {
-            brand: 'Inax (Nhật)',
-            price: 'Trung bình',
-            quality: '⭐⭐⭐⭐',
-            warranty: '3 năm',
-            note: 'Phổ biến, độ bền tốt'
+            question: 'Có cần phá sàn để chống thấm không?',
+            answer: 'Không nhất thiết phải phá sàn. Nếu sàn cũ còn tốt, có thể chống thấm trực tiếp. Nếu sàn bị nứt nhiều hoặc đã thấm, nên phá bỏ và làm lại để đảm bảo.'
         },
         {
-            brand: 'TOTO (Nhật)',
-            price: 'Cao',
-            quality: '⭐⭐⭐⭐⭐',
-            warranty: '5 năm',
-            note: 'Cao cấp, công nghệ tiên tiến'
-        },
-        {
-            brand: 'American Standard',
-            price: 'Cao',
-            quality: '⭐⭐⭐⭐⭐',
-            warranty: '5 năm',
-            note: 'Thiết kế đẹp, bền bỉ'
-        },
-        {
-            brand: 'Kohler/Duravit',
-            price: 'Rất cao',
-            quality: '⭐⭐⭐⭐⭐',
-            warranty: '10 năm',
-            note: 'Luxury, thiết kế độc đáo'
-        }
-    ];
-
-    // FAQ data
-    const faqData = [
-        {
-            question: 'Cải tạo phòng tắm 5m² hết bao nhiêu tiền?',
-            answer: 'Phòng tắm 5m² chi phí: Gói cơ bản 20-35 triệu, gói tiêu chuẩn 35-65 triệu, gói luxury 65-120 triệu. Bao gồm phá dỡ, chống thấm, ốp lát, thiết bị vệ sinh, điện nước. Giá tăng nếu làm cabin sen, bồn tắm.'
-        },
-        {
-            question: 'Thời gian cải tạo phòng tắm mất bao lâu?',
-            answer: 'Thời gian cải tạo WC: Gói cơ bản 10-15 ngày, gói tiêu chuẩn 20-30 ngày, gói luxury 40-60 ngày. Phụ thuộc diện tích, mức độ phá dỡ, và chờ vật liệu. Chống thấm cần 3-5 ngày khô hoàn toàn.'
-        },
-        {
-            question: 'Làm thế nào để chống thấm phòng tắm hiệu quả?',
-            answer: 'Chống thấm hiệu quả: (1) Dùng màng khò nóng + sơn chống thấm 3 lớp cho sàn, (2) Sơn chống thấm 2 lớp cho tường ướt, (3) Băng keo chống thấm góc tường-sàn, (4) Chống thấm kỹ hố ga. Bảo hành tối thiểu 3 năm.'
+            question: 'Thời gian cải tạo WC mất bao lâu?',
+            answer: 'Thường mất 1-2 tuần. Bao gồm: 1-2 ngày tháo dỡ, 2-3 ngày chống thấm, 3-5 ngày ốp lát, 2-3 ngày lắp đặt thiết bị và hoàn thiện.'
         },
         {
             question: 'Nên chọn bồn cầu 1 khối hay 2 khối?',
-            answer: 'Bồn cầu 1 khối: dễ vệ sinh, hiện đại, giá 2-15 triệu, ít rò rỉ. Bồn cầu 2 khối: giá rẻ hơn 30%, dễ thay bồn nước, nhưng khó vệ sinh hơn. Nên chọn 1 khối nếu ngân sách cho phép.'
-        },
-        {
-            question: 'Chi phí vách kính phòng tắm bao nhiêu?',
-            answer: 'Vách kính: Kính 8mm 1.2-1.8M/m², kính 10mm 1.8-2.5M/m². Cabin sen đứng góc 90° giá 4-8 triệu, cabin chữ nhật 5-12 triệu. Nên dùng kính cường lực 10mm an toàn hơn và bền hơn.'
-        },
-        {
-            question: 'Có nên lắp bồn tắm Jacuzzi không?',
-            answer: 'Bồn Jacuzzi: sang trọng, massage thư giãn, giá 20-100 triệu. Cần: diện tích >8m², điện nước đủ mạnh, chống thấm tốt. Phù hợp biệt thự, penthouse. Nếu diện tích nhỏ nên dùng bồn tắm nằm thường 5-15 triệu.'
+            answer: 'Bồn cầu 1 khối dễ vệ sinh hơn, hiện đại nhưng giá cao hơn. Bồn cầu 2 khối giá rẻ, dễ sửa chữa nhưng khó vệ sinh phần nối. Nên chọn 1 khối nếu ngân sách cho phép.'
         }
     ];
 
     return (
-        <div className="pricing-page">
-            {/* Hero Section */}
-            <section className="hero-section">
+        <div className="page-wrapper">
+            <section className="section-gradient">
                 <div className="container">
-                    <h1 className="section-title">🚿 Báo Giá Cải Tạo Phòng Tắm</h1>
+                    <h1 className="section-title">
+                        <i className="fas fa-bath"></i>
+                        Báo Giá Cải Tạo Phòng Tắm
+                    </h1>
                     <p className="section-subtitle">
-                        Báo giá chi tiết cải tạo phòng tắm hiện đại, an toàn
+                        Cải tạo phòng tắm hiện đại, chống thấm hoàn hảo với chi phí minh bạch
                     </p>
-
-                    <div className="hero-stats grid-4">
-                        <div className="stat-item">
-                            <div className="stat-number">20-200M</div>
-                            <div className="stat-label">Chi Phí Tổng</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">10-60</div>
-                            <div className="stat-label">Ngày Thi Công</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">3</div>
-                            <div className="stat-label">Gói Phòng Tắm</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">2-5</div>
-                            <div className="stat-label">Năm Bảo Hành</div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            {/* Bathroom Packages */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">📦 Gói Cải Tạo Phòng Tắm</h2>
-                    <p className="section-subtitle">
-                        3 gói phòng tắm từ cơ bản đến luxury
-                    </p>
+                    <h2 className="section-title">
+                        <i className="fas fa-box-open"></i>
+                        Các Gói Cải Tạo Phòng Tắm
+                    </h2>
 
-                    <div className="tabs-container">
-                        <div className="tabs">
-                            {bathroomPackages.map((pkg) => (
-                                <button
-                                    key={pkg.id}
-                                    className={`tab ${activeTab === pkg.id ? 'active' : ''}`}
-                                    onClick={() => setActiveTab(pkg.id)}
-                                >
-                                    {pkg.name}
-                                </button>
-                            ))}
-                        </div>
-
+                    <div className="tab-buttons">
                         {bathroomPackages.map((pkg) => (
-                            <div
+                            <button
                                 key={pkg.id}
-                                className={`tab-content ${activeTab === pkg.id ? 'active' : ''}`}
+                                className={`tab-btn ${activeTab === pkg.id ? 'active' : ''}`}
+                                onClick={() => setActiveTab(pkg.id)}
                             >
-                                <div className="pricing-card card">
-                                    <div className="card-header" style={{ background: `linear-gradient(135deg, ${pkg.bgColor}, ${pkg.bgColor}dd)` }}>
-                                        <h3>{pkg.name}</h3>
-                                        <div className="price-range">{pkg.price}</div>
-                                        <div className="price-note">{pkg.pricePerSqm}</div>
-                                        <p>{pkg.description}</p>
-                                    </div>
-
-                                    <div className="card-body">
-                                        <div className="features-section">
-                                            <h4>✨ Bao Gồm:</h4>
-                                            <ul>
-                                                {pkg.features.map((feature, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-check-circle"></i>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="includes-section">
-                                            <h4>🎁 Ưu Đãi:</h4>
-                                            <ul>
-                                                {pkg.includes.map((item, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-gift"></i>
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="suitable-section">
-                                            <h4>✅ Phù Hợp:</h4>
-                                            <ul>
-                                                {pkg.suitable.map((item, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-home"></i>
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="pricing-actions">
-                                        <a href="/lien-he" className="btn btn-primary">
-                                            <i className="fas fa-phone"></i>
-                                            Liên Hệ Ngay
-                                        </a>
-                                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao" className="btn btn-secondary">
-                                            <i className="fas fa-calculator"></i>
-                                            Tính Chi Phí
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                                {pkg.name}
+                            </button>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            {/* Construction Items */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">🔨 Bảng Giá Từng Hạng Mục</h2>
-                    <p className="section-subtitle">
-                        Chi phí chi tiết cho từng công việc
-                    </p>
-
-                    <div className="work-items-grid grid-2">
-                        {constructionItems.map((category, index) => (
-                            <div key={index} className="work-category-card card">
-                                <div className="card-header">
-                                    <i className={`${category.icon} icon-large`}></i>
-                                    <h3>{category.category}</h3>
-                                </div>
-
-                                <div className="card-body">
-                                    {category.items.map((item, itemIndex) => (
-                                        <div key={itemIndex} className="work-item">
-                                            <div className="item-name">{item.name}</div>
-                                            <div className="item-price">{item.price}</div>
-                                        </div>
-                                    ))}
-                                </div>
+                    {currentPackage && (
+                        <div className="detail-card">
+                            <div
+                                className="detail-header"
+                                style={{ background: `linear-gradient(135deg, ${currentPackage.bgColor}, ${currentPackage.bgColor}dd)` }}
+                            >
+                                <h3>{currentPackage.name}</h3>
+                                <div className="price-range">{currentPackage.price}</div>
+                                <p>{currentPackage.description}</p>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
 
-            {/* Bathroom Layouts */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">📐 Bố Cục Theo Diện Tích</h2>
-                    <p className="section-subtitle">
-                        Gợi ý bố cục và chi phí theo diện tích
-                    </p>
-
-                    <div className="layouts-grid grid-2">
-                        {layouts.map((layout, index) => (
-                            <div key={index} className="layout-card card">
-                                <div className="card-header">
-                                    <h3>{layout.size}</h3>
-                                    <div className="layout-type">{layout.layout}</div>
-                                    <div className="layout-cost">{layout.cost}</div>
-                                </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {layout.features.map((feature, featureIndex) => (
-                                            <li key={featureIndex}>
+                            <div className="detail-content grid-layout">
+                                <div className="info-section">
+                                    <h4><i className="fas fa-star"></i> Bao gồm:</h4>
+                                    <ul className="info-list">
+                                        {currentPackage.features.map((feature, index) => (
+                                            <li key={index}>
                                                 <i className="fas fa-check"></i>
                                                 {feature}
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
+
+                                <div className="info-section">
+                                    <h4><i className="fas fa-list"></i> Chi tiết chi phí:</h4>
+                                    <div className="item-list">
+                                        {currentPackage.items.map((item, index) => (
+                                            <div key={index} className="item-card">
+                                                <div className="item-info">
+                                                    <span className="item-name">{item.name}</span>
+                                                    <span className="item-spec">{item.spec}</span>
+                                                </div>
+                                                <span className="item-price">{item.price}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="detail-content">
+                                <div className="detail-actions">
+                                    <a href="/lien-he" className="btn btn-primary">
+                                        <i className="fas fa-phone"></i>
+                                        Liên Hệ Báo Giá
+                                    </a>
+                                    <a href="/bao-gia/tu-van-bao-gia" className="btn btn-secondary">
+                                        <i className="fas fa-images"></i>
+                                        Xem Thư Viện Mẫu
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </section>
+
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-th"></i>
+                        Các Hạng Mục Chính
+                    </h2>
+                    <div className="grid-4">
+                        {features.map((feature, index) => (
+                            <div key={index} className="info-card">
+                                <i className={`${feature.icon} icon-large`}></i>
+                                <h3>{feature.title}</h3>
+                                <ul className="info-list">
+                                    {feature.items.map((item, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Waterproofing Tips */}
-            <section className="section section-alt">
+            <section className="section">
                 <div className="container">
-                    <h2 className="section-title">💧 Kỹ Thuật Chống Thấm</h2>
-                    <p className="section-subtitle">
-                        Phương pháp chống thấm từng khu vực
-                    </p>
-
-                    <div className="waterproof-grid grid-2">
-                        {waterproofTips.map((tip, index) => (
-                            <div key={index} className="waterproof-card card">
+                    <h2 className="section-title">
+                        <i className="fas fa-palette"></i>
+                        Các Kiểu Bố Trí Phòng Tắm
+                    </h2>
+                    <div className="grid-4">
+                        {bathroomStyles.map((style, index) => (
+                            <div key={index} className="style-card card">
                                 <div className="card-header">
-                                    <i className="fas fa-shield-alt icon-large"></i>
-                                    <h3>{tip.area}</h3>
+                                    <h3>
+                                        <i className="fas fa-home"></i>
+                                        {style.style}
+                                    </h3>
+                                    <p>{style.description}</p>
+                                    <div className="price-range">DT: {style.area}</div>
                                 </div>
-
                                 <div className="card-body">
-                                    <div className="waterproof-info">
-                                        <p><strong>Phương pháp:</strong> {tip.method}</p>
-                                        <p><strong>Cấu tạo:</strong> {tip.layers}</p>
-                                        <p><strong>Bảo hành:</strong> {tip.warranty}</p>
+                                    <div className="spaces">
+                                        <h4>Đặc điểm:</h4>
+                                        <ul>
+                                            {style.features.map((feature, i) => (
+                                                <li key={i}>
+                                                    <i className="fas fa-dot-circle"></i>
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -463,48 +310,33 @@ const CaiTaoPhongTam = () => {
                 </div>
             </section>
 
-            {/* Equipment Brands */}
-            <section className="section">
+            <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🏷️ So Sánh Thương Hiệu</h2>
-                    <p className="section-subtitle">
-                        Đánh giá các thương hiệu thiết bị vệ sinh
-                    </p>
-
-                    <div className="brands-comparison">
-                        <table className="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>Thương Hiệu</th>
-                                    <th>Giá</th>
-                                    <th>Chất Lượng</th>
-                                    <th>Bảo Hành</th>
-                                    <th>Ghi Chú</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {equipmentBrands.map((brand, index) => (
-                                    <tr key={index}>
-                                        <td><strong>{brand.brand}</strong></td>
-                                        <td>{brand.price}</td>
-                                        <td>{brand.quality}</td>
-                                        <td>{brand.warranty}</td>
-                                        <td>{brand.note}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb"></i>
+                        Lưu Ý Khi Cải Tạo Phòng Tắm
+                    </h2>
+                    <div className="tips-section">
+                        <ul>
+                            {tips.map((tip, index) => (
+                                <li key={index}>
+                                    <i className="fas fa-check-circle"></i>
+                                    {tip}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            {/* FAQ Section */}
-            <section className="section section-alt">
+            <section className="section">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-
-                    <div className="faq-list">
-                        {faqData.map((faq, index) => (
+                    <h2 className="section-title">
+                        <i className="fas fa-question-circle"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <div className="faq-container">
+                        {faqs.map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
@@ -513,10 +345,9 @@ const CaiTaoPhongTam = () => {
                                     <span>{faq.question}</span>
                                     <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
                                 </button>
-
                                 {activeFaq === index && (
                                     <div className="faq-answer">
-                                        <p>{faq.answer}</p>
+                                        {faq.answer}
                                     </div>
                                 )}
                             </div>
@@ -525,10 +356,9 @@ const CaiTaoPhongTam = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <CTAContent />
         </div>
     );
 };
 
-export default CaiTaoPhongTam;
+export default CaiTaoPhongTamPage;

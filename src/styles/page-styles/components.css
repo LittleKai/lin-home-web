@@ -4,7 +4,9 @@
 /* ============================================
    FEATURE ITEMS (Used in header sections)
    ============================================ */
-
+.page-wrapper{
+    padding-top: 70px;
+}
 .feature-item {
     text-align: center;
     padding: 1rem;

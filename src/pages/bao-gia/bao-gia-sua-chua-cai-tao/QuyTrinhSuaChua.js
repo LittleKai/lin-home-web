@@ -1,407 +1,217 @@
-// src/pages/bao-gia/bao-gia-sua-chua-cai-tao/QuyTrinhSuaChua.js
+// src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/QuyTrinhSuaChua.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
-const QuyTrinhSuaChua = () => {
-    const [activeTab, setActiveTab] = useState('quick');
+const QuyTrinhSuaChuaPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Process types
-    const processTypes = [
+    const processSteps = [
         {
-            id: 'quick',
-            name: 'Quy Trình Nhanh',
-            duration: '7-15 ngày',
-            price: '1,000,000 - 1,800,000 VNĐ/m²',
-            description: 'Sửa chữa nhanh, không đập phá nhiều, phù hợp diện tích nhỏ',
-            steps: [
-                'Khảo sát & báo giá (1 ngày)',
-                'Ký hợp đồng & đặt cọc (1 ngày)',
-                'Mua vật liệu (1-2 ngày)',
-                'Thi công (3-7 ngày)',
-                'Nghiệm thu & bàn giao (1 ngày)'
+            step: '01',
+            title: 'Tiếp Nhận Thông Tin',
+            icon: 'fas fa-phone-alt',
+            color: '#667eea',
+            description: 'Tư vấn sơ bộ và xác định nhu cầu khách hàng',
+            details: [
+                'Lắng nghe nhu cầu cải tạo của khách hàng',
+                'Tư vấn sơ bộ qua điện thoại/Zalo/Email',
+                'Xác định phạm vi công việc và ngân sách dự kiến',
+                'Đặt lịch khảo sát thực tế tại công trình'
             ],
-            suitable: ['Phòng ngủ nhỏ', 'Phòng tắm', 'Bếp nhỏ'],
-            bgColor: '#10b981'
+            duration: '1 ngày',
+            notes: 'Miễn phí tư vấn và báo giá sơ bộ'
         },
         {
-            id: 'standard',
-            name: 'Quy Trình Chuẩn',
-            duration: '30-60 ngày',
-            price: '1,800,000 - 2,800,000 VNĐ/m²',
-            description: 'Quy trình đầy đủ, đảm bảo chất lượng, phù hợp nhà phố',
-            steps: [
-                'Khảo sát & thiết kế (3-5 ngày)',
-                'Báo giá & ký hợp đồng (2 ngày)',
-                'Phá dỡ & chuẩn bị (3-5 ngày)',
-                'Thi công thô (10-15 ngày)',
-                'Hoàn thiện (10-20 ngày)',
-                'Lắp đặt thiết bị (5-7 ngày)',
-                'Nghiệm thu & bảo hành (2 ngày)'
-            ],
-            suitable: ['Nhà phố 1-2 tầng', 'Căn hộ chung cư', 'Văn phòng'],
-            bgColor: '#f59e0b'
-        },
-        {
-            id: 'premium',
-            name: 'Quy Trình Cao Cấp',
-            duration: '90-150 ngày',
-            price: '2,800,000 - 4,500,000 VNĐ/m²',
-            description: 'Quy trình chuyên sâu, giám sát chặt chẽ, vật liệu cao cấp',
-            steps: [
-                'Khảo sát & tư vấn (5-7 ngày)',
-                'Thiết kế 2D-3D (10-15 ngày)',
-                'Báo giá & hợp đồng (3 ngày)',
-                'Phá dỡ toàn bộ (7-10 ngày)',
-                'Xây dựng kết cấu (20-30 ngày)',
-                'Hệ thống M&E (15-20 ngày)',
-                'Hoàn thiện cao cấp (30-45 ngày)',
-                'Nội thất & smarthome (10-15 ngày)',
-                'Nghiệm thu & bảo hành (5 ngày)'
-            ],
-            suitable: ['Biệt thự', 'Nhà phố cao cấp', 'Penthouse'],
-            bgColor: '#8b5cf6'
-        }
-    ];
-
-    // Detailed workflow steps
-    const detailedSteps = [
-        {
-            phase: 'Giai Đoạn 1',
-            title: 'Khảo Sát & Tư Vấn',
-            duration: '1-7 ngày',
+            step: '02',
+            title: 'Khảo Sát Hiện Trạng',
             icon: 'fas fa-search',
-            tasks: [
-                'Đo đạc hiện trạng',
-                'Kiểm tra kết cấu',
-                'Tư vấn giải pháp',
-                'Lập dự toán sơ bộ'
-            ]
+            color: '#f59e0b',
+            description: 'Đo đạc và đánh giá tình trạng công trình',
+            details: [
+                'Đo đạc diện tích, kết cấu nhà chính xác',
+                'Kiểm tra tình trạng tường, sàn, trần',
+                'Đánh giá hệ thống điện, nước hiện tại',
+                'Xác định mức độ xuống cấp và hạng mục cần xử lý',
+                'Chụp ảnh hiện trạng chi tiết'
+            ],
+            duration: '1-2 ngày',
+            notes: 'Miễn phí khảo sát khi liên hệ trực tiếp'
         },
         {
-            phase: 'Giai Đoạn 2',
+            step: '03',
             title: 'Thiết Kế & Báo Giá',
-            duration: '3-15 ngày',
             icon: 'fas fa-pencil-ruler',
-            tasks: [
-                'Thiết kế bản vẽ 2D',
-                'Render 3D (tùy chọn)',
-                'Tính khối lượng',
-                'Báo giá chi tiết'
-            ]
+            color: '#10b981',
+            description: 'Đưa ra phương án thiết kế và báo giá chi tiết',
+            details: [
+                'Thiết kế 2D/3D theo nhu cầu và phong cách',
+                'Lựa chọn vật liệu phù hợp với ngân sách',
+                'Báo giá chi tiết từng hạng mục công việc',
+                'Tư vấn tối ưu chi phí và tiến độ',
+                'Điều chỉnh phương án theo ý kiến khách hàng'
+            ],
+            duration: '3-5 ngày',
+            notes: 'Miễn phí thiết kế khi ký hợp đồng thi công'
         },
         {
-            phase: 'Giai Đoạn 3',
-            title: 'Phá Dỡ',
-            duration: '3-10 ngày',
-            icon: 'fas fa-hammer',
-            tasks: [
-                'Phá dỡ tường cũ',
-                'Tháo điện nước',
-                'Dọn dẹp rác thải',
-                'Bảo vệ khu vực khác'
-            ]
+            step: '04',
+            title: 'Ký Hợp Đồng',
+            icon: 'fas fa-file-signature',
+            color: '#3b82f6',
+            description: 'Thỏa thuận và ký kết hợp đồng thi công',
+            details: [
+                'Thống nhất phương án thiết kế cuối cùng',
+                'Xác nhận báo giá và phương thức thanh toán',
+                'Cam kết về tiến độ và chất lượng',
+                'Quy định về bảo hành và trách nhiệm',
+                'Ký hợp đồng chính thức'
+            ],
+            duration: '1 ngày',
+            notes: 'Hợp đồng minh bạch, không phát sinh'
         },
         {
-            phase: 'Giai Đoạn 4',
-            title: 'Xây Dựng Thô',
-            duration: '10-30 ngày',
-            icon: 'fas fa-building',
-            tasks: [
-                'Xây tường mới',
-                'Đổ bê tông',
-                'Sửa kết cấu',
-                'Lắp điện nước thô'
-            ]
+            step: '05',
+            title: 'Thi Công',
+            icon: 'fas fa-hard-hat',
+            color: '#ec4899',
+            description: 'Triển khai thi công theo đúng kế hoạch',
+            details: [
+                'Chuẩn bị mặt bằng và bảo vệ đồ đạc',
+                'Tháo dỡ các hạng mục cũ (nếu có)',
+                'Thi công từng công đoạn theo tiến độ',
+                'Giám sát chất lượng từng bước',
+                'Báo cáo tiến độ định kỳ cho khách hàng',
+                'Vệ sinh hiện trường hàng ngày'
+            ],
+            duration: '2-8 tuần',
+            notes: 'Tùy thuộc quy mô và phạm vi công việc'
         },
         {
-            phase: 'Giai Đoạn 5',
-            title: 'Hoàn Thiện',
-            duration: '10-45 ngày',
-            icon: 'fas fa-paint-roller',
-            tasks: [
-                'Ốp lát gạch',
-                'Trần thạch cao',
-                'Sơn nước',
-                'Lắp cửa, tủ bếp'
-            ]
-        },
-        {
-            phase: 'Giai Đoạn 6',
-            title: 'Nghiệm Thu',
-            duration: '1-5 ngày',
+            step: '06',
+            title: 'Nghiệm Thu & Bàn Giao',
             icon: 'fas fa-clipboard-check',
-            tasks: [
-                'Kiểm tra chất lượng',
-                'Sửa lỗi phát sinh',
-                'Vệ sinh tổng thể',
-                'Bàn giao & bảo hành'
-            ]
+            color: '#8b5cf6',
+            description: 'Kiểm tra chất lượng và bàn giao công trình',
+            details: [
+                'Kiểm tra kỹ lưỡng từng hạng mục',
+                'Sửa chữa những điểm chưa hoàn thiện',
+                'Vệ sinh tổng thể công trình',
+                'Hướng dẫn sử dụng và bảo trì',
+                'Bàn giao hồ sơ hoàn công',
+                'Ký biên bản nghiệm thu'
+            ],
+            duration: '1-2 ngày',
+            notes: 'Nghiệm thu chặt chẽ đảm bảo chất lượng'
+        },
+        {
+            step: '07',
+            title: 'Bảo Hành & Hỗ Trợ',
+            icon: 'fas fa-shield-alt',
+            color: '#06b6d4',
+            description: 'Bảo hành và hỗ trợ sau thi công',
+            details: [
+                'Bảo hành 12-24 tháng theo hợp đồng',
+                'Hỗ trợ sửa chữa các lỗi phát sinh',
+                'Tư vấn bảo trì và sử dụng',
+                'Hỗ trợ khẩn cấp khi cần thiết',
+                'Chăm sóc khách hàng lâu dài'
+            ],
+            duration: '12-24 tháng',
+            notes: 'Cam kết bảo hành chất lượng công trình'
         }
     ];
 
-    // Quality checkpoints
-    const qualityChecks = [
+    const benefits = [
         {
-            checkpoint: 'Kiểm Tra Hiện Trạng',
-            timing: 'Trước thi công',
-            items: ['Kết cấu', 'Nền móng', 'Điện nước', 'Mối mọt'],
-            icon: 'fas fa-clipboard-list'
+            icon: 'fas fa-check-double',
+            title: 'Quy Trình Chuyên Nghiệp',
+            desc: 'Từng bước được chuẩn hóa, đảm bảo chất lượng'
         },
         {
-            checkpoint: 'Kiểm Tra Phá Dỡ',
-            timing: 'Sau phá dỡ',
-            items: ['Dọn sạch rác', 'Bảo vệ an toàn', 'Kiểm tra kết cấu còn lại'],
-            icon: 'fas fa-hard-hat'
+            icon: 'fas fa-clock',
+            title: 'Tiến Độ Cam Kết',
+            desc: 'Đúng thời gian, không trì hoãn'
         },
         {
-            checkpoint: 'Kiểm Tra Thô',
-            timing: 'Sau xây thô',
-            items: ['Độ thẳng tường', 'Độ bằng sàn', 'Hệ thống điện nước'],
-            icon: 'fas fa-ruler'
+            icon: 'fas fa-hand-holding-usd',
+            title: 'Chi Phí Minh Bạch',
+            desc: 'Báo giá rõ ràng, không phát sinh'
         },
         {
-            checkpoint: 'Kiểm Tra Hoàn Thiện',
-            timing: 'Trước nghiệm thu',
-            items: ['Màu sơn', 'Gạch ốp lát', 'Cửa đi', 'Thiết bị'],
-            icon: 'fas fa-check-double'
+            icon: 'fas fa-headset',
+            title: 'Hỗ Trợ 24/7',
+            desc: 'Luôn sẵn sàng tư vấn và giải đáp'
         }
     ];
 
-    // Document checklist
-    const documents = [
+    const faqs = [
         {
-            category: 'Trước Thi Công',
-            docs: [
-                'Hợp đồng thi công',
-                'Bản vẽ thiết kế',
-                'Báo giá chi tiết',
-                'Tiến độ thi công',
-                'Giấy phép (nếu cần)'
-            ]
+            question: 'Quy trình có thể linh hoạt theo yêu cầu không?',
+            answer: 'Hoàn toàn có thể! Chúng tôi luôn linh hoạt điều chỉnh quy trình để phù hợp với tình hình thực tế và yêu cầu của từng khách hàng, đảm bảo hiệu quả tối ưu.'
         },
         {
-            category: 'Trong Thi Công',
-            docs: [
-                'Nhật ký thi công',
-                'Biên bản nghiệm thu từng phần',
-                'Chứng từ vật liệu',
-                'Hình ảnh quá trình'
-            ]
+            question: 'Tôi có thể tham gia giám sát thi công không?',
+            answer: 'Tất nhiên! Chúng tôi khuyến khích khách hàng tham gia giám sát. Bạn có thể đến công trình bất cứ lúc nào trong giờ làm việc để kiểm tra tiến độ và chất lượng.'
         },
         {
-            category: 'Sau Thi Công',
-            docs: [
-                'Biên bản nghiệm thu',
-                'Sơ đồ điện nước',
-                'Giấy bảo hành',
-                'Hướng dẫn bảo trì'
-            ]
-        }
-    ];
-
-    // FAQ data
-    const faqData = [
-        {
-            question: 'Quy trình sửa chữa nhà có những bước nào?',
-            answer: 'Quy trình gồm 6 bước chính: (1) Khảo sát & tư vấn, (2) Thiết kế & báo giá, (3) Phá dỡ cũ, (4) Xây dựng thô, (5) Hoàn thiện, (6) Nghiệm thu & bàn giao. Thời gian thực hiện từ 7-150 ngày tùy quy mô.'
+            question: 'Nếu có phát sinh trong quá trình thi công thì sao?',
+            answer: 'Mọi phát sinh sẽ được thông báo ngay cho khách hàng, đưa ra phương án xử lý và chỉ thực hiện sau khi có sự đồng ý. Chi phí phát sinh (nếu có) sẽ được báo giá rõ ràng trước.'
         },
         {
-            question: 'Làm sao để kiểm soát tiến độ thi công?',
-            answer: 'Kiểm soát tiến độ bằng cách: (1) Có bảng tiến độ chi tiết, (2) Họp định kỳ hàng tuần, (3) Kiểm tra công trường thường xuyên, (4) Yêu cầu nhật ký thi công, (5) Nghiệm thu từng giai đoạn.'
-        },
-        {
-            question: 'Khi nào cần xin giấy phép sửa chữa?',
-            answer: 'Cần xin phép khi: (1) Thay đổi kết cấu chịu lực, (2) Đập tường chung, (3) Nâng thêm tầng, (4) Thay đổi công năng (nhà ở thành VP), (5) Xây dựng trên 50% diện tích.'
-        },
-        {
-            question: 'Chi phí quản lý thi công chiếm bao nhiêu %?',
-            answer: 'Chi phí quản lý thường chiếm 8-12% tổng giá trị công trình. Bao gồm: giám sát kỹ thuật, quản lý nhân công, vật tư, tiến độ, an toàn lao động và các chi phí phát sinh.'
-        },
-        {
-            question: 'Có thể ở trong nhà khi đang sửa chữa không?',
-            answer: 'Tùy mức độ sửa chữa: Sửa nhỏ (1-2 phòng) có thể ở được nhưng bụi bặm và ồn ào. Sửa lớn (cả căn) nên tạm trú nơi khác 1-2 tháng. Phá dỡ giai đoạn đầu rất bụi bặm và nguy hiểm.'
-        },
-        {
-            question: 'Bảo hành sửa chữa cải tạo trong bao lâu?',
-            answer: 'Bảo hành phụ thuộc hạng mục: Kết cấu (tường, sàn) 2-5 năm, hoàn thiện (sơn, gạch) 1-2 năm, điện nước 1-3 năm, thiết bị theo nhà sản xuất. Yêu cầu cam kết bảo hành bằng văn bản.'
+            question: 'Sau khi bàn giao có hỗ trợ gì thêm không?',
+            answer: 'Chúng tôi có chế độ bảo hành 12-24 tháng và hỗ trợ kỹ thuật trọn đời. Mọi vấn đề phát sinh trong thời gian bảo hành sẽ được xử lý miễn phí.'
         }
     ];
 
     return (
-        <div className="pricing-page">
-            {/* Hero Section */}
-            <section className="hero-section">
+        <div className="page-wrapper">
+            <section className="section-gradient">
                 <div className="container">
-                    <h1 className="section-title">⚙️ Quy Trình Sửa Chữa Cải Tạo</h1>
+                    <h1 className="section-title">
+                        <i className="fas fa-clipboard-list"></i>
+                        Quy Trình Sửa Chữa Cải Tạo Nhà
+                    </h1>
                     <p className="section-subtitle">
-                        Quy trình thi công chuẩn, minh bạch, đảm bảo tiến độ và chất lượng
+                        Quy trình làm việc chuyên nghiệp từ A-Z, đảm bảo chất lượng và tiến độ cam kết
                     </p>
-
-                    <div className="hero-stats grid-4">
-                        <div className="stat-item">
-                            <div className="stat-number">6</div>
-                            <div className="stat-label">Giai Đoạn Chính</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">7-150</div>
-                            <div className="stat-label">Ngày Thi Công</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">4</div>
-                            <div className="stat-label">Điểm Kiểm Soát</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">100%</div>
-                            <div className="stat-label">Bảo Hành Cam Kết</div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            {/* Process Types */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">🔄 Lựa Chọn Quy Trình</h2>
-                    <p className="section-subtitle">
-                        3 loại quy trình phù hợp với từng nhu cầu và ngân sách
-                    </p>
-
-                    <div className="tabs-container">
-                        <div className="tabs">
-                            {processTypes.map((type) => (
-                                <button
-                                    key={type.id}
-                                    className={`tab ${activeTab === type.id ? 'active' : ''}`}
-                                    onClick={() => setActiveTab(type.id)}
-                                >
-                                    {type.name}
-                                </button>
-                            ))}
-                        </div>
-
-                        {processTypes.map((type) => (
-                            <div
-                                key={type.id}
-                                className={`tab-content ${activeTab === type.id ? 'active' : ''}`}
-                            >
-                                <div className="pricing-card card">
-                                    <div className="card-header" style={{ background: `linear-gradient(135deg, ${type.bgColor}, ${type.bgColor}dd)` }}>
-                                        <h3>{type.name}</h3>
-                                        <div className="price-range">{type.price}</div>
-                                        <p>{type.description}</p>
-                                        <div className="duration-badge">
-                                            <i className="far fa-clock"></i>
-                                            {type.duration}
-                                        </div>
-                                    </div>
-
-                                    <div className="card-body">
-                                        <div className="steps-section">
-                                            <h4>📋 Các Bước Thực Hiện:</h4>
-                                            <ul>
-                                                {type.steps.map((step, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-arrow-right"></i>
-                                                        {step}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="suitable-section">
-                                            <h4>✅ Phù Hợp Cho:</h4>
-                                            <ul>
-                                                {type.suitable.map((item, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-home"></i>
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="pricing-actions">
-                                        <a href="/lien-he" className="btn btn-primary">
-                                            <i className="fas fa-phone"></i>
-                                            Liên Hệ Tư Vấn
-                                        </a>
-                                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao" className="btn btn-secondary">
-                                            <i className="fas fa-calculator"></i>
-                                            Xem Báo Giá
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Detailed Workflow */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">📝 Quy Trình Chi Tiết</h2>
-                    <p className="section-subtitle">
-                        6 giai đoạn thi công chuẩn cho dự án cải tạo
-                    </p>
-
+                    <h2 className="section-title">
+                        <i className="fas fa-list-ol"></i>
+                        7 Bước Quy Trình Chuẩn
+                    </h2>
                     <div className="process-timeline">
-                        {detailedSteps.map((step, index) => (
+                        {processSteps.map((step, index) => (
                             <div key={index} className="process-step">
-                                <div className="step-number">
+                                <div className="step-number" style={{ background: step.color }}>
                                     <i className={step.icon}></i>
-                                    <span>{step.phase}</span>
                                 </div>
                                 <div className="step-content">
+                                    <div className="step-label">Bước {step.step}</div>
                                     <h3>{step.title}</h3>
-                                    <div className="step-duration">
-                                        <i className="far fa-clock"></i>
-                                        {step.duration}
-                                    </div>
-                                    <ul>
-                                        {step.tasks.map((task, taskIndex) => (
-                                            <li key={taskIndex}>
-                                                <i className="fas fa-check"></i>
-                                                {task}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Quality Control */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">✅ Kiểm Soát Chất Lượng</h2>
-                    <p className="section-subtitle">
-                        4 điểm kiểm tra quan trọng trong quá trình thi công
-                    </p>
-
-                    <div className="quality-grid grid-2">
-                        {qualityChecks.map((check, index) => (
-                            <div key={index} className="quality-card card">
-                                <div className="card-header">
-                                    <i className={`${check.icon} icon-large`}></i>
-                                    <h3>{check.checkpoint}</h3>
-                                    <div className="timing">{check.timing}</div>
-                                </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {check.items.map((item, itemIndex) => (
-                                            <li key={itemIndex}>
+                                    <p className="step-description">{step.description}</p>
+                                    <ul className="info-list">
+                                        {step.details.map((detail, i) => (
+                                            <li key={i}>
                                                 <i className="fas fa-check-circle"></i>
-                                                {item}
+                                                {detail}
                                             </li>
                                         ))}
                                     </ul>
+                                    <div className="step-meta">
+                                        <span className="step-duration">
+                                            <i className="fas fa-clock"></i>
+                                            Thời gian: {step.duration}
+                                        </span>
+                                        <span className="step-note">
+                                            <i className="fas fa-info-circle"></i>
+                                            {step.notes}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -409,45 +219,85 @@ const QuyTrinhSuaChua = () => {
                 </div>
             </section>
 
-            {/* Document Checklist */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">📄 Hồ Sơ Cần Thiết</h2>
-                    <p className="section-subtitle">
-                        Danh sách giấy tờ cần chuẩn bị cho từng giai đoạn
-                    </p>
-
-                    <div className="documents-grid grid-3">
-                        {documents.map((doc, index) => (
-                            <div key={index} className="document-card card">
-                                <div className="card-header">
-                                    <i className="fas fa-folder-open icon-large"></i>
-                                    <h3>{doc.category}</h3>
-                                </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {doc.docs.map((item, itemIndex) => (
-                                            <li key={itemIndex}>
-                                                <i className="fas fa-file-alt"></i>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                    <h2 className="section-title">
+                        <i className="fas fa-star"></i>
+                        Lợi Ích Của Quy Trình Chuẩn
+                    </h2>
+                    <div className="grid-4">
+                        {benefits.map((benefit, index) => (
+                            <div key={index} className="info-card">
+                                <i className={`${benefit.icon} icon-large`}></i>
+                                <h3>{benefit.title}</h3>
+                                <p>{benefit.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* FAQ Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-calendar-check"></i>
+                        Ví Dụ Timeline Cải Tạo Căn Hộ 80m²
+                    </h2>
+                    <div className="timeline-example">
+                        <div className="timeline-item">
+                            <div className="timeline-date">Ngày 1-2</div>
+                            <div className="timeline-content">
+                                <h4>Tuần 1: Chuẩn Bị & Khảo Sát</h4>
+                                <p>Tiếp nhận thông tin, khảo sát hiện trạng, đo đạc chi tiết</p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-date">Ngày 3-7</div>
+                            <div className="timeline-content">
+                                <h4>Tuần 1: Thiết Kế & Ký HĐ</h4>
+                                <p>Hoàn thiện thiết kế, báo giá chi tiết, ký hợp đồng</p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-date">Tuần 2-3</div>
+                            <div className="timeline-content">
+                                <h4>Tháo Dỡ & Xử Lý</h4>
+                                <p>Tháo dỡ hạng mục cũ, vận chuyển xà bần, chuẩn bị mặt bằng</p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-date">Tuần 4-6</div>
+                            <div className="timeline-content">
+                                <h4>Thi Công Chính</h4>
+                                <p>Điện nước, trần, tường, sàn, chống thấm các phòng</p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-date">Tuần 7-8</div>
+                            <div className="timeline-content">
+                                <h4>Hoàn Thiện & Nội Thất</h4>
+                                <p>Sơn, ốp lát, lắp đặt nội thất, thiết bị</p>
+                            </div>
+                        </div>
+                        <div className="timeline-item">
+                            <div className="timeline-date">Ngày cuối</div>
+                            <div className="timeline-content">
+                                <h4>Nghiệm Thu & Bàn Giao</h4>
+                                <p>Kiểm tra, vệ sinh, bàn giao công trình hoàn chỉnh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                    <div className="faq-list">
-                        {faqData.map((faq, index) => (
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-question-circle"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <div className="faq-container">
+                        {faqs.map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
@@ -456,10 +306,9 @@ const QuyTrinhSuaChua = () => {
                                     <span>{faq.question}</span>
                                     <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
                                 </button>
-
                                 {activeFaq === index && (
                                     <div className="faq-answer">
-                                        <p>{faq.answer}</p>
+                                        {faq.answer}
                                     </div>
                                 )}
                             </div>
@@ -468,10 +317,9 @@ const QuyTrinhSuaChua = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <CTAContent />
         </div>
     );
 };
 
-export default QuyTrinhSuaChua;
+export default QuyTrinhSuaChuaPage;

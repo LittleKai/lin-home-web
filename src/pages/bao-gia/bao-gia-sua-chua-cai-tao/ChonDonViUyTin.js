@@ -1,385 +1,260 @@
-// src/pages/bao-gia/bao-gia-sua-chua-cai-tao/ChonDonViUyTin.js
+// src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/ChonDonViUyTin.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
-const ChonDonViUyTin = () => {
+const ChonDonViUyTinPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
 
-    // Criteria for choosing contractor
-    const selectionCriteria = [
+    const criteria = [
         {
-            criterion: 'Kinh Nghiệm',
-            importance: 'Rất cao',
-            checkpoints: [
-                'Hoạt động tối thiểu 3-5 năm',
-                'Có portfolio dự án thực tế',
-                'Chuyên môn phù hợp công trình',
-                'Đánh giá tốt từ khách hàng cũ'
+            icon: 'fas fa-award',
+            title: 'Kinh Nghiệm & Uy Tín',
+            color: '#667eea',
+            points: [
+                'Hoạt động từ 5 năm trở lên trong lĩnh vực',
+                'Có hồ sơ năng lực và giấy phép kinh doanh',
+                'Danh sách dự án đã thực hiện rõ ràng',
+                'Đánh giá tốt từ khách hàng cũ',
+                'Có showroom hoặc văn phòng cố định'
             ],
-            icon: 'fas fa-certificate',
-            color: '#10b981'
+            importance: 'Rất quan trọng',
+            tips: 'Kiểm tra website, fanpage và đánh giá từ khách hàng thực tế'
         },
         {
-            criterion: 'Giấy Tờ Pháp Lý',
-            importance: 'Rất cao',
-            checkpoints: [
-                'Giấy phép kinh doanh hợp lệ',
-                'Chứng chỉ năng lực thi công',
-                'Bảo hiểm trách nhiệm nghề nghiệp',
-                'Hợp đồng rõ ràng, minh bạch'
-            ],
             icon: 'fas fa-file-contract',
-            color: '#3b82f6'
+            title: 'Báo Giá Minh Bạch',
+            color: '#10b981',
+            points: [
+                'Báo giá chi tiết từng hạng mục công việc',
+                'Ghi rõ khối lượng, đơn giá, thành tiền',
+                'Cam kết không phát sinh chi phí',
+                'Hợp đồng đầy đủ điều khoản rõ ràng',
+                'Quy định thanh toán hợp lý'
+            ],
+            importance: 'Rất quan trọng',
+            tips: 'So sánh báo giá của 2-3 đơn vị để có cái nhìn tổng quan'
         },
         {
-            criterion: 'Báo Giá',
-            importance: 'Cao',
-            checkpoints: [
-                'Báo giá chi tiết từng hạng mục',
-                'Giá cả hợp lý so với thị trường',
-                'Không phát sinh quá 10%',
-                'Có điều khoản thanh toán rõ ràng'
+            icon: 'fas fa-pencil-ruler',
+            title: 'Năng Lực Thiết Kế',
+            color: '#3b82f6',
+            points: [
+                'Đội ngũ kiến trúc sư chuyên nghiệp',
+                'Thiết kế 2D/3D chất lượng cao',
+                'Tư vấn phong cách phù hợp',
+                'Thiết kế đồng bộ kiến trúc - nội thất',
+                'Lắng nghe và điều chỉnh theo ý kiến khách hàng'
             ],
-            icon: 'fas fa-file-invoice-dollar',
-            color: '#f59e0b'
+            importance: 'Quan trọng',
+            tips: 'Xem portfolio các dự án đã thiết kế để đánh giá năng lực'
         },
         {
-            criterion: 'Đội Ngũ',
-            importance: 'Cao',
-            checkpoints: [
-                'Thợ có tay nghề, kinh nghiệm',
-                'Giám sát công trình chuyên nghiệp',
-                'Phân công rõ ràng trách nhiệm',
-                'Thái độ làm việc chuyên nghiệp'
+            icon: 'fas fa-hard-hat',
+            title: 'Đội Ngũ Thi Công',
+            color: '#f59e0b',
+            points: [
+                'Thợ lành nghề, được đào tạo bài bản',
+                'Giám sát công trình chặt chẽ',
+                'Trang thiết bị thi công đầy đủ',
+                'Tuân thủ quy trình an toàn lao động',
+                'Vệ sinh hiện trường sạch sẽ'
             ],
-            icon: 'fas fa-users',
-            color: '#8b5cf6'
+            importance: 'Rất quan trọng',
+            tips: 'Yêu cầu đến tham quan các công trình đang thi công'
         },
         {
-            criterion: 'Bảo Hành',
-            importance: 'Trung bình',
-            checkpoints: [
-                'Cam kết bảo hành bằng văn bản',
-                'Thời gian bảo hành 12-36 tháng',
-                'Phạm vi bảo hành rõ ràng',
-                'Hỗ trợ sau bàn giao nhanh chóng'
-            ],
             icon: 'fas fa-shield-alt',
-            color: '#06b6d4'
+            title: 'Chính Sách Bảo Hành',
+            color: '#ec4899',
+            points: [
+                'Bảo hành ít nhất 12-24 tháng',
+                'Quy định bảo hành rõ ràng trong hợp đồng',
+                'Hỗ trợ sửa chữa khi có sự cố',
+                'Chăm sóc khách hàng sau bàn giao',
+                'Có đội ngũ bảo trì chuyên trách'
+            ],
+            importance: 'Quan trọng',
+            tips: 'Đọc kỹ điều khoản bảo hành trước khi ký hợp đồng'
         },
         {
-            criterion: 'Tham Khảo',
-            importance: 'Trung bình',
-            checkpoints: [
-                'Đánh giá tốt trên mạng xã hội',
-                'Được bạn bè giới thiệu',
-                'Có văn phòng, showroom rõ ràng',
-                'Sẵn sàng cho khách tham quan công trình'
+            icon: 'fas fa-clock',
+            title: 'Cam Kết Tiến Độ',
+            color: '#8b5cf6',
+            points: [
+                'Lập kế hoạch thi công chi tiết',
+                'Cam kết thời gian hoàn thành cụ thể',
+                'Báo cáo tiến độ định kỳ',
+                'Có phương án xử lý khi chậm tiến độ',
+                'Đền bù nếu trễ hẹn không lý do'
             ],
-            icon: 'fas fa-star',
-            color: '#f59e0b'
+            importance: 'Quan trọng',
+            tips: 'Yêu cầu ghi rõ tiến độ và mức đền bù trong hợp đồng'
         }
     ];
 
-    // Red flags to avoid
     const redFlags = [
         {
-            warning: 'Không Có Giấy Tờ',
-            description: 'Không có giấy phép kinh doanh, chứng chỉ năng lực',
-            risk: 'Rất cao',
-            icon: 'fas fa-exclamation-triangle'
+            warning: 'Báo giá quá thấp so với thị trường',
+            reason: 'Có thể cắt giảm chất lượng hoặc phát sinh nhiều chi phí sau'
         },
         {
-            warning: 'Báo Giá Quá Thấp',
-            description: 'Giá thấp hơn thị trường 30-40% không rõ lý do',
-            risk: 'Cao',
-            icon: 'fas fa-dollar-sign'
+            warning: 'Không có văn phòng/showroom cố định',
+            reason: 'Khó liên hệ và truy trách nhiệm sau khi bàn giao'
         },
         {
-            warning: 'Yêu Cầu Cọc Cao',
-            description: 'Đòi cọc >50% hoặc thanh toán hết trước khi thi công',
-            risk: 'Cao',
-            icon: 'fas fa-hand-holding-usd'
+            warning: 'Yêu cầu đặt cọc quá cao ngay từ đầu',
+            reason: 'Rủi ro mất tiền nếu đơn vị không uy tín'
         },
         {
-            warning: 'Không Hợp Đồng',
-            description: 'Chỉ thỏa thuận miệng, không ký hợp đồng',
-            risk: 'Rất cao',
-            icon: 'fas fa-handshake-slash'
+            warning: 'Không có hợp đồng hoặc hợp đồng không rõ ràng',
+            reason: 'Khó khăn trong việc bảo vệ quyền lợi khi có tranh chấp'
         },
         {
-            warning: 'Thiếu Minh Bạch',
-            description: 'Không cho xem bản vẽ, báo giá chi tiết, nguồn gốc vật liệu',
-            risk: 'Cao',
-            icon: 'fas fa-eye-slash'
-        },
-        {
-            warning: 'Không Bảo Hành',
-            description: 'Từ chối cam kết bảo hành hoặc bảo hành <6 tháng',
-            risk: 'Trung bình',
-            icon: 'fas fa-ban'
+            warning: 'Không cho xem dự án đã làm',
+            reason: 'Có thể thiếu kinh nghiệm hoặc chất lượng không đảm bảo'
         }
     ];
 
-    // Contract checklist
-    const contractChecklist = [
+    const checklistSteps = [
         {
-            section: 'Thông Tin Hai Bên',
-            items: [
-                'Tên, địa chỉ, số điện thoại đầy đủ',
-                'CMND/CCCD của cả hai bên',
-                'Giấy phép kinh doanh của nhà thầu',
-                'Người đại diện hợp pháp'
+            step: 1,
+            title: 'Tìm Kiếm & Sàng Lọc',
+            actions: [
+                'Tìm kiếm 3-5 đơn vị qua Google, Facebook, giới thiệu',
+                'Kiểm tra website, fanpage, đánh giá khách hàng',
+                'Xem portfolio các dự án đã thực hiện',
+                'Loại bỏ những đơn vị không uy tín'
             ]
         },
         {
-            section: 'Phạm Vi Công Việc',
-            items: [
-                'Danh sách chi tiết hạng mục thi công',
-                'Bản vẽ thiết kế kèm theo',
-                'Vật liệu sử dụng (thương hiệu, quy cách)',
-                'Khối lượng công việc cụ thể'
+            step: 2,
+            title: 'Liên Hệ & Tư Vấn',
+            actions: [
+                'Liên hệ để được tư vấn sơ bộ',
+                'Đánh giá thái độ phục vụ và chuyên môn',
+                'Hỏi về kinh nghiệm và dự án tương tự',
+                'Yêu cầu khảo sát thực tế (nếu phù hợp)'
             ]
         },
         {
-            section: 'Giá Trị & Thanh Toán',
-            items: [
-                'Tổng giá trị hợp đồng',
-                'Phương thức thanh toán (%, thời điểm)',
-                'Chi phí phát sinh (nếu có)',
-                'Phương thức xử lý điều chỉnh giá'
+            step: 3,
+            title: 'Khảo Sát & Báo Giá',
+            actions: [
+                'Để đơn vị khảo sát hiện trạng công trình',
+                'Nhận báo giá chi tiết từng hạng mục',
+                'So sánh báo giá của các đơn vị',
+                'Đặt câu hỏi về những điểm chưa rõ'
             ]
         },
         {
-            section: 'Tiến Độ',
-            items: [
-                'Thời gian bắt đầu cụ thể',
-                'Thời gian hoàn thành cam kết',
-                'Bảng tiến độ chi tiết từng giai đoạn',
-                'Xử phạt nếu chậm tiến độ'
+            step: 4,
+            title: 'Tham Quan Công Trình',
+            actions: [
+                'Yêu cầu tham quan công trình đang/đã làm',
+                'Đánh giá chất lượng thi công thực tế',
+                'Hỏi ý kiến khách hàng cũ',
+                'Quan sát đội ngũ và cách làm việc'
             ]
         },
         {
-            section: 'Nghiệm Thu & Bảo Hành',
-            items: [
-                'Quy trình nghiệm thu từng phần',
-                'Tiêu chuẩn nghiệm thu chất lượng',
-                'Thời gian bảo hành từng hạng mục',
-                'Trách nhiệm bảo hành cụ thể'
-            ]
-        },
-        {
-            section: 'Trách Nhiệm & Quyền Lợi',
-            items: [
-                'Trách nhiệm của chủ đầu tư',
-                'Trách nhiệm của nhà thầu',
-                'Xử lý tranh chấp',
-                'Điều kiện chấm dứt hợp đồng'
+            step: 5,
+            title: 'Đàm Phán & Ký Hợp Đồng',
+            actions: [
+                'Thương lượng giá và điều khoản hợp lý',
+                'Đọc kỹ hợp đồng trước khi ký',
+                'Đảm bảo các cam kết được ghi rõ',
+                'Giữ bản sao hợp đồng đầy đủ'
             ]
         }
     ];
 
-    // Questions to ask contractors
-    const questionsToAsk = [
-        {
-            category: 'Kinh Nghiệm',
-            questions: [
-                'Công ty có bao nhiêu năm kinh nghiệm?',
-                'Đã làm dự án nào tương tự chưa?',
-                'Có thể xem portfolio và tham khảo khách hàng cũ không?',
-                'Ai sẽ là người giám sát trực tiếp công trình?'
-            ]
-        },
-        {
-            category: 'Quy Trình',
-            questions: [
-                'Quy trình thi công như thế nào?',
-                'Làm thế nào để kiểm soát chất lượng?',
-                'Tần suất báo cáo tiến độ là bao lâu?',
-                'Xử lý thế nào nếu phát sinh vấn đề?'
-            ]
-        },
-        {
-            category: 'Vật Liệu',
-            questions: [
-                'Vật liệu lấy từ nguồn nào?',
-                'Có chứng nhận chất lượng vật liệu không?',
-                'Nếu muốn thay đổi vật liệu thì sao?',
-                'Có phụ thu nếu vật liệu tăng giá không?'
-            ]
-        },
-        {
-            category: 'Chi Phí',
-            questions: [
-                'Báo giá đã bao gồm những gì?',
-                'Chi phí nào có thể phát sinh?',
-                'Tỷ lệ thanh toán theo tiến độ ra sao?',
-                'Có được giảm giá nếu thanh toán nhanh không?'
-            ]
-        },
-        {
-            category: 'Bảo Hành',
-            questions: [
-                'Thời gian bảo hành bao lâu?',
-                'Phạm vi bảo hành bao gồm gì?',
-                'Thời gian phản hồi khi có sự cố là bao lâu?',
-                'Có hợp đồng bảo trì định kỳ không?'
-            ]
-        }
-    ];
-
-    // Comparison tips
-    const comparisonTips = [
-        {
-            step: '1',
-            title: 'Thu Thập Ít Nhất 3 Báo Giá',
-            description: 'Liên hệ 3-5 đơn vị uy tín để so sánh giá và dịch vụ',
-            icon: 'fas fa-list-ol'
-        },
-        {
-            step: '2',
-            title: 'So Sánh Chi Tiết',
-            description: 'So sánh từng hạng mục, vật liệu, thời gian, bảo hành',
-            icon: 'fas fa-balance-scale'
-        },
-        {
-            step: '3',
-            title: 'Kiểm Tra Uy Tín',
-            description: 'Tìm hiểu đánh giá, review, giấy tờ pháp lý của đơn vị',
-            icon: 'fas fa-search'
-        },
-        {
-            step: '4',
-            title: 'Gặp Mặt Trực Tiếp',
-            description: 'Gặp người phụ trách để đánh giá chuyên môn và thái độ',
-            icon: 'fas fa-handshake'
-        },
-        {
-            step: '5',
-            title: 'Thương Lượng',
-            description: 'Thương lượng giá, điều khoản hợp đồng, tiến độ thanh toán',
-            icon: 'fas fa-comments-dollar'
-        },
-        {
-            step: '6',
-            title: 'Ký Hợp Đồng Rõ Ràng',
-            description: 'Đảm bảo hợp đồng chi tiết, minh bạch về mọi vấn đề',
-            icon: 'fas fa-file-signature'
-        }
-    ];
-
-    // FAQ data
-    const faqData = [
-        {
-            question: 'Làm sao để chọn đơn vị sửa chữa uy tín?',
-            answer: 'Chọn đơn vị uy tín cần: (1) Kiểm tra giấy phép kinh doanh và chứng chỉ năng lực, (2) Xem portfolio và tham khảo khách hàng cũ, (3) So sánh 3-5 báo giá, (4) Đọc review trên mạng, (5) Gặp mặt trực tiếp đánh giá chuyên môn, (6) Hợp đồng rõ ràng và có bảo hành.'
-        },
-        {
-            question: 'Nên cọc bao nhiêu % khi ký hợp đồng?',
-            answer: 'Nên cọc 20-30% khi ký hợp đồng, 30-40% khi hoàn thành phần thô, 30% khi hoàn thiện, giữ lại 10% sau nghiệm thu 1-3 tháng. Tránh cọc >50% hoặc thanh toán hết trước khi thi công.'
-        },
-        {
-            question: 'Hợp đồng thi công cần có những điều khoản gì?',
-            answer: 'Hợp đồng cần: (1) Thông tin hai bên đầy đủ, (2) Phạm vi công việc chi tiết, (3) Giá trị và phương thức thanh toán, (4) Tiến độ và xử phạt chậm, (5) Chất lượng vật liệu, (6) Bảo hành rõ ràng, (7) Xử lý tranh chấp.'
-        },
+    const faqs = [
         {
             question: 'Có nên chọn đơn vị báo giá thấp nhất không?',
-            answer: 'Không nên. Giá quá thấp có thể do: (1) Vật liệu kém chất lượng, (2) Thợ thiếu kinh nghiệm, (3) Phát sinh nhiều sau này, (4) Không có bảo hành. Nên chọn giá trung bình và xem chất lượng, uy tín.'
+            answer: 'Không nên! Giá quá thấp có thể là dấu hiệu của chất lượng kém hoặc sẽ phát sinh nhiều chi phí sau. Nên chọn đơn vị có giá hợp lý, báo giá minh bạch và uy tín tốt.'
         },
         {
-            question: 'Nên hỏi những câu hỏi gì khi gặp nhà thầu?',
-            answer: 'Hỏi về: (1) Kinh nghiệm và dự án đã làm, (2) Quy trình thi công và kiểm soát chất lượng, (3) Nguồn gốc vật liệu, (4) Chi phí phát sinh có thể xảy ra, (5) Thời gian bảo hành và phạm vi, (6) Giám sát công trình và báo cáo tiến độ.'
+            question: 'Làm sao biết đơn vị có uy tín không?',
+            answer: 'Kiểm tra: thời gian hoạt động, giấy phép kinh doanh, website/fanpage chính thức, đánh giá khách hàng, dự án đã làm. Nên tham khảo ý kiến người quen hoặc tham quan công trình thực tế.'
         },
         {
-            question: 'Có cần kiểm tra giấy phép của đơn vị không?',
-            answer: 'Rất cần! Kiểm tra: (1) Giấy phép kinh doanh hợp lệ, (2) Chứng chỉ năng lực thi công, (3) Bảo hiểm trách nhiệm (nếu có). Đơn vị không có giấy tờ rõ ràng rất rủi ro khi có tranh chấp.'
+            question: 'Có cần ký hợp đồng khi cải tạo nhà không?',
+            answer: 'Rất cần! Hợp đồng bảo vệ quyền lợi của cả hai bên. Trong hợp đồng cần ghi rõ: phạm vi công việc, giá cả, tiến độ, trách nhiệm, bảo hành và phương thức thanh toán.'
+        },
+        {
+            question: 'Nên đặt cọc bao nhiêu khi ký hợp đồng?',
+            answer: 'Thông thường đặt cọc 20-30% tổng giá trị hợp đồng. Tránh đặt cọc quá cao (trên 50%) ở giai đoạn đầu. Thanh toán theo tiến độ là cách an toàn nhất.'
         }
     ];
 
     return (
-        <div className="pricing-page">
-            {/* Hero Section */}
-            <section className="hero-section">
+        <div className="page-wrapper">
+            <section className="section-gradient">
                 <div className="container">
-                    <h1 className="section-title">✅ Chọn Đơn Vị Uy Tín</h1>
+                    <h1 className="section-title">
+                        <i className="fas fa-award"></i>
+                        Cách Chọn Đơn Vị Sửa Chữa Cải Tạo Uy Tín
+                    </h1>
                     <p className="section-subtitle">
-                        Hướng dẫn chi tiết cách chọn nhà thầu sửa chữa cải tạo uy tín
+                        Hướng dẫn chi tiết giúp bạn chọn được đơn vị thi công chất lượng, tránh rủi ro
                     </p>
-
-                    <div className="hero-stats grid-4">
-                        <div className="stat-item">
-                            <div className="stat-number">6</div>
-                            <div className="stat-label">Tiêu Chí Quan Trọng</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">3-5</div>
-                            <div className="stat-label">Báo Giá Nên So Sánh</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">6</div>
-                            <div className="stat-label">Bước Lựa Chọn</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">100%</div>
-                            <div className="stat-label">Hợp Đồng Rõ Ràng</div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            {/* Selection Criteria */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">📋 Tiêu Chí Lựa Chọn</h2>
-                    <p className="section-subtitle">
-                        6 tiêu chí quan trọng khi chọn đơn vị thi công
-                    </p>
-
-                    <div className="criteria-grid grid-3">
-                        {selectionCriteria.map((item, index) => (
-                            <div key={index} className="criterion-card card">
-                                <div className="card-header" style={{ background: `linear-gradient(135deg, ${item.color}, ${item.color}dd)` }}>
-                                    <i className={`${item.icon} icon-large`}></i>
-                                    <h3>{item.criterion}</h3>
-                                    <div className="importance">Độ quan trọng: <strong>{item.importance}</strong></div>
+                    <h2 className="section-title">
+                        <i className="fas fa-check-double"></i>
+                        6 Tiêu Chí Đánh Giá Đơn Vị Uy Tín
+                    </h2>
+                    <div className="grid-3">
+                        {criteria.map((criterion, index) => (
+                            <div key={index} className="info-card">
+                                <div className="card-icon" style={{ background: criterion.color }}>
+                                    <i className={criterion.icon}></i>
                                 </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {item.checkpoints.map((checkpoint, checkpointIndex) => (
-                                            <li key={checkpointIndex}>
-                                                <i className="fas fa-check-circle"></i>
-                                                {checkpoint}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <h3>{criterion.title}</h3>
+                                <ul className="info-list">
+                                    {criterion.points.map((point, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="importance-badge">
+                                    <i className="fas fa-star"></i>
+                                    {criterion.importance}
                                 </div>
+                                <p className="tip-text">
+                                    <i className="fas fa-lightbulb"></i>
+                                    <strong>Mẹo:</strong> {criterion.tips}
+                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Red Flags */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">🚩 Dấu Hiệu Cảnh Báo</h2>
-                    <p className="section-subtitle">
-                        Những dấu hiệu cần tránh khi chọn đơn vị thi công
-                    </p>
-
-                    <div className="red-flags-grid grid-3">
+                    <h2 className="section-title">
+                        <i className="fas fa-exclamation-triangle"></i>
+                        Dấu Hiệu Cảnh Báo Cần Tránh
+                    </h2>
+                    <div className="warning-list">
                         {redFlags.map((flag, index) => (
-                            <div key={index} className="red-flag-card card">
-                                <div className="card-header" style={{ background: 'linear-gradient(135deg, #ef4444, #dc2626)' }}>
-                                    <i className={`${flag.icon} icon-large`}></i>
-                                    <h3>{flag.warning}</h3>
-                                    <div className="risk-level">Rủi ro: <strong>{flag.risk}</strong></div>
+                            <div key={index} className="warning-item">
+                                <div className="warning-icon">
+                                    <i className="fas fa-times-circle"></i>
                                 </div>
-
-                                <div className="card-body">
-                                    <p>{flag.description}</p>
+                                <div className="warning-content">
+                                    <h4>{flag.warning}</h4>
+                                    <p>
+                                        <i className="fas fa-info-circle"></i>
+                                        {flag.reason}
+                                    </p>
                                 </div>
                             </div>
                         ))}
@@ -387,87 +262,29 @@ const ChonDonViUyTin = () => {
                 </div>
             </section>
 
-            {/* Contract Checklist */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">📝 Checklist Hợp Đồng</h2>
-                    <p className="section-subtitle">
-                        Những mục cần có trong hợp đồng thi công
-                    </p>
-
-                    <div className="checklist-grid grid-2">
-                        {contractChecklist.map((section, index) => (
-                            <div key={index} className="checklist-card card">
-                                <div className="card-header">
-                                    <i className="fas fa-clipboard-check icon-large"></i>
-                                    <h3>{section.section}</h3>
-                                </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {section.items.map((item, itemIndex) => (
-                                            <li key={itemIndex}>
-                                                <i className="fas fa-square-check"></i>
-                                                {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Questions to Ask */}
-            <section className="section section-alt">
-                <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Cần Hỏi</h2>
-                    <p className="section-subtitle">
-                        Những câu hỏi quan trọng khi gặp nhà thầu
-                    </p>
-
-                    <div className="questions-grid">
-                        {questionsToAsk.map((category, index) => (
-                            <div key={index} className="questions-card card">
-                                <div className="card-header">
-                                    <h3>{category.category}</h3>
-                                </div>
-
-                                <div className="card-body">
-                                    <ul>
-                                        {category.questions.map((question, questionIndex) => (
-                                            <li key={questionIndex}>
-                                                <i className="fas fa-question-circle"></i>
-                                                {question}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Comparison Process */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">🔍 Quy Trình So Sánh</h2>
-                    <p className="section-subtitle">
-                        6 bước để lựa chọn đơn vị thi công tốt nhất
-                    </p>
-
+                    <h2 className="section-title">
+                        <i className="fas fa-tasks"></i>
+                        5 Bước Chọn Đơn Vị Phù Hợp
+                    </h2>
                     <div className="process-timeline">
-                        {comparisonTips.map((tip, index) => (
+                        {checklistSteps.map((step, index) => (
                             <div key={index} className="process-step">
                                 <div className="step-number">
-                                    <i className={tip.icon}></i>
-                                    <span>{tip.step}</span>
+                                    <i className="fas fa-check"></i>
                                 </div>
                                 <div className="step-content">
-                                    <h3>{tip.title}</h3>
-                                    <p>{tip.description}</p>
+                                    <div className="step-label">Bước {step.step}</div>
+                                    <h3>{step.title}</h3>
+                                    <ul>
+                                        {step.actions.map((action, i) => (
+                                            <li key={i}>
+                                                <i className="fas fa-chevron-right"></i>
+                                                {action}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         ))}
@@ -475,13 +292,45 @@ const ChonDonViUyTin = () => {
                 </div>
             </section>
 
-            {/* FAQ Section */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-handshake"></i>
+                        Cam Kết Của LinHome
+                    </h2>
+                    <div className="grid-4">
+                        <div className="info-card">
+                            <i className="fas fa-certificate icon-large"></i>
+                            <h3>Giấy Phép Đầy Đủ</h3>
+                            <p>Đăng ký kinh doanh hợp pháp, hoạt động lâu năm trong ngành</p>
+                        </div>
+                        <div className="info-card">
+                            <i className="fas fa-file-alt icon-large"></i>
+                            <h3>Hợp Đồng Minh Bạch</h3>
+                            <p>Báo giá chi tiết, không phát sinh, cam kết bằng văn bản</p>
+                        </div>
+                        <div className="info-card">
+                            <i className="fas fa-users icon-large"></i>
+                            <h3>Đội Ngũ Chuyên Nghiệp</h3>
+                            <p>Kiến trúc sư & thợ thi công giàu kinh nghiệm</p>
+                        </div>
+                        <div className="info-card">
+                            <i className="fas fa-headset icon-large"></i>
+                            <h3>Hỗ Trợ Tận Tâm</h3>
+                            <p>Tư vấn 24/7, bảo hành dài hạn, chăm sóc sau bán</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                    <div className="faq-list">
-                        {faqData.map((faq, index) => (
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-question-circle"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <div className="faq-container">
+                        {faqs.map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
@@ -490,10 +339,9 @@ const ChonDonViUyTin = () => {
                                     <span>{faq.question}</span>
                                     <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
                                 </button>
-
                                 {activeFaq === index && (
                                     <div className="faq-answer">
-                                        <p>{faq.answer}</p>
+                                        {faq.answer}
                                     </div>
                                 )}
                             </div>
@@ -502,10 +350,9 @@ const ChonDonViUyTin = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <CTAContent />
         </div>
     );
 };
 
-export default ChonDonViUyTin;
+export default ChonDonViUyTinPage;

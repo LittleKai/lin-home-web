@@ -1,360 +1,257 @@
-// src/pages/bao-gia/bao-gia-sua-chua-cai-tao/CachUocTinhChiPhi.js
+// src/pages/bao-gia/bao-gia-thiet-ke-thi-cong/CachUocTinhChiPhi.js
 import React, { useState } from 'react';
 import CTAContent from '../../../components/CTAContent/CTAContent';
-import '../../../styles/CommonStyles.css';
+import '../../../styles/PageStyles.css';
 
-const CachUocTinhChiPhi = () => {
-    const [activeTab, setActiveTab] = useState('basic');
+const CachUocTinhChiPhiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
+    const [calculatorValues, setCalculatorValues] = useState({
+        area: 50,
+        level: 'medium'
+    });
 
-    // Cost estimation methods
-    const costMethods = [
+    const priceByLevel = {
+        basic: { min: 2500000, max: 3500000, name: 'Cải tạo cơ bản' },
+        medium: { min: 3500000, max: 5000000, name: 'Cải tạo trung bình' },
+        premium: { min: 5000000, max: 7000000, name: 'Cải tạo cao cấp' }
+    };
+
+    const calculateCost = () => {
+        const level = priceByLevel[calculatorValues.level];
+        const minCost = (calculatorValues.area * level.min).toLocaleString('vi-VN');
+        const maxCost = (calculatorValues.area * level.max).toLocaleString('vi-VN');
+        return { minCost, maxCost, levelName: level.name };
+    };
+
+    const costResult = calculateCost();
+
+    const factors = [
         {
-            id: 'basic',
-            name: 'Sửa Chữa Cơ Bản',
-            price: '800,000 - 1,500,000 VNĐ/m²',
-            description: 'Sửa chữa đơn giản, thay thế vật liệu cũ, không thay đổi kết cấu',
-            features: [
-                'Thay thế vật liệu cũ hỏng',
-                'Sơn lại tường, trần',
-                'Sửa chữa điện nước nhỏ',
-                'Thay gạch, sàn bị vỡ',
-                'Bảo hành 6-12 tháng'
+            icon: 'fas fa-home',
+            title: 'Hiện Trạng Công Trình',
+            color: '#667eea',
+            items: [
+                'Nhà xuống cấp nhiều cần đập phá, xử lý nền móng',
+                'Nhà còn mới chỉ cải tạo nội thất, sơn sửa',
+                'Mức độ hư hỏng ảnh hưởng trực tiếp đến chi phí'
+            ]
+        },
+        {
+            icon: 'fas fa-ruler-combined',
+            title: 'Diện Tích Cải Tạo',
+            color: '#f59e0b',
+            items: [
+                'Cải tạo 1 phòng: chi phí thấp, tập trung',
+                'Cải tạo toàn bộ nhà: giá trên m² được tối ưu hơn',
+                'Diện tích lớn dễ thương lượng giá tốt hơn'
+            ]
+        },
+        {
+            icon: 'fas fa-cubes',
+            title: 'Vật Liệu Xây Dựng',
+            color: '#8b5cf6',
+            items: [
+                'Vật liệu trung bình: tiết kiệm 20-30%',
+                'Vật liệu cao cấp: tăng 30-50% chi phí',
+                'Lựa chọn gạch, sơn, thiết bị vệ sinh ảnh hưởng lớn'
+            ]
+        },
+        {
+            icon: 'fas fa-palette',
+            title: 'Phong Cách Thiết Kế',
+            color: '#ec4899',
+            items: [
+                'Thiết kế đơn giản, tối giản: chi phí hợp lý',
+                'Thiết kế hiện đại, tân cổ điển: chi tiết phức tạp',
+                'Phong cách sang trọng đòi hỏi nhiều công đoạn'
+            ]
+        },
+        {
+            icon: 'fas fa-user-tie',
+            title: 'Đơn Vị Thi Công',
+            color: '#10b981',
+            items: [
+                'Nhà thầu uy tín: báo giá minh bạch, ít phát sinh',
+                'Đội nhóm nhỏ: giá rẻ nhưng dễ chi phí phát sinh',
+                'Chọn đơn vị có kinh nghiệm để đảm bảo chất lượng'
+            ]
+        }
+    ];
+
+    const steps = [
+        {
+            number: '01',
+            title: 'Xác Định Nhu Cầu Cải Tạo',
+            icon: 'fas fa-clipboard-list',
+            content: [
+                'Cải tạo phòng bếp hay phòng khách?',
+                'Sơn sửa toàn bộ hay nâng cấp nội thất?',
+                'Khoanh vùng hạng mục cần chi tiêu'
+            ]
+        },
+        {
+            number: '02',
+            title: 'Tính Chi Phí Theo m²',
+            icon: 'fas fa-calculator',
+            content: [
+                'Cải tạo cơ bản: 2,500,000 - 3,500,000 VNĐ/m²',
+                'Cải tạo trung bình: 3,500,000 - 5,000,000 VNĐ/m²',
+                'Cải tạo cao cấp: 5,000,000 - 7,000,000 VNĐ/m²'
             ],
-            includes: ['Vật liệu', 'Nhân công', 'Vận chuyển', 'Dọn dẹp'],
-            bgColor: '#10b981'
+            example: 'Ví dụ: Nhà 50m² cải tạo trung bình → 50 x 4,000,000 = 200,000,000 VNĐ'
         },
         {
-            id: 'medium',
-            name: 'Cải Tạo Trung Bình',
-            price: '1,500,000 - 2,500,000 VNĐ/m²',
-            description: 'Cải tạo có thay đổi bố cục, nâng cấp hệ thống điện nước',
-            features: [
-                'Đập bỏ vách ngăn cũ',
-                'Xây tường mới, thay cửa',
-                'Nâng cấp điện, nước, thoát nước',
-                'Lát gạch, sơn toàn bộ',
-                'Thay thiết bị vệ sinh',
-                'Bảo hành 12-18 tháng'
-            ],
-            includes: ['Vật liệu cao cấp', 'Nhân công chuyên nghiệp', 'Thiết kế 2D', 'Giám sát'],
-            bgColor: '#f59e0b'
-        },
-        {
-            id: 'luxury',
-            name: 'Cải Tạo Toàn Diện',
-            price: '2,500,000 - 4,000,000 VNĐ/m²',
-            description: 'Cải tạo hoàn toàn, thiết kế mới, vật liệu cao cấp',
-            features: [
-                'Thiết kế kiến trúc mới',
-                'Đập bỏ toàn bộ cũ',
-                'Xây dựng lại kết cấu',
-                'Hệ thống điện, nước, điều hòa mới',
-                'Nội thất cao cấp, smarthome',
-                'Bảo hành 24-36 tháng'
-            ],
-            includes: ['Thiết kế 3D', 'Vật liệu nhập khẩu', 'Giám sát 24/7', 'Bảo trì định kỳ'],
-            bgColor: '#8b5cf6'
+            number: '03',
+            title: 'Cộng Chi Phí Phát Sinh',
+            icon: 'fas fa-plus-circle',
+            content: [
+                'Giấy phép sửa chữa (nếu cần)',
+                'Thay đổi hệ thống điện - nước',
+                'Trang trí nội thất, đồ rời',
+                'Nên dự trù thêm 10-15% tổng chi phí'
+            ]
         }
     ];
 
-    // Calculation steps
-    const calculationSteps = [
-        {
-            step: 1,
-            title: 'Đo Đạc Hiện Trạng',
-            description: 'Khảo sát thực tế, đo diện tích, kiểm tra kết cấu cũ',
-            duration: '1-2 ngày',
-            icon: 'fas fa-ruler-combined'
-        },
-        {
-            step: 2,
-            title: 'Xác Định Hạng Mục',
-            description: 'Liệt kê công việc cần làm: phá dỡ, xây mới, hoàn thiện',
-            duration: '1 ngày',
-            icon: 'fas fa-list-check'
-        },
-        {
-            step: 3,
-            title: 'Tính Toán Vật Liệu',
-            description: 'Tính khối lượng vật liệu cần thiết cho từng hạng mục',
-            duration: '1-2 ngày',
-            icon: 'fas fa-calculator'
-        },
-        {
-            step: 4,
-            title: 'Ước Tính Nhân Công',
-            description: 'Tính toán số ngày công và chi phí nhân công',
-            duration: '1 ngày',
-            icon: 'fas fa-users'
-        },
-        {
-            step: 5,
-            title: 'Báo Giá Chi Tiết',
-            description: 'Lập bảng báo giá chi tiết, chia theo hạng mục',
-            duration: '1-2 ngày',
-            icon: 'fas fa-file-invoice-dollar'
-        }
+    const savingTips = [
+        { icon: 'fas fa-pencil-ruler', tip: 'Lập kế hoạch & bản vẽ chi tiết trước khi thi công' },
+        { icon: 'fas fa-balance-scale', tip: 'Ưu tiên vật liệu bền - giá hợp lý, tránh chạy theo xu hướng tạm thời' },
+        { icon: 'fas fa-handshake', tip: 'Chọn nhà thầu uy tín, báo giá minh bạch, hợp đồng rõ ràng' },
+        { icon: 'fas fa-box-open', tip: 'Thi công trọn gói tiết kiệm hơn thuê lẻ từng hạng mục' },
+        { icon: 'fas fa-recycle', tip: 'Tận dụng lại vật liệu, nội thất còn dùng tốt' }
     ];
 
-    // Cost breakdown items
-    const costBreakdown = [
+    const faqs = [
         {
-            category: 'Phá Dỡ & Chuẩn Bị',
-            percentage: '10-15%',
-            items: ['Phá dỡ tường cũ', 'Dọn dẹp vệ sinh', 'Bảo vệ không gian khác'],
-            icon: 'fas fa-hammer'
+            question: 'Chi phí cải tạo 1 phòng khoảng bao nhiêu?',
+            answer: 'Tùy vào phòng nào và mức độ cải tạo. Phòng khách/ngủ khoảng 20-50 triệu. Phòng bếp/tắm khoảng 30-70 triệu do cần nhiều thiết bị và chống thấm.'
         },
         {
-            category: 'Xây Dựng Kết Cấu',
-            percentage: '25-30%',
-            items: ['Xây tường mới', 'Sửa cột dầm', 'Đổ bê tông'],
-            icon: 'fas fa-building'
+            question: 'Làm sao để tránh chi phí phát sinh?',
+            answer: 'Chọn nhà thầu uy tín với hợp đồng rõ ràng, báo giá chi tiết từng hạng mục. Lập bản vẽ thiết kế cụ thể trước khi thi công. Dự trù thêm 10-15% cho các tình huống bất ngờ.'
         },
         {
-            category: 'Điện & Nước',
-            percentage: '15-20%',
-            items: ['Lắp điện mới', 'Đường ống nước', 'Thiết bị vệ sinh'],
-            icon: 'fas fa-bolt'
+            question: 'Có thể cải tạo nhà với ngân sách hạn chế?',
+            answer: 'Hoàn toàn có thể! Ưu tiên cải tạo từng phòng theo giai đoạn, chọn vật liệu trung bình có chất lượng, tận dụng nội thất cũ, và làm việc với nhà thầu để tối ưu chi phí.'
         },
         {
-            category: 'Hoàn Thiện',
-            percentage: '30-35%',
-            items: ['Ốp lát', 'Sơn nước', 'Trần thạch cao', 'Cửa đi'],
-            icon: 'fas fa-paint-roller'
-        },
-        {
-            category: 'Phí Khác',
-            percentage: '10-15%',
-            items: ['Quản lý', 'Lợi nhuận', 'Dự phòng'],
-            icon: 'fas fa-percentage'
-        }
-    ];
-
-    // Price factors
-    const priceFactors = [
-        {
-            factor: 'Diện Tích',
-            impact: 'Cao',
-            description: 'Diện tích càng lớn, chi phí/m² giảm do hiệu quả quy mô',
-            icon: 'fas fa-expand-arrows-alt'
-        },
-        {
-            factor: 'Vật Liệu',
-            impact: 'Rất cao',
-            description: 'Chất lượng vật liệu ảnh hưởng 40-50% tổng chi phí',
-            icon: 'fas fa-box-open'
-        },
-        {
-            factor: 'Thiết Kế',
-            impact: 'Trung bình',
-            description: 'Thiết kế phức tạp làm tăng 10-20% chi phí',
-            icon: 'fas fa-drafting-compass'
-        },
-        {
-            factor: 'Vị Trí',
-            impact: 'Trung bình',
-            description: 'Vị trí khó tiếp cận tăng chi phí vận chuyển và thi công',
-            icon: 'fas fa-map-marker-alt'
-        },
-        {
-            factor: 'Thời Gian',
-            impact: 'Cao',
-            description: 'Thi công gấp có thể tăng 15-25% chi phí',
-            icon: 'fas fa-clock'
-        }
-    ];
-
-    // FAQ data
-    const faqData = [
-        {
-            question: 'Chi phí sửa chữa cải tạo nhà bao nhiêu tiền 1m²?',
-            answer: 'Chi phí dao động từ 800,000 - 4,000,000 VNĐ/m² tùy mức độ sửa chữa. Sửa chữa cơ bản 800K-1.5M/m², cải tạo trung bình 1.5M-2.5M/m², cải tạo toàn diện 2.5M-4M/m². Giá cụ thể phụ thuộc vào diện tích, vật liệu và yêu cầu thiết kế.'
-        },
-        {
-            question: 'Cách tính chi phí cải tạo nhà chính xác nhất?',
-            answer: 'Cách tính chính xác: (1) Đo diện tích cần cải tạo, (2) Liệt kê hạng mục công việc, (3) Tính khối lượng vật liệu, (4) Tính nhân công, (5) Cộng chi phí quản lý 10-15%. Nên có báo giá chi tiết từ 2-3 đơn vị để so sánh.'
-        },
-        {
-            question: 'Chi phí phá dỡ chiếm bao nhiêu % tổng chi phí?',
-            answer: 'Chi phí phá dỡ và chuẩn bị mặt bằng chiếm khoảng 10-15% tổng chi phí cải tạo. Bao gồm: phá dỡ tường cũ, dọn dẹp rác thải, bảo vệ không gian khác không thi công.'
-        },
-        {
-            question: 'Có cách nào tiết kiệm chi phí cải tạo không?',
-            answer: 'Có nhiều cách tiết kiệm: (1) Giữ lại kết cấu cũ nếu còn tốt, (2) Chọn vật liệu phù hợp thay vì quá cao cấp, (3) Tự mua vật liệu, (4) Thi công từng giai đoạn, (5) Tìm thợ có kinh nghiệm tránh sai sót.'
-        },
-        {
-            question: 'Thời gian cải tạo nhà mất bao lâu?',
-            answer: 'Thời gian cải tạo phụ thuộc diện tích và mức độ: Căn 50m² sửa cơ bản 15-20 ngày, cải tạo trung bình 30-45 ngày, cải tạo toàn diện 60-90 ngày. Nhà lớn hơn 100m² cần 90-150 ngày.'
-        },
-        {
-            question: 'Chi phí nào hay phát sinh khi cải tạo?',
-            answer: 'Chi phí phát sinh thường gặp: (1) Kết cấu cũ hư hỏng nặng hơn dự kiến, (2) Thay đổi thiết kế giữa chừng, (3) Vật liệu tăng giá, (4) Phát hiện mối mọt hoặc thấm, (5) Nâng cấp thêm tiện ích. Nên dự phòng 10-15% tổng chi phí.'
+            question: 'Thời gian cải tạo nhà thường mất bao lâu?',
+            answer: 'Cải tạo 1 phòng: 1-2 tuần. Cải tạo toàn bộ căn hộ 50-80m²: 1-2 tháng. Thời gian còn phụ thuộc vào mức độ xuống cấp và phạm vi công việc.'
         }
     ];
 
     return (
-        <div className="pricing-page">
-            {/* Hero Section */}
-            <section className="hero-section">
+        <div className="page-wrapper">
+            <section className="section-gradient">
                 <div className="container">
-                    <h1 className="section-title">💰 Cách Ước Tính Chi Phí Sửa Chữa Cải Tạo</h1>
+                    <h1 className="section-title">
+                        <i className="fas fa-calculator"></i>
+                        Cách Ước Tính Chi Phí Sửa Chữa Cải Tạo Nhà
+                    </h1>
                     <p className="section-subtitle">
-                        Hướng dẫn chi tiết cách tính toán chi phí cải tạo chính xác, minh bạch
+                        Hướng dẫn chi tiết giúp bạn ước tính chi phí chính xác, tiết kiệm và minh bạch
                     </p>
+                </div>
+            </section>
 
-                    <div className="hero-stats grid-4">
-                        <div className="stat-item">
-                            <div className="stat-number">5</div>
-                            <div className="stat-label">Bước Tính Chi Phí</div>
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-chart-line"></i>
+                        Công Cụ Ước Tính Chi Phí
+                    </h2>
+                    
+                    <div className="calculator-card">
+                        <div className="calculator-inputs">
+                            <div className="input-group">
+                                <label>Diện tích cải tạo (m²):</label>
+                                <input 
+                                    type="number" 
+                                    value={calculatorValues.area}
+                                    onChange={(e) => setCalculatorValues({...calculatorValues, area: Number(e.target.value)})}
+                                    min="10"
+                                    max="500"
+                                />
+                            </div>
+                            <div className="input-group">
+                                <label>Mức độ cải tạo:</label>
+                                <select 
+                                    value={calculatorValues.level}
+                                    onChange={(e) => setCalculatorValues({...calculatorValues, level: e.target.value})}
+                                >
+                                    <option value="basic">Cải tạo cơ bản</option>
+                                    <option value="medium">Cải tạo trung bình</option>
+                                    <option value="premium">Cải tạo cao cấp</option>
+                                </select>
+                            </div>
                         </div>
-                        <div className="stat-item">
-                            <div className="stat-number">10-15%</div>
-                            <div className="stat-label">Dự Phòng Khuyến Nghị</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">2-3</div>
-                            <div className="stat-label">Báo Giá Nên So Sánh</div>
-                        </div>
-                        <div className="stat-item">
-                            <div className="stat-number">24h</div>
-                            <div className="stat-label">Thời Gian Báo Giá</div>
+                        <div className="calculator-result">
+                            <h3>Ước Tính Chi Phí</h3>
+                            <p className="result-label">{costResult.levelName}</p>
+                            <div className="result-price">
+                                {costResult.minCost} - {costResult.maxCost} VNĐ
+                            </div>
+                            <p className="result-note">* Đây là ước tính sơ bộ, chi phí thực tế còn phụ thuộc vào nhiều yếu tố khác</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Pricing Tabs */}
-            <section className="section">
+            <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">📊 Mức Giá Theo Phân Khúc</h2>
-                    <p className="section-subtitle">
-                        3 phân khúc giá phổ biến cho sửa chữa cải tạo nhà ở
-                    </p>
-
-                    <div className="tabs-container">
-                        <div className="tabs">
-                            {costMethods.map((method) => (
-                                <button
-                                    key={method.id}
-                                    className={`tab ${activeTab === method.id ? 'active' : ''}`}
-                                    onClick={() => setActiveTab(method.id)}
-                                >
-                                    {method.name}
-                                </button>
-                            ))}
-                        </div>
-
-                        {costMethods.map((method) => (
-                            <div
-                                key={method.id}
-                                className={`tab-content ${activeTab === method.id ? 'active' : ''}`}
-                            >
-                                <div className="pricing-card card">
-                                    <div className="card-header" style={{ background: `linear-gradient(135deg, ${method.bgColor}, ${method.bgColor}dd)` }}>
-                                        <h3>{method.name}</h3>
-                                        <div className="price-range">{method.price}</div>
-                                        <p>{method.description}</p>
-                                    </div>
-
-                                    <div className="card-body">
-                                        <div className="features-section">
-                                            <h4>🔨 Công Việc Bao Gồm:</h4>
-                                            <ul>
-                                                {method.features.map((feature, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-check-circle"></i>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        <div className="includes-section">
-                                            <h4>📦 Gói Dịch Vụ:</h4>
-                                            <ul>
-                                                {method.includes.map((item, index) => (
-                                                    <li key={index}>
-                                                        <i className="fas fa-box"></i>
-                                                        {item}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="pricing-actions">
-                                        <a href="/lien-he" className="btn btn-primary">
-                                            <i className="fas fa-phone"></i>
-                                            Liên Hệ Báo Giá
-                                        </a>
-                                        <a href="/bao-gia/bao-gia-sua-chua-cai-tao" className="btn btn-secondary">
-                                            <i className="fas fa-calculator"></i>
-                                            Tính Chi Phí
-                                        </a>
-                                    </div>
+                    <h2 className="section-title">
+                        <i className="fas fa-cogs"></i>
+                        Yếu Tố Ảnh Hưởng Đến Chi Phí
+                    </h2>
+                    <div className="grid-3">
+                        {factors.map((factor, index) => (
+                            <div key={index} className="info-card">
+                                <div className="card-icon" style={{ background: factor.color }}>
+                                    <i className={factor.icon}></i>
                                 </div>
+                                <h3>{factor.title}</h3>
+                                <ul className="info-list">
+                                    {factor.items.map((item, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Calculation Process */}
-            <section className="section section-alt">
+            <section className="section">
                 <div className="container">
-                    <h2 className="section-title">📝 Quy Trình Tính Chi Phí</h2>
-                    <p className="section-subtitle">
-                        5 bước tính toán chi phí cải tạo chính xác
-                    </p>
-
+                    <h2 className="section-title">
+                        <i className="fas fa-list-ol"></i>
+                        Cách Ước Tính Chi Phí Sơ Bộ
+                    </h2>
                     <div className="process-timeline">
-                        {calculationSteps.map((step, index) => (
+                        {steps.map((step, index) => (
                             <div key={index} className="process-step">
                                 <div className="step-number">
                                     <i className={step.icon}></i>
-                                    <span>{step.step}</span>
                                 </div>
                                 <div className="step-content">
+                                    <div className="step-label">Bước {step.number}</div>
                                     <h3>{step.title}</h3>
-                                    <p>{step.description}</p>
-                                    <div className="step-duration">
-                                        <i className="far fa-clock"></i>
-                                        {step.duration}
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Cost Breakdown */}
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">💵 Cơ Cấu Chi Phí</h2>
-                    <p className="section-subtitle">
-                        Phân bổ chi phí theo từng hạng mục công việc
-                    </p>
-
-                    <div className="breakdown-grid grid-3">
-                        {costBreakdown.map((item, index) => (
-                            <div key={index} className="breakdown-card card">
-                                <div className="card-header">
-                                    <i className={`${item.icon} icon-large`}></i>
-                                    <h3>{item.category}</h3>
-                                    <div className="percentage">{item.percentage}</div>
-                                </div>
-
-                                <div className="card-body">
                                     <ul>
-                                        {item.items.map((subItem, subIndex) => (
-                                            <li key={subIndex}>
-                                                <i className="fas fa-angle-right"></i>
-                                                {subItem}
+                                        {step.content.map((item, i) => (
+                                            <li key={i}>
+                                                <i className="fas fa-chevron-right"></i>
+                                                {item}
                                             </li>
                                         ))}
                                     </ul>
+                                    {step.example && (
+                                        <div className="example-box">
+                                            <strong>Ví dụ:</strong> {step.example}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         ))}
@@ -362,41 +259,31 @@ const CachUocTinhChiPhi = () => {
                 </div>
             </section>
 
-            {/* Price Factors */}
             <section className="section section-alt">
                 <div className="container">
-                    <h2 className="section-title">📈 Yếu Tố Ảnh Hưởng Giá</h2>
-                    <p className="section-subtitle">
-                        5 yếu tố chính quyết định chi phí cải tạo
-                    </p>
-
-                    <div className="factors-grid grid-3">
-                        {priceFactors.map((item, index) => (
-                            <div key={index} className="factor-card card">
-                                <div className="card-header">
-                                    <i className={`${item.icon} icon-large`}></i>
-                                    <h3>{item.factor}</h3>
-                                    <div className={`impact impact-${item.impact.toLowerCase().replace(' ', '-')}`}>
-                                        {item.impact}
-                                    </div>
-                                </div>
-
-                                <div className="card-body">
-                                    <p>{item.description}</p>
-                                </div>
+                    <h2 className="section-title">
+                        <i className="fas fa-piggy-bank"></i>
+                        Mẹo Tiết Kiệm Chi Phí
+                    </h2>
+                    <div className="grid-2">
+                        {savingTips.map((tip, index) => (
+                            <div key={index} className="tip-card">
+                                <i className={tip.icon}></i>
+                                <p>{tip.tip}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* FAQ Section */}
             <section className="section">
                 <div className="container">
-                    <h2 className="section-title">❓ Câu Hỏi Thường Gặp</h2>
-
-                    <div className="faq-list">
-                        {faqData.map((faq, index) => (
+                    <h2 className="section-title">
+                        <i className="fas fa-question-circle"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <div className="faq-container">
+                        {faqs.map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
@@ -405,10 +292,9 @@ const CachUocTinhChiPhi = () => {
                                     <span>{faq.question}</span>
                                     <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
                                 </button>
-
                                 {activeFaq === index && (
                                     <div className="faq-answer">
-                                        <p>{faq.answer}</p>
+                                        {faq.answer}
                                     </div>
                                 )}
                             </div>
@@ -417,10 +303,9 @@ const CachUocTinhChiPhi = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <CTAContent />
         </div>
     );
 };
 
-export default CachUocTinhChiPhi;
+export default CachUocTinhChiPhiPage;
