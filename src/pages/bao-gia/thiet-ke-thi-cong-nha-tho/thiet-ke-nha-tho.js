@@ -1,9 +1,7 @@
 // src/pages/bao-gia/thiet-ke-thi-cong-nha-tho/thiet-ke-nha-tho.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../../components/Header/Header';
 import '../../../styles/PageStyles.css';
-
 import CTAContent from '../../../components/CTAContent/CTAContent';
 
 const ThietKeNhaThePage = () => {
@@ -46,32 +44,32 @@ const ThietKeNhaThePage = () => {
         {
             title: 'Hướng đặt từ đường',
             description: 'Thường chọn hướng Nam hoặc Đông Nam để đón sinh khí',
-            icon: 'fa-compass',
-            details: 'Hướng Nam mang lại ánh sáng tốt, khí sinh mạnh. Hướng Đông Nam đón gió mát, tạo không gian thoáng đãng.'
+            details: 'Hướng Nam mang lại ánh sáng tốt, khí sinh mạnh. Hướng Đông Nam đón gió mát.',
+            icon: 'fa-compass'
         },
         {
             title: 'Thế đất',
             description: 'Phía trước rộng thoáng, phía sau có điểm tựa vững chắc',
-            icon: 'fa-mountain',
-            details: 'Minh đường phía trước rộng để tụ khí, huyền vũ phía sau cao để chắn gió, tạo sự ổn định.'
+            details: 'Minh đường phía trước rộng để tụ khí, huyền vũ phía sau cao để chắn gió.',
+            icon: 'fa-mountain'
         },
         {
             title: 'Kích thước',
             description: 'Tuân thủ thước Lỗ Ban để hợp phong thủy',
-            icon: 'fa-ruler',
-            details: 'Các kích thước theo thước Lỗ Ban như: Tài Đức, Quan Lộc, Bản Mệnh để hợp tuổi chủ nhà.'
+            details: 'Các kích thước theo thước Lỗ Ban như: Tài Đức, Quan Lộc, Bản Mệnh.',
+            icon: 'fa-ruler'
         },
         {
             title: 'Bố trí không gian',
             description: 'Gian giữa thờ chính, hai gian bên phụ trợ',
-            icon: 'fa-th-large',
-            details: 'Gian giữa là trung tâm tâm linh, hai gian bên cho sinh hoạt và tiếp khách dòng họ.'
+            details: 'Gian giữa là trung tâm tâm linh, hai gian bên cho sinh hoạt.',
+            icon: 'fa-th-large'
         },
         {
             title: 'Khuôn viên',
             description: 'Nên có cây xanh, hồ nước để tạo sự cân bằng âm dương',
-            icon: 'fa-tree',
-            details: 'Hồ bán nguyệt phía trước tụ thủy sinh tài, cây xanh tạo sinh khí, cân bằng ngũ hành.'
+            details: 'Hồ bán nguyệt phía trước tụ thủy sinh tài, cây xanh tạo sinh khí.',
+            icon: 'fa-tree'
         }
     ];
 
@@ -86,28 +84,28 @@ const ThietKeNhaThePage = () => {
         {
             step: 2,
             title: 'Trao đổi cùng gia tộc về nhu cầu & phong thủy',
-            description: 'Lắng nghe mong muốn, ngân sách, yêu cầu về phong thủy và kiến trúc truyền thống.',
+            description: 'Lắng nghe mong muốn, ngân sách, yêu cầu về phong thủy.',
             duration: '1 ngày',
             icon: 'fa-comments'
         },
         {
             step: 3,
             title: 'Lên ý tưởng kiến trúc',
-            description: 'Xác định số gian (3 hoặc 5), vật liệu (gỗ tự nhiên hoặc BTCT), phong cách kiến trúc.',
+            description: 'Xác định số gian, vật liệu, phong cách kiến trúc.',
             duration: '2-3 ngày',
             icon: 'fa-lightbulb'
         },
         {
             step: 4,
             title: 'Triển khai bản vẽ mặt bằng, phối cảnh 3D',
-            description: 'Vẽ chi tiết mặt bằng, mặt cắt, mặt đứng và tạo phối cảnh 3D chân thực.',
+            description: 'Vẽ chi tiết mặt bằng, mặt cắt và tạo phối cảnh 3D chân thực.',
             duration: '3-5 ngày',
             icon: 'fa-drafting-compass'
         },
         {
             step: 5,
-            title: 'Hoàn thiện hồ sơ thiết kế chi tiết, bàn giao & tư vấn thi công',
-            description: 'Hoàn thiện bộ hồ sơ thiết kế, giải đáp thắc mắc và tư vấn thi công.',
+            title: 'Hoàn thiện hồ sơ thiết kế chi tiết',
+            description: 'Hoàn thiện bộ hồ sơ thiết kế, bàn giao và tư vấn thi công.',
             duration: '1-2 ngày',
             icon: 'fa-check-circle'
         }
@@ -117,72 +115,41 @@ const ThietKeNhaThePage = () => {
         {
             title: 'Không nên tiết kiệm vật liệu gỗ',
             description: 'Gỗ kém chất lượng dễ cong vênh, mất giá trị tâm linh',
-            icon: 'fa-exclamation-triangle',
-            solution: 'Chọn gỗ lim, mít, xoan ta có nguồn gốc rõ ràng, đã qua xử lý chống mối mọt.'
+            icon: 'fa-exclamation-triangle'
         },
         {
             title: 'Tránh phá cách quá hiện đại',
             description: 'Sẽ làm mất đi vẻ trang nghiêm vốn có',
-            icon: 'fa-ban',
-            solution: 'Giữ nguyên bản kiến trúc truyền thống, có thể ứng dụng công nghệ vào kết cấu.'
+            icon: 'fa-ban'
         },
         {
             title: 'Nên chọn đơn vị am hiểu truyền thống',
             description: 'Để giữ chuẩn mực kiến trúc',
-            icon: 'fa-user-tie',
-            solution: 'Làm việc với KTS và nghệ nhân có kinh nghiệm về kiến trúc tâm linh truyền thống.'
+            icon: 'fa-user-tie'
         },
         {
             title: 'Tôn trọng phong thủy dòng họ',
             description: 'Sai lệch hướng hay kích thước có thể gây bất lợi',
-            icon: 'fa-yin-yang',
-            solution: 'Tham khảo ý kiến bậc cao niên trong họ và thầy phong thủy có uy tín.'
-        }
-    ];
-
-    const includedServices = [
-        {
-            service: 'Bản vẽ kiến trúc 2D',
-            details: 'Mặt bằng, mặt cắt, mặt đứng chi tiết',
-            icon: 'fa-file-alt'
-        },
-        {
-            service: 'Phối cảnh 3D',
-            details: 'Hình ảnh 3D chân thực, nhiều góc nhìn',
-            icon: 'fa-cube'
-        },
-        {
-            service: 'Tư vấn phong thủy',
-            details: 'Xác định hướng, vị trí, kích thước hợp tuổi',
-            icon: 'fa-compass'
-        },
-        {
-            service: 'Tư vấn vật liệu',
-            details: 'Lựa chọn vật liệu phù hợp ngân sách',
-            icon: 'fa-hammer'
+            icon: 'fa-yin-yang'
         }
     ];
 
     const faqs = [
         {
             question: 'Chi phí thiết kế nhà thờ họ 3 gian khoảng bao nhiêu?',
-            answer: 'Chi phí thiết kế nhà thờ họ 3 gian dao động từ 180.000 - 250.000đ/m², đã bao gồm bản vẽ kiến trúc 2D và phối cảnh 3D. Giá có thể thay đổi tùy theo độ phức tạp và yêu cầu chi tiết của gia chủ.'
+            answer: 'Chi phí thiết kế nhà thờ họ 3 gian dao động từ 180.000 - 250.000đ/m², đã bao gồm bản vẽ kiến trúc 2D và phối cảnh 3D.'
         },
         {
             question: 'Thiết kế nhà thờ có bao gồm thiết kế nội thất không?',
-            answer: 'Gói thiết kế cơ bản chỉ bao gồm kiến trúc tổng thể và bố trí không gian. Thiết kế nội thất bàn thờ, hoành phi, câu đối có thể đặt gói riêng với chi phí bổ sung.'
+            answer: 'Gói thiết kế cơ bản chỉ bao gồm kiến trúc tổng thể. Thiết kế nội thất có thể đặt gói riêng.'
         },
         {
-            question: 'Bản vẽ 3D có giống với thực tế sau khi thi công không?',
-            answer: 'Bản vẽ 3D được thiết kế rất chi tiết và chân thực, phản ánh đúng 90-95% so với thực tế. Sự khác biệt nhỏ có thể do ánh sáng tự nhiên và màu sắc vật liệu thực tế.'
+            question: 'Bản vẽ 3D có giống với thực tế không?',
+            answer: 'Bản vẽ 3D phản ánh đúng 90-95% so với thực tế.'
         },
         {
             question: 'Có tư vấn phong thủy trong gói thiết kế không?',
-            answer: 'Có, gói thiết kế bao gồm tư vấn phong thủy cơ bản về hướng nhà, vị trí đặt bàn thờ, kích thước theo thước Lỗ Ban. Nếu cần tư vấn phong thủy chuyên sâu, chúng tôi có dịch vụ riêng.'
-        },
-        {
-            question: 'Thời gian thiết kế nhà thờ mất bao lâu?',
-            answer: 'Thời gian thiết kế từ 5-10 ngày làm việc tùy quy mô. Nhà thờ 3 gian khoảng 5-7 ngày, nhà thờ 5 gian có hậu cung khoảng 7-10 ngày, đã bao gồm thời gian trao đổi và chỉnh sửa.'
+            answer: 'Có, gói thiết kế bao gồm tư vấn phong thủy cơ bản về hướng nhà, vị trí đặt bàn thờ.'
         }
     ];
 
@@ -191,214 +158,167 @@ const ThietKeNhaThePage = () => {
     };
 
     return (
-        <div className="page-container">
-            <Header />
-
-            <div className="hero-section" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-                <div className="hero-content">
-                    <div className="breadcrumb">
-                        <Link to="/">Trang chủ</Link>
-                        <span className="separator">/</span>
-                        <Link to="/bao-gia">Báo giá</Link>
-                        <span className="separator">/</span>
-                        <Link to="/bao-gia/thiet-ke-thi-cong-nha-tho">Nhà thờ họ</Link>
-                        <span className="separator">/</span>
-                        <span>Thiết kế</span>
-                    </div>
-                    <h1 className="hero-title">Báo Giá Thiết Kế Từ Đường - Nhà Thờ Họ 2025</h1>
-                    <p className="hero-description">
-                        Thiết kế kiến trúc chuẩn phong thủy, tôn nghiêm, lưu giữ giá trị truyền thống dòng tộc tại Hà Nội & Nha Trang.
+        <div className="page-wrapper">
+            <section className="section section-gradient">
+                <div className="container">
+                    <h1 className="section-title" >
+                        Báo Giá Thiết Kế Từ Đường - Nhà Thờ Họ 2025
+                    </h1>
+                    <p className="section-subtitle" >
+                        Thiết kế kiến trúc chuẩn phong thủy, tôn nghiêm, lưu giữ giá trị truyền thống dòng tộc
                     </p>
                 </div>
-            </div>
+            </section>
 
-            <div className="content-wrapper">
-                <section className="intro-section">
+            <section className="section">
+                <div className="container">
                     <h2 className="section-title">Ý Nghĩa Của Việc Thiết Kế Từ Đường - Nhà Thờ Họ</h2>
-                    <p>
-                        Từ đường, nhà thờ họ là công trình tâm linh quan trọng trong văn hóa người Việt, nơi thờ phụng tổ tiên và lưu giữ truyền thống dòng tộc. Một thiết kế chuẩn mực sẽ giúp:
+                    <p style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                        Từ đường, nhà thờ họ là công trình tâm linh quan trọng, nơi thờ phụng tổ tiên và lưu giữ truyền thống dòng tộc.
                     </p>
-                    <div className="benefits-grid">
-                        <div className="benefit-card">
-                            <i className="fas fa-praying-hands"></i>
-                            <h3>Đảm bảo sự tôn nghiêm và trang trọng</h3>
-                            <p>Không gian thờ cúng được thiết kế theo chuẩn mực truyền thống, tạo sự trang nghiêm cho lễ nghi.</p>
+
+                    <div className="grid-4">
+                        <div className="info-card">
+                            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                <i className="fas fa-praying-hands" style={{ fontSize: '2rem', color: '#667eea' }}></i>
+                            </div>
+                            <h3>Tôn nghiêm & trang trọng</h3>
+                            <p>Không gian thờ cúng theo chuẩn mực truyền thống.</p>
                         </div>
-                        <div className="benefit-card">
-                            <i className="fas fa-yin-yang"></i>
+                        <div className="info-card">
+                            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                <i className="fas fa-yin-yang" style={{ fontSize: '2rem', color: '#10b981' }}></i>
+                            </div>
                             <h3>Hài hòa phong thủy</h3>
-                            <p>Mang lại may mắn, thịnh vượng cho con cháu, cân bằng âm dương trong gia tộc.</p>
+                            <p>Mang lại may mắn, thịnh vượng cho con cháu.</p>
                         </div>
-                        <div className="benefit-card">
-                            <i className="fas fa-landmark"></i>
-                            <h3>Truyền giữ giá trị văn hóa</h3>
-                            <p>Lưu giữ kiến trúc cổ truyền, truyền thống văn hóa dòng tộc qua các thế hệ.</p>
+                        <div className="info-card">
+                            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                <i className="fas fa-landmark" style={{ fontSize: '2rem', color: '#f59e0b' }}></i>
+                            </div>
+                            <h3>Giữ gìn văn hóa</h3>
+                            <p>Lưu giữ kiến trúc cổ truyền qua các thế hệ.</p>
                         </div>
-                        <div className="benefit-card">
-                            <i className="fas fa-users"></i>
+                        <div className="info-card">
+                            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                <i className="fas fa-users" style={{ fontSize: '2rem', color: '#8b5cf6' }}></i>
+                            </div>
                             <h3>Tối ưu công năng</h3>
-                            <p>Phục vụ việc thờ cúng và hội họp dòng họ một cách thuận tiện, hợp lý.</p>
+                            <p>Phục vụ thờ cúng và hội họp dòng họ.</p>
                         </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="price-table-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Báo Giá Thiết Kế Từ Đường - Nhà Thờ Họ 2025</h2>
-                    </div>
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">Báo Giá Thiết Kế 2025</h2>
 
-                    <div className="price-cards-grid">
+                    <div className="grid-2">
                         {designPrices.map((item, index) => (
-                            <div key={index} className="price-card">
-                                <div className="price-card-header">
+                            <div key={index} className="card">
+                                <div className="card-header">
                                     <h3>{item.type}</h3>
-                                    <div className="price-tag">{item.price}</div>
+                                    <div className="price-range">{item.price}</div>
+                                    <p>{item.note}</p>
                                 </div>
-                                <p className="price-note">{item.note}</p>
-                                <ul className="price-features">
-                                    {item.features.map((feature, idx) => (
-                                        <li key={idx}>
-                                            <i className="fas fa-check-circle"></i>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
+                                <div className="card-body">
+                                    <ul>
+                                        {item.features.map((feature, idx) => (
+                                            <li key={idx}>
+                                                <i className="fas fa-check-circle"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="price-notes">
-                        <p><i className="fas fa-info-circle"></i> Báo giá đã bao gồm bản vẽ kiến trúc 2D + phối cảnh 3D</p>
-                        <p><i className="fas fa-info-circle"></i> Giá thay đổi tùy loại gỗ, diện tích, mức độ chạm khắc</p>
-                        <p><i className="fas fa-info-circle"></i> Không bao gồm thiết kế nội thất bàn thờ, hoành phi, câu đối (có thể đặt gói riêng)</p>
+                    <div style={{ marginTop: '1.5rem', background: '#fff7ed', padding: '1rem', borderRadius: '8px', borderLeft: '4px solid #f59e0b' }}>
+                        <p style={{ margin: '0.5rem 0', fontSize: '0.9rem' }}><i className="fas fa-info-circle" style={{ color: '#f59e0b' }}></i> Báo giá đã bao gồm bản vẽ 2D + phối cảnh 3D</p>
+                        <p style={{ margin: '0.5rem 0', fontSize: '0.9rem' }}><i className="fas fa-info-circle" style={{ color: '#f59e0b' }}></i> Giá thay đổi tùy loại gỗ, diện tích, mức độ chạm khắc</p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="fengshui-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Yếu Tố Phong Thủy Cần Lưu Ý Trong Thiết Kế</h2>
-                    </div>
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">Yếu Tố Phong Thủy Cần Lưu Ý</h2>
 
-                    <div className="fengshui-details-grid">
+                    <div className="grid-3">
                         {fengShuiPrinciples.map((principle, index) => (
-                            <div key={index} className="fengshui-detail-card">
-                                <div className="fengshui-icon">
-                                    <i className={`fas ${principle.icon}`}></i>
+                            <div key={index} className="info-card">
+                                <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                    <i className={`fas ${principle.icon}`} style={{ fontSize: '1.8rem', color: '#667eea' }}></i>
                                 </div>
                                 <h3>{principle.title}</h3>
-                                <p className="principle-description">{principle.description}</p>
-                                <p className="principle-details">{principle.details}</p>
+                                <p>{principle.description}</p>
+                                <p style={{ fontSize: '0.85rem', color: '#718096', marginTop: '0.5rem' }}>{principle.details}</p>
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="process-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Quy Trình Thiết Kế Từ Đường - Nhà Thờ Họ</h2>
-                    </div>
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">Quy Trình Thiết Kế</h2>
 
                     <div className="process-timeline">
                         {designProcess.map((step, index) => (
                             <div key={index} className="process-step">
-                                <div className="step-number">{step.step}</div>
-                                <div className="step-icon">
+                                <div className="step-number">
                                     <i className={`fas ${step.icon}`}></i>
+                                    <span>Bước {step.step}</span>
                                 </div>
                                 <div className="step-content">
                                     <h3>{step.title}</h3>
                                     <p>{step.description}</p>
                                     <div className="step-duration">
                                         <i className="fas fa-clock"></i>
-                                        <span>{step.duration}</span>
+                                        {step.duration}
                                     </div>
                                 </div>
-                                {index < designProcess.length - 1 && (
-                                    <div className="step-connector"></div>
-                                )}
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="notes-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Lưu Ý & Khuyến Cáo Quan Trọng</h2>
-                    </div>
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">Lưu Ý Quan Trọng</h2>
 
-                    <div className="notes-grid">
+                    <div className="grid-2">
                         {importantNotes.map((note, index) => (
-                            <div key={index} className="note-card">
-                                <div className="note-icon">
-                                    <i className={`fas ${note.icon}`}></i>
+                            <div key={index} className="info-card">
+                                <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+                                    <i className={`fas ${note.icon}`} style={{ fontSize: '2rem', color: '#ef4444' }}></i>
                                 </div>
                                 <h3>{note.title}</h3>
-                                <p className="note-description">{note.description}</p>
-                                <div className="note-solution">
-                                    <strong>Giải pháp:</strong> {note.solution}
-                                </div>
+                                <p>{note.description}</p>
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section className="services-included-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Dịch Vụ Bao Gồm Trong Gói Thiết Kế</h2>
-                    </div>
+            <section className="faq-section">
+                <div className="container">
+                    <h2 className="section-title">Câu Hỏi Thường Gặp</h2>
 
-                    <div className="services-included-grid">
-                        {includedServices.map((service, index) => (
-                            <div key={index} className="service-included-card">
-                                <i className={`fas ${service.icon}`}></i>
-                                <h3>{service.service}</h3>
-                                <p>{service.details}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-
-                <section className="commitment-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Ưu Đãi & Cam Kết Dịch Vụ</h2>
-                    </div>
-
-                    <div className="commitment-grid">
-                        <div className="commitment-card">
-                            <i className="fas fa-gift"></i>
-                            <h3>Miễn phí tư vấn phong thủy ban đầu</h3>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-cube"></i>
-                            <h3>Bản vẽ 3D chi tiết, chân thực</h3>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-user-tie"></i>
-                            <h3>Đội ngũ KTS - nghệ nhân giàu kinh nghiệm</h3>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-shield-alt"></i>
-                            <h3>Cam kết giữ gìn giá trị truyền thống</h3>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="faq-section">
-                    <div className="section-header">
-                        <h2 className="section-title">Câu Hỏi Thường Gặp</h2>
-                    </div>
-
-                    <div className="faq-list">
+                    <div className="faq-container">
                         {faqs.map((faq, index) => (
-                            <div 
-                                key={index} 
-                                className={`faq-item ${activeFaq === index ? 'active' : ''}`}
-                                onClick={() => toggleFaq(index)}
-                            >
-                                <div className="faq-question">
-                                    <h3>{faq.question}</h3>
+                            <div key={index} className="faq-item">
+                                <button
+                                    className={`faq-question ${activeFaq === index ? 'active' : ''}`}
+                                    onClick={() => toggleFaq(index)}
+                                >
+                                    <span>{faq.question}</span>
                                     <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
-                                </div>
+                                </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">
                                         <p>{faq.answer}</p>
@@ -407,15 +327,10 @@ const ThietKeNhaThePage = () => {
                             </div>
                         ))}
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <CTAContent 
-                    title="Liên Hệ Tư Vấn Thiết Kế Miễn Phí"
-                    description="Nhận tư vấn phong thủy và báo giá chi tiết cho thiết kế từ đường - nhà thờ họ"
-                />
-            </div>
-
-            <div className="footer-placeholder"></div>
+            <CTAContent />
         </div>
     );
 };
