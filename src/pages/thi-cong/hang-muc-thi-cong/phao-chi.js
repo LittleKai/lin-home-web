@@ -242,8 +242,6 @@ const PhaoChiPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -509,9 +507,6 @@ const PhaoChiPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
-        </div>
     );
 };
 

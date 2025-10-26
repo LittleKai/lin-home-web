@@ -955,3 +955,15 @@
     font-size: 10px;
     color: var(--icon-medium);
 }
+
+.mobile-dropdown-icon.fa-star {
+    color: var(--icon-warning);
+}
+
+.mobile-submenu-icon.fa-star {
+    color: var(--icon-warning);
+}
+
+.mobile-nested-icon.fa-star {
+    color: var(--icon-warning);
+}

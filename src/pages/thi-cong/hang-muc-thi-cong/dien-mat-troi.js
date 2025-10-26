@@ -243,8 +243,6 @@ const DienMatTroiPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -505,7 +503,6 @@ const DienMatTroiPage = () => {
                 <CTAContent />
             </main>
 
-        </div>
     );
 };
 

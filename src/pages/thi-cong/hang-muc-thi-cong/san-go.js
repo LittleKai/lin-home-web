@@ -152,6 +152,7 @@ const SanGoPage = () => {
             title: 'Khe co giãn',
             tip: 'Để khe co giãn 8-12mm ở tường và 1-2mm giữa các thanh sàn',
             icon: 'fa-expand-arrows-alt'
+
         }
     ];
 
@@ -189,8 +190,6 @@ const SanGoPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -448,9 +447,6 @@ const SanGoPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
-        </div>
     );
 };
 

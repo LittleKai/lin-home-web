@@ -254,8 +254,6 @@ const RemCuaPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -524,9 +522,6 @@ const RemCuaPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
-        </div>
     );
 };
 

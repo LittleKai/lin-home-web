@@ -2,251 +2,205 @@ import React, { useState } from 'react';
 import CTAContent from '../../../../components/CTAContent/CTAContent';
 import '../../../../styles/PageStyles.css';
 
-const NoiDauThuongGapPage = () => {
+const NoiDauThietKeHienDaiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
-
-    const toggleFaq = (index) => {
-        setActiveFaq(activeFaq === index ? null : index);
-    };
 
     const painPoints = [
         {
-            number: 1,
+            id: 1,
             title: 'Không Gian Trống Trải, Lạnh Lẽo',
-            cause: 'Lạm dụng gam màu trắng – xám, nội thất tối giản quá mức',
+            icon: 'fas fa-snowflake',
+            problem: 'Lạm dụng gam màu trắng – xám, nội thất tối giản quá mức',
             solutions: [
                 'Kết hợp gỗ ấm màu, đèn vàng',
-                'Thêm tranh canvas, cây xanh, decor để tăng sức sống',
-                'Sử dụng thảm trải sàn, gối tựa màu sắc'
+                'Thêm tranh canvas, cây xanh',
+                'Sử dụng decor để tăng sức sống',
+                'Cân bằng giữa tối giản và ấm cúng'
             ],
-            icon: 'fas fa-snowflake',
-            color: '#06b6d4'
+            color: '#3b82f6',
+            savings: 'Tăng sự ấm cúng 50-60%'
         },
         {
-            number: 2,
-            title: 'Nội Thất Kém Chất Lượng – Nhanh Xuống Cấp',
-            cause: 'Chọn gỗ MDF thường, phụ kiện rẻ tiền',
-            consequence: 'Mối mọt, bong tróc, cong vênh sau 1–2 năm',
+            id: 2,
+            title: 'Nội Thất Kém Chất Lượng - Nhanh Xuống Cấp',
+            icon: 'fas fa-exclamation-triangle',
+            problem: 'Chọn gỗ MDF thường, phụ kiện rẻ tiền. Hậu quả: mối mọt, bong tróc sau 1-2 năm',
             solutions: [
-                'Sử dụng MDF chống ẩm, HDF, gỗ veneer',
-                'Chọn phụ kiện Hafele, Blum thay vì hàng trôi nổi',
-                'Kiểm tra xuất xứ và chứng nhận chất lượng'
+                'Sử dụng MDF chống ẩm, HDF cao cấp',
+                'Chọn gỗ veneer chất lượng',
+                'Phụ kiện Hafele, Blum',
+                'Tránh hàng trôi nổi giá rẻ'
             ],
-            icon: 'fas fa-hammer',
-            color: '#ef4444'
+            color: '#ef4444',
+            savings: 'Tăng tuổi thọ gấp 3-4 lần'
         },
         {
-            number: 3,
+            id: 3,
             title: 'Nhà Phố Hà Nội Chật Hẹp, Thiếu Sáng',
-            cause: 'Mặt tiền nhỏ, bị che khuất bởi công trình xung quanh',
+            icon: 'fas fa-compress-arrows-alt',
+            problem: 'Mặt tiền nhỏ, bị che khuất bởi công trình xung quanh',
             solutions: [
-                'Giếng trời, cửa kính lớn, gương phản chiếu',
-                'Thiết kế nội thất đa năng, giảm vách ngăn thừa',
-                'Sử dụng màu sáng và đèn LED hợp lý'
+                'Giếng trời đón ánh sáng tự nhiên',
+                'Cửa kính lớn, gương phản chiếu',
+                'Thiết kế nội thất đa năng',
+                'Giảm vách ngăn thừa'
             ],
-            icon: 'fas fa-sun',
-            color: '#f59e0b'
+            color: '#f59e0b',
+            savings: 'Tăng ánh sáng 40-50%'
         },
         {
-            number: 4,
-            title: 'Nha Trang Khí Hậu Ẩm Mặn – Đồ Nhanh Hỏng',
-            cause: 'Không chọn vật liệu phù hợp khí hậu ven biển',
-            solutions: [
-                'Dùng inox 304, nhôm kính, gỗ chống ẩm phủ melamine/laminate',
-                'Tránh vật liệu dễ han gỉ, bong nứt',
-                'Bảo dưỡng định kỳ hệ thống chống ẩm'
-            ],
+            id: 4,
+            title: 'Nha Trang Khí Hậu Ẩm Mặn - Đồ Nhanh Hỏng',
             icon: 'fas fa-water',
-            color: '#3b82f6'
+            problem: 'Không chọn vật liệu phù hợp khí hậu ven biển',
+            solutions: [
+                'Dùng inox 304, nhôm kính',
+                'Gỗ chống ẩm phủ melamine/laminate',
+                'Tránh vật liệu dễ han gỉ',
+                'Bảo dưỡng định kỳ'
+            ],
+            color: '#06b6d4',
+            savings: 'Giảm hư hỏng 60-70%'
         },
         {
-            number: 5,
-            title: 'Thiết Kế Thiếu Đồng Bộ – Công Năng Bất Tiện',
-            cause: 'Không có bản vẽ 3D tổng thể → bố trí chắp vá',
-            consequence: 'Khó di chuyển, không đồng bộ kiến trúc – nội thất',
+            id: 5,
+            title: 'Thiết Kế Thiếu Đồng Bộ - Công Năng Bất Tiện',
+            icon: 'fas fa-puzzle-piece',
+            problem: 'Không có bản vẽ 3D tổng thể → bố trí chắp vá. Khó di chuyển, không đồng bộ',
             solutions: [
                 'Thiết kế 3D trước khi thi công',
-                'Chọn đơn vị thiết kế thi công trọn gói để đồng bộ',
-                'Lên kế hoạch chi tiết về công năng sử dụng'
+                'Chọn đơn vị thiết kế thi công trọn gói',
+                'Kiểm soát chặt chẽ quy trình',
+                'Đảm bảo đồng bộ kiến trúc - nội thất'
             ],
-            icon: 'fas fa-puzzle-piece',
-            color: '#8b5cf6'
+            color: '#8b5cf6',
+            savings: 'Tránh lãng phí 40-50% chi phí'
+        }
+    ];
+
+    const climateTable = [
+        {
+            location: 'Hà Nội',
+            issue: 'Độ ẩm cao (80-90%)',
+            solution: 'Gỗ chống ẩm + thông gió',
+            materials: ['MDF chống ẩm', 'HDF cao cấp', 'Sơn PU chống ẩm']
+        },
+        {
+            location: 'Nha Trang',
+            issue: 'Ẩm mặn biển',
+            solution: 'Gỗ chống mặn + inox 304',
+            materials: ['Gỗ melamine', 'Inox 304', 'Kính cường lực']
+        },
+        {
+            location: 'Chung cư',
+            issue: 'Diện tích nhỏ',
+            solution: 'Nội thất đa năng + màu sáng',
+            materials: ['Gỗ công nghiệp', 'Kính', 'Gương']
         }
     ];
 
     const priceTable = [
         {
-            type: 'Nội thất căn hộ chung cư hiện đại',
-            price: '150.000 - 200.000 VNĐ/m²',
-            note: 'Bao gồm phối cảnh 3D chi tiết'
+            type: 'Chung cư',
+            price: '150,000 - 200,000',
+            note: 'Bao gồm phối cảnh 3D chi tiết',
+            features: ['Tối ưu diện tích', 'Nội thất đa năng', 'Ánh sáng tốt']
         },
         {
-            type: 'Nội thất nhà phố – nhà ống hiện đại',
-            price: '160.000 - 220.000 VNĐ/m²',
-            note: 'Tối ưu diện tích nhỏ, thiếu sáng'
+            type: 'Nhà phố',
+            price: '160,000 - 220,000',
+            note: 'Tối ưu diện tích nhỏ, thiếu sáng',
+            features: ['Giếng trời', 'Cửa kính lớn', 'Thông gió tốt']
         },
         {
-            type: 'Nội thất biệt thự/villa hiện đại',
-            price: '200.000 - 280.000 VNĐ/m²',
-            note: 'Không gian rộng, cao cấp'
-        }
-    ];
-
-    const preventionTips = [
-        {
-            icon: 'fas fa-search',
-            title: 'Khảo Sát Kỹ Lưỡng',
-            description: 'Đánh giá đầy đủ điều kiện địa lý, khí hậu, hướng nhà trước khi thiết kế',
-            color: '#3b82f6'
-        },
-        {
-            icon: 'fas fa-cube',
-            title: 'Thiết Kế 3D Chi Tiết',
-            description: 'Bản vẽ 3D giúp hình dung rõ ràng và tránh sai sót khi thi công',
-            color: '#10b981'
-        },
-        {
-            icon: 'fas fa-clipboard-check',
-            title: 'Chọn Vật Liệu Phù Hợp',
-            description: 'Ưu tiên vật liệu chống ẩm, bền vững phù hợp với khí hậu địa phương',
-            color: '#f59e0b'
-        },
-        {
-            icon: 'fas fa-user-tie',
-            title: 'KTS Có Kinh Nghiệm',
-            description: 'Làm việc với kiến trúc sư giàu kinh nghiệm về phong cách Hiện đại',
-            color: '#8b5cf6'
+            type: 'Biệt thự/Villa',
+            price: '200,000 - 280,000',
+            note: 'Không gian rộng, cao cấp',
+            features: ['Vật liệu cao cấp', 'Không gian mở', 'Chi tiết tinh tế']
         }
     ];
 
     const faqData = [
         {
-            question: 'Làm sao biết nội thất có chất lượng tốt?',
-            answer: 'Kiểm tra xuất xứ gỗ công nghiệp (MDF chống ẩm, HDF), chứng nhận chất lượng, phụ kiện có thương hiệu (Hafele, Blum), và có chế độ bảo hành rõ ràng từ nhà cung cấp.'
+            question: 'Làm sao để giảm chi phí mà vẫn giữ được phong cách Hiện đại?',
+            answer: 'Kết hợp gỗ công nghiệp chất lượng cao với gỗ tự nhiên ở vị trí trọng điểm. Sử dụng phụ kiện tốt nhưng hợp lý. Tập trung vào thiết kế thông minh thay vì vật liệu đắt tiền. Tiết kiệm 30-40% nhưng vẫn đẹp.'
         },
         {
-            question: 'Chi phí để khắc phục nỗi đau thiết kế tốn bao nhiêu?',
-            answer: 'Tùy mức độ: thiết kế lại 3D (5-10 triệu), thay vật liệu kém chất lượng (20-30% giá trị nội thất cũ), cải tạo ánh sáng (10-20 triệu). Tốt nhất là làm đúng từ đầu.'
+            question: 'Gỗ Hiện đại có bị ẩm mốc ở Hà Nội không?',
+            answer: 'Nếu chọn đúng loại gỗ chống ẩm (MDF chống ẩm, HDF), sơn PU và có hệ thống thông gió tốt thì không bị. Quan trọng là bảo dưỡng định kỳ 6 tháng/lần.'
         },
         {
-            question: 'Có thể tự thiết kế để tiết kiệm chi phí không?',
-            answer: 'Có thể, nhưng rủi ro cao về công năng, thẩm mỹ và thi công. Nên thuê KTS để có bản vẽ 3D chính xác, tránh tốn chi phí sửa chữa sau này.'
+            question: 'Nha Trang khí hậu mặn, gỗ có bị hỏng nhanh không?',
+            answer: 'Chọn gỗ phủ melamine/laminate, kim loại dùng inox 304. Định kỳ kiểm tra và bảo dưỡng 3-6 tháng/lần. Với vật liệu đúng, gỗ có thể dùng 10-15 năm.'
         },
         {
-            question: 'Làm thế nào để không gian Hiện đại không lạnh lẽo?',
-            answer: 'Kết hợp gỗ ấm màu (sồi, óc chó), đèn LED vàng ấm, thêm cây xanh, tranh canvas, thảm trải sàn, gối tựa màu sắc để tạo điểm nhấn và sự ấm cúng.'
+            question: 'Chung cư nhỏ có nên thiết kế Hiện đại không?',
+            answer: 'Rất nên. Phong cách Hiện đại là giải pháp tốt nhất cho căn hộ nhỏ với nội thất đa năng, màu sáng, không gian mở. Tập trung vào công năng thay vì trang trí để tránh chật chội.'
         },
         {
-            question: 'Thời gian bảo hành nội thất phong cách Hiện đại?',
-            answer: 'Thông thường 12-24 tháng cho gỗ công nghiệp, 6-12 tháng cho phụ kiện. Nên chọn đơn vị có chế độ bảo hành, bảo trì định kỳ rõ ràng.'
+            question: 'Làm sao để tránh thiết kế lỗi mốt?',
+            answer: 'Chọn KTS có kinh nghiệm, luôn có bản vẽ 3D trước thi công. Giữ sự cân bằng giữa tối giản và ấm cúng. Tránh lạm dụng màu tối hoặc chi tiết phức tạp.'
         }
     ];
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="main-content">
-            <section className="hero-section">
-                <div className="container">
-                    <div className="hero-content">
-                        <h1 className="hero-title">
-                            <i className="fas fa-exclamation-triangle"></i>
-                            5 Nỗi Đau Thường Gặp Khi Thiết Kế Nội Thất Phong Cách Hiện Đại
-                        </h1>
-                        <p className="hero-subtitle">
-                            & Cách Khắc Phục Hiệu Quả
-                        </p>
-                        <p className="hero-description">
-                            5 nỗi đau thường gặp khi thiết kế nội thất phong cách Hiện đại 2025 và cách khắc phục. 
-                            Giải pháp cho nhà phố, chung cư Hà Nội & biệt thự ven biển Nha Trang.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
-            <section className="section">
+            <section className="section" id="intro">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-info-circle icon-primary"></i>
+                        <i className="fas fa-info-circle"></i>
                         Giới Thiệu
                     </h2>
-                    <div className="content-box">
+                    <div className="content-text">
                         <p>
-                            Phong cách <strong>Hiện đại (Modern Style)</strong> đang là xu hướng nội thất phổ biến nhất tại Việt Nam, 
-                            đặc biệt ở Hà Nội & Nha Trang. Tuy nhiên, không ít khách hàng gặp phải vấn đề phát sinh trong quá trình 
-                            thiết kế & thi công, khiến không gian sống kém tiện nghi, nhanh xuống cấp.
+                            Phong cách <strong>Hiện đại (Modern Style)</strong> đang là xu hướng nội thất phổ biến
+                            nhất tại Việt Nam, đặc biệt ở Hà Nội & Nha Trang. Tuy nhiên, không ít khách hàng gặp
+                            phải vấn đề phát sinh trong quá trình thiết kế & thi công, khiến không gian sống kém
+                            tiện nghi, nhanh xuống cấp.
                         </p>
                         <p>
-                            Trong bài viết này, chúng tôi phân tích <strong>5 nỗi đau điển hình</strong> và đưa ra giải pháp khắc phục.
+                            Dưới đây là <strong>5 "nỗi đau"</strong> phổ biến khi thiết kế nội thất Hiện đại và
+                            cách khắc phục hiệu quả.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <section className="section section-alt">
+            <section className="section section-gradient" id="pain-points">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-list-ol icon-quality"></i>
-                        5 Nỗi Đau Thường Gặp & Giải Pháp
+                        <i className="fas fa-first-aid"></i>
+                        5 Nỗi Đau & Giải Pháp Khắc Phục
                     </h2>
+                    <p className="section-subtitle">
+                        Phân tích chi tiết và giải pháp thực tế
+                    </p>
 
-                    {painPoints.map((pain, index) => (
-                        <div key={index} className="content-box" style={{ marginBottom: '1.5rem' }}>
-                            <h3 style={{ color: pain.color }}>
-                                <i className={pain.icon}></i>
-                                {' '}Nỗi Đau {pain.number}: {pain.title}
-                            </h3>
-                            
-                            <div className="info-card" style={{ background: '#fef2f2', margin: '1rem 0' }}>
-                                <p>
-                                    <strong>
-                                        <i className="fas fa-times-circle" style={{ color: '#ef4444' }}></i>
-                                        {' '}Nguyên nhân:
-                                    </strong> {pain.cause}
+                    <div className="grid-2">
+                        {painPoints.map((pain, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: pain.color }}>
+                                    <i className={pain.icon}></i>
+                                    Nỗi đau {pain.id}: {pain.title}
+                                </h3>
+                                <p className="problem-text">
+                                    <strong>Vấn đề:</strong> {pain.problem}
                                 </p>
-                                {pain.consequence && (
-                                    <p>
-                                        <strong>
-                                            <i className="fas fa-exclamation-circle" style={{ color: '#f59e0b' }}></i>
-                                            {' '}Hậu quả:
-                                        </strong> {pain.consequence}
-                                    </p>
-                                )}
-                            </div>
-
-                            <div className="info-card" style={{ background: '#f0fdf4' }}>
-                                <p>
-                                    <strong>
-                                        <i className="fas fa-lightbulb" style={{ color: '#10b981' }}></i>
-                                        {' '}Giải pháp:
-                                    </strong>
-                                </p>
+                                <p><strong>Giải pháp:</strong></p>
                                 <ul>
                                     {pain.solutions.map((solution, i) => (
                                         <li key={i}>
-                                            <i className="fas fa-check"></i>
+                                            <i className="fas fa-check-circle"></i>
                                             {solution}
                                         </li>
                                     ))}
                                 </ul>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">
-                        <i className="fas fa-shield-alt icon-primary"></i>
-                        Cách Phòng Tránh Nỗi Đau
-                    </h2>
-                    <div className="grid-4">
-                        {preventionTips.map((tip, index) => (
-                            <div key={index} className="info-card">
-                                <h3 style={{ color: tip.color }}>
-                                    <i className={tip.icon}></i>
-                                    {tip.title}
-                                </h3>
-                                <p>{tip.description}</p>
+                                <span className="savings-badge">{pain.savings}</span>
                             </div>
                         ))}
                     </div>
@@ -255,20 +209,67 @@ const NoiDauThuongGapPage = () => {
 
             <section className="section section-alt">
                 <div className="container">
-                    <div className="content-box" style={{ textAlign: 'center', background: '#eff6ff' }}>
-                        <h3 style={{ color: '#3b82f6' }}>
-                            <i className="fas fa-quote-left"></i>
-                            Kết Luận
-                        </h3>
-                        <p>
-                            Thiết kế nội thất phong cách Hiện đại sẽ trở nên hoàn hảo nếu được xử lý đúng những nỗi đau khách hàng thường gặp.
-                        </p>
-                        <p>
-                            <strong>Đừng để không gian sống của bạn trở nên đơn điệu hoặc nhanh xuống cấp.</strong>
-                        </p>
-                        <p>
-                            Hãy để chúng tôi giúp bạn sở hữu căn hộ hiện đại – tiện nghi – bền đẹp tại Hà Nội & Nha Trang.
-                        </p>
+                    <h2 className="section-title">
+                        <i className="fas fa-map-marker-alt"></i>
+                        Giải Pháp Theo Địa Điểm
+                    </h2>
+                    <p className="section-subtitle">
+                        Tùy chỉnh theo khí hậu và không gian
+                    </p>
+
+                    <div className="grid-3">
+                        {climateTable.map((item, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className="fas fa-location-dot"></i>
+                                    {item.location}
+                                </h3>
+                                <p><strong>Vấn đề:</strong> {item.issue}</p>
+                                <p><strong>Giải pháp:</strong> {item.solution}</p>
+                                <p><strong>Vật liệu đề xuất:</strong></p>
+                                <ul>
+                                    {item.materials.map((material, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {material}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-tag"></i>
+                        Báo Giá Thiết Kế Nội Thất Hiện Đại 2025
+                    </h2>
+                    <p className="section-subtitle">
+                        Đơn giá tham khảo VNĐ/m² - Thay đổi theo diện tích & vật liệu thực tế
+                    </p>
+
+                    <div className="grid-3">
+                        {priceTable.map((item, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className="fas fa-home"></i>
+                                    {item.type}
+                                </h3>
+                                <p className="price-highlight">{item.price} VNĐ/m²</p>
+                                <p><strong>Ghi chú:</strong> {item.note}</p>
+                                <ul>
+                                    {item.features.map((feature, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-check-circle"></i>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -276,9 +277,13 @@ const NoiDauThuongGapPage = () => {
             <section className="faq-section">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-circle-question icon-faq"></i>
+                        <i className="fas fa-circle-question"></i>
                         Câu Hỏi Thường Gặp
                     </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về các nỗi đau thiết kế Hiện đại
+                    </p>
+
                     <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
@@ -305,4 +310,4 @@ const NoiDauThuongGapPage = () => {
     );
 };
 
-export default NoiDauThuongGapPage;
+export default NoiDauThietKeHienDaiPage;

@@ -235,8 +235,6 @@ const NhomKinhPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -516,9 +514,6 @@ const NhomKinhPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
-        </div>
     );
 };
 

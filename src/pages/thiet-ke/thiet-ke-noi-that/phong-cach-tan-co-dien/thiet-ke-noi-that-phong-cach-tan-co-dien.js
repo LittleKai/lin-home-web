@@ -2,308 +2,261 @@ import React, { useState } from 'react';
 import CTAContent from '../../../../components/CTAContent/CTAContent';
 import '../../../../styles/PageStyles.css';
 
-const ThietKeNoiThatPhongCachTanCoDien = () => {
-    const [activeTab, setActiveTab] = useState('chung-cu');
+const ThietKeNoiThatTanCoDienPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
 
-    const designTypes = [
+    const characteristics = [
         {
-            id: 'chung-cu',
-            name: 'Căn Hộ Chung Cư Cao Cấp',
-            price: '180,000 - 250,000 VNĐ/m²',
-            description: 'Thiết kế nội thất tân cổ điển cho căn hộ chung cư cao cấp',
-            features: [
-                'Phối cảnh 3D chi tiết',
-                'Màu sắc trắng, kem, vàng ánh kim',
-                'Phào chỉ tường nhẹ nhàng',
-                'Đèn chùm pha lê trang trí',
-                'Nội thất cao cấp phù hợp diện tích',
-                'Tư vấn phong thủy miễn phí'
-            ],
-            sizes: [
-                { area: '60-80m²', rooms: '2 phòng ngủ', price: '180-200k', style: 'Tối giản tinh tế' },
-                { area: '80-100m²', rooms: '3 phòng ngủ', price: '200-230k', style: 'Sang trọng cân đối' },
-                { area: '100-150m²', rooms: '3-4 phòng ngủ', price: '230-250k', style: 'Đẳng cấp hoàn hảo' }
-            ],
-            bgColor: '#8b5cf6'
+            icon: 'fas fa-palette',
+            title: 'Màu Sắc',
+            description: 'Trắng, kem, vàng ánh kim, xanh cổ vịt, xám ghi - sang trọng & đẳng cấp',
+            details: ['Trắng - kem: chủ đạo', 'Vàng ánh kim: điểm nhấn', 'Xanh cổ vịt: tinh tế', 'Xám ghi: hiện đại'],
+            color: '#f59e0b'
         },
         {
-            id: 'nha-pho',
-            name: 'Nhà Phố - Nhà Ống',
-            price: '200,000 - 260,000 VNĐ/m²',
-            description: 'Thiết kế nội thất tân cổ điển cho nhà phố, nhà ống nhiều tầng',
-            features: [
-                'Thiết kế nhiều tầng tỉ mỉ',
-                'Phào chỉ trang trí tinh giản',
-                'Tối ưu ánh sáng tự nhiên',
-                'Giếng trời thông thoáng',
-                'Cầu thang nghệ thuật',
-                'Nội thất đa năng tiết kiệm diện tích'
-            ],
-            sizes: [
-                { area: '60-100m²', floors: '3-4 tầng', price: '200-220k', type: 'Nhà ống hẹp' },
-                { area: '100-150m²', floors: '3-4 tầng', price: '220-240k', type: 'Nhà phố trung' },
-                { area: '150-250m²', floors: '3-5 tầng', price: '240-260k', type: 'Nhà phố rộng' }
-            ],
-            bgColor: '#10b981'
-        },
-        {
-            id: 'biet-thu',
-            name: 'Biệt Thự/Villa',
-            price: '250,000 - 320,000 VNĐ/m²',
-            description: 'Thiết kế nội thất tân cổ điển cao cấp cho biệt thự, villa',
-            features: [
-                'Không gian lớn, chi tiết nghệ thuật',
-                'Đá marble cao cấp',
-                'Đèn chùm pha lê lớn',
-                'Trần cao, phào chỉ tinh xảo',
-                'Nội thất gỗ tự nhiên',
-                'Bố trí đẳng đối, hoàng tráng'
-            ],
-            sizes: [
-                { area: '200-300m²', floors: '2-3 tầng', price: '250-280k', style: 'Biệt thự vườn' },
-                { area: '300-500m²', floors: '3-4 tầng', price: '280-300k', style: 'Biệt thú đơn lập' },
-                { area: '500-1000m²', floors: '3-5 tầng', price: '300-320k', style: 'Villa cao cấp' }
-            ],
-            bgColor: '#f59e0b'
-        }
-    ];
-
-    const features = [
-        {
-            title: 'Màu Sắc Sang Trọng',
-            description: 'Trắng, kem, vàng ánh kim, xanh cổ vịt, xám ghi - tạo không gian quý phái',
-            icon: 'fas fa-palette'
-        },
-        {
-            title: 'Chất Liệu Cao Cấp',
+            icon: 'fas fa-gem',
+            title: 'Chất Liệu',
             description: 'Gỗ tự nhiên, đá marble, kim loại mạ vàng, vải nhung/da cao cấp',
-            icon: 'fas fa-gem'
+            details: ['Gỗ tự nhiên cao cấp', 'Đá marble sang trọng', 'Kim loại mạ vàng', 'Vải nhung/da cao cấp'],
+            color: '#8b5cf6'
         },
         {
-            title: 'Hoa Văn Tinh Tế',
-            description: 'Phào chỉ tường, trần, cột giả - nhẹ nhàng, không rườm rà',
-            icon: 'fas fa-paint-brush'
+            icon: 'fas fa-paint-brush',
+            title: 'Hoa Văn',
+            description: 'Phào chỉ tường, trần, cột giả - nhẹ nhàng, tinh tế',
+            details: ['Phào chỉ tường tinh xảo', 'Trần cao nghệ thuật', 'Cột giả cổ điển', 'Đường nét tinh tế'],
+            color: '#ec4899'
         },
         {
-            title: 'Không Gian Cân Đối',
-            description: 'Bố trí đăng đối, tạo cảm giác bề thế nhưng không nặng nề',
-            icon: 'fas fa-balance-scale'
+            icon: 'fas fa-couch',
+            title: 'Nội Thất',
+            description: 'Sofa tân cổ điển, đèn chùm pha lê, bàn trà đá',
+            details: ['Sofa bọc da/nhung', 'Đèn chùm pha lê', 'Bàn trà đá marble', 'Tủ rượu sang trọng'],
+            color: '#10b981'
+        },
+        {
+            icon: 'fas fa-ruler-combined',
+            title: 'Không Gian',
+            description: 'Cân đối, đăng đối, tạo cảm giác bề thế nhưng không rườm rà',
+            details: ['Cân đối và đăng đối', 'Tạo cảm giác bề thế', 'Không rườm rà', 'Ánh sáng hài hòa'],
+            color: '#06b6d4'
         }
     ];
 
-    const applicationAreas = [
+    const prosAndCons = {
+        pros: [
+            {
+                title: 'Sang Trọng & Đẳng Cấp',
+                description: 'Tạo giá trị khác biệt, thể hiện đẳng cấp gia chủ',
+                icon: 'fas fa-crown'
+            },
+            {
+                title: 'Bền Vững Theo Thời Gian',
+                description: 'Sử dụng lâu dài, ít lỗi mốt',
+                icon: 'fas fa-infinity'
+            },
+            {
+                title: 'Phù Hợp Phong Thủy',
+                description: 'Dễ kết hợp với phong thủy, màu sắc hài hòa',
+                icon: 'fas fa-yin-yang'
+            },
+            {
+                title: 'Linh Hoạt Ứng Dụng',
+                description: 'Phù hợp nhiều loại công trình: biệt thự, nhà phố, chung cư',
+                icon: 'fas fa-home'
+            }
+        ],
+        cons: [
+            {
+                title: 'Chi Phí Cao',
+                description: 'Vật liệu cao cấp làm tăng chi phí',
+                solution: 'Kết hợp gỗ công nghiệp phủ veneer, đá nhân tạo',
+                icon: 'fas fa-money-bill-wave'
+            },
+            {
+                title: 'Thi Công Phức Tạp',
+                description: 'Cần KTS giàu kinh nghiệm, thi công tỉ mỉ',
+                solution: 'Chọn đơn vị thiết kế & thi công trọn gói',
+                icon: 'fas fa-tools'
+            },
+            {
+                title: 'Dễ Rườm Rà',
+                description: 'Nếu không tinh tế, dễ trở nên nặng nề',
+                solution: 'Tiết chế chi tiết, ưu tiên đường nét tinh giản',
+                icon: 'fas fa-compress-arrows-alt'
+            }
+        ]
+    };
+
+    const applications = [
         {
-            city: 'Hà Nội',
-            areas: [
-                { type: 'Biệt thự cao cấp', note: 'Chú trọng ánh sáng vàng' },
-                { type: 'Chung cư hạng sang', note: 'Tối ưu diện tích' },
-                { type: 'Nhà phố 3-5 tầng', note: 'Giếng trời thông thoáng' }
+            location: 'Hà Nội',
+            types: [
+                {
+                    type: 'Biệt thự',
+                    description: 'Không gian chú trọng ánh sáng vàng, hạn chế sự bí bách',
+                    price: '250,000 - 320,000 VNĐ/m²'
+                },
+                {
+                    type: 'Chung cư cao cấp',
+                    description: 'Thiết kế tinh giản, tối ưu diện tích',
+                    price: '180,000 - 250,000 VNĐ/m²'
+                },
+                {
+                    type: 'Nhà phố',
+                    description: 'Nhiều tầng, phào chỉ nhẹ, chi tiết tỉ mỉ',
+                    price: '200,000 - 260,000 VNĐ/m²'
+                }
             ],
-            icon: 'fas fa-city',
-            color: '#ef4444'
-        },
-        {
-            city: 'Nha Trang',
-            areas: [
-                { type: 'Villa ven biển', note: 'Vật liệu chống ẩm mặn' },
-                { type: 'Khách sạn boutique', note: 'Sang trọng, tiện nghi' },
-                { type: 'Homestay cao cấp', note: 'Kết hợp view biển' }
-            ],
-            icon: 'fas fa-umbrella-beach',
+            climate: 'Chú trọng ánh sáng tự nhiên, giếng trời',
             color: '#3b82f6'
+        },
+        {
+            location: 'Nha Trang',
+            types: [
+                {
+                    type: 'Villa ven biển',
+                    description: 'Vật liệu chống ẩm mặn, gỗ xử lý chống ẩm',
+                    price: '250,000 - 320,000 VNĐ/m²'
+                },
+                {
+                    type: 'Khách sạn, Homestay',
+                    description: 'Sang trọng, thu hút khách cao cấp',
+                    price: '250,000 - 320,000 VNĐ/m²'
+                }
+            ],
+            climate: 'Vật liệu chống ẩm mặn, inox 304, gỗ chống ẩm',
+            color: '#10b981'
         }
-    ];
-
-    const advantages = [
-        { text: 'Sang trọng - đẳng cấp, tạo giá trị khác biệt', icon: 'fas fa-crown' },
-        { text: 'Thời gian sử dụng lâu dài, ít lỗi mốt', icon: 'fas fa-clock' },
-        { text: 'Phù hợp phong thủy & bền vững', icon: 'fas fa-yin-yang' },
-        { text: 'Tăng giá trị bất động sản', icon: 'fas fa-chart-line' }
-    ];
-
-    const disadvantages = [
-        { text: 'Chi phí cao hơn phong cách hiện đại', solution: 'Tối ưu vật liệu, chọn gỗ công nghiệp chất lượng' },
-        { text: 'Thi công phức tạp, cần KTS giàu kinh nghiệm', solution: 'Đội ngũ KTS chuyên sâu về tân cổ điển' },
-        { text: 'Dễ trở nên rườm rà nếu không tinh tế', solution: 'Thiết kế 3D chi tiết, kiểm soát từng chi tiết' }
     ];
 
     const designNotes = [
-        'Không lạm dụng chi tiết → tránh cảm giác nặng nề',
-        'Lựa chọn màu sắc sáng kết hợp ánh kim để cân bằng',
-        'Với khí hậu Nha Trang: chống ẩm mặn cho gỗ & kim loại',
-        'Luôn có bản vẽ 3D để kiểm soát chi phí & thẩm mỹ',
-        'Kết hợp ánh sáng tự nhiên với đèn nghệ thuật',
-        'Đảm bảo tính đồng bộ giữa kiến trúc và nội thất'
-    ];
-
-    const faqs = [
         {
-            question: 'Phong cách tân cổ điển có phù hợp với căn hộ chung cư nhỏ không?',
-            answer: 'Hoàn toàn phù hợp! Tân cổ điển hiện đại đã được tinh giản, phù hợp cả căn hộ nhỏ. Chúng tôi sẽ sử dụng màu sáng, phào chỉ nhẹ nhàng, nội thất gọn gàng để tối ưu không gian.'
+            icon: 'fas fa-lightbulb',
+            title: 'Không Lạm Dụng Chi Tiết',
+            description: 'Tránh cảm giác nặng nề, rườm rà. Chỉ nhấn mạnh tại trần, tường, cửa chính'
         },
         {
-            question: 'Chi phí thiết kế nội thất tân cổ điển có đắt không?',
-            answer: 'Chi phí từ 180,000 - 320,000 VNĐ/m² tùy loại công trình. Có thể tối ưu bằng cách chọn gỗ công nghiệp, đá nhân tạo chất lượng thay vì toàn bộ vật liệu tự nhiên.'
+            icon: 'fas fa-sun',
+            title: 'Màu Sắc Sáng & Ánh Kim',
+            description: 'Lựa chọn màu sắc sáng kết hợp ánh kim để cân bằng sang trọng'
         },
         {
-            question: 'Tại Nha Trang, nội thất tân cổ điển có bị ẩm mốc không?',
-            answer: 'Không nếu chọn đúng vật liệu. Chúng tôi sử dụng gỗ chống ẩm, inox 304, kim loại mạ PVD và lớp phủ bảo vệ đặc biệt cho khu vực ven biển.'
+            icon: 'fas fa-water',
+            title: 'Chống Ẩm Mặn (Nha Trang)',
+            description: 'Với khí hậu Nha Trang, cần chống ẩm mặn cho gỗ & kim loại'
         },
         {
-            question: 'Thời gian thiết kế và thi công mất bao lâu?',
-            answer: 'Thiết kế 3D: 7-14 ngày. Thi công: 2-4 tháng tùy diện tích. Biệt thự lớn có thể mất 4-6 tháng để hoàn thiện chi tiết.'
-        },
-        {
-            question: 'Có bảo hành không?',
-            answer: 'Có. Bảo hành 24 tháng cho nội thất gỗ, 12 tháng cho hệ thống điện và các thiết bị. Bảo trì định kỳ miễn phí trong 6 tháng đầu.'
+            icon: 'fas fa-cube',
+            title: 'Bản Vẽ 3D Chi Tiết',
+            description: 'Luôn có bản vẽ 3D để kiểm soát chi phí & thẩm mỹ trước thi công'
         }
     ];
 
-    const currentType = designTypes.find(type => type.id === activeTab);
+    const commitments = [
+        {
+            icon: 'fas fa-comments',
+            title: 'Tư Vấn Miễn Phí',
+            description: 'Tư vấn ý tưởng ban đầu miễn phí'
+        },
+        {
+            icon: 'fas fa-cube',
+            title: 'Thiết Kế 3D',
+            description: 'Phối cảnh 3D chân thực, chi tiết'
+        },
+        {
+            icon: 'fas fa-user-graduate',
+            title: 'KTS Kinh Nghiệm',
+            description: 'KTS lâu năm trong Tân cổ điển'
+        },
+        {
+            icon: 'fas fa-hammer',
+            title: 'Giám Sát Thi Công',
+            description: 'Đảm bảo đúng thiết kế, chất lượng'
+        }
+    ];
+
+    const faqData = [
+        {
+            question: 'Phong cách Tân cổ điển là gì?',
+            answer: 'Tân cổ điển (Neo-classical) là sự kết hợp tinh tế giữa nét sang trọng cổ điển và sự tối giản hiện đại. Không cầu kỳ như cổ điển châu Âu, nhưng vẫn giữ sự quý phái và đẳng cấp.'
+        },
+        {
+            question: 'Tân cổ điển có phù hợp với chung cư nhỏ không?',
+            answer: 'Có thể. Với chung cư nhỏ cần tiết chế chi tiết phào chỉ, ưu tiên màu sáng, nội thất gọn gàng nhưng vẫn giữ tinh thần Tân cổ điển với vài điểm nhấn như đèn chùm nhỏ, phào nhẹ.'
+        },
+        {
+            question: 'Chi phí thiết kế Tân cổ điển là bao nhiêu?',
+            answer: 'Chi phí trung bình: Chung cư: 180-250K, Nhà phố: 200-260K, Biệt thự: 250-320K VNĐ/m². Giá thay đổi theo vật liệu và yêu cầu chi tiết.'
+        },
+        {
+            question: 'Nha Trang khí hậu mặn, gỗ có bị hỏng không?',
+            answer: 'Nếu chọn đúng loại gỗ chống ẩm, kim loại inox 304, và phủ lớp bảo vệ thì hoàn toàn bền. Quan trọng là bảo dưỡng định kỳ.'
+        },
+        {
+            question: 'Làm sao tránh thiết kế Tân cổ điển bị rườm rà?',
+            answer: 'Không lạm dụng chi tiết, ưu tiên đường nét tinh giản, chỉ nhấn mạnh tại khu vực trọng điểm. Luôn có bản vẽ 3D để kiểm soát tổng thể.'
+        }
+    ];
+
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
 
     return (
-        <div className="page-container">
-            <section className="hero-section">
-                <div className="container">
-                    <h1 className="page-title">
-                        <i className="fas fa-landmark"></i>
-                        Thiết Kế Nội Thất Phong Cách Tân Cổ Điển 2025
-                    </h1>
-                    <p className="page-subtitle">
-                        Dịch vụ thiết kế nội thất phong cách Tân cổ điển tại Hà Nội & Nha Trang
-                        <br />
-                        <strong>Sang trọng – Tinh tế – Đẳng cấp</strong>
-                    </p>
-                </div>
-            </section>
+        <div className="main-content">
 
-            <section className="intro-section">
+            <section className="section" id="intro">
                 <div className="container">
-                    <div className="intro-card">
-                        <h2>
-                            <i className="fas fa-info-circle"></i>
-                            Giới Thiệu Về Phong Cách Tân Cổ Điển
-                        </h2>
+                    <h2 className="section-title">
+                        <i className="fas fa-info-circle"></i>
+                        Giới Thiệu Phong Cách Tân Cổ Điển
+                    </h2>
+                    <div className="content-text">
                         <p>
-                            Phong cách <strong>Tân cổ điển (Neo-classical)</strong> là sự kết hợp tinh tế giữa nét sang trọng cổ điển và sự tối giản hiện đại. 
-                            Không cầu kỳ như cổ điển châu Âu, nhưng vẫn giữ sự quý phái – đẳng cấp, Tân cổ điển ngày càng được ưa chuộng tại Việt Nam.
+                            Phong cách <strong>Tân cổ điển (Neo-classical)</strong> là sự kết hợp tinh tế giữa
+                            nét sang trọng cổ điển và sự tối giản hiện đại. Không cầu kỳ như cổ điển châu Âu,
+                            nhưng vẫn giữ sự quý phái – đẳng cấp, Tân cổ điển ngày càng được ưa chuộng tại Việt Nam.
+                        </p>
+                        <ul className="styled-list">
+                            <li>
+                                <strong>Tại Hà Nội:</strong> Phù hợp biệt thự, nhà phố cao cấp, chung cư hạng sang
+                            </li>
+                            <li>
+                                <strong>Tại Nha Trang:</strong> Thường áp dụng cho villa ven biển, khách sạn, nhà hàng
+                            </li>
+                        </ul>
+                        <p>
+                            Năm 2025, Tân cổ điển tiếp tục là xu hướng nội thất bền vững, gắn liền với lối sống
+                            sang trọng và đẳng cấp.
                         </p>
                     </div>
                 </div>
             </section>
 
-            <section className="features-grid-section">
+            <section className="section section-gradient" id="characteristics">
                 <div className="container">
-                    <h2 className="section-title">Đặc Trưng Phong Cách Tân Cổ Điển</h2>
-                    <div className="features-grid">
-                        {features.map((feature, index) => (
-                            <div key={index} className="feature-card">
-                                <div className="feature-icon">
-                                    <i className={feature.icon}></i>
-                                </div>
-                                <h3>{feature.title}</h3>
-                                <p>{feature.description}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+                    <h2 className="section-title">
+                        <i className="fas fa-star"></i>
+                        Đặc Trưng Của Phong Cách Tân Cổ Điển
+                    </h2>
+                    <p className="section-subtitle">
+                        5 yếu tố tạo nên vẻ đẹp sang trọng và đẳng cấp
+                    </p>
 
-            <section className="tabs-section">
-                <div className="container">
-                    <h2 className="section-title">Bảng Giá Thiết Kế Nội Thất Tân Cổ Điển 2025</h2>
-                    
-                    <div className="tabs-container">
-                        {designTypes.map((type) => (
-                            <button
-                                key={type.id}
-                                className={`tab-button ${activeTab === type.id ? 'active' : ''}`}
-                                onClick={() => setActiveTab(type.id)}
-                                style={activeTab === type.id ? { backgroundColor: type.bgColor } : {}}
-                            >
-                                {type.name}
-                            </button>
-                        ))}
-                    </div>
-
-                    {currentType && (
-                        <div className="tab-content">
-                            <div className="price-header" style={{ backgroundColor: currentType.bgColor }}>
-                                <h3>{currentType.name}</h3>
-                                <div className="price-badge">{currentType.price}</div>
-                            </div>
-
-                            <div className="content-section">
-                                <p className="description">{currentType.description}</p>
-
-                                <div className="features-list">
-                                    <h4>
-                                        <i className="fas fa-star"></i>
-                                        Đặc Điểm Nổi Bật
-                                    </h4>
-                                    <ul>
-                                        {currentType.features.map((feature, index) => (
-                                            <li key={index}>
-                                                <i className="fas fa-check-circle"></i>
-                                                {feature}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div className="sizes-table">
-                                    <h4>
-                                        <i className="fas fa-table"></i>
-                                        Bảng Giá Chi Tiết
-                                    </h4>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Diện Tích</th>
-                                                <th>{currentType.id === 'chung-cu' ? 'Số Phòng' : currentType.id === 'nha-pho' ? 'Số Tầng' : 'Loại Hình'}</th>
-                                                <th>Đơn Giá (VNĐ/m²)</th>
-                                                <th>Phong Cách</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {currentType.sizes.map((size, index) => (
-                                                <tr key={index}>
-                                                    <td>{size.area}</td>
-                                                    <td>{size.rooms || size.floors || size.type}</td>
-                                                    <td><strong>{size.price}</strong></td>
-                                                    <td>{size.style}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    <div className="note-box">
-                        <i className="fas fa-info-circle"></i>
-                        <strong>Lưu ý:</strong> Giá thay đổi theo diện tích, vật liệu, độ chi tiết. Liên hệ để nhận báo giá chính xác.
-                    </div>
-                </div>
-            </section>
-
-            <section className="application-section">
-                <div className="container">
-                    <h2 className="section-title">Ứng Dụng Tại Hà Nội & Nha Trang</h2>
-                    <div className="application-grid">
-                        {applicationAreas.map((area, index) => (
-                            <div key={index} className="application-card" style={{ borderColor: area.color }}>
-                                <div className="application-header" style={{ backgroundColor: area.color }}>
-                                    <i className={area.icon}></i>
-                                    <h3>{area.city}</h3>
-                                </div>
-                                <ul className="application-list">
-                                    {area.areas.map((item, idx) => (
-                                        <li key={idx}>
-                                            <strong>{item.type}</strong>
-                                            <span>{item.note}</span>
+                    <div className="grid-3">
+                        {characteristics.map((char, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: char.color }}>
+                                    <i className={char.icon}></i>
+                                    {char.title}
+                                </h3>
+                                <p>{char.description}</p>
+                                <ul>
+                                    {char.details.map((detail, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {detail}
                                         </li>
                                     ))}
                                 </ul>
@@ -313,53 +266,120 @@ const ThietKeNoiThatPhongCachTanCoDien = () => {
                 </div>
             </section>
 
-            <section className="pros-cons-section">
+            <section className="section section-alt">
                 <div className="container">
-                    <div className="pros-cons-grid">
-                        <div className="pros-card">
-                            <h3>
-                                <i className="fas fa-thumbs-up"></i>
+                    <h2 className="section-title">
+                        <i className="fas fa-balance-scale"></i>
+                        Ưu - Nhược Điểm & Nỗi Đau Khách Hàng
+                    </h2>
+
+                    <div className="grid-2">
+                        <div>
+                            <h3 className="pros-title">
+                                <i className="fas fa-check-circle"></i>
                                 Ưu Điểm
                             </h3>
-                            <ul>
-                                {advantages.map((adv, index) => (
-                                    <li key={index}>
-                                        <i className={adv.icon}></i>
-                                        {adv.text}
-                                    </li>
-                                ))}
-                            </ul>
+                            {prosAndCons.pros.map((pro, index) => (
+                                <div key={index} className="info-card">
+                                    <h4>
+                                        <i className={pro.icon}></i>
+                                        {pro.title}
+                                    </h4>
+                                    <p>{pro.description}</p>
+                                </div>
+                            ))}
                         </div>
 
-                        <div className="cons-card">
-                            <h3>
+                        <div>
+                            <h3 className="cons-title">
                                 <i className="fas fa-exclamation-triangle"></i>
-                                Nhược Điểm & Giải Pháp
+                                Nhược Điểm (Nỗi Đau)
                             </h3>
-                            <ul>
-                                {disadvantages.map((dis, index) => (
-                                    <li key={index}>
-                                        <strong>{dis.text}</strong>
-                                        <p>
-                                            <i className="fas fa-arrow-right"></i>
-                                            {dis.solution}
-                                        </p>
-                                    </li>
-                                ))}
-                            </ul>
+                            {prosAndCons.cons.map((con, index) => (
+                                <div key={index} className="info-card">
+                                    <h4>
+                                        <i className={con.icon}></i>
+                                        {con.title}
+                                    </h4>
+                                    <p><strong>Vấn đề:</strong> {con.description}</p>
+                                    <p className="solution-text">
+                                        <i className="fas fa-lightbulb"></i>
+                                        <strong>Giải pháp:</strong> {con.solution}
+                                    </p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="notes-section">
+            <section className="section">
                 <div className="container">
-                    <h2 className="section-title">Lưu Ý Khi Thiết Kế Nội Thất Tân Cổ Điển</h2>
-                    <div className="notes-grid">
+                    <h2 className="section-title">
+                        <i className="fas fa-map-marker-alt"></i>
+                        Ứng Dụng Thực Tế Tại Hà Nội & Nha Trang
+                    </h2>
+
+                    <div className="grid-2">
+                        {applications.map((app, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: app.color }}>
+                                    <i className="fas fa-location-dot"></i>
+                                    {app.location}
+                                </h3>
+                                <p className="climate-badge">
+                                    <i className="fas fa-cloud"></i>
+                                    {app.climate}
+                                </p>
+                                {app.types.map((type, i) => (
+                                    <div key={i} className="type-section">
+                                        <h4>{type.type}</h4>
+                                        <p>{type.description}</p>
+                                        <span className="standard">{type.price}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section section-gradient">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb"></i>
+                        Lưu Ý Khi Thiết Kế Tân Cổ Điển
+                    </h2>
+
+                    <div className="grid-4">
                         {designNotes.map((note, index) => (
-                            <div key={index} className="note-item">
-                                <i className="fas fa-lightbulb"></i>
-                                <p>{note}</p>
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={note.icon}></i>
+                                    {note.title}
+                                </h3>
+                                <p>{note.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-handshake"></i>
+                        Ưu Đãi & Cam Kết
+                    </h2>
+
+                    <div className="grid-4">
+                        {commitments.map((commit, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={commit.icon}></i>
+                                    {commit.title}
+                                </h3>
+                                <p>{commit.description}</p>
                             </div>
                         ))}
                     </div>
@@ -368,16 +388,23 @@ const ThietKeNoiThatPhongCachTanCoDien = () => {
 
             <section className="faq-section">
                 <div className="container">
-                    <h2 className="section-title">Câu Hỏi Thường Gặp</h2>
-                    <div className="faq-list">
-                        {faqs.map((faq, index) => (
+                    <h2 className="section-title">
+                        <i className="fas fa-circle-question"></i>
+                        Câu Hỏi Thường Gặp
+                    </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về phong cách Tân cổ điển
+                    </p>
+
+                    <div className="faq-container">
+                        {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
                                 <button
                                     className={`faq-question ${activeFaq === index ? 'active' : ''}`}
-                                    onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                                    onClick={() => toggleFaq(index)}
                                 >
-                                    <span>{faq.question}</span>
-                                    <i className={`fas fa-chevron-${activeFaq === index ? 'up' : 'down'}`}></i>
+                                    {faq.question}
+                                    <i className="fas fa-chevron-down"></i>
                                 </button>
                                 {activeFaq === index && (
                                     <div className="faq-answer">
@@ -390,37 +417,9 @@ const ThietKeNoiThatPhongCachTanCoDien = () => {
                 </div>
             </section>
 
-            <section className="commitment-section">
-                <div className="container">
-                    <h2 className="section-title">Ưu Đãi & Cam Kết Dịch Vụ</h2>
-                    <div className="commitment-grid">
-                        <div className="commitment-card">
-                            <i className="fas fa-gift"></i>
-                            <h4>Miễn Phí Tư Vấn</h4>
-                            <p>Tư vấn ý tưởng ban đầu hoàn toàn miễn phí</p>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-cube"></i>
-                            <h4>Thiết Kế 3D</h4>
-                            <p>Phối cảnh 3D chân thực, chi tiết từng góc nhìn</p>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-user-tie"></i>
-                            <h4>KTS Kinh Nghiệm</h4>
-                            <p>Đội ngũ KTS lâu năm chuyên sâu tân cổ điển</p>
-                        </div>
-                        <div className="commitment-card">
-                            <i className="fas fa-hard-hat"></i>
-                            <h4>Giám Sát Thi Công</h4>
-                            <p>Giám sát chặt chẽ, đảm bảo đúng thiết kế</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <CTAContent />
         </div>
     );
 };
 
-export default ThietKeNoiThatPhongCachTanCoDien;
+export default ThietKeNoiThatTanCoDienPage;

@@ -232,8 +232,6 @@ const DienThongMinhPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -487,7 +485,7 @@ const DienThongMinhPage = () => {
                 <CTAContent />
             </main>
 
-        </div>
+
     );
 };
 

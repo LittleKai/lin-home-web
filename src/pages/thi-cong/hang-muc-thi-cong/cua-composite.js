@@ -219,8 +219,6 @@ const CuaCompositePage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -482,7 +480,6 @@ const CuaCompositePage = () => {
                 <CTAContent />
             </main>
 
-        </div>
     );
 };
 

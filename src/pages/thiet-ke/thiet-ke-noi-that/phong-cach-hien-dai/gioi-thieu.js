@@ -2,226 +2,231 @@ import React, { useState } from 'react';
 import CTAContent from '../../../../components/CTAContent/CTAContent';
 import '../../../../styles/PageStyles.css';
 
-const GioiThieuPhongCachHienDaiPage = () => {
+const GioiThieuHienDaiPage = () => {
     const [activeFaq, setActiveFaq] = useState(null);
-
-    const toggleFaq = (index) => {
-        setActiveFaq(activeFaq === index ? null : index);
-    };
 
     const characteristics = [
         {
             icon: 'fas fa-palette',
             title: 'Màu Sắc',
             description: 'Tông trung tính (trắng, xám, be), kết hợp nhấn màu đậm hoặc gỗ',
+            details: ['Trắng: thoáng sạch', 'Xám: tinh tế', 'Be: ấm cúng', 'Nhấn: gỗ nâu, đen'],
             color: '#3b82f6'
         },
         {
             icon: 'fas fa-cube',
             title: 'Vật Liệu',
             description: 'Gỗ công nghiệp, kính, inox, đá nhân tạo',
+            details: ['Gỗ công nghiệp chống ẩm', 'Kính cường lực', 'Inox 304', 'Đá nhân tạo bền'],
             color: '#10b981'
         },
         {
             icon: 'fas fa-couch',
             title: 'Nội Thất',
             description: 'Thiết kế đơn giản, đa công năng, hạn chế chi tiết thừa',
-            color: '#f59e0b'
+            details: ['Thiết kế tối giản', 'Đa công năng', 'Gọn gàng', 'Tiện nghi cao'],
+            color: '#8b5cf6'
         },
         {
-            icon: 'fas fa-expand-arrows-alt',
+            icon: 'fas fa-door-open',
             title: 'Không Gian',
             description: 'Mở, liên thông phòng khách – bếp – ăn',
-            color: '#8b5cf6'
+            details: ['Không gian mở', 'Liên thông các phòng', 'Tối ưu diện tích', 'Thông thoáng'],
+            color: '#06b6d4'
         },
         {
             icon: 'fas fa-lightbulb',
             title: 'Ánh Sáng',
             description: 'Cửa kính lớn + đèn LED hiện đại, spotlight, đèn hắt trần',
-            color: '#ec4899'
-        },
-        {
-            icon: 'fas fa-image',
-            title: 'Trang Trí',
-            description: 'Ít họa tiết, nhấn bằng tranh canvas, cây xanh, decor tối giản',
-            color: '#ef4444'
+            details: ['Cửa kính lớn', 'Đèn LED', 'Spotlight', 'Đèn hắt trần'],
+            color: '#f59e0b'
         }
     ];
+
+    const prosAndCons = {
+        pros: [
+            {
+                title: 'Tối Ưu Diện Tích Nhỏ',
+                description: 'Phù hợp căn hộ 40–70m² ở Hà Nội',
+                icon: 'fas fa-expand-arrows-alt'
+            },
+            {
+                title: 'Không Gian Thoáng Mát',
+                description: 'Hợp khí hậu ven biển Nha Trang',
+                icon: 'fas fa-wind'
+            },
+            {
+                title: 'Chi Phí Hợp Lý',
+                description: 'Hợp lý hơn tân cổ điển, Indochine',
+                icon: 'fas fa-money-bill-wave'
+            },
+            {
+                title: 'Dễ Thay Đổi',
+                description: 'Dễ nâng cấp nội thất khi cần',
+                icon: 'fas fa-sync-alt'
+            }
+        ],
+        cons: [
+            {
+                title: 'Chất Lượng Vật Liệu',
+                description: 'Nội thất kém chất lượng dễ xuống cấp, bong tróc',
+                solution: 'Chọn gỗ công nghiệp chất lượng cao, phụ kiện tốt',
+                icon: 'fas fa-exclamation-triangle'
+            },
+            {
+                title: 'Dễ Đơn Điệu',
+                description: 'Không khéo léo → không gian lạnh lẽo',
+                solution: 'Kết hợp cây xanh, đèn ấm, tranh trang trí',
+                icon: 'fas fa-palette'
+            },
+            {
+                title: 'Vấn Đề Ánh Sáng',
+                description: 'Hà Nội hay gặp vấn đề bí sáng, ngột ngạt',
+                solution: 'Thiết kế cửa kính lớn, giếng trời',
+                icon: 'fas fa-lightbulb'
+            }
+        ]
+    };
 
     const applications = [
         {
-            city: 'Hà Nội',
-            types: ['Nhà phố', 'Chung cư diện tích nhỏ'],
-            priority: ['Ưu tiên cửa kính', 'Giếng trời', 'Ánh sáng nhân tạo'],
-            icon: 'fas fa-city',
-            color: '#ef4444'
-        },
-        {
-            city: 'Nha Trang',
-            types: ['Villa', 'Biệt thự ven biển', 'Căn hộ du lịch'],
-            priority: ['Không gian mở', 'Chống ẩm mặn', 'Vật liệu bền'],
-            icon: 'fas fa-umbrella-beach',
+            location: 'Hà Nội',
+            types: [
+                {
+                    type: 'Nhà phố, chung cư diện tích nhỏ',
+                    description: 'Ưu tiên cửa kính, giếng trời, ánh sáng nhân tạo',
+                    price: '150,000 - 220,000 VNĐ/m²'
+                }
+            ],
+            climate: 'Khí hậu ẩm, cần chống ẩm cho gỗ',
             color: '#3b82f6'
-        }
-    ];
-
-    const priceTable = [
-        {
-            type: 'Thiết kế nội thất căn hộ chung cư',
-            price: '150.000 - 200.000 VNĐ/m²',
-            note: 'Bao gồm phối cảnh 3D chi tiết'
         },
         {
-            type: 'Thiết kế nội thất nhà phố – nhà ống',
-            price: '160.000 - 220.000 VNĐ/m²',
-            note: 'Tùy diện tích và công năng'
-        },
-        {
-            type: 'Thiết kế nội thất biệt thự/villa hiện đại',
-            price: '200.000 - 280.000 VNĐ/m²',
-            note: 'Yêu cầu cao cấp, nhiều không gian mở'
-        }
-    ];
-
-    const advantages = [
-        'Tối ưu diện tích nhỏ – phù hợp căn hộ 40–70m² ở Hà Nội',
-        'Không gian thoáng mát, hợp khí hậu ven biển Nha Trang',
-        'Chi phí hợp lý hơn tân cổ điển, Indochine',
-        'Dễ thay đổi, nâng cấp nội thất khi cần'
-    ];
-
-    const disadvantages = [
-        {
-            issue: 'Nếu chọn nội thất kém chất lượng',
-            result: 'Dễ xuống cấp, bong tróc'
-        },
-        {
-            issue: 'Không khéo léo',
-            result: 'Không gian đơn điệu, lạnh lẽo'
-        },
-        {
-            issue: 'Khách hàng Hà Nội hay gặp vấn đề',
-            result: 'Bí sáng, ngột ngạt nếu không có cửa kính hoặc giếng trời'
-        }
-    ];
-
-    const notes = [
-        {
-            icon: 'fas fa-check-circle',
-            title: 'Chọn nội thất gỗ công nghiệp chất lượng cao để tránh cong vênh',
+            location: 'Nha Trang',
+            types: [
+                {
+                    type: 'Villa, biệt thự ven biển',
+                    description: 'Ưu tiên không gian mở, chống ẩm mặn, vật liệu bền',
+                    price: '200,000 - 280,000 VNĐ/m²'
+                }
+            ],
+            climate: 'Ẩm mặn biển, cần vật liệu chống mặn',
             color: '#10b981'
-        },
+        }
+    ];
+
+    const designNotes = [
         {
             icon: 'fas fa-check-circle',
-            title: 'Bố trí cửa kính lớn, giếng trời cho nhà phố Hà Nội',
-            color: '#3b82f6'
+            title: 'Chọn Vật Liệu Đúng',
+            description: 'Gỗ công nghiệp chất lượng cao để tránh cong vênh'
         },
         {
-            icon: 'fas fa-check-circle',
-            title: 'Ở Nha Trang, cần chống ẩm mặn cho gỗ & kim loại',
-            color: '#f59e0b'
+            icon: 'fas fa-sun',
+            title: 'Bố Trí Ánh Sáng',
+            description: 'Cửa kính lớn, giếng trời cho nhà phố Hà Nội'
         },
         {
-            icon: 'fas fa-check-circle',
-            title: 'Tránh mua quá nhiều đồ → mất tính tối giản',
-            color: '#8b5cf6'
+            icon: 'fas fa-water',
+            title: 'Chống Ẩm Mặn',
+            description: 'Ở Nha Trang, cần chống ẩm mặn cho gỗ & kim loại'
+        },
+        {
+            icon: 'fas fa-balance-scale',
+            title: 'Tránh Lạm Dụng',
+            description: 'Tránh mua quá nhiều đồ → mất tính tối giản'
+        }
+    ];
+
+    const commitments = [
+        {
+            icon: 'fas fa-comments',
+            title: 'Tư Vấn Miễn Phí',
+            description: 'Tư vấn ý tưởng ban đầu miễn phí'
+        },
+        {
+            icon: 'fas fa-cube',
+            title: 'Thiết Kế 3D',
+            description: 'Phối cảnh 3D chân thực, dễ hình dung'
+        },
+        {
+            icon: 'fas fa-user-graduate',
+            title: 'KTS Chuyên Nghiệp',
+            description: 'KTS giàu kinh nghiệm phong cách Hiện đại'
+        },
+        {
+            icon: 'fas fa-hammer',
+            title: 'Giám Sát Thi Công',
+            description: 'Hỗ trợ giám sát, đảm bảo đúng thiết kế'
         }
     ];
 
     const faqData = [
         {
-            question: 'Phong cách nội thất Hiện đại phù hợp với loại nhà nào?',
-            answer: 'Phong cách Hiện đại phù hợp với hầu hết các loại nhà: chung cư, nhà phố, biệt thự. Đặc biệt phù hợp với căn hộ diện tích nhỏ tại Hà Nội và villa ven biển tại Nha Trang.'
+            question: 'Phong cách Hiện đại là gì?',
+            answer: 'Phong cách nội thất Hiện đại (Modern Style) là phong cách thiết kế tối giản, tinh tế, tiện nghi, phù hợp nhịp sống đô thị. Đặc trưng bởi màu sắc trung tính, nội thất đơn giản, không gian mở và ánh sáng tự nhiên.'
         },
         {
-            question: 'Chi phí thiết kế nội thất phong cách Hiện đại là bao nhiêu?',
-            answer: 'Chi phí dao động từ 150.000 - 280.000 VNĐ/m² tùy loại hình nhà và yêu cầu thiết kế. Chung cư khoảng 150-200K/m², nhà phố 160-220K/m², biệt thự 200-280K/m².'
+            question: 'Phong cách Hiện đại có phù hợp với chung cư nhỏ không?',
+            answer: 'Rất phù hợp. Phong cách Hiện đại là giải pháp tốt nhất cho căn hộ 40-70m² ở Hà Nội nhờ thiết kế tối ưu diện tích, nội thất đa năng và không gian mở liên thông.'
         },
         {
-            question: 'Làm thế nào để không gian Hiện đại không bị lạnh lẽo?',
-            answer: 'Kết hợp gỗ ấm màu, đèn vàng, thêm tranh canvas, cây xanh và decor để tạo sự sống động. Tránh lạm dụng gam màu trắng - xám quá nhiều.'
+            question: 'Chi phí thiết kế Hiện đại là bao nhiêu?',
+            answer: 'Chi phí trung bình 150,000 - 280,000 VNĐ/m² tùy loại hình. Chung cư: 150-200K, Nhà phố: 160-220K, Biệt thự: 200-280K VNĐ/m². Giá thay đổi theo vật liệu và yêu cầu.'
         },
         {
-            question: 'Thời gian thiết kế và thi công mất bao lâu?',
-            answer: 'Thiết kế 3D: 5-7 ngày. Thi công hoàn thiện: 30-45 ngày cho chung cư, 45-60 ngày cho nhà phố, 60-90 ngày cho biệt thự, tùy diện tích và mức độ phức tạp.'
+            question: 'Nha Trang khí hậu ẩm mặn, có phù hợp không?',
+            answer: 'Phù hợp nếu chọn đúng vật liệu. Dùng gỗ công nghiệp chống ẩm, inox 304, kính cường lực. Tránh vật liệu dễ han gỉ. Với vật liệu đúng, nội thất có thể dùng 10-15 năm.'
         },
         {
-            question: 'Vật liệu nào phù hợp cho khí hậu Nha Trang?',
-            answer: 'Nên sử dụng gỗ công nghiệp chống ẩm phủ melamine/laminate, inox 304, nhôm kính, đá nhân tạo. Tránh vật liệu dễ han gỉ và bong tróc do ẩm mặn.'
+            question: 'Phong cách Hiện đại có dễ lỗi mốt không?',
+            answer: 'Không. Phong cách Hiện đại là phong cách vượt thời gian nhờ tính tối giản và đơn giản. Miễn là giữ được sự cân bằng, không gian luôn đẹp và thời thượng.'
         }
     ];
 
+    const toggleFaq = (index) => {
+        setActiveFaq(activeFaq === index ? null : index);
+    };
+
     return (
         <div className="main-content">
-            <section className="hero-section">
-                <div className="container">
-                    <div className="hero-content">
-                        <h1 className="hero-title">
-                            <i className="fas fa-home"></i>
-                            Thiết Kế Nội Thất Phong Cách Hiện Đại 2025
-                        </h1>
-                        <p className="hero-subtitle">
-                            Tại Hà Nội & Nha Trang
-                        </p>
-                        <p className="hero-description">
-                            Dịch vụ thiết kế nội thất phong cách Hiện đại 2025 tại Hà Nội & Nha Trang. 
-                            Tối giản – tiện nghi – sang trọng. Báo giá chi tiết, thiết kế 3D chuyên nghiệp, chuẩn phong thủy.
-                        </p>
-                    </div>
-                </div>
-            </section>
 
-            <section className="section">
+            <section className="section" id="intro">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-info-circle icon-primary"></i>
-                        Giới Thiệu Về Phong Cách Nội Thất Hiện Đại
+                        <i className="fas fa-info-circle"></i>
+                        Giới Thiệu Phong Cách Hiện Đại
                     </h2>
-                    <div className="content-box">
+                    <div className="content-text">
                         <p>
-                            Phong cách nội thất <strong>Hiện đại (Modern Style)</strong> là lựa chọn số 1 hiện nay 
-                            cho nhà phố, chung cư, biệt thự. Với đặc trưng tối giản, tinh tế, tiện nghi, 
-                            phong cách này mang lại không gian sống trẻ trung, phù hợp nhịp sống đô thị.
+                            Phong cách <strong>Hiện đại (Modern Style)</strong> là lựa chọn số 1 hiện nay cho
+                            nhà phố, chung cư, biệt thự. Với đặc trưng tối giản, tinh tế, tiện nghi, phong cách
+                            này mang lại không gian sống trẻ trung, phù hợp nhịp sống đô thị.
                         </p>
-                    </div>
-
-                    <div className="grid-2">
-                        {applications.map((app, index) => (
-                            <div key={index} className="info-card">
-                                <h3 style={{ color: app.color }}>
-                                    <i className={app.icon}></i>
-                                    Tại {app.city}
-                                </h3>
-                                <p><strong>Phổ biến:</strong></p>
-                                <ul>
-                                    {app.types.map((type, i) => (
-                                        <li key={i}>
-                                            <i className="fas fa-chevron-right"></i>
-                                            {type}
-                                        </li>
-                                    ))}
-                                </ul>
-                                <p><strong>Ưu tiên:</strong></p>
-                                <ul>
-                                    {app.priority.map((item, i) => (
-                                        <li key={i}>
-                                            <i className="fas fa-star"></i>
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
+                        <ul className="styled-list">
+                            <li>
+                                <strong>Ở Hà Nội:</strong> Phổ biến trong căn hộ chung cư, nhà phố, nhà ống –
+                                giải quyết bài toán diện tích nhỏ, thiếu sáng
+                            </li>
+                            <li>
+                                <strong>Ở Nha Trang:</strong> Phù hợp villa, biệt thự ven biển, homestay, căn hộ
+                                nghỉ dưỡng – đề cao sự thoáng đãng, mở rộng không gian
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <section className="section section-alt">
+            <section className="section section-gradient" id="characteristics">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-list-check icon-quality"></i>
-                        Đặc Trưng Của Nội Thất Phong Cách Hiện Đại
+                        <i className="fas fa-star"></i>
+                        Đặc Trưng Của Phong Cách Hiện Đại
                     </h2>
+                    <p className="section-subtitle">
+                        5 yếu tố tạo nên vẻ đẹp tối giản và tiện nghi
+                    </p>
+
                     <div className="grid-3">
                         {characteristics.map((char, index) => (
                             <div key={index} className="info-card">
@@ -230,56 +235,16 @@ const GioiThieuPhongCachHienDaiPage = () => {
                                     {char.title}
                                 </h3>
                                 <p>{char.description}</p>
+                                <ul>
+                                    {char.details.map((detail, i) => (
+                                        <li key={i}>
+                                            <i className="fas fa-chevron-right"></i>
+                                            {detail}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="section">
-                <div className="container">
-                    <h2 className="section-title">
-                        <i className="fas fa-balance-scale icon-primary"></i>
-                        Ưu – Nhược Điểm & Nỗi Đau Khách Hàng
-                    </h2>
-
-                    <div className="grid-2">
-                        <div className="info-card">
-                            <h3 style={{ color: '#10b981' }}>
-                                <i className="fas fa-check-circle"></i>
-                                Ưu Điểm
-                            </h3>
-                            <ul>
-                                {advantages.map((adv, index) => (
-                                    <li key={index}>
-                                        <i className="fas fa-plus"></i>
-                                        {adv}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="info-card">
-                            <h3 style={{ color: '#ef4444' }}>
-                                <i className="fas fa-exclamation-triangle"></i>
-                                Nhược Điểm (Nỗi Đau Thường Gặp)
-                            </h3>
-                            <ul>
-                                {disadvantages.map((dis, index) => (
-                                    <li key={index}>
-                                        <i className="fas fa-minus"></i>
-                                        <strong>{dis.issue}:</strong> {dis.result}
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="content-box" style={{ marginTop: '1rem', background: '#fef3c7' }}>
-                                <p>
-                                    <i className="fas fa-lightbulb" style={{ color: '#f59e0b' }}></i>
-                                    <strong> Giải pháp:</strong> Cần thiết kế 3D chi tiết & KTS giàu kinh nghiệm 
-                                    để cân bằng công năng – thẩm mỹ.
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -287,18 +252,46 @@ const GioiThieuPhongCachHienDaiPage = () => {
             <section className="section section-alt">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-lightbulb icon-tips"></i>
-                        Lưu Ý Khi Lựa Chọn Phong Cách Hiện Đại
+                        <i className="fas fa-balance-scale"></i>
+                        Ưu - Nhược Điểm & Nỗi Đau Khách Hàng
                     </h2>
+
                     <div className="grid-2">
-                        {notes.map((note, index) => (
-                            <div key={index} className="info-card">
-                                <p>
-                                    <i className={note.icon} style={{ color: note.color }}></i>
-                                    {' '}{note.title}
-                                </p>
-                            </div>
-                        ))}
+                        <div>
+                            <h3 className="pros-title">
+                                <i className="fas fa-check-circle"></i>
+                                Ưu Điểm
+                            </h3>
+                            {prosAndCons.pros.map((pro, index) => (
+                                <div key={index} className="info-card">
+                                    <h4>
+                                        <i className={pro.icon}></i>
+                                        {pro.title}
+                                    </h4>
+                                    <p>{pro.description}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div>
+                            <h3 className="cons-title">
+                                <i className="fas fa-exclamation-triangle"></i>
+                                Nhược Điểm (Nỗi Đau)
+                            </h3>
+                            {prosAndCons.cons.map((con, index) => (
+                                <div key={index} className="info-card">
+                                    <h4>
+                                        <i className={con.icon}></i>
+                                        {con.title}
+                                    </h4>
+                                    <p><strong>Vấn đề:</strong> {con.description}</p>
+                                    <p className="solution-text">
+                                        <i className="fas fa-lightbulb"></i>
+                                        <strong>Giải pháp:</strong> {con.solution}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -306,38 +299,72 @@ const GioiThieuPhongCachHienDaiPage = () => {
             <section className="section">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-gift icon-gift"></i>
-                        Ưu Đãi & Cam Kết Dịch Vụ
+                        <i className="fas fa-map-marker-alt"></i>
+                        Ứng Dụng Tại Hà Nội & Nha Trang
                     </h2>
+
+                    <div className="grid-2">
+                        {applications.map((app, index) => (
+                            <div key={index} className="info-card">
+                                <h3 style={{ color: app.color }}>
+                                    <i className="fas fa-location-dot"></i>
+                                    {app.location}
+                                </h3>
+                                <p className="climate-badge">
+                                    <i className="fas fa-cloud"></i>
+                                    {app.climate}
+                                </p>
+                                {app.types.map((type, i) => (
+                                    <div key={i} className="type-section">
+                                        <h4>{type.type}</h4>
+                                        <p>{type.description}</p>
+                                        <span className="standard">{type.price}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section section-gradient">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-lightbulb"></i>
+                        Lưu Ý Khi Thiết Kế Hiện Đại
+                    </h2>
+
                     <div className="grid-4">
-                        <div className="info-card">
-                            <h3>
-                                <i className="fas fa-comments" style={{ color: '#3b82f6' }}></i>
-                                Tư Vấn Miễn Phí
-                            </h3>
-                            <p>Miễn phí tư vấn ý tưởng ban đầu</p>
-                        </div>
-                        <div className="info-card">
-                            <h3>
-                                <i className="fas fa-cube" style={{ color: '#10b981' }}></i>
-                                Thiết Kế 3D
-                            </h3>
-                            <p>Thiết kế 3D chân thực, dễ hình dung</p>
-                        </div>
-                        <div className="info-card">
-                            <h3>
-                                <i className="fas fa-user-tie" style={{ color: '#f59e0b' }}></i>
-                                KTS Chuyên Nghiệp
-                            </h3>
-                            <p>KTS giàu kinh nghiệm nhiều dự án</p>
-                        </div>
-                        <div className="info-card">
-                            <h3>
-                                <i className="fas fa-hard-hat" style={{ color: '#8b5cf6' }}></i>
-                                Giám Sát Thi Công
-                            </h3>
-                            <p>Hỗ trợ giám sát, đảm bảo đúng thiết kế</p>
-                        </div>
+                        {designNotes.map((note, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={note.icon}></i>
+                                    {note.title}
+                                </h3>
+                                <p>{note.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="section section-alt">
+                <div className="container">
+                    <h2 className="section-title">
+                        <i className="fas fa-handshake"></i>
+                        Ưu Đãi & Cam Kết
+                    </h2>
+
+                    <div className="grid-4">
+                        {commitments.map((commit, index) => (
+                            <div key={index} className="info-card">
+                                <h3>
+                                    <i className={commit.icon}></i>
+                                    {commit.title}
+                                </h3>
+                                <p>{commit.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -345,9 +372,13 @@ const GioiThieuPhongCachHienDaiPage = () => {
             <section className="faq-section">
                 <div className="container">
                     <h2 className="section-title">
-                        <i className="fas fa-circle-question icon-faq"></i>
+                        <i className="fas fa-circle-question"></i>
                         Câu Hỏi Thường Gặp
                     </h2>
+                    <p className="section-subtitle">
+                        Giải đáp thắc mắc về phong cách Hiện đại
+                    </p>
+
                     <div className="faq-container">
                         {faqData.map((faq, index) => (
                             <div key={index} className="faq-item">
@@ -374,4 +405,4 @@ const GioiThieuPhongCachHienDaiPage = () => {
     );
 };
 
-export default GioiThieuPhongCachHienDaiPage;
+export default GioiThieuHienDaiPage;

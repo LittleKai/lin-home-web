@@ -168,9 +168,6 @@ const TranVachThachCaoPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
-
             <main className="main-content">
                 {/* Hero Section */}
                 <section className="hero-section">
@@ -373,9 +370,6 @@ const TranVachThachCaoPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
-        </div>
     );
 };
 

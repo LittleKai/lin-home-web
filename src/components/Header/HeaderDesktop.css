@@ -1193,3 +1193,11 @@
     font-size: 13px;
     font-weight: 500;
 }
+
+.dropdown-item-icon.fa-star {
+    color: var(--icon-warning);
+}
+
+.nested-submenu-icon.fa-star {
+    color: var(--icon-warning);
+}

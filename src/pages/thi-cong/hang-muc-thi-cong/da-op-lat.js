@@ -233,8 +233,6 @@ const DaOpLatPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -499,7 +497,7 @@ const DaOpLatPage = () => {
                 <CTAContent />
             </main>
 
-        </div>
+
     );
 };
 

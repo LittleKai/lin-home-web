@@ -273,8 +273,6 @@ const HoKoiSanVuonPage = () => {
     };
 
     return (
-        <div className="page-wrapper">
-            <Header />
 
             <main className="main-content">
                 {/* Hero Section */}
@@ -560,7 +558,6 @@ const HoKoiSanVuonPage = () => {
                 <CTAContent />
             </main>
 
-        </div>
     );
 };
 
