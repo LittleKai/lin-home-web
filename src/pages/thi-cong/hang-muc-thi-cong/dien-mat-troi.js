@@ -1,6 +1,5 @@
 // src/pages/thi-cong/dien-mat-troi.js
 import React, { useState } from 'react';
-import Header from '../../../components/Header/Header';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
 import CTAContent from '../../../components/CTAContent/CTAContent';

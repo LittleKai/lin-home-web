@@ -1,7 +1,5 @@
 // src/pages/thi-cong/chong-tham.js
 import React, { useState } from 'react';
-import Header from '../../../components/Header/Header';
-import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
 import CTAContent from '../../../components/CTAContent/CTAContent';
@@ -545,6 +543,8 @@ const ChongThamPage = () => {
                         </div>
                     </div>
                 </section>
+                <CTAContent/>
+
             </main>
     );
 };

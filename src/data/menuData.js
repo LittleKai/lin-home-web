@@ -105,7 +105,7 @@ export const menuData = {
                             icon: 'fas fa-exclamation-triangle'
                         },
                         {
-                            title: 'Top 10 mẫu',
+                            title: 'Top 10 mẫu phong cách hiện đại',
                             href: '/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/top-10-mau',
                             icon: 'fas fa-star'
                         }
@@ -133,7 +133,7 @@ export const menuData = {
                             icon: 'fas fa-exclamation-triangle'
                         },
                         {
-                            title: 'Top 10 mẫu',
+                            title: 'Top 10 mẫu phong cách Inchochine',
                             href: '/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/top-10-mau',
                             icon: 'fas fa-star'
                         }
@@ -161,7 +161,7 @@ export const menuData = {
                             icon: 'fas fa-exclamation-triangle'
                         },
                         {
-                            title: 'Top 10 mẫu',
+                            title: 'Top 10 mẫu phong cách tân cổ điển',
                             href: '/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/top-10-mau',
                             icon: 'fas fa-star'
                         }
@@ -189,7 +189,7 @@ export const menuData = {
                             icon: 'fas fa-exclamation-triangle'
                         },
                         {
-                            title: 'Top 10 mẫu',
+                            title: 'Top 10 mẫu phong cách Wabi-sabi',
                             href: '/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/top-10-mau',
                             icon: 'fas fa-star'
                         }
@@ -379,6 +379,72 @@ export const menuData = {
             ]
         },
         {
+            title: 'Báo giá thiết kế, thi công nội thất',
+            href: '/bao-gia/thiet-ke-thi-cong-noi-that',
+            description: 'Báo giá chi tiết thiết kế và thi công nội thất theo phong cách',
+            icon: 'fas fa-couch',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Phong cách hiện đại',
+                    href: '/bao-gia/thiet-ke-thi-cong-noi-that/phong-cach-hien-dai',
+                    description: 'Thiết kế tối giản, thanh lịch và tiện nghi',
+                    icon: 'fas fa-laptop-house'
+                },
+                {
+                    title: 'Phong cách Indochine',
+                    href: '/bao-gia/thiet-ke-thi-cong-noi-that/phong-cach-indochine',
+                    description: 'Hòa quyện văn hóa Đông - Tây độc đáo',
+                    icon: 'fas fa-fan'
+                },
+                {
+                    title: 'Phong cách tân cổ điển',
+                    href: '/bao-gia/thiet-ke-thi-cong-noi-that/phong-cach-tan-co-dien',
+                    description: 'Sang trọng, quý phái và lộng lẫy',
+                    icon: 'fas fa-crown'
+                },
+                {
+                    title: 'Phong cách Wabi-Sabi',
+                    href: '/bao-gia/thiet-ke-thi-cong-noi-that/phong-cach-wabi-sabi',
+                    description: 'Giản dị, tự nhiên theo triết lý Nhật Bản',
+                    icon: 'fas fa-spa'
+                }
+            ]
+        },
+        {
+            title: 'Báo giá thiết kế, thi công nhà thờ',
+            href: '/bao-gia/thiet-ke-thi-cong-nha-tho',
+            description: 'Báo giá chi tiết xây dựng nhà thờ họ, từ đường',
+            icon: 'fas fa-place-of-worship',
+            hasSubmenu: true,
+            submenu: [
+                {
+                    title: 'Thiết kế nhà thờ',
+                    href: '/bao-gia/thiet-ke-thi-cong-nha-tho/thiet-ke-nha-tho',
+                    description: 'Chi phí thiết kế kiến trúc và nội thất nhà thờ',
+                    icon: 'fas fa-pencil-ruler'
+                },
+                {
+                    title: 'Thi công phần thô',
+                    href: '/bao-gia/thiet-ke-thi-cong-nha-tho/thi-cong-phan-tho',
+                    description: 'Chi phí thi công móng, cột, dầm, mái',
+                    icon: 'fas fa-hard-hat'
+                },
+                {
+                    title: 'Thi công hoàn thiện',
+                    href: '/bao-gia/thiet-ke-thi-cong-nha-tho/thi-cong-hoan-thien',
+                    description: 'Chi phí hoàn thiện nội ngoại thất',
+                    icon: 'fas fa-paint-brush'
+                },
+                {
+                    title: 'Thi công trọn gói',
+                    href: '/bao-gia/thiet-ke-thi-cong-nha-tho/thi-cong-tron-goi',
+                    description: 'Chi phí trọn gói từ thiết kế đến hoàn thiện',
+                    icon: 'fas fa-box'
+                }
+            ]
+        },
+        {
             title: 'Báo giá thi công hạng mục',
             description: 'Báo giá 11 hạng mục thi công chuyên biệt',
             href: '/bao-gia/bao-gia-thi-cong-hang-muc',
@@ -509,12 +575,6 @@ export const menuData = {
                     description: 'Xu hướng thiết kế hiện đại và bền vững'
                 }
             ]
-        },
-        {
-            title: 'Tư vấn báo giá',
-            href: '/bao-gia/tu-van-bao-gia',
-            description: 'Tư vấn miễn phí và báo giá chi tiết cho dự án',
-            icon: 'fas fa-calculator'
         }
     ],
     'Ứng dụng': [

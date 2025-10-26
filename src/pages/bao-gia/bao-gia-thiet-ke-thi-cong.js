@@ -161,7 +161,7 @@ const BaoGiaThietKeThiCongNhaPage = () => {
     const currentPricing = overviewPricing.find(item => item.id === activePackage);
 
     return (
-        <div className="thiet-ke-page">
+        <div className="main-content">
             {/* Overview Pricing */}
             <section className="pricing-section">
                 <div className="container">
