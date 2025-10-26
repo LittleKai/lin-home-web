@@ -902,3 +902,56 @@
 .mobile-submenu-icon.fa-spa {
     color: var(--icon-success);
 }
+
+/* Mobile Nested Submenu - Level 3 */
+.mobile-nested-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(247, 250, 252, 0.8);
+    border-radius: 4px;
+    margin-top: 4px;
+    margin-left: 20px;
+}
+
+.mobile-nested-submenu.show {
+    max-height: 500px;
+    padding: 4px;
+}
+
+.mobile-nested-submenu-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: #4a5568;
+    font-size: 13px;
+}
+
+.mobile-nested-submenu-link:hover {
+    background: white;
+    color: var(--icon-primary);
+}
+
+.mobile-nested-icon {
+    font-size: 11px;
+    width: 14px;
+    text-align: center;
+}
+
+.mobile-nested-title {
+    font-size: 13px;
+}
+
+.mobile-nested-arrow {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--icon-medium);
+}

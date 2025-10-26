@@ -1,7 +1,6 @@
 // src/pages/thi-cong/hang-muc-cai-tao/cai-tao-phong-ngu-phong-khach.js
 import React, { useState } from 'react';
 import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import CTAContent from '../../../components/CTAContent/CTAContent';
@@ -659,7 +658,6 @@ const CaiTaoPhongNguPhongKhachPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
             <FloatButtons />
         </div>
     );

@@ -1,8 +1,6 @@
 // src/pages/thi-cong/dien-thong-minh.js
 import React, { useState } from 'react';
 import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
-import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
 import CTAContent from '../../../components/CTAContent/CTAContent';
@@ -489,8 +487,6 @@ const DienThongMinhPage = () => {
                 <CTAContent />
             </main>
 
-            <Footer />
-            <FloatButtons />
         </div>
     );
 };

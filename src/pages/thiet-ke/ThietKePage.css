@@ -6,15 +6,15 @@
 }
 
 .main-content {
-    margin-top: 80px!important;
+    margin-top: 70px!important;
 }
 
 .section-header {
-    margin-top: 80px!important;
+    margin-top: 20px!important;
 }
 /* Hero Section */
 .hero-section {
-    padding: 60px 0 40px;
+    padding: 40px 0 40px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     text-align: center;
@@ -84,7 +84,7 @@
 
 /* Introduction Section */
 .intro-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: white;
 }
 
@@ -169,7 +169,7 @@
 
 /* Process Timeline Section */
 .process-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: #f7fafc;
 }
 
@@ -347,7 +347,7 @@
 
 /* Styles Section */
 .styles-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: white;
 }
 
@@ -502,7 +502,7 @@
 
 /* Benefits Section */
 .benefits-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: #f7fafc;
 }
 
@@ -569,7 +569,7 @@
 
 /* CTA Section */
 .cta-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
     color: white;
     text-align: center;
@@ -641,7 +641,7 @@
 
 /* Additional Info Section */
 .additional-info-section {
-    padding: 60px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }

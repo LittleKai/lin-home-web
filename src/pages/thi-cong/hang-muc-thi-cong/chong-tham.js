@@ -1,7 +1,6 @@
 // src/pages/thi-cong/chong-tham.js
 import React, { useState } from 'react';
 import Header from '../../../components/Header/Header';
-import Footer from '../../../components/Footer/Footer';
 import FloatButtons from '../../../components/FloatButtons/FloatButtons';
 import '../../thiet-ke/ThietKePage.css';
 import '../ThiCongHangMuc.css';
@@ -550,8 +549,6 @@ const ChongThamPage = () => {
                 </section>
             </main>
 
-            <Footer />
-            <FloatButtons />
         </div>
     );
 };

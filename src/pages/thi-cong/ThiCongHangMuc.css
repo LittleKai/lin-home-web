@@ -123,8 +123,12 @@
 
 /* Benefits section */
 .benefits-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.page-wrapper {
+    padding-top: 0;
 }
 
 .benefits-grid {
@@ -175,7 +179,7 @@
 
 /* Comparison sections */
 .comparison-section, .stone-types-section, .systems-section {
-    padding: 80px 0;
+    padding: 20px 0;
 }
 
 .comparison-tabs, .stone-tabs, .system-tabs {
@@ -288,7 +292,7 @@
 
 /* Issues section */
 .issues-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: #f8fafc;
 }
 
@@ -357,7 +361,7 @@
 
 /* Customer concerns */
 .concerns-section {
-    padding: 80px 0;
+    padding: 20px 0;
 }
 
 .concerns-grid {
@@ -416,7 +420,7 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 40px;
-    padding-left: 80px;
+    padding-left: 20px;
 }
 
 .step-number {
@@ -493,7 +497,7 @@
 
 /* Tips section */
 .tips-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 }
 
@@ -544,7 +548,7 @@
 
 /* Applications section */
 .applications-section {
-    padding: 80px 0;
+    padding: 20px 0;
 }
 
 .applications-grid, .glass-grid {
@@ -602,7 +606,7 @@
 
 /* Why choose section */
 .why-choose-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     color: white;
 }
@@ -645,7 +649,7 @@
 
 /* FAQ section */
 .faq-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: #f8fafc;
 }
 
@@ -657,7 +661,7 @@
 
 /* CTA section */
 .cta-section {
-    padding: 80px 0;
+    padding: 20px 0;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     text-align: center;

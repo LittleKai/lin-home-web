@@ -86,26 +86,118 @@ export const menuData = {
                 {
                     title: 'Phong cách hiện đại',
                     description: 'Thiết kế tối giản, thanh lịch và tiện nghi',
-                    icon: 'fas fa-laptop-house'
+                    icon: 'fas fa-laptop-house',
+                    hasSubmenu: true,
+                    submenu: [
+                        {
+                            title: 'Giới thiệu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/gioi-thieu',
+                            icon: 'fas fa-info-circle'
+                        },
+                        {
+                            title: 'Xu hướng',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/xu-huong',
+                            icon: 'fas fa-chart-line'
+                        },
+                        {
+                            title: 'Nỗi đau thường gặp',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/noi-dau-thuong-gap',
+                            icon: 'fas fa-exclamation-triangle'
+                        },
+                        {
+                            title: 'Top 10 mẫu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/top-10-mau',
+                            icon: 'fas fa-star'
+                        }
+                    ]
                 },
                 {
                     title: 'Phong cách Indochine',
                     description: 'Hòa quyện văn hóa Đông - Tây độc đáo',
-                    icon: 'fas fa-fan'
+                    icon: 'fas fa-fan',
+                    hasSubmenu: true,
+                    submenu: [
+                        {
+                            title: 'Giới thiệu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/gioi-thieu',
+                            icon: 'fas fa-info-circle'
+                        },
+                        {
+                            title: 'Xu hướng',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/xu-huong-2025',
+                            icon: 'fas fa-chart-line'
+                        },
+                        {
+                            title: 'Nỗi đau thường gặp',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/noi-dau',
+                            icon: 'fas fa-exclamation-triangle'
+                        },
+                        {
+                            title: 'Top 10 mẫu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/top-10-mau',
+                            icon: 'fas fa-star'
+                        }
+                    ]
                 },
                 {
                     title: 'Phong cách tân cổ điển',
                     description: 'Sang trọng, quý phái và lộng lẫy',
-                    icon: 'fas fa-crown'
+                    icon: 'fas fa-crown',
+                    hasSubmenu: true,
+                    submenu: [
+                        {
+                            title: 'Giới thiệu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/gioi-thieu',
+                            icon: 'fas fa-info-circle'
+                        },
+                        {
+                            title: 'Xu hướng',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/xu-huong-2025',
+                            icon: 'fas fa-chart-line'
+                        },
+                        {
+                            title: 'Nỗi đau thường gặp',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/noi-dau',
+                            icon: 'fas fa-exclamation-triangle'
+                        },
+                        {
+                            title: 'Top 10 mẫu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/top-10-mau',
+                            icon: 'fas fa-star'
+                        }
+                    ]
                 },
                 {
                     title: 'Phong cách Wabi-Sabi',
                     description: 'Giản dị, tự nhiên theo triết lý Nhật Bản',
-                    icon: 'fas fa-spa'
+                    icon: 'fas fa-spa',
+                    hasSubmenu: true,
+                    submenu: [
+                        {
+                            title: 'Giới thiệu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/gioi-thieu',
+                            icon: 'fas fa-info-circle'
+                        },
+                        {
+                            title: 'Xu hướng',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/xu-huong-2025',
+                            icon: 'fas fa-chart-line'
+                        },
+                        {
+                            title: 'Nỗi đau thường gặp',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/noi-dau',
+                            icon: 'fas fa-exclamation-triangle'
+                        },
+                        {
+                            title: 'Top 10 mẫu',
+                            href: '/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/top-10-mau',
+                            icon: 'fas fa-star'
+                        }
+                    ]
                 }
             ]
         }
-    ],
+        ],
     'Thi công': [
         {
             title: 'Quy trình thi công',

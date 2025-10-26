@@ -28,6 +28,30 @@ import NhaXuongCongNghiepPage from './pages/thiet-ke/thiet-ke-kien-truc/nha-xuon
 import CanhQuanSanVuonPage from './pages/thiet-ke/thiet-ke-kien-truc/canh-quan-san-vuon';
 import TuDuongNhaThoPage from './pages/thiet-ke/thiet-ke-kien-truc/tu-duong-nha-tho';
 
+// Modern style
+import GioiThieuHienDai from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/gioi-thieu';
+import XuHuongHienDai from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/xu-huong';
+import NoiDauHienDai from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/noi-dau-thuong-gap';
+import Top10HienDai from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/top-10-mau';
+
+// Neoclassical style
+import GioiThieuTanCoDien from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/thiet-ke-noi-that-phong-cach-tan-co-dien';
+import XuHuongTanCoDien from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/xu-huong-thiet-ke-tan-co-dien-2025';
+import NoiDauTanCoDien from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/noi-dau-thiet-ke-tan-co-dien';
+import Top10TanCoDien from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/top-10-mau-thiet-ke-tan-co-dien';
+
+// Indochine style
+import GioiThieuIndochine from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/gioi-thieu-phong-cach-indochine';
+import XuHuongIndochine from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/xu-huong-thiet-ke-indochine-2025';
+import NoiDauIndochine from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/noi-dau-thiet-ke-indochine';
+import Top10Indochine from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/top-10-mau-thiet-ke-indochine';
+
+// Wabi-Sabi style
+import GioiThieuWabiSabi from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/gioi-thieu-phong-cach-wabi-sabi';
+import XuHuongWabiSabi from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/xu-huong-wabi-sabi-2025';
+import NoiDauWabiSabi from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/5-noi-dau-thiet-ke-wabi-sabi';
+import Top10WabiSabi from './pages/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/top-10-mau-thiet-ke-wabi-sabi';
+
 // Import construction main pages
 import QuyTrinhThiCongPage from './pages/thi-cong/quy-trinh-thi-cong';
 import ThiCongTronGoiKienTrucPage from './pages/thi-cong/thi-cong-tron-goi-kien-truc';
@@ -208,6 +232,30 @@ function App() {
                     <Route path="/thiet-ke/thiet-ke-kien-truc/nha-xuong-cong-nghiep" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NhaXuongCongNghiepPage /><FloatButtons /><Footer /></>} />
                     <Route path="/thiet-ke/thiet-ke-kien-truc/canh-quan-san-vuon" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><CanhQuanSanVuonPage /><FloatButtons /><Footer /></>} />
                     <Route path="/thiet-ke/thiet-ke-kien-truc/tu-duong-nha-tho" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><TuDuongNhaThoPage /><FloatButtons /><Footer /></>} />
+
+                    {/* Thiết kế Nội thất - Phong cách Hiện đại Routes */}
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/gioi-thieu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><GioiThieuHienDai /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/xu-huong" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XuHuongHienDai /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/noi-dau-thuong-gap" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NoiDauHienDai /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-hien-dai/top-10-mau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><Top10HienDai /><FloatButtons /><Footer /></>} />
+
+                    {/* Thiết kế Nội thất - Phong cách Tân Cổ Điển Routes */}
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/gioi-thieu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><GioiThieuTanCoDien /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/xu-huong-2025" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XuHuongTanCoDien /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/noi-dau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NoiDauTanCoDien /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-tan-co-dien/top-10-mau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><Top10TanCoDien /><FloatButtons /><Footer /></>} />
+
+                    {/* Thiết kế Nội thất - Phong cách Indochine Routes */}
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/gioi-thieu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><GioiThieuIndochine /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/xu-huong-2025" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XuHuongIndochine /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/noi-dau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NoiDauIndochine /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-indochine/top-10-mau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><Top10Indochine /><FloatButtons /><Footer /></>} />
+
+                    {/* Thiết kế Nội thất - Phong cách Wabi Sabi Routes */}
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/gioi-thieu" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><GioiThieuWabiSabi /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/xu-huong-2025" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><XuHuongWabiSabi /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/noi-dau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><NoiDauWabiSabi /><FloatButtons /><Footer /></>} />
+                    <Route path="/thiet-ke/thiet-ke-noi-that/phong-cach-wabi-sabi/top-10-mau" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><Top10WabiSabi /><FloatButtons /><Footer /></>} />
 
                     {/* Construction Main Routes */}
                     <Route path="/thi-cong/quy-trinh-thi-cong" element={<><Header activeSection={activeSection} setActiveSection={setActiveSection} /><QuyTrinhThiCongPage /><FloatButtons /><Footer /></>} />

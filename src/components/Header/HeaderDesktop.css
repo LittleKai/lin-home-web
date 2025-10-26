@@ -1120,3 +1120,76 @@
 .submenu-item-icon.fa-spa {
     color: var(--icon-success);
 }
+
+/* Nested Submenu - Level 3 Desktop */
+.nested-submenu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background: white;
+    min-width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    margin-left: 8px;
+    z-index: 120;
+}
+
+.nested-submenu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.submenu-item.has-nested-submenu::after {
+    content: '\f054';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: var(--icon-medium);
+}
+
+.nested-submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nested-submenu-item:last-child {
+    border-bottom: none;
+}
+
+.nested-submenu-item:hover {
+    background: #f7fafc;
+    color: var(--icon-primary);
+}
+
+.nested-submenu-icon {
+    font-size: 12px;
+    width: 16px;
+    text-align: center;
+}
+
+.nested-submenu-title {
+    font-size: 13px;
+    font-weight: 500;
+}

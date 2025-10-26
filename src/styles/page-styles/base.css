@@ -118,6 +118,11 @@ img {
     line-height: 1.2;
 }
 
+.container h2{
+    text-align: center;
+    padding: 10px;
+}
+
 .section-subtitle {
     text-align: center;
     color: #4a5568;

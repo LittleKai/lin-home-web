@@ -10,6 +10,10 @@ const Header = ({ activeSection, setActiveSection }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
+
+    const [activeNestedSubmenu, setActiveNestedSubmenu] = useState(null); // NEW - for level 3
+    const [mobileActiveNestedSubmenu, setMobileActiveNestedSubmenu] = useState(null); // NEW - for mobile level 3
+
     const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -130,6 +134,29 @@ const Header = ({ activeSection, setActiveSection }) => {
         navigate('/contact');
     };
 
+    // Handle nested submenu hover for desktop
+    const handleNestedSubmenuEnter = (item) => {
+        if (item.submenu) {
+            setActiveNestedSubmenu(item.title);
+        }
+    };
+
+    const handleNestedSubmenuLeave = () => {
+        setActiveNestedSubmenu(null);
+    };
+
+// Handle mobile nested submenu toggle
+    const handleMobileNestedSubmenuToggle = (item, event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (item.submenu) {
+            setMobileActiveNestedSubmenu(mobileActiveNestedSubmenu === item.title ? null : item.title);
+        } else {
+            handleDropdownItemClick(item, event);
+        }
+    };
+
     // Render desktop dropdown menu
     const renderDesktopDropdown = (items, section) => (
         <div className={`dropdown ${activeDropdown === section ? 'show' : ''}`}>
@@ -156,16 +183,20 @@ const Header = ({ activeSection, setActiveSection }) => {
                         </div>
                     </button>
 
-                    {/* Desktop Submenu */}
+                    {/* Desktop Submenu - Level 2 */}
                     {item.hasSubmenu && item.submenu && Array.isArray(item.submenu) && (
                         <div className={`submenu ${activeSubmenu === item.title ? 'show' : ''}`}>
                             {item.submenu.map((subItem, subIndex) => (
-                                <button
+                                <div
                                     key={subIndex}
-                                    className="submenu-item"
-                                    onClick={(e) => handleDropdownItemClick(subItem, e)}
+                                    className={`submenu-item ${subItem.hasSubmenu ? 'has-nested-submenu' : ''}`}
+                                    onMouseEnter={() => handleNestedSubmenuEnter(subItem)}
+                                    onMouseLeave={handleNestedSubmenuLeave}
                                 >
-                                    <div className="submenu-item-content">
+                                    <button
+                                        className="submenu-item-content"
+                                        onClick={(e) => handleDropdownItemClick(subItem, e)}
+                                    >
                                         <i
                                             className={`${getItemIcon(subItem, section)} submenu-item-icon ${getProjectClass(subItem, section)}`}
                                             aria-hidden="true"
@@ -176,8 +207,27 @@ const Header = ({ activeSection, setActiveSection }) => {
                                                 <span className="submenu-item-description">{subItem.description}</span>
                                             )}
                                         </div>
-                                    </div>
-                                </button>
+                                    </button>
+
+                                    {/* Desktop Nested Submenu - Level 3 */}
+                                    {subItem.hasSubmenu && subItem.submenu && Array.isArray(subItem.submenu) && (
+                                        <div className={`nested-submenu ${activeNestedSubmenu === subItem.title ? 'show' : ''}`}>
+                                            {subItem.submenu.map((nestedItem, nestedIndex) => (
+                                                <button
+                                                    key={nestedIndex}
+                                                    className="nested-submenu-item"
+                                                    onClick={(e) => handleDropdownItemClick(nestedItem, e)}
+                                                >
+                                                    <i
+                                                        className={`${getItemIcon(nestedItem, section)} nested-submenu-icon`}
+                                                        aria-hidden="true"
+                                                    ></i>
+                                                    <span className="nested-submenu-title">{nestedItem.title}</span>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             ))}
                         </div>
                     )}
@@ -350,25 +400,45 @@ const Header = ({ activeSection, setActiveSection }) => {
                                             {item.hasSubmenu && item.submenu && Array.isArray(item.submenu) && (
                                                 <div className={`mobile-submenu ${mobileActiveSubmenu === item.title ? 'show' : ''}`}>
                                                     {item.submenu.map((subItem, subIndex) => (
-                                                        <button
-                                                            key={subIndex}
-                                                            className="mobile-submenu-link"
-                                                            onClick={(e) => handleDropdownItemClick(subItem, e)}
-                                                        >
-                                                            <i
-                                                                className={`${getItemIcon(subItem, section)} mobile-submenu-icon ${getProjectClass(subItem, section)}`}
-                                                            ></i>
-                                                            <div className="mobile-submenu-text">
-                                                                <span className="mobile-submenu-title">{subItem.title}</span>
-                                                                {/* Description bị ẩn bởi CSS: .mobile-submenu-description { display: none !important; } */}
-                                                                {subItem.description && (
-                                                                    <span className="mobile-submenu-description">{subItem.description}</span>
+                                                        <div key={subIndex} className="mobile-submenu-wrapper">
+                                                            <button
+                                                                className="mobile-submenu-link"
+                                                                onClick={(e) => handleMobileNestedSubmenuToggle(subItem, e)}
+                                                            >
+                                                                <i
+                                                                    className={`${getItemIcon(subItem, section)} mobile-submenu-icon ${getProjectClass(subItem, section)}`}
+                                                                ></i>
+                                                                <div className="mobile-submenu-text">
+                                                                    <span className="mobile-submenu-title">{subItem.title}</span>
+                                                                    {subItem.description && (
+                                                                        <span className="mobile-submenu-description">{subItem.description}</span>
+                                                                    )}
+                                                                </div>
+                                                                {subItem.hasSubmenu && (
+                                                                    <i className={`fas fa-chevron-${mobileActiveNestedSubmenu === subItem.title ? 'up' : 'down'} mobile-nested-arrow`}></i>
                                                                 )}
-                                                            </div>
-                                                        </button>
+                                                            </button>
+
+                                                            {/* Mobile Nested Submenu - Level 3 */}
+                                                            {subItem.hasSubmenu && subItem.submenu && Array.isArray(subItem.submenu) && (
+                                                                <div className={`mobile-nested-submenu ${mobileActiveNestedSubmenu === subItem.title ? 'show' : ''}`}>
+                                                                    {subItem.submenu.map((nestedItem, nestedIndex) => (
+                                                                        <button
+                                                                            key={nestedIndex}
+                                                                            className="mobile-nested-submenu-link"
+                                                                            onClick={(e) => handleDropdownItemClick(nestedItem, e)}
+                                                                        >
+                                                                            <i className={`${getItemIcon(nestedItem, section)} mobile-nested-icon`}></i>
+                                                                            <span className="mobile-nested-title">{nestedItem.title}</span>
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
                                                     ))}
                                                 </div>
                                             )}
+
                                         </div>
                                     ))}
                                 </div>
